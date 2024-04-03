@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,4 +19,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name("/");
+
+Route::resource("orders", OrdersController::class)->names("orders");
+
+Route::get("/login", [LoginController::class, "show"]);
+Route::get("/register", [RegisterController::class, "show"]);
+Route::post("/login", [LoginController::class, "authenticate"])->name("login");
+Route::post("/register", [RegisterController::class, "register"])->name("register");
