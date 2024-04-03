@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,11 +21,12 @@ Route::get('/', function () {
     return view('welcome');
 })->name("/");
 
-Route::resource("orders", OrdersController::class)->names("orders");
+Route::resource("/orders", OrdersController::class)->names("orders");
 
 Route::get("/login", [AuthController::class, "showLogin"]);
 Route::get("/register", [AuthController::class, "showRegister"]);
 Route::post("/login", [AuthController::class, "authenticate"])->name("login");
 Route::post("/register", [AuthController::class, "register"])->name("register");
 
-Route::get("/dashboard", [AuthController::class, "dashboard"])->middleware("auth")->name("dashboard");
+Route::resource("/manage/users", UserController::class)->middleware("auth")->names("users");
+Route::redirect("/dashboard", "/manage/users");

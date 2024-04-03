@@ -41,7 +41,7 @@ class AuthController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8',
+            'password' => 'required|string|min:8'
         ]);
 
         // Create a new user
@@ -49,6 +49,7 @@ class AuthController extends Controller
         $user->name = $validatedData['name'];
         $user->email = $validatedData['email'];
         $user->password = Hash::make($validatedData['password']);
+        $user->level = "member";
         $user->save();
 
         // Authenticate the user
@@ -83,11 +84,7 @@ class AuthController extends Controller
      * Show the dashboard
      */
     public function dashboard(Request $request)
-    {
-        $user = Auth::user();
-        
-        return view("dashboard")->with([
-            "user" => $user
-        ]);
+    {        
+        return redirect()->route("users.index");
     }
 }
