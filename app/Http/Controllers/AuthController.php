@@ -3,19 +3,30 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
-class RegisterController extends Controller
+class AuthController extends Controller
 {
     /**
      * Show the registration form.
      *
      * @return \Illuminate\View\View
      */
-    public function show()
+    public function showRegister()
     {
         return view('auth.register');
+    }
+
+    /**
+     * Show the login form
+     * 
+     * @return \Illuminate\View\View
+     */
+    public function showLogin(Request $request) {
+        return view("auth.login");
     }
 
     /**
@@ -45,5 +56,38 @@ class RegisterController extends Controller
 
         // Redirect or respond as needed
         return redirect()->route('/');
+    }
+
+    /**
+     * Handle an authentication attempt.
+     */
+    public function authenticate(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+ 
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+ 
+            return redirect()->intended('/');
+        }
+ 
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->onlyInput('email');
+    }
+
+    /**
+     * Show the dashboard
+     */
+    public function dashboard(Request $request)
+    {
+        $user = Auth::user();
+        
+        return view("dashboard")->with([
+            "user" => $user
+        ]);
     }
 }

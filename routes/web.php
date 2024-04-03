@@ -3,8 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\OrdersController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +22,9 @@ Route::get('/', function () {
 
 Route::resource("orders", OrdersController::class)->names("orders");
 
-Route::get("/login", [LoginController::class, "show"]);
-Route::get("/register", [RegisterController::class, "show"]);
-Route::post("/login", [LoginController::class, "authenticate"])->name("login");
-Route::post("/register", [RegisterController::class, "register"])->name("register");
+Route::get("/login", [AuthController::class, "showLogin"]);
+Route::get("/register", [AuthController::class, "showRegister"]);
+Route::post("/login", [AuthController::class, "authenticate"])->name("login");
+Route::post("/register", [AuthController::class, "register"])->name("register");
+
+Route::get("/dashboard", [AuthController::class, "dashboard"])->middleware("auth")->name("dashboard");
