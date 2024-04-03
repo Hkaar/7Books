@@ -23,14 +23,15 @@
         <div>
           <label for="email" class="form-label">Email</label>
           <input class="form-control" id="email" type="email" name="email" value="{{ old('email') }}" required autofocus>
+          
           @error('email')
             <span>{{ $message }}</span>
           @enderror
         </div>
   
         <div>
-            <label for="password" class="form-label">Password</label>
-            <input class="form-control" id="password" type="password" name="password" required>
+          <label for="password" class="form-label">Password</label>
+          <input class="form-control" id="password" type="password" name="password" required>
          
           @error('password')
             <span>{{ $message }}</span>

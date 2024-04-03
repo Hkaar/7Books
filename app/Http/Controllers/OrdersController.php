@@ -85,7 +85,7 @@ class OrdersController extends Controller
             abort(403, "Unauthorized access when accessing this method!");
         };
 
-        $order = Order::query()->where("id", "=", $id);
+        $order = Order::query()->where("id", "=", $id)->first();
 
         if (!$order) {
             abort(404, "Resource does not exist!");
@@ -99,13 +99,21 @@ class OrdersController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit()
+    public function edit(int $id)
     {
         if (!Auth::check()) {
             abort(403, "Unauthorized access when accessing this method!");
         };
 
-        return view("orders.edit");
+        $order = Order::query()->where("id", "=", $id)->first();
+
+        if (!$order) {
+            abort(404, "Resource does not exist!");
+        }
+
+        return view("orders.edit")->with([
+            "order" => $order
+        ]);
     }
 
     /**
@@ -123,17 +131,17 @@ class OrdersController extends Controller
         /**
          * @var Order
          */
-        $order = Order::query()->where("id", "=", $id);
+        $order = Order::query()->where("id", "=", $id)->first();
 
         if (!$order) {
             abort(404, "Resource does not exist!");
         }
 
         $data = $request->validate([
-            "token" => "optional|string",
-            "return_date" => "optional|date",
-            "total" => "optional|numeric",
-            "status" => "optional|string",
+            "token" => "nullable|string",
+            "return_date" => "nullable|date",
+            "total" => "nullable|numeric",
+            "status" => "nullable|string",
         ]);
 
         $order->token = $data['token'];

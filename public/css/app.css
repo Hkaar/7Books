@@ -2,6 +2,7 @@
 
 :root {
     --text: #040316;
+    --text-light: #FFF;
     --primary: #1B1A56;
     --secondary: #8F8EC2;
     --accent: #443DFF;
@@ -60,12 +61,12 @@ a {
 
 .btn-primary {
     background-color: var(--primary);
-    color: white;
+    color: var(--text-light);
 }
 
 .btn-secondary {
     background-color: var(--secondary);
-    color: white;
+    color: var(--text-light);
 }
 
 /* Authentication */
@@ -98,3 +99,4 @@ a {
     display: flex;
     gap: 10px;
 }
+
