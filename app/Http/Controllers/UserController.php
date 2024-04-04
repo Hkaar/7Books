@@ -15,10 +15,6 @@ class UserController extends Controller
      */
     public function index()
     {
-        if (!Auth::check()) {
-            abort(403, "Unauthorized access was denied!");
-        }
-
         $users = User::paginate(20);
 
         return view('users.index')->with([
@@ -31,10 +27,6 @@ class UserController extends Controller
      */
     public function create()
     {
-        if(!Auth::check()) {
-            abort(403, "Unauthorized access was denied!");
-        }
-
         return view("users.create");
     }
 
@@ -43,10 +35,6 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        if(!Auth::check()) {
-            abort(403, "Unauthorized access was denied!");
-        }
-
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
@@ -70,10 +58,6 @@ class UserController extends Controller
      */
     public function show(int $id)
     {
-        if(!Auth::check()) {
-            abort(403, "Unauthorized access was denied!");
-        }
-
         $user = User::query()->where("id", "=", $id)->first();
 
         if (!$user) {
@@ -90,10 +74,6 @@ class UserController extends Controller
      */
     public function edit(int $id)
     {
-        if(!Auth::check()) {
-            abort(403, "Unauthorized access was denied!");
-        }
-
         $user = User::query()->where("id", "=", $id)->first();
 
         if (!$user) {
@@ -110,10 +90,6 @@ class UserController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        if(!Auth::check()) {
-            abort(403, "Unauthorized access was denied!");
-        }
-
         $user = User::query()->where("id", "=", $id)->first();
 
         if (!$user) {
@@ -141,10 +117,6 @@ class UserController extends Controller
      */
     public function destroy(int $id)
     {
-        if(!Auth::check()) {
-            abort(403, "Unauthorized access was denied!");
-        }
-
         User::query()->where("id", "=", $id)->delete();
         return redirect()->route("users.index");
     }

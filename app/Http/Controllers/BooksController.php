@@ -14,10 +14,6 @@ class BooksController extends Controller
      */
     public function index()
     {
-        if (!Auth::check()) {
-            abort(403, "Unauthorized access was denied!");
-        }
-
         $books = Book::paginate(20);
 
         return view('books.index')->with([
@@ -25,15 +21,15 @@ class BooksController extends Controller
         ]);
     }
 
+    public function browse(Request $request) {
+        return view("welcome");
+    }
+
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        if(!Auth::check()) {
-            abort(403, "Unauthorized access was denied!");
-        }
-
         return view("books.create");
     }
 
@@ -42,10 +38,6 @@ class BooksController extends Controller
      */
     public function store(Request $request)
     {
-        if(!Auth::check()) {
-            abort(403, "Unauthorized access was denied!");
-        }
-
         $validated = $request->validate([
             "isbn" => "required|string",
             "name" => "required|string",
@@ -90,10 +82,6 @@ class BooksController extends Controller
      */
     public function edit(int $id)
     {
-        if(!Auth::check()) {
-            abort(403, "Unauthorized access was denied!");
-        }
-
         $book = Book::query()->where("id", "=", $id)->first();
 
         if (!$book) {
@@ -110,10 +98,6 @@ class BooksController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        if(!Auth::check()) {
-            abort(403, "Unauthorized access was denied!");
-        }
-
         $book = Book::query()->where("id", "=", $id)->first();
 
         if (!$book) {
@@ -146,10 +130,6 @@ class BooksController extends Controller
      */
     public function destroy(int $id)
     {
-        if(!Auth::check()) {
-            abort(403, "Unauthorized access was denied!");
-        }
-
         Book::query()->where("id", "=", $id)->delete();
         return redirect()->route("books.index");
     }

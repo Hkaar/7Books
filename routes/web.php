@@ -27,7 +27,14 @@ Route::get("/register", [AuthController::class, "showRegister"]);
 Route::post("/login", [AuthController::class, "authenticate"])->name("login");
 Route::post("/register", [AuthController::class, "register"])->name("register");
 
-Route::resource("/manage/users", UserController::class)->middleware("auth")->names("users");
-Route::redirect("/dashboard", "/manage/users");
+Route::resource("/manage/users", UserController::class)
+    ->middleware("auth")
+    ->names("users");
+    
+Route::resource("/manage/books", BooksController::class)
+    ->middleware("auth")
+    ->names("books");
 
-Route::resource("/manage/books", BooksController::class)->names("books");
+Route::redirect("/manage", "/manage/users");
+
+Route::get("/browse", [BooksController::class, "browse"])->name("browse");
