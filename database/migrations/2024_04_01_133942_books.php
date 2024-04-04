@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create("books", function(Blueprint $table) {
             $table->id();
             $table->string("ISBN");
+            $table->string("name");
             $table->text("desc")->default("No description provided");
             $table->float("price");
             $table->integer("stock");
