@@ -117,7 +117,7 @@ a {
     background: transparent;
     display: flex;
     align-items: center;
-    height: 60px;
+    min-height: 60px;
 }
 
 .navbar .brand {
@@ -130,6 +130,16 @@ a {
     margin: 0;
 }
 
+.navbar-toggler {
+    border: none;
+}
+  
+.navbar-toggler:focus {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+    rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+    outline: none;
+}
+
 #side-nav {
     max-width: 90px;
     background-color: var(--primary);
@@ -137,7 +147,6 @@ a {
     padding: 20px;
     width: 100%;
     transition: all 0.4s;
-    height: fit-content;
     border-radius: 20px;
 }
 
@@ -190,7 +199,7 @@ a {
 /* Dashboard */
 .action-bar {
     display: flex;
-    gap: 12px;
+    gap: 6px;
     width: 100%;
     padding: 12px;
 }

@@ -1,4 +1,6 @@
 $(document).ready(() => {
+    'use strict';
+
     if (document.querySelector("#side-nav")) {
         $(document).on("click", ".side-nav-close", (event) => {
             document.querySelector("#side-nav").setAttribute("data-collapsed", "true")
