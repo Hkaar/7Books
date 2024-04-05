@@ -23,9 +23,12 @@ Route::get('/', function () {
 })->name("/");
 
 Route::get("/login", [AuthController::class, "showLogin"]);
-Route::get("/register", [AuthController::class, "showRegister"]);
 Route::post("/login", [AuthController::class, "authenticate"])->name("login");
+
+Route::get("/register", [AuthController::class, "showRegister"]);
 Route::post("/register", [AuthController::class, "register"])->name("register");
+
+Route::get("/logout", [AuthController::class, "logout"])->name("logout");
 
 Route::resource("/manage/users", UserController::class)
     ->middleware("auth")
