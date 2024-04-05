@@ -131,6 +131,6 @@ class BooksController extends Controller
     public function destroy(int $id)
     {
         Book::query()->where("id", "=", $id)->delete();
-        return redirect()->route("books.index");
+        return response(null);
     }
 }

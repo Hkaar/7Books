@@ -81,6 +81,15 @@ class AuthController extends Controller
     }
 
     /**
+     * Handle the logout event
+     */
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        return redirect()->route("/");
+    }
+
+    /**
      * Show the dashboard
      */
     public function dashboard(Request $request)
