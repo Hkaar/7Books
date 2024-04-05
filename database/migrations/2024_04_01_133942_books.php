@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer("stock");
             $table->float("rate");
             $table->integer("amount_borrowed")->default(0);
+            $table->string("img");
         });
     }
 
