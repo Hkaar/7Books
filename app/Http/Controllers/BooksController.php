@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class BooksController extends Controller
 {
@@ -39,23 +39,39 @@ class BooksController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            "isbn" => "required|string",
             "name" => "required|string",
+            "isbn" => "required|string",
             "desc" => "nullable|string",
             "price" => "required|numeric",
             "stock" => "required|numeric",
-            "rate" => "required|numeric"
+            "rate" => "required|numeric",
+            "img" => "nullable|image|max:10240"
         ]);
 
         $book = new Book();
 
+        if ($validated["desc"])
+        {
+            $book->desc = $validated["desc"];
+        }
+
+        $file = $request->file('img');
+
+        if ($file)
+        {
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $filePath = $file->storeAs('uploads', $fileName, 'public');
+
+            $book->img = $filePath;
+        }
+
         $book->isbn = $validated["isbn"];
         $book->name = $validated["name"];
-        $book->desc = $validated["desc"];
         $book->price = $validated["price"];
         $book->stock = $validated["stock"];
         $book->rate = $validated["rate"];
         $book->amount_borrowed = 0;
+        
         $book->save();
 
         return redirect()->route('books.index');
@@ -110,8 +126,20 @@ class BooksController extends Controller
             "desc" => "nullable|string",
             "price" => "required|numeric",
             "stock" => "required|numeric",
-            "rate" => "required|numeric"
+            "rate" => "required|numeric",
+            "img" => "nullable|image|max:10240"
         ]);
+
+        if ($request->hasFile('img')) {
+            $file = $request->file('img');
+            
+            Storage::disk('public')->delete($book->img);
+    
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $filePath = $file->storeAs('uploads', $fileName, 'public');
+    
+            $book->img = $filePath;
+        }
 
         $book->isbn = $validated["isbn"];
         $book->name = $validated["name"];
@@ -130,7 +158,11 @@ class BooksController extends Controller
      */
     public function destroy(int $id)
     {
-        Book::query()->where("id", "=", $id)->delete();
+        $book = Book::findOrFail($id);
+
+        Storage::disk('public')->delete($book->img);
+        $book->delete();
+
         return response(null);
     }
 }
