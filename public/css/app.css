@@ -6,13 +6,21 @@
     --primary: #1B1A56;
     --secondary: #8F8EC2;
     --accent: #443DFF;
+
+    --text-thin: 200;
+    --text-semithin: 300;
+    --text-regular: 400;
+    --text-medium: 500;
+    --text-semibold: 600;
+    --text-bold: 700;
+    --text-extra-bold: 800; 
 }
 
 /* Global Styles */
 * {
     font-family: 'Poppins';
     font-size: 18px;
-    font-weight: 400;
+    font-weight: var(--text-regular);
 }
 
 body {
@@ -22,42 +30,45 @@ body {
 
 h1 {
     font-size: 64px;
-    font-weight: 700;
+    font-weight: var(--text-bold);
 }
 
 h2 {
     font-size: 48px;
-    font-weight: 600;
+    font-weight: var(--text-semibold);
 }
 
 h3 {
     font-size: 36px;
-    font-weight: 600;
+    font-weight: var(--text-semibold);
 }
 
 h4 {
     font-size: 28px;
-    font-weight: 600;
+    font-weight: var(--text-semibold);
 }
 
 h5 {
     font-size: 24px;
-    font-weight: 600;
+    font-weight: var(--text-semibold);
 }
 
 small {
     font-size: 14px;
-    font-weight: 200;
+    font-weight: var(--text-thin);
 }
 
 a {
     color: var(--accent);
 }
 
+th {
+    font-weight: var(--text-semibold);
+}
+
 /* Components */
 #app {
     min-height: 100vh;
-    padding: 20px;
 }
 
 .bg-primary {
@@ -147,7 +158,6 @@ a {
     padding: 20px;
     width: 100%;
     transition: all 0.4s;
-    border-radius: 20px;
 }
 
 #side-nav a {
@@ -201,5 +211,24 @@ a {
     display: flex;
     gap: 6px;
     width: 100%;
-    padding: 12px;
+}
+
+#dashboardLeftFrame {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    max-width: 80vw;
+}
+
+#preview img {
+    max-height: 80vh;
+    object-fit: cover;
+}
+
+.info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }

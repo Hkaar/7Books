@@ -1,38 +1,41 @@
 <div class="row">
-    <div class="col-6">
-        <b>Name :</b>
+  <div class="col-6">
+    <div id="preview">
+      <img src="{{ Storage::url($book->img) }}" alt="Image not available">
     </div>
-    <div class="col-6">
-        {{$book->name}}
+  </div>
+
+  <div class="col-6">
+    <div class="d-flex flex-column p-3">
+      <article class="info mb-3">
+        <b>Name</b>
+        {{ $book->name }}
+      </article>
+
+      <article class="info mb-3">
+        <b>ISBN</b>
+        {{ $book->ISBN }}
+      </article>
+
+      <article class="info mb-3">
+        <b>Price</b>
+        ${{ $book->price }}
+      </article>
+
+      <article class="info mb-3">
+        <b>Rate</b>
+        ${{ $book->rate }}/hour
+      </article>
+
+      <article class="info mb-3">
+        <b>Stock</b>
+        {{ $book->stock }}
+      </article>
+
+      <article class="info">
+        <b>Description</b>
+        {{ $book->desc }}
+      </article>
     </div>
-    <div class="col-6">
-        <b>ISBN :</b>
-    </div>
-    <div class="col-6">
-        {{$book->ISBN}}
-    </div>
-    <div class="col-6">
-        <b>Price :</b>
-    </div>
-    <div class="col-6">
-        {{$book->price}}
-    </div>
-    <div class="col-6">
-        <b>Rate :</b>
-    </div>
-    <div class="col-6">
-        {{$book->rate}}
-    </div>
-    <div class="col-6">
-        <b>Amount Borrowed :</b>
-    </div>
-    <div class="col-6">
-        {{$book->amount_borrowed}}
-    </div>
-    <div class="col-6">
-        <b>Description :</b>
-    </div>
-    <div class="col-6">
-        {{$book->desc}}
-    </div>
+  </div>
 </div>

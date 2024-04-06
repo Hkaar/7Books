@@ -41,8 +41,8 @@
   </div>
 </nav>
 
-<div class="d-flex flex-column flex-fill container">
-  <div class="action-bar justify-content-end">
+<div id="dashboardLeftFrame" class="container">
+  <div class="action-bar mb-3">
     <a class="btn btn-primary" href="{{ URL::to('manage/books/create') }}">Add a new book</a>
   </div>
   
@@ -54,7 +54,7 @@
         <th scope="col" width="10%">Price</th>
         <th scope="col" width="10%">Stock</th>
         <th scope="col" width="15%">Amount Borrowed</th>
-        <th scope="col" width="10%"></th>
+        <th scope="col" width="10%">Actions</th>
       </thead>
     
       <tbody>
@@ -75,7 +75,7 @@
                 hx-get="{{ URL::to('manage/books/' . $book->id) }}" 
                 hx-target="#detailsBody" 
                 hx-swap="innerHTML"
-              >Show
+                >Show
               </button>
 
               <button 
@@ -85,10 +85,14 @@
                 hx-delete="{{ route('books.destroy', $book->id) }}" 
                 hx-target="closest tr" 
                 hx-swap="outerHTML"
-              >Delete
+                >Delete
               </button>
 
-              <a class="btn btn-small btn-success" href="{{ route('books.edit', $book->id) }}">Edit</a>
+              <a 
+                class="btn btn-secondary" 
+                href="{{ route('books.edit', $book->id) }}" 
+                >Edit
+              </a>
             </td>
           </tr>
         @endforeach
@@ -97,26 +101,5 @@
   </div>
 
   {{ $books->links() }}
-</div>
-@endsection
-
-@section('modals')
-<div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailModal" aria-hidden="true">
-  <div class="modal-dialog modal-fullscreen-sm-down">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="detailModal">Details</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      
-      <div class="modal-body" id="detailsBody">
-        ...
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
 </div>
 @endsection
