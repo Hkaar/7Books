@@ -121,12 +121,12 @@ class BooksController extends Controller
         }
 
         $validated = $request->validate([
-            "isbn" => "required|string",
-            "name" => "required|string",
+            "isbn" => "nullable|string",
+            "name" => "nullable|string",
             "desc" => "nullable|string",
-            "price" => "required|numeric",
-            "stock" => "required|numeric",
-            "rate" => "required|numeric",
+            "price" => "nullable|numeric",
+            "stock" => "nullable|numeric",
+            "rate" => "nullable|numeric",
             "img" => "nullable|image|max:10240"
         ]);
 
