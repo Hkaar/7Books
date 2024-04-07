@@ -74,7 +74,7 @@
       
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input class="form-control" id="email" type="email" name="email" value="{{ $user->email }}" required>
+            <input class="form-control" id="email" type="email" name="email" placeholder="{{ $user->email }}">
             @error('email')
               <span>{{ $message }}</span>
             @enderror

@@ -104,7 +104,7 @@ p {
 }
 
 #preview.cover img {
-    max-height: 80vw;
+    max-height: 65vh;
 }
 
 /* Authentication */
