@@ -34,6 +34,11 @@
       <span class="nav-item-title">Authors</span>
     </a>
 
+    <a href="#" class="nav-item">
+      <i class="fa-solid fa-tag"></i>
+      <span class="nav-item-title">Genres</span>
+    </a>
+
     <a href="#" class="nav-item mt-auto">
       <i class="fa-solid fa-gear"></i>
       <span class="nav-item-title">Settings</span>

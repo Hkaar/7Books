@@ -47,4 +47,6 @@
     </div>
   </div>
 </div>
+
+@yield('modals')
 @endsection
