@@ -1,11 +1,11 @@
 <div class="row">
-  <div class="col-6">
-    <div id="preview">
+  <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
+    <div id="preview" class="cover-small">
       <img src="{{ Storage::url($book->img) }}" alt="Image not available">
     </div>
   </div>
 
-  <div class="col-6">
+  <div class="col-12 col-md-6">
     <div class="d-flex flex-column p-3">
       <article class="info mb-3">
         <b>Name</b>

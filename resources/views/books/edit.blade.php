@@ -44,7 +44,7 @@
 <div id="dashboardLeftFrame">
   <div class="row">
     <div class="col-6 d-flex align-items-center justify-content-center">
-      <div id="preview">
+      <div id="preview" class="cover">
         <img src="{{ Storage::url($book->img) }}" alt="Image not available">
       </div>
     </div>
