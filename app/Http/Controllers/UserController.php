@@ -39,8 +39,8 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8',
-            'password_confirmation' => 'required|string|min:8|confirmed',
+            'password' => 'required|string|min:8|confirmed',
+            'password_confirmation' => 'required|string|min:8',
             "level" => 'nullable|string',
             "img" => "nullable|image|max:10240"
         ]);
@@ -112,8 +112,8 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'name' => 'nullable|string|max:255',
             'email' => 'nullable|string|email|max:255|unique:users',
-            'password' => 'nullable|string|min:8',
-            'password_confirmation' => 'nullable|string|min:8|confirmed',
+            'password' => 'nullable|string|min:8|confirmed',
+            'password_confirmation' => 'nullable|string|min:8',
             "level" => 'nullable|string',
             "img" => "nullable|image|max:10240"
         ]);
