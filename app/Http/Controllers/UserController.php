@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -39,11 +40,23 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8',
-            "level" => 'nullable|string'
+            'password_confirmation' => 'required|string|min:8|confirmed',
+            "level" => 'nullable|string',
+            "img" => "nullable|image|max:10240"
         ]);
 
         // Create a new user
         $user = new User();
+
+        if ($request->hasFile('img'))
+        {
+            $file = $request->file('img');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $filePath = $file->storeAs('uploads', $fileName, 'public');
+
+            $user->img = $filePath;
+        }
+
         $user->name = $validatedData['name'];
         $user->email = $validatedData['email'];
         $user->password = Hash::make($validatedData['password']);
@@ -98,14 +111,32 @@ class UserController extends Controller
 
         $validatedData = $request->validate([
             'name' => 'nullable|string|max:255',
-            'email' => 'nullable|string|email|max:255',
+            'email' => 'nullable|string|email|max:255|unique:users',
             'password' => 'nullable|string|min:8',
-            "level" => 'nullable|string'
+            'password_confirmation' => 'nullable|string|min:8|confirmed',
+            "level" => 'nullable|string',
+            "img" => "nullable|image|max:10240"
         ]);
+
+        if ($request->hasFile('img')) {
+            $file = $request->file('img');
+            
+            if ($user->img) {
+                Storage::disk('public')->delete($user->img);
+            }
+    
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $filePath = $file->storeAs('uploads', $fileName, 'public');
+    
+            $user->img = $filePath;
+        }
+
+        if (isset($validatedData["password"]) && !empty($validatedData["password"])) {
+            $user->password = Hash::make($validatedData['password']);
+        }
 
         $user->name = $validatedData['name'];
         $user->email = $validatedData['email'];
-        $user->password = Hash::make($validatedData['password']);
         $user->level = $validatedData["level"];
         $user->save();
 
@@ -117,7 +148,14 @@ class UserController extends Controller
      */
     public function destroy(int $id)
     {
-        User::query()->where("id", "=", $id)->delete();
-        return redirect()->route("users.index");
+        $user = User::findOrFail($id);
+
+        if ($user->img) 
+        {
+            Storage::disk("public")->delete($user->img);
+        }
+
+        $user->delete();
+        return response(null);
     }
 }
