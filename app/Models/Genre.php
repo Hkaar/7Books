@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class OrderItem extends Model
+class Genre extends Model
 {
     use HasFactory;
 
@@ -17,18 +17,10 @@ class OrderItem extends Model
     public $timestamps = false;
 
     /**
-     * Define the relationship with orders
-     */
-    public function order()
-    {
-        return $this->belongsTo(Order::class, "order_id", "id");
-    }
-
-    /**
      * Define the relationship with books
      */
-    public function book()
+    public function books()
     {
-        return $this->belongsTo(Book::class, "book_id", "id");
+        return $this->belongsToMany(Book::class, "book_genres");
     }
 }

@@ -38,6 +38,10 @@ Route::resource("/manage/books", BooksController::class)
     ->middleware("auth")
     ->names("books");
 
+Route::resource("/manage/orders", OrdersController::class)
+    ->middleware("auth")
+    ->names("orders");
+
 Route::redirect("/manage", "/manage/users");
 
 Route::get("/browse", [BooksController::class, "browse"])->name("browse");

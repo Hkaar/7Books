@@ -42,4 +42,20 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * Define the relationship with orders
+     */
+    public function orders()
+    {
+        return $this->hasMany(Order::class, "user_id", "id");
+    }
+
+    /**
+     * Define the relationship with book ratings
+     */
+    public function ratings()
+    {
+        return $this->hasMany(BookRating::class, "user_id", "id");
+    }
 }
