@@ -51,57 +51,81 @@ A guide on how to contribute to the project
 
 Clone the repo to your machine
 
-`git clone https://github.com/Hkaar/7Books.git`
+```
+git clone https://github.com/Hkaar/7Books.git
+```
 
 Go to the project folder
 
-`cd 7Books`
+```
+cd 7Books
+```
 
 Install all the required packages
 
-`composer install`
+```
+composer install
+```
 
 Generate the app key
 
-`php artisan key:generate`
+```
+php artisan key:generate
+```
 
 Make sure it's working by serving it
 
-`php artisan serve`
+```
+php artisan serve
+```
 
 **Step 2: Work setup**
 
 Go to the project directory (if you haven't)
 
-`cd 7Books`
+```
+cd 7Books
+```
 
 Create a new branch for your contribution
 
-`git branch <your-feature-name>`
+```
+git branch <your-feature-name>
+```
 
 Switch to the new branch
 
-`git checkout <your-branch-name>`
+```
+git checkout <your-branch-name>
+```
 
 **Step 3: Work on your stuff & things**
 
 Whenever you have a thing to save
 
-`git add <path> // for staging a single file`
+```
+git add <path> // for staging a single file
+```
 
 or
 
-`git add . // for adding all the current uncommited changes`
+```
+git add . // for adding all the current uncommited changes
+```
 
 Then commit it to the branch
 
-`git commit -m "<your-commit-message>"`
+```
+git commit -m "<your-commit-message>"
+```
 
 **Step 4: Upload your feature!**
 
 Once the features are done, you can push your changes to the repo
 
-`git push https://github.com/Hkaar/7Books.git <local-branch-name>`
+```
+git push https://github.com/Hkaar/7Books.git <local-branch-name>
+```
 
 Your push is going to create a pull request for us to review
 
@@ -109,15 +133,23 @@ Your push is going to create a pull request for us to review
 
 If the pull request is accepted, update your local repo with the changes
 
-`git checkout master`
+```
+git checkout master
+```
 
-`git pull https://github.com/Hkaar/7Books.git master`
+```
+git pull https://github.com/Hkaar/7Books.git master
+```
 
-`git branch -d <local-branch-name>`
+```
+git branch -d <local-branch-name>
+```
 
 Don't forget to always do a pull from the remote master to update your local repo!
 
-`git pull https://github.com/Hkaar/7Books.git master`
+```
+git pull https://github.com/Hkaar/7Books.git master
+```
 
 And that's all, btw here's a table for your reward
 
