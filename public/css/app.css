@@ -66,29 +66,45 @@ th {
     font-weight: var(--text-semibold);
 }
 
+p {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
 /* Components */
 #app {
     min-height: 100vh;
 }
 
-.bg-primary {
+.bg-primary, .btn-primary {
     background-color: var(--primary);
     color: var(--text-light);
 }
 
-.bg-secondary {
+.bg-secondary, .btn-secondary {
     background-color: var(--secondary);
     color: var(--text-light);
 }
 
-.btn-primary {
-    background-color: var(--primary);
-    color: var(--text-light);
+.btn-primary, .btn-secondary {
+    border: none;
 }
 
-.btn-secondary {
-    background-color: var(--secondary);
-    color: var(--text-light);
+#preview img {
+    object-fit: cover;
+}
+
+#preview.cover-small img {
+    max-height: 50vh;
+}
+
+#preview.profile img {
+    aspect-ratio: 4 / 3;
+    max-height: 30vh;
+}
+
+#preview.cover img {
+    max-height: 80vw;
 }
 
 /* Authentication */
@@ -219,11 +235,6 @@ th {
     flex-direction: column;
     padding: 20px 0;
     max-width: 80vw;
-}
-
-#preview img {
-    max-height: 80vh;
-    object-fit: cover;
 }
 
 .info {
