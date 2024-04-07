@@ -133,7 +133,9 @@ class BooksController extends Controller
         if ($request->hasFile('img')) {
             $file = $request->file('img');
             
-            Storage::disk('public')->delete($book->img);
+            if ($book->img) {
+                Storage::disk('public')->delete($book->img);
+            }
     
             $fileName = time() . '_' . $file->getClientOriginalName();
             $filePath = $file->storeAs('uploads', $fileName, 'public');
