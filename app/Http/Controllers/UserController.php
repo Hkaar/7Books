@@ -136,7 +136,7 @@ class UserController extends Controller
         }
 
         $user->name = $validatedData['name'];
-        $user->email = $validatedData['email'];
+        $user->email = $validatedData['email'] ?? $user->email;
         $user->level = $validatedData["level"];
         $user->save();
 
@@ -149,6 +149,7 @@ class UserController extends Controller
     public function destroy(int $id)
     {
         $user = User::findOrFail($id);
+        $user->orders()->delete();
 
         if ($user->img) 
         {

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class OrdersController extends Controller
@@ -15,12 +14,7 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        if (!Auth::check()) {
-            abort(403, "Unauthorized access when accessing this method!");
-        };
-
-        $id = Auth::id();
-        $orders = Order::query()->where("user_id", "=", $id)->get();
+        $orders = Order::paginate(20);
 
         return view("orders.index")->with([
             "orders" => $orders
@@ -32,10 +26,6 @@ class OrdersController extends Controller
      */
     public function create()
     {
-        if (!Auth::check()) {
-            abort(403, "Unauthorized access when accessing this method!");
-        };
-
         return view("orders.create");
     }
 
@@ -47,24 +37,23 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-        if (!Auth::check()) {
-            abort(403, "Unauthorized access when accessing this method!");
-        };
-
         $data = $request->validate([
+            "user_id" => "required|numeric|exists:user,id",
             "return_date" => "required|date",
             "total" => "required|numeric",
             "status" => "nullable|string",
         ]);
-
-        $id = Auth::id();
 
         $token = Str::uuid()->toString();
         $token = substr($token, 0, 8);
 
         $order = new Order();
 
-        $order->user_id = $id;
+        if ($data["status"]) {
+            $order->status = $data["status"];
+        }
+
+        $order->user_id = $data["user_id"];
         $order->token = $token;
         $order->return_date = $data['return_date'];
         $order->total = $data['total'];
@@ -81,11 +70,7 @@ class OrdersController extends Controller
      */
     public function show(int $id)
     {
-        if (!Auth::check()) {
-            abort(403, "Unauthorized access when accessing this method!");
-        };
-
-        $order = Order::query()->where("id", "=", $id)->first();
+        $order = Order::find($id);
 
         if (!$order) {
             abort(404, "Resource does not exist!");
@@ -101,11 +86,7 @@ class OrdersController extends Controller
      */
     public function edit(int $id)
     {
-        if (!Auth::check()) {
-            abort(403, "Unauthorized access when accessing this method!");
-        };
-
-        $order = Order::query()->where("id", "=", $id)->first();
+        $order = Order::find($id);
 
         if (!$order) {
             abort(404, "Resource does not exist!");
@@ -124,26 +105,21 @@ class OrdersController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        if (!Auth::check()) {
-            abort(403, "Unauthorized access when accessing this method!");
-        };
-
-        /**
-         * @var Order
-         */
-        $order = Order::query()->where("id", "=", $id)->first();
+        $order = Order::find($id);
 
         if (!$order) {
             abort(404, "Resource does not exist!");
         }
 
         $data = $request->validate([
+            "user_id" => "nullable|numeric|exists:user,id",
             "token" => "nullable|string",
             "return_date" => "nullable|date",
             "total" => "nullable|numeric",
             "status" => "nullable|string",
         ]);
 
+        $order->user_id = $data["user_id"];
         $order->token = $data['token'];
         $order->return_date = $data['return_date'];
         $order->total = $data['total'];
@@ -161,11 +137,7 @@ class OrdersController extends Controller
      */
     public function destroy(int $id)
     {
-        if (!Auth::check()) {
-            abort(403, "Unauthorized access when accessing this method!");
-        };
-
-        Order::query()->where("id", "=", $id)->delete();
-        return redirect()->route('orders.index');
+        Order::findOrFail($id)->delete();
+        return response(null);
     }
 }
