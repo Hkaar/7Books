@@ -39,4 +39,12 @@ class Book extends Model
     {
         return $this->belongsToMany(Author::class, "book_author");
     }
+
+    /**
+     * Define the relationship with order items
+     */
+    public function items()
+    {
+        return $this->hasMany(OrderItem::class, "book_id", "id");
+    }
 }
