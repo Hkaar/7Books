@@ -19,7 +19,7 @@
       <span class="nav-item-title">Users</span>
     </a>
 
-    <a href="#" class="nav-item">
+    <a href="{{ route('orders.index') }}" class="nav-item">
       <i class="fa-solid fa-list"></i>
       <span class="nav-item-title">Orders</span>
     </a>
