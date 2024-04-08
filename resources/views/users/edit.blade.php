@@ -29,12 +29,12 @@
       <span class="nav-item-title">Books</span>
     </a>
 
-    <a href="#" class="nav-item">
+    <a href="{{ route('authors.index') }}" class="nav-item">
       <i class="fa-solid fa-pen"></i>
       <span class="nav-item-title">Authors</span>
     </a>
 
-    <a href="#" class="nav-item">
+    <a href="{{ route('genres.index') }}" class="nav-item">
       <i class="fa-solid fa-tag"></i>
       <span class="nav-item-title">Genres</span>
     </a>
