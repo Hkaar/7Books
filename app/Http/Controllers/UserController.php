@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\User;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
@@ -36,7 +35,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
@@ -57,10 +56,10 @@ class UserController extends Controller
             $user->img = $filePath;
         }
 
-        $user->name = $validatedData['name'];
-        $user->email = $validatedData['email'];
-        $user->password = Hash::make($validatedData['password']);
-        $user->level = $validatedData["level"];
+        $user->name = $validated['name'];
+        $user->email = $validated['email'];
+        $user->password = Hash::make($validated['password']);
+        $user->level = $validated["level"];
         $user->save();
 
         return redirect()->route('users.index');
@@ -109,7 +108,7 @@ class UserController extends Controller
             abort(404, "Resource does not exist!");
         }
 
-        $validatedData = $request->validate([
+        $validated = $request->validate([
             'name' => 'nullable|string|max:255',
             'email' => 'nullable|string|email|max:255|unique:users',
             'password' => 'nullable|string|min:8|confirmed',
@@ -131,13 +130,13 @@ class UserController extends Controller
             $user->img = $filePath;
         }
 
-        if (isset($validatedData["password"]) && !empty($validatedData["password"])) {
-            $user->password = Hash::make($validatedData['password']);
+        if ($validated["password"]) {
+            $user->password = Hash::make($validated['password']);
         }
 
-        $user->name = $validatedData['name'];
-        $user->email = $validatedData['email'] ?? $user->email;
-        $user->level = $validatedData["level"];
+        $user->name = $validated['name'] ?? $user->name;
+        $user->email = $validated['email'] ?? $user->email;
+        $user->level = $validated["level"] ?? $user->level;
         $user->save();
 
         return redirect()->route('users.index');
