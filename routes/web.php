@@ -4,8 +4,10 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AuthorsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BooksController;
+use App\Http\Controllers\GenreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +43,14 @@ Route::resource("/manage/books", BooksController::class)
 Route::resource("/manage/orders", OrdersController::class)
     ->middleware("auth")
     ->names("orders");
+
+Route::resource("/manage/authors", AuthorsController::class)
+    ->middleware("auth")
+    ->names("authors");
+
+Route::resource("/manage/genres", GenreController::class)
+    ->middleware("auth")
+    ->names("genres");
 
 Route::redirect("/manage", "/manage/users");
 
