@@ -6,7 +6,7 @@ A website project to borrow physical books from a library through the internet
 - PHP version >= 8.1
 - Composer
 - Node.js
-- JS-Doc (Optional)
+- JS-Doc
 
 ## User Guide
 
@@ -30,6 +30,11 @@ composer install
 Generate the app key
 ```
 php artisan key:generate
+```
+
+Run the migrations
+```
+php artisan migrate
 ```
 
 And then serve it!
@@ -71,6 +76,11 @@ Generate the app key
 
 ```
 php artisan key:generate
+```
+
+Run the migrations
+```
+php artisan migrate
 ```
 
 Make sure it's working by serving it
