@@ -77,13 +77,13 @@ p {
 }
 
 .bg-primary, .btn-primary {
-    background-color: var(--primary);
-    color: var(--text-light);
+    background-color: var(--primary) !important;
+    color: var(--text-light) !important;
 }
 
 .bg-secondary, .btn-secondary {
-    background-color: var(--secondary);
-    color: var(--text-light);
+    background-color: var(--secondary) !important;
+    color: var(--text-light) !important;
 }
 
 .btn-primary, .btn-secondary {
@@ -107,6 +107,70 @@ p {
     max-height: 65vh;
 }
 
+.item-card {
+    transition: all .3s;
+    height: 400px;
+    overflow: hidden;
+}
+
+.item-card.active {
+    opacity: 50%;
+}
+
+.item-card .card-title {
+    text-align: center;
+}
+
+.item-card .card-body {
+    padding: 6px 0;
+}
+
+.item-card:not(.active) .title {
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: all .3s;
+    user-select: none;
+}
+
+.item-card:not(.active) .title:hover {
+    opacity: 100%;
+}
+
+.item-card img {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.item-card:hover {
+    transform: scale(1.05);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+
+.item-card:active {
+    opacity: 75%;
+    transform: scale(.99);
+}
+
+.item-card:active, .item-card:hover {
+    cursor: pointer;
+}
+
 /* Authentication */
 .auth-box {
     flex: 1;
@@ -124,6 +188,13 @@ p {
     display: flex;
     gap: 15px;
     align-items: start;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.auth-box .brand img {
+    max-width: 50px;
+    max-height: 50px;
 }
 
 .auth-box .fields {

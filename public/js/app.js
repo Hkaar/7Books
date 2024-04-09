@@ -1,3 +1,36 @@
+/** @type {Object.<number, number>} */
+let items = {};
+
+/**
+ * Add the selected item to the current array
+ * 
+ * @param {Element} card
+ */
+function addItem(card) {
+    const itemId = Number(card.getAttribute("data-item"));
+    
+    /** @type {HTMLInputElement} */
+    const itemsField = document.getElementById("items");
+
+    if (!card.classList.contains("active")) {
+        /** @type {HTMLInputElement} */
+        const amountField = document.getElementById("selectInputAmount");
+        let amount = 1;
+
+        if (amountField && amountField.value) {
+            amount = Number(amountField.value);
+        }
+
+        items[itemId] = amount;
+        card.classList.add("active");
+    } else {
+        card.classList.remove("active");
+        delete items[itemId];
+    }
+
+    itemsField.value = JSON.stringify(items);
+}
+
 $(document).ready(() => {
     'use strict';
 
@@ -8,6 +41,12 @@ $(document).ready(() => {
     
         $(document).on("click", ".side-nav-open", (event) => {
             document.querySelector("#side-nav").setAttribute("data-collapsed", "false")
+        })
+    }
+
+    if ($(".item-card")) {
+        $(document).on("click", ".item-card", function() {
+            addItem(this);
         })
     }
 
