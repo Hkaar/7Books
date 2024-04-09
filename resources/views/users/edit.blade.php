@@ -47,14 +47,14 @@
 </nav>
 
 <div id="dashboardLeftFrame">
-  <div class="row">
-    <div class="col-6 d-flex align-items-center justify-content-center">
+  <div class="row flex-fill">
+    <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
       <div id="preview" class="profile">
         <img src="{{ Storage::url($user->img) }}" alt="Image not available" srcset="">
       </div>
     </div>
 
-    <div class="col-6">
+    <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
       <div class="container">
         <form action="{{ route('users.update', $user->id) }}" enctype="multipart/form-data" method="post">
           @csrf
