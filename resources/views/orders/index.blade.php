@@ -3,7 +3,7 @@
 @section('title', "Dashboard - Books")
 
 @section('content')
-<nav id="side-nav" class="d-none d-lg-block" data-collapsed="false">
+<nav id="side-nav" class="d-none d-md-block" data-collapsed="false">
   <div class="nav-items">
     <a href="#" class="nav-item side-nav-open">
       <i class="fa-solid fa-arrow-right"></i>
@@ -19,7 +19,7 @@
       <span class="nav-item-title">Users</span>
     </a>
 
-    <a href="" class="nav-item active">
+    <a href="#" class="nav-item active">
       <i class="fa-solid fa-list"></i>
       <span class="nav-item-title">Orders</span>
     </a>
@@ -29,9 +29,14 @@
       <span class="nav-item-title">Books</span>
     </a>
 
-    <a href="#" class="nav-item">
+    <a href="{{ route('authors.index') }}" class="nav-item">
       <i class="fa-solid fa-pen"></i>
       <span class="nav-item-title">Authors</span>
+    </a>
+
+    <a href="{{ route('genres.index') }}" class="nav-item">
+      <i class="fa-solid fa-tag"></i>
+      <span class="nav-item-title">Genres</span>
     </a>
 
     <a href="#" class="nav-item mt-auto">
