@@ -14,6 +14,7 @@
     <div class="auth-box">
 
       <article class="brand">
+        <img src="{{ URL::asset('assets/imgs/logo.png') }}" alt="">
         <h3>Seven Books</h3>
       </article>
 
