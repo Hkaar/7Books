@@ -109,7 +109,7 @@ p {
 
 .item-card {
     transition: all .3s;
-    height: 400px;
+    height: 350px;
     overflow: hidden;
 }
 
@@ -171,6 +171,12 @@ p {
     cursor: pointer;
 }
 
+.bordered {
+    border: 1px solid gray;
+    border-radius: 20px;
+    padding: 40px;
+}
+
 /* Authentication */
 .auth-box {
     flex: 1;
@@ -178,9 +184,6 @@ p {
     flex-direction: column;
     gap: 40px;
     align-items: center;
-    border: 1px gray solid;
-    border-radius: 20px;
-    padding: 40px;
     max-width: 500px;
 }
 

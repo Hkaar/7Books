@@ -31,6 +31,22 @@ function addItem(card) {
     itemsField.value = JSON.stringify(items);
 }
 
+/**
+ * Updates the item cards
+ */
+function updateItemCards() {
+    const cards = document.querySelectorAll(".item-card");
+
+    cards.forEach(card => {
+        const itemId = Number(card.getAttribute("data-item"));
+
+        if (itemId in items) {
+            card.classList.add("active");  
+        }
+    });
+
+}
+
 $(document).ready(() => {
     'use strict';
 
