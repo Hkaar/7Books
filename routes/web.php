@@ -24,33 +24,27 @@ Route::get('/', function () {
     return view('welcome');
 })->name("/");
 
-Route::get("/login", [AuthController::class, "showLogin"]);
-Route::post("/login", [AuthController::class, "authenticate"])->name("login");
+Route::prefix("/login")->group(function() {
+    Route::get("", [AuthController::class, "showLogin"]);
+    Route::post("", [AuthController::class, "authenticate"])->name("login");
+});
 
-Route::get("/register", [AuthController::class, "showRegister"]);
-Route::post("/register", [AuthController::class, "register"])->name("register");
+Route::prefix("/register")->group(function() {
+    Route::get("", [AuthController::class, "showRegister"]);
+    Route::post("", [AuthController::class, "register"])->name("register");
+});
 
 Route::get("/logout", [AuthController::class, "logout"])->name("logout");
 
-Route::resource("/manage/users", UserController::class)
-    ->middleware("auth")
-    ->names("users");
-    
-Route::resource("/manage/books", BooksController::class)
-    ->middleware("auth")
-    ->names("books");
+Route::prefix("/manage")->middleware("auth")->group(function() {
+    Route::get("/books/cards", [BooksController::class, "cards"]);
 
-Route::resource("/manage/orders", OrdersController::class)
-    ->middleware("auth")
-    ->names("orders");
-
-Route::resource("/manage/authors", AuthorsController::class)
-    ->middleware("auth")
-    ->names("authors");
-
-Route::resource("/manage/genres", GenreController::class)
-    ->middleware("auth")
-    ->names("genres");
+    Route::resource("/users", UserController::class)->names("users");
+    Route::resource("/books", BooksController::class)->names("books");
+    Route::resource("/orders", OrdersController::class)->names("orders");
+    Route::resource("/authors", AuthorsController::class)->names("authors");
+    Route::resource("/genres", GenreController::class)->names("genres");
+});
 
 Route::redirect("/manage", "/manage/users");
 

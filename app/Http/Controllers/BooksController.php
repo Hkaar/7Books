@@ -21,6 +21,24 @@ class BooksController extends Controller
         ]);
     }
 
+    /**
+     * Display all the resources in the form of cards
+     */
+    public function cards()
+    {
+        $books = Book::all();
+
+        return view("books.cards")->with([
+            "books" => $books
+        ]);
+    }
+
+    /**
+     * Display the browsing page
+     * 
+     * @param Illuminate\Http\Request $request
+     * @return view
+     */
     public function browse(Request $request) {
         return view("welcome");
     }
