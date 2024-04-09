@@ -11,7 +11,7 @@
 </head>
 <body>
   <div id="app" class="d-flex align-items-center justify-content-center">
-    <div class="auth-box">
+    <div class="auth-box bordered">
 
       <article class="brand">
         <img src="{{ URL::asset('assets/imgs/logo.png') }}" alt="">
