@@ -39,10 +39,13 @@ class AuthorsController extends Controller
             "name" => "required|string|max:255|unique:authors,name",
             "address" => "required|string|max:255",
             "phone" => "required|string|max:64",
-            "img" => "nullable|image|max:10240"
+            "img" => "nullable|image|max:10240",
+            "items" => "nullable|string",
         ]);
 
         $author = new Author();
+
+        $author->fill($validated);
 
         if ($request->hasFile("img")) {
             $file = $request->file('img');
@@ -52,11 +55,12 @@ class AuthorsController extends Controller
             $author->img = $filePath;
         }
 
-        $author->name = $validated["name"];
-        $author->address = $validated["address"];
-        $author->phone = $validated["phone"];
-
         $author->save();
+        $items = json_decode($validated["items"], true);
+        
+        foreach ($items as $key => $value) {
+            $author->books()->attach($key);
+        }
 
         return redirect()->route("authors.index");
     }
@@ -91,11 +95,18 @@ class AuthorsController extends Controller
             abort(404, "Resource does not exist!");
         }
 
-        $books = $author->books()->paginate(10);
+        $books = BookAuthor::query()->where("author_id", "=", $author->id)->get("book_id");
+        $items = [];
+        
+        foreach ($books as $key => $value) {
+            $items[$value->book_id] = 1;
+        }
+
+        $items = json_encode($items);
 
         return view("authors.edit")->with([
             "author" => $author,
-            "books" => $books
+            "items" => $items
         ]);
     }
 
@@ -114,10 +125,9 @@ class AuthorsController extends Controller
             "name" => "nullable|string|max:255|unique:authors,name",
             "address" => "nullable|string|max:255",
             "phone" => "nullable|string|max:64",
-            "img" => "nullable|image|max:10240" 
+            "img" => "nullable|image|max:10240",
+            "items" => "nullable|string"
         ]);
-
-        // ADD AN EDIT FIELD FOR THE AUTHORED BOOKS!!
 
         if ($request->hasFile('img')) {
             $file = $request->file('img');
@@ -135,8 +145,10 @@ class AuthorsController extends Controller
         $author->name = $validated["name"] ?? $author->name;
         $author->address = $validated["address"] ?? $author->address;
         $author->phone = $validated["phone"] ?? $author->phone;
-
         $author->save();
+
+        $items = json_decode($validated["items"], true);
+        $author->books()->sync(array_keys($items) ?? []);
 
         return redirect()->route("authors.index");
     }
@@ -147,7 +159,7 @@ class AuthorsController extends Controller
     public function destroy(int $id)
     {
         $author = Author::findOrFail($id);
-        BookAuthor::query()->where("author_id", "=", $id)->delete();
+        $author->books()->detach();
 
         if ($author->img) {
             Storage::disk("public")->delete($author->img);
