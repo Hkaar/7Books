@@ -10,6 +10,22 @@ class Book extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable
+     * 
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        "ISBN",
+        "name",
+        "desc",
+        "price",
+        "stock",
+        "rate",
+        "amount_borrowed",
+        "img"
+    ];
+
+    /**
      * Indicates if the model should be timestamped.
      *
      * @var bool

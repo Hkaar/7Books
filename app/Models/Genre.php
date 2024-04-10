@@ -10,6 +10,15 @@ class Genre extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable
+     * 
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        "genre"
+    ];
+
+    /**
      * Indicates if the model should be timestamped.
      *
      * @var bool

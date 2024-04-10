@@ -10,6 +10,17 @@ class OrderItem extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable
+     * 
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        "order_id",
+        "book_id",
+        "amount"
+    ];
+
+    /**
      * Indicates if the model should be timestamped.
      *
      * @var bool

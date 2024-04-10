@@ -10,6 +10,19 @@ class Order extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable
+     * 
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        "user_id",
+        "token",
+        "return_date",
+        "total",
+        "status"
+    ];
+
+    /**
      * Indicates if the model should be timestamped.
      *
      * @var bool
