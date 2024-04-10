@@ -50,6 +50,9 @@ function updateItemCards() {
 $(document).ready(() => {
     'use strict';
 
+    /** @type {HTMLInputElement|null} */
+    const itemsField = document.getElementById("items");
+
     if (document.querySelector("#side-nav")) {
         $(document).on("click", ".side-nav-close", (event) => {
             document.querySelector("#side-nav").setAttribute("data-collapsed", "true")
@@ -66,9 +69,15 @@ $(document).ready(() => {
         })
     }
 
+    if (itemsField && itemsField.value != "") {
+        items = JSON.parse(itemsField.value);
+    }
+
     if ($('#img')) {
         $(document).on("change", "#img", function() {
             let file = this.files[0];
+            
+            /** @type {Element} */
             let preview = $('#preview');
 
             if (file) {
