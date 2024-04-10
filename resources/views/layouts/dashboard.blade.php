@@ -50,7 +50,7 @@
   <div class="modal-dialog modal-fullscreen-lg-down modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="selectItemsLabel">Select Items</h1>
+        <h1 class="modal-title fs-5" id="selectItemsLabel">Available Items</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 

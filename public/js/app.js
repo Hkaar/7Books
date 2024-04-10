@@ -2,6 +2,7 @@
  * @typedef {import('jquery')}
  */
 
+/** @type {readonly string[]} */
 const invalidLiterals = ["", "[]"];
 
 /** @type {Object.<number, number>} */
@@ -77,31 +78,29 @@ $(document).ready(() => {
         })
     }
 
-    if ($('#img')) {
-        $(document).on("change", "#img", function() {
-            let file = this.files[0];
-            let preview = $('#preview');
-    
-            if (file) {
-                let reader = new FileReader();
-    
-                reader.onload = (e) => {
-                    /** @type {string} */
-                    // @ts-ignore
-                    let result = e.target?.result;
+    $(document).on("change", "#img", function() {
+        let file = this.files[0];
+        let preview = $('#preview');
 
-                    if (file.type.startsWith('image') && result) {
-                        let img = $('<img>').attr('src', result).addClass('img-thumbnail');
-                        preview.empty().append(img);
-                    } else {
-                        preview.html('Image not available');
-                    }
-                };
-    
-                reader.readAsDataURL(file);
-            } else {
-                preview.empty();
-            }
-        });
-    }    
+        if (file) {
+            let reader = new FileReader();
+
+            reader.onload = (e) => {
+                /** @type {string} */
+                // @ts-ignore
+                let result = e.target?.result;
+
+                if (file.type.startsWith('image') && result) {
+                    let img = $('<img>').attr('src', result).addClass('img-thumbnail');
+                    preview.empty().append(img);
+                } else {
+                    preview.html('Image not available');
+                }
+            };
+
+            reader.readAsDataURL(file);
+        } else {
+            preview.empty();
+        }
+    }); 
 })
