@@ -1,3 +1,6 @@
+/** @const */
+const invalidLiterals = ["", "[]"];
+
 /** @type {Object.<number, number>} */
 let items = {};
 
@@ -69,7 +72,7 @@ $(document).ready(() => {
         })
     }
 
-    if (itemsField && itemsField.value != "") {
+    if (itemsField && !(itemsField.value in invalidLiterals)) {
         items = JSON.parse(itemsField.value);
     }
 
