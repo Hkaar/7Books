@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId("user_id")->constrained("users");
             $table->string("token");
+            $table->dateTime("created");
             $table->dateTime("return_date");
-            $table->float("total");
             $table->string("status")->default("pending");
         });
     }
