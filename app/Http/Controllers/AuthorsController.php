@@ -64,7 +64,6 @@ class AuthorsController extends Controller
         ]);
 
         $author = new Author();
-
         $author->fill($validated);
 
         if ($request->hasFile("img")) {
@@ -76,10 +75,13 @@ class AuthorsController extends Controller
         }
 
         $author->save();
-        $items = json_decode($validated["items"], true);
         
-        foreach ($items as $key => $value) {
-            $author->books()->attach($key);
+        if ($validated["items"]) {
+            $items = json_decode($validated["items"], true);
+        
+            foreach ($items as $key => $value) {
+                $author->books()->attach($key);
+            }
         }
 
         return redirect()->route("authors.index");
@@ -167,8 +169,10 @@ class AuthorsController extends Controller
         $author->phone = $validated["phone"] ?? $author->phone;
         $author->save();
 
-        $items = json_decode($validated["items"], true);
-        $author->books()->sync(array_keys($items) ?? []);
+        if ($validated["items"]) {
+            $items = json_decode($validated["items"], true);
+            $author->books()->sync(array_keys($items) ?? []);
+        }
 
         return redirect()->route("authors.index");
     }
