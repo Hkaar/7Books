@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string("name");
             $table->text("desc")->default("No description provided");
             $table->float("price");
+            $table->float("rate");
             $table->integer("stock");
             $table->integer("amount_borrowed")->default(0);
             $table->string("img")->nullable();

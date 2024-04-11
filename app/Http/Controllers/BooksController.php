@@ -22,13 +22,25 @@ class BooksController extends Controller
     }
 
     /**
-     * Display all the resources in the form of cards
+     * Display all the resources for selection
      */
-    public function cards()
+    public function select()
     {
         $books = Book::paginate(3);
 
-        return view("books.cards")->with([
+        return view("books.select")->with([
+            "books" => $books
+        ]);
+    }
+
+    /**
+     * Display all the resources for multi selection
+     */
+    public function multi_select()
+    {
+        $books = Book::paginate(3);
+
+        return view("books.multi-select")->with([
             "books" => $books
         ]);
     }
@@ -71,8 +83,7 @@ class BooksController extends Controller
 
         $file = $request->file('img');
 
-        if ($file)
-        {
+        if ($file) {
             $fileName = time() . '_' . $file->getClientOriginalName();
             $filePath = $file->storeAs('uploads', $fileName, 'public');
 
