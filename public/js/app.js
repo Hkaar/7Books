@@ -22,11 +22,12 @@ function addItem(card) {
     }
 
     if (!card.classList.contains("active")) {
-        const amountField = document.getElementById("selectInputAmount");
+        const amountField = document.getElementById("selectAmount");
         let amount = 1;
 
         if (amountField instanceof HTMLInputElement && amountField.value) {
             amount = Number(amountField.value);
+            amountField.value = "";
         }
 
         items[itemId] = amount;
