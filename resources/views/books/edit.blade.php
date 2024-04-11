@@ -80,7 +80,7 @@
           
           <div class="mb-3">
             <label for="isbn" class="form-label">ISBN</label>
-            <input class="form-control" id="isbn" type="text" name="isbn" value="{{ $book->ISBN }}">
+            <input class="form-control" id="isbn" type="text" name="isbn" value="{{ $book->isbn }}">
             
             @error('isbn')
               <span>{{ $message }}</span>

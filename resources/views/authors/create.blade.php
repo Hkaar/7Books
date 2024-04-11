@@ -101,7 +101,7 @@
             <button type="button" class="btn btn-secondary me-auto"
               data-bs-target="#selectItems"
               data-bs-toggle="modal"
-              hx-get="{{ URL::to('/manage/books/cards') }}"
+              hx-get="{{ route('books.select') }}"
               hx-target="#selectItemsBody"
               hx-on::after-request="updateItemCards()"
               hx-swap="innerHTML"

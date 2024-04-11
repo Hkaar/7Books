@@ -70,31 +70,24 @@
             <td>{{ $user->level }}</td>
     
             <td class="action-bar">
-              <button 
-                type="button" 
-                class="btn btn-info" 
+              <button type="button" class="btn btn-info" 
                 data-bs-target="#detailsModal" 
                 data-bs-toggle="modal" 
-                hx-get="{{ URL::to('manage/users/' . $user->id) }}" 
+                hx-get="{{ route('users.show' , $user->id) }}" 
                 hx-target="#detailsBody" 
                 hx-swap="innerHTML"
                 >Show
               </button>
 
-              <button 
-                type="button" 
-                class="btn btn-danger" 
+              <button type="button" class="btn btn-danger" 
                 hx-headers='{"X-CSRF-TOKEN": "{{ csrf_token() }}"}' 
                 hx-delete="{{ route('users.destroy', $user->id) }}" 
                 hx-target="closest tr" 
-                hx-swap="outerHTML"
-                >Delete
+                hx-swap="outerHTML">Delete
               </button>
   
-              <a 
-                class="btn btn-small btn-secondary" 
-                href="{{ route('users.edit', $user->id) }}"
-                >Edit
+              <a class="btn btn-small btn-secondary" 
+                href="{{ route('users.edit', $user->id) }}">Edit
               </a>
             </td>
           </tr>
