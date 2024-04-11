@@ -37,27 +37,32 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
-            "user_id" => "required|numeric|exists:user,id",
+        $validated = $request->validate([
+            "user_id" => "required|numeric|exists:users,id",
             "return_date" => "required|date",
-            "total" => "required|numeric",
             "status" => "nullable|string",
+            "placed" => "nullable|date",
+            "items" => "nullable|string"
         ]);
 
         $token = Str::uuid()->toString();
         $token = substr($token, 0, 8);
 
+        $validated["token"] = $token;
+
         $order = new Order();
+        $order->fill($validated)->save();
 
-        if ($data["status"]) {
-            $order->status = $data["status"];
+        if ($validated["items"]) {
+            $items = json_decode($validated["items"], true);
+        
+            foreach ($items as $key => $value) {
+                $order->items()->create([
+                    "book_id" => $key,
+                    "amount" => $value
+                ]);
+            }
         }
-
-        $order->user_id = $data["user_id"];
-        $order->token = $token;
-        $order->return_date = $data['return_date'];
-        $order->total = $data['total'];
-        $order->save();
 
         return redirect()->route('orders.index');
     }
@@ -111,20 +116,26 @@ class OrdersController extends Controller
             abort(404, "Resource does not exist!");
         }
 
-        $data = $request->validate([
-            "user_id" => "nullable|numeric|exists:user,id",
+        $validated = $request->validate([
+            "user_id" => "nullable|numeric|exists:users,id",
             "token" => "nullable|string",
             "return_date" => "nullable|date",
-            "total" => "nullable|numeric",
+            "placed" => "nullable|date",
             "status" => "nullable|string",
+            "items" => "nullable|string"
         ]);
 
-        $order->user_id = $data["user_id"];
-        $order->token = $data['token'];
-        $order->return_date = $data['return_date'];
-        $order->total = $data['total'];
-        $order->status = $data['status'] ?? $order->status;
+        $order->user_id = $validated["user_id"] ?? $order->user_id;
+        $order->token = $validated['token'] ?? $order->token;
+        $order->return_date = $validated['return_date'] ?? $order->return_date;
+        $order->placed = $validated["placed"] ?? $order->placed;
+        $order->status = $validated['status'] ?? $order->status;
         $order->save();
+
+        if ($validated["items"]) {
+            $items = json_decode($validated["items"], true);
+            $order->books()->sync(array_keys($items) ?? []);
+        }
 
         return redirect()->route('orders.index');
     }
@@ -137,7 +148,10 @@ class OrdersController extends Controller
      */
     public function destroy(int $id)
     {
-        Order::findOrFail($id)->delete();
+        $order = Order::findOrFail($id);
+        $order->items()->delete();
+        $order->delete();
+
         return response(null);
     }
 }

@@ -67,11 +67,7 @@ class BooksController extends Controller
         ]);
 
         $book = new Book();
-
-        if ($validated["desc"])
-        {
-            $book->desc = $validated["desc"];
-        }
+        $book->fill($validated);
 
         $file = $request->file('img');
 
@@ -83,13 +79,7 @@ class BooksController extends Controller
             $book->img = $filePath;
         }
 
-        $book->isbn = $validated["isbn"];
-        $book->name = $validated["name"];
-        $book->price = $validated["price"];
-        $book->stock = $validated["stock"];
-        $book->rate = $validated["rate"];
         $book->amount_borrowed = 0;
-        
         $book->save();
 
         return redirect()->route('books.index');
@@ -161,12 +151,12 @@ class BooksController extends Controller
             $book->img = $filePath;
         }
 
-        $book->isbn = $validated["isbn"];
-        $book->name = $validated["name"];
-        $book->desc = $validated["desc"];
-        $book->price = $validated["price"];
-        $book->stock = $validated["stock"];
-        $book->rate = $validated["rate"];
+        $book->isbn = $validated["isbn"] ?? $book->isbn;
+        $book->name = $validated["name"] ?? $book->name;
+        $book->desc = $validated["desc"] ?? $book->desc;
+        $book->price = $validated["price"] ?? $book->price;
+        $book->stock = $validated["stock"] ?? $book->stock;
+        $book->rate = $validated["rate"] ?? $book->rate;
         $book->amount_borrowed = 0;
         $book->save();
 
@@ -179,6 +169,10 @@ class BooksController extends Controller
     public function destroy(int $id)
     {
         $book = Book::findOrFail($id);
+
+        $book->ratings()->delete();
+        $book->authors()->detach();
+        $book->items()->delete();
 
         Storage::disk('public')->delete($book->img);
         $book->delete();

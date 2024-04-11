@@ -17,8 +17,8 @@ class Order extends Model
     protected $fillable = [
         "user_id",
         "token",
+        "created",
         "return_date",
-        "total",
         "status"
     ];
 
