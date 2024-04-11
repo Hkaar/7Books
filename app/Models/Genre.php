@@ -15,7 +15,7 @@ class Genre extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        "genre"
+        "name"
     ];
 
     /**
