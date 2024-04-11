@@ -37,7 +37,8 @@ Route::prefix("/register")->group(function() {
 Route::get("/logout", [AuthController::class, "logout"])->name("logout");
 
 Route::prefix("/manage")->middleware("auth")->group(function() {
-    Route::get("/books/cards", [BooksController::class, "cards"]);
+    Route::get("/books/cards", [BooksController::class, "cards"])->name("books.cards");
+    Route::get("/authors/authored/{id}", [AuthorsController::class, "authored"])->name("authors.authored");
 
     Route::resource("/users", UserController::class)->names("users");
     Route::resource("/books", BooksController::class)->names("books");

@@ -26,7 +26,7 @@ class BooksController extends Controller
      */
     public function cards()
     {
-        $books = Book::all();
+        $books = Book::paginate(3);
 
         return view("books.cards")->with([
             "books" => $books

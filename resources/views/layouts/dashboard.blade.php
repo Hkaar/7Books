@@ -55,7 +55,7 @@
       </div>
 
       <div class="modal-body">
-        <div class="container p-1" id="selectItemsBody">
+        <div class="container p-1" id="selectItemsBody" hx-on::after-request="updateItemCards()">
           ...
         </div>
       </div>

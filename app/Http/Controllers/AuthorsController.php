@@ -31,6 +31,26 @@ class AuthorsController extends Controller
     }
 
     /**
+     * Display all the authored books
+     * 
+     * @param int $id
+     */
+    public function authored(int $id) {
+        $author = Author::find($id);
+ 
+        if (!$author) {
+            abort(404, "Resource does not exist!");
+        }
+
+        $books = $author->books()->paginate(3);
+
+        return view("authors.authored")->with([
+            "books" => $books,
+            "author" => $author
+        ]);
+    }
+
+    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
@@ -76,7 +96,7 @@ class AuthorsController extends Controller
             abort(404, "Resource does not exist!");
         }
 
-        $books = $author->books()->paginate(10);
+        $books = $author->books()->get(["name"]);
 
         return view("authors.show")->with([
             "author" => $author,
