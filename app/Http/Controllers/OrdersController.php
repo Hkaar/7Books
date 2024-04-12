@@ -29,6 +29,22 @@ class OrdersController extends Controller
         return view("orders.create");
     }
 
+    public function items(int $id)
+    {
+        $order = Order::find($id);
+ 
+        if (!$order) {
+            abort(404, "Resource does not exist!");
+        }
+
+        $items = $order->items()->with('book')->paginate(3);
+
+        return view("orders.items")->with([
+            "items" => $items,
+            "order" => $order
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      * 
@@ -97,8 +113,18 @@ class OrdersController extends Controller
             abort(404, "Resource does not exist!");
         }
 
+        $books = $order->items()->get(["book_id", "amount"]);
+        $items = [];
+
+        foreach ($books as $key => $value) {
+            $items[$value->book_id] = $value->amount;
+        }
+
+        $items = json_encode($items);
+
         return view("orders.edit")->with([
-            "order" => $order
+            "order" => $order,
+            "items" => $items
         ]);
     }
 
@@ -118,7 +144,7 @@ class OrdersController extends Controller
 
         $validated = $request->validate([
             "user_id" => "nullable|numeric|exists:users,id",
-            "token" => "nullable|string",
+            "token" => "nullable|string|max:8|unique:orders,token",
             "return_date" => "nullable|date",
             "placed" => "nullable|date",
             "status" => "nullable|string",
