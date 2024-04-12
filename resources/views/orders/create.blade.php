@@ -1,42 +1,114 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Create</title>
+@extends('layouts.dashboard')
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ URL::asset('css/app.css'); }}">
-</head>
-<body>
-    <h1>Create Order</h1>
+@section('title', "Dashboard - Books")
 
-    <form method="POST" action="{{ route('orders.store') }}">
-        @csrf
+@section('content')
+<nav id="side-nav" class="d-none d-md-block" data-collapsed="false">
+  <div class="nav-items">
+    <a href="#" class="nav-item side-nav-open">
+      <i class="fa-solid fa-arrow-right"></i>
+    </a>
 
-        <div>
-            <label for="return_date">Return Date</label>
-            <input type="date" id="return_date" name="return_date" required>
+    <a href="#" class="nav-item side-nav-close">
+      <i class="fa-solid fa-arrow-left"></i>
+      <span class="nav-item-title">Close</span>
+    </a>
+
+    <a href="{{ route('users.index') }}" class="nav-item">
+      <i class="fa-solid fa-user"></i>
+      <span class="nav-item-title">Users</span>
+    </a>
+
+    <a href="#" class="nav-item active">
+      <i class="fa-solid fa-list"></i>
+      <span class="nav-item-title">Orders</span>
+    </a>
+
+    <a href="{{ route('books.index') }}" class="nav-item">
+      <i class="fa-solid fa-book"></i>
+      <span class="nav-item-title">Books</span>
+    </a>
+
+    <a href="{{ route('authors.index') }}" class="nav-item">
+      <i class="fa-solid fa-pen"></i>
+      <span class="nav-item-title">Authors</span>
+    </a>
+
+    <a href="{{ route('genres.index') }}" class="nav-item">
+      <i class="fa-solid fa-tag"></i>
+      <span class="nav-item-title">Genres</span>
+    </a>
+
+    <a href="#" class="nav-item mt-auto">
+      <i class="fa-solid fa-gear"></i>
+      <span class="nav-item-title">Settings</span>
+    </a>
+  </div>
+</nav>
+
+<div id="dashboardLeftFrame" class="container">
+  <div class="row flex-fill">
+    <div class="col-12 col-md-6 d-flex align-items-center justify-content-center mb-3">
+      <div id="preview" class="cover-small">
+        <img src="{{ URL::asset('assets/imgs/logo.png') }}" alt="Image not available...">
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
+      <div class="container">
+        <form action="{{ route('orders.store') }}" method="POST">
+          @csrf
+
+          <input type="hidden" name="items" id="items">
+
+          <div class="mb-3">
+            <label for="user_id" class="form-label">User ID</label>
+            <input class="form-control" id="user_id" type="number" name="user_id" required autofocus>
+            
+            @error('user_id')
+              <span>{{ $message }}</span>
+            @enderror
+          </div>
+
+          <div class="mb-3">
+            <label for="return_date" class="form-label">Return Date</label>
+            <input class="form-control" id="return_date" type="datetime-local" name="return_date" required autofocus>
             
             @error('return_date')
-                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+              <span>{{ $message }}</span>
             @enderror
-        </div>
+          </div>
 
-        <div>
-            <label for="total">Total</label>
-            <input type="number" id="total" name="total" step="0.01" required>
+          <div class="mb-3">
+            <label for="status" class="form-label">Status</label>
             
-            @error('total')
-                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+            <select name="status" id="status" class="form-select">
+              <option value="pending">Pending</option>
+              <option value="paid">Paid</option>
+              <option value="returned">Returned</option>
+            </select>
+    
+            @error('status')
+              <span>{{ $message }}</span>
             @enderror
-        </div>
+          </div>
 
-        <button type="submit">Create</button>
-    </form>
-
-    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script defer src="{{ URL::asset('js/app.js'); }}"></script>
-</body>
-</html>
+          <div class="d-flex align-items-center">
+            <button type="button" class="btn btn-secondary me-auto"
+              data-bs-target="#selectItems"
+              data-bs-toggle="modal"
+              hx-get="{{ route('books.multi-select') }}"
+              hx-target="#selectItemsBody"
+              hx-on::after-request="updateItemCards()"
+              hx-swap="innerHTML">Select Books
+            </button>
+      
+            <a href="{{ route('orders.index') }}" class="btn btn-danger me-1">Cancel</a>
+            <button type="submit" class="btn btn-primary">Create</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+@endsection

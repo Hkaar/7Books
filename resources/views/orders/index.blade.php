@@ -1,69 +1,100 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Orders</title>
+@extends('layouts.dashboard')
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ URL::asset('css/app.css'); }}">
-</head>
-<body>
-    <div class="container">
-        <nav class="navbar navbar-inverse">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="{{ URL::to('sharks') }}">Order Listing</a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li><a href="{{ URL::to('orders') }}">View All orders</a></li>
-                <li><a href="{{ URL::to('orders/create') }}">Create a order</a>
-            </ul>
-        </nav>
+@section('title', "Dashboard - Books")
 
-        <!-- will be used to show any messages -->
-        @if (Session::has('message'))
-            <div class="alert alert-info">{{ Session::get('message') }}</div>
-        @endif
+@section('content')
+<nav id="side-nav" class="d-none d-md-block" data-collapsed="false">
+  <div class="nav-items">
+    <a href="#" class="nav-item side-nav-open">
+      <i class="fa-solid fa-arrow-right"></i>
+    </a>
 
-        <table class="table table-striped table-bordered">
-            <thead>
-                <tr>
-                    <td>ID</td>
-                    <td>User</td>
-                    <td>Token</td>
-                    <td>Return Date</td>
-                    <td>Total</td>
-                    <td>Status</td>
-                </tr>
-            </thead>
-            <tbody>
-            @foreach($orders as $key => $value)
-                <tr>
-                    <td>{{ $value->id }}</td>
-                    <td>{{ $value->user_id }}</td>
-                    <td>{{ $value->token }}</td>
-                    <td>{{ $value->return_date }}</td>
-                    <td>{{ $value->total }}</td>
-                    <td>{{ $value->status }}</td>
+    <a href="#" class="nav-item side-nav-close">
+      <i class="fa-solid fa-arrow-left"></i>
+      <span class="nav-item-title">Close</span>
+    </a>
 
-                    <td class="d-flex">
-                        <form action="{{ route('orders.destroy', $value->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-small btn-danger">Delete</button>
-                        </form>
+    <a href="{{ route('users.index') }}" class="nav-item">
+      <i class="fa-solid fa-user"></i>
+      <span class="nav-item-title">Users</span>
+    </a>
 
-                        <a class="btn btn-small btn-success" href="{{ URL::to('orders/' . $value->id) }}">Show</a>
-                        <a class="btn btn-small btn-info" href="{{ URL::to('orders/' . $value->id . '/edit') }}">Edit</a>
-                    </td>
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
-    </div>
+    <a href="#" class="nav-item active">
+      <i class="fa-solid fa-list"></i>
+      <span class="nav-item-title">Orders</span>
+    </a>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script defer src="{{ URL::asset('js/app.js'); }}"></script>
-</body>
-</html>
+    <a href="{{ route('books.index') }}" class="nav-item">
+      <i class="fa-solid fa-book"></i>
+      <span class="nav-item-title">Books</span>
+    </a>
+
+    <a href="{{ route('authors.index') }}" class="nav-item">
+      <i class="fa-solid fa-pen"></i>
+      <span class="nav-item-title">Authors</span>
+    </a>
+
+    <a href="{{ route('genres.index') }}" class="nav-item">
+      <i class="fa-solid fa-tag"></i>
+      <span class="nav-item-title">Genres</span>
+    </a>
+
+    <a href="#" class="nav-item mt-auto">
+      <i class="fa-solid fa-gear"></i>
+      <span class="nav-item-title">Settings</span>
+    </a>
+  </div>
+</nav>
+
+<div id="dashboardLeftFrame" class="container">
+  <div class="action-bar mb-3">
+    <a class="btn btn-primary" href="{{ route('orders.create') }}">Add a new order</a>
+  </div>
+  
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover">
+      <thead>
+        <th scope="col" width="5%">ID</th>
+        <th scope="col" width="10%">User ID</th>
+        <th scope="col">Token</th>
+        <th scope="col" width="10%">Status</th>
+        <th scope="col" width="10%">Actions</th>
+      </thead>
+    
+      <tbody>
+        @foreach ($orders as $order)
+          <tr>
+            <td>{{ $order->id }}</td>
+            <td>{{ $order->user_id }}</td>
+            <td>{{ $order->token }}</td>
+            <td>{{ $order->status }}</td>
+    
+            <td class="action-bar">
+              <button type="button" class="btn btn-info" 
+                data-bs-target="#detailsModal" 
+                data-bs-toggle="modal" 
+                hx-get="{{ route('orders.show' , $order->id) }}" 
+                hx-target="#detailsBody" 
+                hx-swap="innerHTML">Show
+              </button>
+
+              <button type="button" class="btn btn-danger" 
+                hx-headers='{"X-CSRF-TOKEN": "{{ csrf_token() }}"}' 
+                hx-delete="{{ route('orders.destroy', $order->id) }}" 
+                hx-target="closest tr" 
+                hx-swap="outerHTML">Delete
+              </button>
+
+              <a class="btn btn-secondary" 
+                href="{{ route('orders.edit', $order->id) }}">Edit
+              </a>
+            </td>
+          </tr>
+        @endforeach
+      </tbody>
+    </table>
+  </div>
+
+  {{ $orders->links() }}
+</div>
+@endsection

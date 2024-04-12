@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class OrdersController extends Controller
@@ -15,12 +14,7 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        if (!Auth::check()) {
-            abort(403, "Unauthorized access when accessing this method!");
-        };
-
-        $id = Auth::id();
-        $orders = Order::query()->where("user_id", "=", $id)->get();
+        $orders = Order::paginate(20);
 
         return view("orders.index")->with([
             "orders" => $orders
@@ -32,11 +26,23 @@ class OrdersController extends Controller
      */
     public function create()
     {
-        if (!Auth::check()) {
-            abort(403, "Unauthorized access when accessing this method!");
-        };
-
         return view("orders.create");
+    }
+
+    public function items(int $id)
+    {
+        $order = Order::find($id);
+ 
+        if (!$order) {
+            abort(404, "Resource does not exist!");
+        }
+
+        $items = $order->items()->with('book')->paginate(3);
+
+        return view("orders.items")->with([
+            "items" => $items,
+            "order" => $order
+        ]);
     }
 
     /**
@@ -47,28 +53,32 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-        if (!Auth::check()) {
-            abort(403, "Unauthorized access when accessing this method!");
-        };
-
-        $data = $request->validate([
+        $validated = $request->validate([
+            "user_id" => "required|numeric|exists:users,id",
             "return_date" => "required|date",
-            "total" => "required|numeric",
             "status" => "nullable|string",
+            "placed" => "nullable|date",
+            "items" => "nullable|string"
         ]);
-
-        $id = Auth::id();
 
         $token = Str::uuid()->toString();
         $token = substr($token, 0, 8);
 
-        $order = new Order();
+        $validated["token"] = $token;
 
-        $order->user_id = $id;
-        $order->token = $token;
-        $order->return_date = $data['return_date'];
-        $order->total = $data['total'];
-        $order->save();
+        $order = new Order();
+        $order->fill($validated)->save();
+
+        if ($validated["items"]) {
+            $items = json_decode($validated["items"], true);
+        
+            foreach ($items as $key => $value) {
+                $order->items()->create([
+                    "book_id" => $key,
+                    "amount" => $value
+                ]);
+            }
+        }
 
         return redirect()->route('orders.index');
     }
@@ -81,11 +91,7 @@ class OrdersController extends Controller
      */
     public function show(int $id)
     {
-        if (!Auth::check()) {
-            abort(403, "Unauthorized access when accessing this method!");
-        };
-
-        $order = Order::query()->where("id", "=", $id)->first();
+        $order = Order::find($id);
 
         if (!$order) {
             abort(404, "Resource does not exist!");
@@ -101,18 +107,24 @@ class OrdersController extends Controller
      */
     public function edit(int $id)
     {
-        if (!Auth::check()) {
-            abort(403, "Unauthorized access when accessing this method!");
-        };
-
-        $order = Order::query()->where("id", "=", $id)->first();
+        $order = Order::find($id);
 
         if (!$order) {
             abort(404, "Resource does not exist!");
         }
 
+        $books = $order->items()->get(["book_id", "amount"]);
+        $items = [];
+
+        foreach ($books as $key => $value) {
+            $items[$value->book_id] = $value->amount;
+        }
+
+        $items = json_encode($items);
+
         return view("orders.edit")->with([
-            "order" => $order
+            "order" => $order,
+            "items" => $items
         ]);
     }
 
@@ -124,31 +136,32 @@ class OrdersController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        if (!Auth::check()) {
-            abort(403, "Unauthorized access when accessing this method!");
-        };
-
-        /**
-         * @var Order
-         */
-        $order = Order::query()->where("id", "=", $id)->first();
+        $order = Order::find($id);
 
         if (!$order) {
             abort(404, "Resource does not exist!");
         }
 
-        $data = $request->validate([
-            "token" => "nullable|string",
+        $validated = $request->validate([
+            "user_id" => "nullable|numeric|exists:users,id",
+            "token" => "nullable|string|max:8|unique:orders,token",
             "return_date" => "nullable|date",
-            "total" => "nullable|numeric",
+            "placed" => "nullable|date",
             "status" => "nullable|string",
+            "items" => "nullable|string"
         ]);
 
-        $order->token = $data['token'];
-        $order->return_date = $data['return_date'];
-        $order->total = $data['total'];
-        $order->status = $data['status'] ?? $order->status;
+        $order->user_id = $validated["user_id"] ?? $order->user_id;
+        $order->token = $validated['token'] ?? $order->token;
+        $order->return_date = $validated['return_date'] ?? $order->return_date;
+        $order->placed = $validated["placed"] ?? $order->placed;
+        $order->status = $validated['status'] ?? $order->status;
         $order->save();
+
+        if ($validated["items"]) {
+            $items = json_decode($validated["items"], true);
+            $order->books()->sync(array_keys($items) ?? []);
+        }
 
         return redirect()->route('orders.index');
     }
@@ -161,11 +174,10 @@ class OrdersController extends Controller
      */
     public function destroy(int $id)
     {
-        if (!Auth::check()) {
-            abort(403, "Unauthorized access when accessing this method!");
-        };
+        $order = Order::findOrFail($id);
+        $order->items()->delete();
+        $order->delete();
 
-        Order::query()->where("id", "=", $id)->delete();
-        return redirect()->route('orders.index');
+        return response(null);
     }
 }

@@ -13,12 +13,14 @@ return new class extends Migration
     {
         Schema::create("books", function(Blueprint $table) {
             $table->id();
-            $table->string("ISBN");
+            $table->string("isbn");
+            $table->string("name");
             $table->text("desc")->default("No description provided");
             $table->float("price");
-            $table->integer("stock");
             $table->float("rate");
+            $table->integer("stock");
             $table->integer("amount_borrowed")->default(0);
+            $table->string("img")->nullable();
         });
     }
 

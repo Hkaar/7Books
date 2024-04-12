@@ -3,8 +3,11 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\OrdersController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AuthorsController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\BooksController;
+use App\Http\Controllers\GenreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +24,32 @@ Route::get('/', function () {
     return view('welcome');
 })->name("/");
 
-Route::resource("orders", OrdersController::class)->names("orders");
+Route::prefix("/login")->group(function() {
+    Route::get("", [AuthController::class, "showLogin"])->name("login.show");
+    Route::post("", [AuthController::class, "authenticate"])->name("login");
+});
 
-Route::get("/login", [LoginController::class, "show"]);
-Route::get("/register", [RegisterController::class, "show"]);
-Route::post("/login", [LoginController::class, "authenticate"])->name("login");
-Route::post("/register", [RegisterController::class, "register"])->name("register");
+Route::prefix("/register")->group(function() {
+    Route::get("", [AuthController::class, "showRegister"])->name("register.show");
+    Route::post("", [AuthController::class, "register"])->name("register");
+});
+
+Route::get("/logout", [AuthController::class, "logout"])->name("logout");
+
+Route::prefix("/manage")->middleware("auth")->group(function() {
+    Route::get("/books/select", [BooksController::class, "select"])->name("books.select");
+    Route::get("/books/multi-select", [BooksController::class, "multi_select"])->name("books.multi-select");
+    
+    Route::get("/authors/authored/{id}", [AuthorsController::class, "authored"])->name("authors.authored");
+    Route::get("/orders/items/{id}", [OrdersController::class, "items"])->name("orders.items");
+    
+    Route::resource("/users", UserController::class)->names("users");
+    Route::resource("/books", BooksController::class)->names("books");
+    Route::resource("/orders", OrdersController::class)->names("orders");
+    Route::resource("/authors", AuthorsController::class)->names("authors");
+    Route::resource("/genres", GenreController::class)->names("genres");
+});
+
+Route::redirect("/manage", "/manage/users");
+
+Route::get("/browse", [BooksController::class, "browse"])->name("browse");
