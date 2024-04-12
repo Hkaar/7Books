@@ -28,19 +28,19 @@
               </li>
             @else
               <li class="page-item">
-                <a class="page-link" href="{{ $books->previousPageUrl() }}" hx-get="{{ $books->previousPageUrl() }}">Previous</a>
+                <a class="page-link" href="#" hx-get="{{ $books->previousPageUrl() }}">Previous</a>
               </li>
             @endif
         
             @for ($i = 1; $i <= $books->lastPage(); $i++)
               <li class="page-item {{ ($books->currentPage() == $i) ? 'active' : '' }}">
-                <a class="page-link" href="{{ $books->url($i) }}" hx-get="{{ $books->url($i) }}">{{ $i }}</a>
+                <a class="page-link" href="#" hx-get="{{ $books->url($i) }}">{{ $i }}</a>
               </li>
             @endfor
         
             @if ($books->hasMorePages())
               <li class="page-item">
-                <a class="page-link" href="{{ $books->nextPageUrl() }}" hx-get="{{ $books->nextPageUrl() }}">Next</a>
+                <a class="page-link" href="#" hx-get="{{ $books->nextPageUrl() }}">Next</a>
               </li>
             @else
               <li class="page-item disabled">
