@@ -70,31 +70,23 @@
             <td>{{ $order->status }}</td>
     
             <td class="action-bar">
-              <button 
-                type="button" 
-                class="btn btn-info" 
+              <button type="button" class="btn btn-info" 
                 data-bs-target="#detailsModal" 
                 data-bs-toggle="modal" 
-                hx-get="{{ route('orders.show' . $order->id) }}" 
+                hx-get="{{ route('orders.show' , $order->id) }}" 
                 hx-target="#detailsBody" 
-                hx-swap="innerHTML"
-                >Show
+                hx-swap="innerHTML">Show
               </button>
 
-              <button 
-                type="button" 
-                class="btn btn-danger" 
+              <button type="button" class="btn btn-danger" 
                 hx-headers='{"X-CSRF-TOKEN": "{{ csrf_token() }}"}' 
-                hx-delete="{{ route('books.destroy', $order->id) }}" 
+                hx-delete="{{ route('orders.destroy', $order->id) }}" 
                 hx-target="closest tr" 
-                hx-swap="outerHTML"
-                >Delete
+                hx-swap="outerHTML">Delete
               </button>
 
-              <a 
-                class="btn btn-secondary" 
-                href="{{ route('books.edit', $order->id) }}" 
-                >Edit
+              <a class="btn btn-secondary" 
+                href="{{ route('orders.edit', $order->id) }}">Edit
               </a>
             </td>
           </tr>
