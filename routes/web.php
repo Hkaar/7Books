@@ -25,12 +25,12 @@ Route::get('/', function () {
 })->name("/");
 
 Route::prefix("/login")->group(function() {
-    Route::get("", [AuthController::class, "showLogin"]);
+    Route::get("", [AuthController::class, "showLogin"])->name("login.show");
     Route::post("", [AuthController::class, "authenticate"])->name("login");
 });
 
 Route::prefix("/register")->group(function() {
-    Route::get("", [AuthController::class, "showRegister"]);
+    Route::get("", [AuthController::class, "showRegister"])->name("register.show");
     Route::post("", [AuthController::class, "register"])->name("register");
 });
 
@@ -41,7 +41,8 @@ Route::prefix("/manage")->middleware("auth")->group(function() {
     Route::get("/books/multi-select", [BooksController::class, "multi_select"])->name("books.multi-select");
     
     Route::get("/authors/authored/{id}", [AuthorsController::class, "authored"])->name("authors.authored");
-
+    Route::get("/orders/items/{id}", [OrdersController::class, "items"])->name("orders.items");
+    
     Route::resource("/users", UserController::class)->names("users");
     Route::resource("/books", BooksController::class)->names("books");
     Route::resource("/orders", OrdersController::class)->names("orders");
