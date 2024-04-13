@@ -44,7 +44,6 @@ class UserController extends Controller
             "img" => "nullable|image|max:10240"
         ]);
 
-        // Create a new user
         $user = new User();
 
         if ($request->hasFile('img'))
@@ -149,9 +148,9 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $user->orders()->delete();
+        $user->ratings()->delete();
 
-        if ($user->img) 
-        {
+        if ($user->img) {
             Storage::disk("public")->delete($user->img);
         }
 
