@@ -5,8 +5,9 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Auth;
 
-class TrustedUsers
+class CheckUserLevel
 {
     private $trusted = ["admin", "operator"];
 
@@ -17,12 +18,12 @@ class TrustedUsers
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $user = auth()->user();
+        $user = Auth::user();
 
         if ($user && in_array($user->level, $this->trusted)) {
             return $next($request);
         }
 
-        return redirect()->route("login");
+        return redirect()->route("login.show");
     }
 }
