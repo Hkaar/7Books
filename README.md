@@ -183,9 +183,6 @@ If the pull request is accepted, update your local repo with the changes
 
 ```bash
 git checkout master
-```
-
-```bash
 git pull https://github.com/Hkaar/7Books.git master
 ```
 
