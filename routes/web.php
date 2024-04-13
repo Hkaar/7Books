@@ -36,7 +36,7 @@ Route::prefix("/register")->group(function() {
 
 Route::get("/logout", [AuthController::class, "logout"])->name("logout");
 
-Route::prefix("/manage")->middleware("auth")->group(function() {
+Route::prefix("/manage")->middleware(["auth", "check.level"])->group(function() {
     Route::get("/books/select", [BooksController::class, "select"])->name("books.select");
     Route::get("/books/multi-select", [BooksController::class, "multi_select"])->name("books.multi-select");
     
