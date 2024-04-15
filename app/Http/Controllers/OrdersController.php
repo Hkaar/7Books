@@ -31,11 +31,7 @@ class OrdersController extends Controller
 
     public function items(int $id)
     {
-        $order = Order::find($id);
- 
-        if (!$order) {
-            abort(404, "Resource does not exist!");
-        }
+        $order = Order::findOrFail($id);
 
         $items = $order->items()->with('book')->paginate(3);
 
@@ -91,11 +87,7 @@ class OrdersController extends Controller
      */
     public function show(int $id)
     {
-        $order = Order::find($id);
-
-        if (!$order) {
-            abort(404, "Resource does not exist!");
-        }
+        $order = Order::findOrFail($id);
 
         return view("orders.show")->with([
             "order" => $order
@@ -107,11 +99,7 @@ class OrdersController extends Controller
      */
     public function edit(int $id)
     {
-        $order = Order::find($id);
-
-        if (!$order) {
-            abort(404, "Resource does not exist!");
-        }
+        $order = Order::findOrFail($id);
 
         $books = $order->items()->get(["book_id", "amount"]);
         $items = [];
@@ -136,11 +124,7 @@ class OrdersController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        $order = Order::find($id);
-
-        if (!$order) {
-            abort(404, "Resource does not exist!");
-        }
+        $order = Order::findOrFail($id);
 
         $validated = $request->validate([
             "user_id" => "nullable|numeric|exists:users,id",
