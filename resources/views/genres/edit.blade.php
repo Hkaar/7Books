@@ -62,7 +62,7 @@
       
           <div class="mb-3">
             <label for="name" class="form-label">Name</label>
-            <input class="form-control" id="name" type="text" name="name" placeholder="{{ $genre->name }}" required autofocus>
+            <input class="form-control" id="name" type="text" name="name" placeholder="{{ $genre->name }}">
             
             @error('name')
               <span>{{ $message }}</span>

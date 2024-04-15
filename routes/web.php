@@ -38,7 +38,7 @@ Route::get("/logout", [AuthController::class, "logout"])->name("logout");
 
 Route::prefix("/manage")->middleware(["auth", "check.level"])->group(function() {
     Route::get("/books/select", [BooksController::class, "select"])->name("books.select");
-    Route::get("/books/multi-select", [BooksController::class, "multi_select"])->name("books.multi-select");
+    Route::get("/books/multi-select", [BooksController::class, "multiSelect"])->name("books.multi-select");
     
     Route::get("/authors/authored/{id}", [AuthorsController::class, "authored"])->name("authors.authored");
     Route::get("/orders/items/{id}", [OrdersController::class, "items"])->name("orders.items");

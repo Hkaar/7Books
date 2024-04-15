@@ -92,6 +92,7 @@ p {
 
 #preview img {
     object-fit: cover;
+    border-radius: 20px;
 }
 
 #preview.cover-small img {
@@ -169,6 +170,12 @@ p {
 
 .item-card:active, .item-card:hover {
     cursor: pointer;
+}
+
+.genre {
+    border: 1px solid black;
+    padding: 10px 15px;
+    border-radius: 20px;
 }
 
 .bordered {
@@ -316,4 +323,14 @@ p {
     display: flex;
     flex-direction: column;
     gap: 6px;
+}
+
+.info-list {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 10px;
+}
+
+.info-list span:not(:last-child)::after {
+    content: ',';
 }
