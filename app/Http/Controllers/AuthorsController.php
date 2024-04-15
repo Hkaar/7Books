@@ -36,11 +36,7 @@ class AuthorsController extends Controller
      * @param int $id
      */
     public function authored(int $id) {
-        $author = Author::find($id);
- 
-        if (!$author) {
-            abort(404, "Resource does not exist!");
-        }
+        $author = Author::findOrFail($id);
 
         $books = $author->books()->paginate(3);
 
@@ -92,12 +88,7 @@ class AuthorsController extends Controller
      */
     public function show(int $id)
     {
-        $author = Author::find($id);
-
-        if (!$author) {
-            abort(404, "Resource does not exist!");
-        }
-
+        $author = Author::findOrFail($id);
         $books = $author->books()->get(["name"]);
 
         return view("authors.show")->with([
@@ -111,11 +102,7 @@ class AuthorsController extends Controller
      */
     public function edit(int $id)
     {
-        $author = Author::find($id);
-
-        if (!$author) {
-            abort(404, "Resource does not exist!");
-        }
+        $author = Author::findOrFail($id);
 
         $books = BookAuthor::query()->where("author_id", "=", $author->id)->get("book_id");
         $items = [];
@@ -137,11 +124,7 @@ class AuthorsController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        $author = Author::find($id);
-
-        if (!$author) {
-            abort(404, "Resource does not exist!");
-        }
+        $author = Author::findOrFail($id);
 
         $validated = $request->validate([
             "name" => "nullable|string|max:255|unique:authors,name",
