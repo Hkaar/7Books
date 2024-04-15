@@ -104,11 +104,11 @@ class AuthorsController extends Controller
     {
         $author = Author::findOrFail($id);
 
-        $books = BookAuthor::query()->where("author_id", "=", $author->id)->get("book_id");
+        $books = $author->books()->get();
         $items = [];
         
         foreach ($books as $key => $value) {
-            $items[$value->book_id] = 1;
+            $items[$value->id] = 1;
         }
 
         $items = json_encode($items);
