@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Storage;
 class BooksController extends Controller
 {
     /**
+     * ISBN regex to check valid isbn-13 and isbn-10 numbers
+     */
+    private $isbnRegex = "^(?:(?:978-?)?\d{1,5}-?\d{1,7}-?\d{1,9}-?\d|(?:(?:978)?\d{9}[0-9X]))$";
+
+    /**
      * Display a listing of the resource.
      */
     public function index()
@@ -69,12 +74,12 @@ class BooksController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            "name" => "required|string",
-            "isbn" => "required|string",
-            "desc" => "nullable|string",
+            "name" => "required|string|max:500",
+            "isbn" => ["required", "string", "regex:/$this->isbnRegex/"],
+            "desc" => "nullable|string|max:1000",
             "price" => "required|numeric",
             "stock" => "required|numeric",
-            "rate" => "required|numeric",
+            "rate" => "required|numeric|max:10",
             "img" => "nullable|image|max:10240"
         ]);
 
@@ -133,12 +138,12 @@ class BooksController extends Controller
         $book = Book::findOrFail($id);
 
         $validated = $request->validate([
-            "isbn" => "nullable|string",
-            "name" => "nullable|string",
-            "desc" => "nullable|string",
+            "isbn" => ["nullable", "string", "regex:/$this->isbnRegex/"],
+            "name" => "nullable|string|max:500",
+            "desc" => "nullable|string|max:1000",
             "price" => "nullable|numeric",
             "stock" => "nullable|numeric",
-            "rate" => "nullable|numeric",
+            "rate" => "nullable|numeric|max:10",
             "img" => "nullable|image|max:10240"
         ]);
 
@@ -175,10 +180,14 @@ class BooksController extends Controller
         $book = Book::findOrFail($id);
 
         $book->ratings()->delete();
+        $book->genres()->detach();
         $book->authors()->detach();
         $book->items()->delete();
 
-        Storage::disk('public')->delete($book->img);
+        if ($book->img) {
+            Storage::disk('public')->delete($book->img);
+        }
+            
         $book->delete();
 
         return response(null);
