@@ -69,11 +69,7 @@ class UserController extends Controller
      */
     public function show(int $id)
     {
-        $user = User::query()->where("id", "=", $id)->first();
-
-        if (!$user) {
-            abort(404, "Resource does not exist!");
-        }
+        $user = User::findOrFail($id);
 
         return view("users.show")->with([
             "user" => $user
@@ -85,11 +81,7 @@ class UserController extends Controller
      */
     public function edit(int $id)
     {
-        $user = User::query()->where("id", "=", $id)->first();
-
-        if (!$user) {
-            abort(404, "Resource does not exist!");
-        }
+        $user = User::findOrFail($id);
 
         return view("users.edit")->with([
             "user" => $user
@@ -101,11 +93,7 @@ class UserController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        $user = User::query()->where("id", "=", $id)->first();
-
-        if (!$user) {
-            abort(404, "Resource does not exist!");
-        }
+        $user = User::findOrFail($id);
 
         $validated = $request->validate([
             'name' => 'nullable|string|max:255',
@@ -147,6 +135,7 @@ class UserController extends Controller
     public function destroy(int $id)
     {
         $user = User::findOrFail($id);
+        
         $user->orders()->delete();
         $user->ratings()->delete();
 
