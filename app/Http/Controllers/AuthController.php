@@ -38,7 +38,7 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         // Validate form data
-        $validatedData = $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
@@ -47,9 +47,9 @@ class AuthController extends Controller
 
         // Create a new user
         $user = new User();
-        $user->name = $validatedData['name'];
-        $user->email = $validatedData['email'];
-        $user->password = Hash::make($validatedData['password']);
+        $user->name = $validated['name'];
+        $user->email = $validated['email'];
+        $user->password = Hash::make($validated['password']);
         $user->level = "member";
         $user->save();
 
