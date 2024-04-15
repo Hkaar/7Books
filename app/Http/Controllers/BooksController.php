@@ -36,7 +36,7 @@ class BooksController extends Controller
     /**
      * Display all the resources for multi selection
      */
-    public function multi_select()
+    public function multiSelect()
     {
         $books = Book::paginate(3);
 
@@ -101,14 +101,15 @@ class BooksController extends Controller
      */
     public function show(int $id)
     {
-        $book = Book::query()->where("id", "=", $id)->first();
+        $book = Book::findOrFail($id);
 
-        if (!$book) {
-            abort(404, "Resource does not exist!");
-        }
+        $genres = $book->genres()->get();
+        $authors = $book->authors()->get();
 
         return view("books.show")->with([
-            "book" => $book
+            "book" => $book,
+            "genres" => $genres,
+            "authors" => $authors
         ]);
     }
 
@@ -117,11 +118,7 @@ class BooksController extends Controller
      */
     public function edit(int $id)
     {
-        $book = Book::query()->where("id", "=", $id)->first();
-
-        if (!$book) {
-            abort(404, "Resource does not exist!");
-        }
+        $book = Book::findOrFail($id);
 
         return view("books.edit")->with([
             "book" => $book
@@ -133,11 +130,7 @@ class BooksController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        $book = Book::query()->where("id", "=", $id)->first();
-
-        if (!$book) {
-            abort(404, "Resource does not exist!");
-        }
+        $book = Book::findOrFail($id);
 
         $validated = $request->validate([
             "isbn" => "nullable|string",
