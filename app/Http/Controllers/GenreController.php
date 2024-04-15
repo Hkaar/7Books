@@ -56,12 +56,7 @@ class GenreController extends Controller
      */
     public function show(int $id)
     {
-        $genre = Genre::find($id);
-
-        if (!$genre) {
-            abort(404, "Resource does not exist!");
-        }
-
+        $genre = Genre::findOrFail($id);
         $books = $genre->books()->paginate(3);
 
         return view("genres.show")->with([
@@ -75,11 +70,7 @@ class GenreController extends Controller
      */
     public function edit(int $id)
     {
-        $genre = Genre::find($id);
-
-        if (!$genre) {
-            abort(404, "Resource does not exist!");
-        }
+        $genre = Genre::findOrFail($id);
 
         $books = $genre->books()->get(["book_id"]);
         $items = [];
@@ -101,11 +92,7 @@ class GenreController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        $genre = Genre::find($id);
-
-        if (!$genre) {
-            abort(404, "Resource does not exist!");
-        }
+        $genre = Genre::findOrFail($id);
 
         $validated = $request->validate([
             "name" => "nullable|string|max:100|unique:genres,name",
