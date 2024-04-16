@@ -43,11 +43,14 @@ Route::prefix("/manage")->middleware(["auth", "check.level"])->group(function() 
     Route::get("/authors/authored/{id}", [AuthorsController::class, "authored"])->name("authors.authored");
     Route::get("/orders/items/{id}", [OrdersController::class, "items"])->name("orders.items");
     
-    Route::resource("/users", UserController::class)->names("users");
     Route::resource("/books", BooksController::class)->names("books");
     Route::resource("/orders", OrdersController::class)->names("orders");
     Route::resource("/authors", AuthorsController::class)->names("authors");
     Route::resource("/genres", GenreController::class)->names("genres");
+
+    Route::middleware("check.admin")->group(function() {
+        Route::resource("/users", UserController::class)->names("users");
+    });
 });
 
 Route::redirect("/manage", "/manage/users");
