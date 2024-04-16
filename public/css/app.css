@@ -225,7 +225,6 @@ p {
     background: transparent;
     display: flex;
     align-items: center;
-    min-height: 60px;
 }
 
 .navbar .brand {
@@ -323,14 +322,4 @@ p {
     display: flex;
     flex-direction: column;
     gap: 6px;
-}
-
-.info-list {
-    display: flex;
-    flex-flow: row wrap;
-    gap: 10px;
-}
-
-.info-list span:not(:last-child)::after {
-    content: ',';
 }
