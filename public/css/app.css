@@ -71,6 +71,10 @@ p {
     overflow-wrap: break-word;
 }
 
+section {
+    padding: 40px 0;
+}
+
 /* Components */
 #app {
     min-height: 100vh;
@@ -123,7 +127,7 @@ p {
 .brand {
     display: flex;
     gap: 15px;
-    align-items: start;
+    align-items: center;
     flex-flow: row wrap;
     justify-content: center;
 }
@@ -132,7 +136,6 @@ p {
     max-width: 50px;
     max-height: 50px;
 }
-
 /* Authentication */
 .auth-box {
     flex: 1;
@@ -162,17 +165,14 @@ p {
     display: flex;
     align-items: center;
 }
-
-.navbar .brand {
-    display: flex;
-    gap: 10px;
-    align-items: start;
-}
-
 .navbar .brand h5 {
     margin: 0;
 }
 
+.navbar .btn-nav{
+    display: flex;
+
+}
 .navbar-toggler {
     border: none;
 }
@@ -322,4 +322,43 @@ p {
 
 .item-card:active, .item-card:hover {
     cursor: pointer;
+}
+
+
+
+/* Hero */
+
+.left-frame{
+    margin-top: 5rem;
+    margin-left: 4.5rem;
+}
+.hero-message{
+    margin-bottom: 2rem;
+    max-width: 700px;
+}
+
+.hero-message h5{
+    color: gray;
+    font-weight: var(--text-medium);
+}
+.hero-brand img {
+    width: 550px;
+    top: 9%;
+    right: 5%;
+    position: absolute;
+    filter: drop-shadow(10px 10px 10px rgba(0,0,0,0.4));     
+}
+
+/* About */
+
+.about{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.message h2{
+    font-size: 2.5rem;
+}
+.message p{
+    font-size: 1.1rem;
 }
