@@ -102,9 +102,23 @@
               <label for="level" class="form-label">Level</label>
               
               <select name="level" id="level" class="form-select">
-                  <option value="member">Member</option>
-                  <option value="operator">Operator</option>
-                  <option value="admin">Admin</option>
+                @if ($user->level == "member")
+                  <option selected value="member">Member</option>
+                @else
+                  <option value="member">Member</option>  
+                @endif
+                
+                @if ($user->level == "operator")
+                  <option selected value="operator">Operator</option>
+                @else
+                <option value="operator">Operator</option>
+                @endif
+
+                @if ($user->level == "admin")
+                  <option selected value="admin">Admin</option>
+                @else
+                  <option value="admin">Admin</option>  
+                @endif
               </select>
       
               @error('level')
