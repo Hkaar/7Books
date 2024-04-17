@@ -362,3 +362,32 @@ section {
 .message p{
     font-size: 1.1rem;
 }
+
+/* Book Showcase */
+
+.books-showcase h3{
+    color: var(--text);
+    text-align: left;
+    font-weight: var(--text-regular);
+    margin-left: 11rem;
+}
+.books-slide{
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+    padding: 0.5rem 9rem;
+    cursor: pointer;
+}
+.book img{
+    width:245px;
+    height: 377px;
+}
+.book h5{
+    font-size: 20px;
+}
+
+/* FAQ */
+.accordion{
+    width: 600px;
+    background: var(--secondary);   
+}
