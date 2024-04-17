@@ -35,6 +35,7 @@ Route::prefix("/register")->group(function() {
 });
 
 Route::get("/logout", [AuthController::class, "logout"])->name("logout");
+Route::get("/denied", [AuthController::class, "denied"])->name("denied");
 
 Route::prefix("/manage")->middleware(["auth", "check.level"])->group(function() {
     Route::get("/books/select", [BooksController::class, "select"])->name("books.select");
@@ -53,6 +54,6 @@ Route::prefix("/manage")->middleware(["auth", "check.level"])->group(function() 
     });
 });
 
-Route::redirect("/manage", "/manage/users");
+Route::redirect("/manage", "/manage/orders");
 
 Route::get("/browse", [BooksController::class, "browse"])->name("browse");

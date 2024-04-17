@@ -93,8 +93,16 @@ class AuthController extends Controller
     /**
      * Show the dashboard
      */
-    public function dashboard(Request $request)
+    public function dashboard()
     {        
         return redirect()->route("users.index");
+    }
+
+    /**
+     * Show the permission denied page
+     */
+    public function denied()
+    {
+        return view("auth.denied");
     }
 }

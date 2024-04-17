@@ -22,6 +22,6 @@ class CheckAdmin
             return $next($request);
         }
 
-        return redirect()->route('login');
+        return redirect()->route('denied');
     }
 }
