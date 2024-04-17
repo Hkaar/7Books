@@ -35,6 +35,7 @@ Route::prefix("/register")->group(function() {
 });
 
 Route::get("/logout", [AuthController::class, "logout"])->name("logout");
+Route::get("/denied", [AuthController::class, "denied"])->name("denied");
 
 Route::prefix("/manage")->middleware(["auth", "check.level"])->group(function() {
     Route::get("/books/select", [BooksController::class, "select"])->name("books.select");
@@ -43,13 +44,16 @@ Route::prefix("/manage")->middleware(["auth", "check.level"])->group(function() 
     Route::get("/authors/authored/{id}", [AuthorsController::class, "authored"])->name("authors.authored");
     Route::get("/orders/items/{id}", [OrdersController::class, "items"])->name("orders.items");
     
-    Route::resource("/users", UserController::class)->names("users");
     Route::resource("/books", BooksController::class)->names("books");
     Route::resource("/orders", OrdersController::class)->names("orders");
     Route::resource("/authors", AuthorsController::class)->names("authors");
     Route::resource("/genres", GenreController::class)->names("genres");
+
+    Route::middleware("check.admin")->group(function() {
+        Route::resource("/users", UserController::class)->names("users");
+    });
 });
 
-Route::redirect("/manage", "/manage/users");
+Route::redirect("/manage", "/manage/orders");
 
 Route::get("/browse", [BooksController::class, "browse"])->name("browse");
