@@ -117,13 +117,13 @@ class UserController extends Controller
             $user->img = $filePath;
         }
 
+        unset($validated["img"]);
+        $this->updateModel($user, $validated, ["password_confirmation"]);
+
         if ($validated["password"]) {
             $user->password = Hash::make($validated['password']);
         }
 
-        $user->name = $validated['name'] ?? $user->name;
-        $user->email = $validated['email'] ?? $user->email;
-        $user->level = $validated["level"] ?? $user->level;
         $user->save();
 
         return redirect()->route('users.index');
