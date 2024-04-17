@@ -48,6 +48,7 @@ Route::prefix("/manage")->middleware(["auth", "check.level"])->group(function() 
     Route::resource("/orders", OrdersController::class)->names("orders");
     Route::resource("/authors", AuthorsController::class)->names("authors");
     Route::resource("/genres", GenreController::class)->names("genres");
+    
 
     Route::middleware("check.admin")->group(function() {
         Route::resource("/users", UserController::class)->names("users");
