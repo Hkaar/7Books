@@ -9,7 +9,7 @@
     --accent: #443DFF;
     --error: #e61b37;
     --success: #267d48;
-    --warning: #f1da22;
+    --warning: #ffa500;
     --info: #1fa2e2;
 
     --text-thin: 200;
@@ -123,7 +123,7 @@ section {
 
 .bg-info, .btn-info {
     background-color: var(--info) !important;
-    color: var(--text-info) !important;
+    color: var(--text-light) !important;
 }
 
 .bg-success, .btn-success {
@@ -131,7 +131,7 @@ section {
     color: var(--text-light) !important;
 }
 
-.btn-primary, .btn-secondary {
+.btn-primary, .btn-secondary, .btn-danger, .btn-error, .btn-info, .btn-success, .btn-warning {
     border: none;
 }
 
@@ -142,6 +142,7 @@ section {
 
 #preview.cover-small img {
     max-height: 50vh;
+    aspect-ratio: 9 / 16;
 }
 
 #preview.profile img {
@@ -151,6 +152,11 @@ section {
 
 #preview.cover img {
     max-height: 65vh;
+    aspect-ratio: 9 / 16;
+}
+
+.large-thumbnail img {
+    max-height: 35vh;
 }
 
 .genre {
@@ -177,6 +183,7 @@ section {
     max-width: 50px;
     max-height: 50px;
 }
+
 /* Authentication */
 .auth-box {
     flex: 1;
@@ -425,10 +432,4 @@ section {
 }
 .book h5{
     font-size: 20px;
-}
-
-/* FAQ */
-.accordion{
-    width: 600px;
-    background: var(--secondary);
 }
