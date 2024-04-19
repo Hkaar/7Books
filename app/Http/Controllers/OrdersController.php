@@ -140,35 +140,19 @@ class OrdersController extends Controller
 
         if ($validated["items"]) {
             $items = json_decode($validated["items"], true);
-
-            $order_items = $order->items()->get();
             $books = array_keys($items);
+
+            $order->items()->whereNotIn('book_id', $books)->delete();
             
-            foreach ($order_items as $key => $order_item) {
-                if (!in_array($order_item->book_id, $books)) 
-                {
-                    $order_item->delete();
-                } else 
-                {
-                    if ($order_item->amount != $items[$order_item->book_id]) 
-                    {
-                        $order_item->amount = $items[$order_item->book_id];
-                        $order_item->save();
-                    }
-
-                    if (in_array($order_item->book_id, $books)) 
-                    {
-                        unset($items[$order_item->book_id]);
-                    }
+            foreach ($items as $bookId => $amount) {
+                $orderItem = $order->items()->where('book_id', $bookId)->first();
+    
+                if ($orderItem && $orderItem->amount != $amount) {
+                    $orderItem->update(['amount' => $amount]);
+                } 
+                else if (!$orderItem) {
+                    $order->items()->create(['book_id' => $bookId, 'amount' => $amount]);
                 }
-            }
-
-            foreach ($items as $key => $value) 
-            {
-                $order->items()->create([
-                    "book_id" => $key,
-                    "amount" => $value
-                ]);
             }
         }
 
