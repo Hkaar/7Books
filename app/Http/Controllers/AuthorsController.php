@@ -147,9 +147,7 @@ class AuthorsController extends Controller
             $author->img = $filePath;
         }
 
-        $author->name = $validated["name"] ?? $author->name;
-        $author->address = $validated["address"] ?? $author->address;
-        $author->phone = $validated["phone"] ?? $author->phone;
+        $this->updateModel($author, $validated, ["img", "items"]);
         $author->save();
 
         if ($validated["items"]) {

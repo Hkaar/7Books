@@ -44,7 +44,7 @@
                 hx-swap="outerHTML">Delete
               </button>
 
-              <a class="btn btn-secondary" 
+              <a class="btn btn-warning" 
                 href="{{ route('orders.edit', $order->id) }}">Edit
               </a>
             </td>

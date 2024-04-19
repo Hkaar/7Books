@@ -8,7 +8,7 @@
 <div id="dashboardLeftFrame" class="container">
   <div class="row flex-fill">
     <div class="col-12 col-md-6 d-flex align-items-center justify-content-center mb-3">
-      <div id="preview" class="cover-small">
+      <div class="large-thumbnail">
         <img src="{{ URL::asset('assets/imgs/logo.png') }}" alt="Image not available...">
       </div>
     </div>

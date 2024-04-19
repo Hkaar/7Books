@@ -160,13 +160,9 @@ class BooksController extends Controller
             $book->img = $filePath;
         }
 
-        $book->isbn = $validated["isbn"] ?? $book->isbn;
-        $book->name = $validated["name"] ?? $book->name;
-        $book->desc = $validated["desc"] ?? $book->desc;
-        $book->price = $validated["price"] ?? $book->price;
-        $book->stock = $validated["stock"] ?? $book->stock;
-        $book->rate = $validated["rate"] ?? $book->rate;
+        $this->updateModel($book, $validated, ["img"]);
         $book->amount_borrowed = 0;
+        
         $book->save();
 
         return redirect()->route('books.index');
