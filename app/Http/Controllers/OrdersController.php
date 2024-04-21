@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\User;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -50,7 +51,7 @@ class OrdersController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            "user_id" => "required|numeric|exists:users,id",
+            "email" => "required|string|exists:users,email",
             "return_date" => "required|date",
             "status" => "nullable|string",
             "placed" => "nullable|date",
@@ -60,6 +61,9 @@ class OrdersController extends Controller
         $token = Str::uuid()->toString();
         $token = substr($token, 0, 8);
 
+        $user = User::query()->where("email", "=", $validated["email"])->get()[0];
+        
+        $validated["user_id"] = $user->id;
         $validated["token"] = $token;
 
         $order = new Order();
@@ -102,6 +106,8 @@ class OrdersController extends Controller
         $order = Order::findOrFail($id);
 
         $books = $order->items()->get(["book_id", "amount"]);
+        $userEmail = User::findOrFail($order->id)->email;
+
         $items = [];
 
         foreach ($books as $key => $value) {
@@ -112,6 +118,7 @@ class OrdersController extends Controller
 
         return view("orders.edit")->with([
             "order" => $order,
+            "email" => $userEmail,
             "items" => $items
         ]);
     }
@@ -127,13 +134,16 @@ class OrdersController extends Controller
         $order = Order::findOrFail($id);
 
         $validated = $request->validate([
-            "user_id" => "nullable|numeric|exists:users,id",
+            "email" => "nullable|string|exists:users,email",
             "token" => "nullable|string|max:8|unique:orders,token",
             "return_date" => "nullable|date",
             "placed" => "nullable|date",
             "status" => "nullable|string",
             "items" => "nullable|string"
         ]);
+
+        $userId = User::query()->where("email", "=", $validated["email"])->get();
+        $validated["user_id"] = $userId;
 
         $this->updateModel($order, $validated, ["items"]);
         $order->save();

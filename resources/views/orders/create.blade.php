@@ -21,10 +21,10 @@
           <input type="hidden" name="items" id="items">
 
           <div class="mb-3">
-            <label for="user_id" class="form-label">User ID</label>
-            <input class="form-control" id="user_id" type="number" name="user_id" required autofocus>
+            <label for="email" class="form-label">Email</label>
+            <input class="form-control" id="email" type="email" name="email" required autofocus>
             
-            @error('user_id')
+            @error('email')
               <span>{{ $message }}</span>
             @enderror
           </div>
