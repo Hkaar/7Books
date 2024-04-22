@@ -6,6 +6,7 @@ use App\Models\Book;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 use Intervention\Image\Laravel\Facades\Image;
 
@@ -49,6 +50,32 @@ class BooksController extends Controller
 
         return view("books.multi-select")->with([
             "books" => $books
+        ]);
+    }
+
+    /**
+     * !! EXPERIMENTAL !!
+     * Give a rating towards a book
+     * 
+     * @param int $id - the book id
+     * @param int $rating - rating given by the user
+     */
+    public function rate(int $id, int $rating) {
+        $user = Auth::id();
+
+        if (!$user) {
+            abort(401, "Unauthorized Access Was Denied...");
+        }
+
+        if ($rating > 5 || $rating < 0) {
+            abort(400, "Invalid rating value...");
+        }
+        
+        $book = Book::findOrFail($id);
+
+        $book->ratings()->create([
+            "user_id" => $user,
+            "rating" => $rating
         ]);
     }
 
