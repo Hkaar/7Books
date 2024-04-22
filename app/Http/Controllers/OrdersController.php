@@ -106,7 +106,7 @@ class OrdersController extends Controller
         $order = Order::findOrFail($id);
 
         $books = $order->items()->get(["book_id", "amount"]);
-        $userEmail = User::findOrFail($order->id)->email;
+        $userEmail = User::findOrFail($order->user_id)->email;
 
         $items = [];
 
@@ -142,8 +142,8 @@ class OrdersController extends Controller
             "items" => "nullable|string"
         ]);
 
-        $userId = User::query()->where("email", "=", $validated["email"])->get();
-        $validated["user_id"] = $userId;
+        $user = User::query()->where("email", "=", $validated["email"])->get()[0];
+        $validated["user_id"] = $user->id;
 
         $this->updateModel($order, $validated, ["items"]);
         $order->save();
