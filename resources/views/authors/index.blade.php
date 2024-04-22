@@ -29,31 +29,24 @@
             <td>{{ $author->phone }}</td>
     
             <td class="action-bar">
-              <button 
-                type="button" 
-                class="btn btn-info" 
+              <button type="button" class="btn btn-info" 
                 data-bs-target="#detailsModal" 
                 data-bs-toggle="modal" 
                 hx-get="{{ route('authors.show', $author->id) }}" 
                 hx-target="#detailsBody" 
-                hx-swap="innerHTML"
-                >Show
+                hx-swap="innerHTML">Show
               </button>
 
-              <button 
-                type="button" 
-                class="btn btn-danger" 
+              <button type="button" class="btn btn-danger" 
+                hx-confirm="Are you sure you want to delete this author?"
                 hx-headers='{"X-CSRF-TOKEN": "{{ csrf_token() }}"}' 
                 hx-delete="{{ route('authors.destroy', $author->id) }}" 
                 hx-target="closest tr" 
-                hx-swap="outerHTML"
-                >Delete
+                hx-swap="outerHTML">Delete
               </button>
   
-              <a 
-                class="btn btn-warning" 
-                href="{{ route('authors.edit', $author->id) }}"
-                >Edit
+              <a class="btn btn-warning" 
+                href="{{ route('authors.edit', $author->id) }}">Edit
               </a>
             </td>
           </tr>

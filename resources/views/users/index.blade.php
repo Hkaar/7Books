@@ -38,7 +38,8 @@
                 >Show
               </button>
 
-              <button type="button" class="btn btn-danger" 
+              <button type="button" class="btn btn-danger"
+                hx-confirm="Are you sure you want to delete this user?" 
                 hx-headers='{"X-CSRF-TOKEN": "{{ csrf_token() }}"}' 
                 hx-delete="{{ route('users.destroy', $user->id) }}" 
                 hx-target="closest tr" 

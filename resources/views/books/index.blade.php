@@ -39,7 +39,8 @@
                 hx-swap="innerHTML">Show
               </button>
 
-              <button type="button" class="btn btn-danger" 
+              <button type="button" class="btn btn-danger"
+                hx-confirm="Are you sure you want to delete this book?"
                 hx-headers='{"X-CSRF-TOKEN": "{{ csrf_token() }}"}' 
                 hx-delete="{{ route('books.destroy', $book->id) }}" 
                 hx-target="closest tr" 
