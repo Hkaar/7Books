@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Author;
-use App\Models\BookAuthor;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+
+use Intervention\Image\Laravel\Facades\Image;
 
 class AuthorsController extends Controller
 {
@@ -55,7 +56,7 @@ class AuthorsController extends Controller
             "name" => "required|string|max:255|unique:authors,name",
             "address" => "required|string|max:255",
             "phone" => "required|string|max:64",
-            "img" => "nullable|image|max:10240",
+            "img" => "nullable|image|mimes:jpeg,png,jpg|max:10240",
             "items" => "nullable|string",
         ]);
 
@@ -64,8 +65,16 @@ class AuthorsController extends Controller
 
         if ($request->hasFile("img")) {
             $file = $request->file('img');
+
             $fileName = time() . '_' . $file->getClientOriginalName();
             $filePath = $file->storeAs('uploads', $fileName, 'public');
+
+            $image = Image::read(public_path('storage/' . $filePath));
+            $image->resize(200, 200, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+
+            $image->save(public_path('storage/' . $filePath));
 
             $author->img = $filePath;
         }
@@ -130,7 +139,7 @@ class AuthorsController extends Controller
             "name" => "nullable|string|max:255|unique:authors,name",
             "address" => "nullable|string|max:255",
             "phone" => "nullable|string|max:64",
-            "img" => "nullable|image|max:10240",
+            "img" => "nullable|image|mimes:jpeg,png,jpg|max:10240",
             "items" => "nullable|string"
         ]);
 
@@ -143,6 +152,13 @@ class AuthorsController extends Controller
     
             $fileName = time() . '_' . $file->getClientOriginalName();
             $filePath = $file->storeAs('uploads', $fileName, 'public');
+
+            $image = Image::read(public_path('storage/' . $filePath));
+            $image->resize(200, 200, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+
+            $image->save(public_path('storage/' . $filePath));
     
             $author->img = $filePath;
         }

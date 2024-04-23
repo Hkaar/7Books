@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\User;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -50,7 +51,7 @@ class OrdersController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            "user_id" => "required|numeric|exists:users,id",
+            "email" => "required|string|exists:users,email",
             "return_date" => "required|date",
             "status" => "nullable|string",
             "placed" => "nullable|date",
@@ -60,6 +61,9 @@ class OrdersController extends Controller
         $token = Str::uuid()->toString();
         $token = substr($token, 0, 8);
 
+        $user = User::query()->where("email", "=", $validated["email"])->get()[0];
+        
+        $validated["user_id"] = $user->id;
         $validated["token"] = $token;
 
         $order = new Order();
@@ -102,6 +106,8 @@ class OrdersController extends Controller
         $order = Order::findOrFail($id);
 
         $books = $order->items()->get(["book_id", "amount"]);
+        $userEmail = User::findOrFail($order->user_id)->email;
+
         $items = [];
 
         foreach ($books as $key => $value) {
@@ -112,6 +118,7 @@ class OrdersController extends Controller
 
         return view("orders.edit")->with([
             "order" => $order,
+            "email" => $userEmail,
             "items" => $items
         ]);
     }
@@ -127,7 +134,7 @@ class OrdersController extends Controller
         $order = Order::findOrFail($id);
 
         $validated = $request->validate([
-            "user_id" => "nullable|numeric|exists:users,id",
+            "email" => "nullable|string|exists:users,email",
             "token" => "nullable|string|max:8|unique:orders,token",
             "return_date" => "nullable|date",
             "placed" => "nullable|date",
@@ -135,40 +142,27 @@ class OrdersController extends Controller
             "items" => "nullable|string"
         ]);
 
+        $user = User::query()->where("email", "=", $validated["email"])->get()[0];
+        $validated["user_id"] = $user->id;
+
         $this->updateModel($order, $validated, ["items"]);
         $order->save();
 
         if ($validated["items"]) {
             $items = json_decode($validated["items"], true);
-
-            $order_items = $order->items()->get();
             $books = array_keys($items);
+
+            $order->items()->whereNotIn('book_id', $books)->delete();
             
-            foreach ($order_items as $key => $order_item) {
-                if (!in_array($order_item->book_id, $books)) 
-                {
-                    $order_item->delete();
-                } else 
-                {
-                    if ($order_item->amount != $items[$order_item->book_id]) 
-                    {
-                        $order_item->amount = $items[$order_item->book_id];
-                        $order_item->save();
-                    }
-
-                    if (in_array($order_item->book_id, $books)) 
-                    {
-                        unset($items[$order_item->book_id]);
-                    }
+            foreach ($items as $bookId => $amount) {
+                $orderItem = $order->items()->where('book_id', $bookId)->first();
+    
+                if ($orderItem && $orderItem->amount != $amount) {
+                    $orderItem->update(['amount' => $amount]);
+                } 
+                else if (!$orderItem) {
+                    $order->items()->create(['book_id' => $bookId, 'amount' => $amount]);
                 }
-            }
-
-            foreach ($items as $key => $value) 
-            {
-                $order->items()->create([
-                    "book_id" => $key,
-                    "amount" => $value
-                ]);
             }
         }
 

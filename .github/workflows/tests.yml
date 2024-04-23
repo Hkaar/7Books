@@ -1,0 +1,51 @@
+name: SevenBooks
+
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+
+jobs:
+  tests:
+    name: Run tests
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_DATABASE: sevenbooks_test
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, pdo_mysql, bcmath, soap, intl, gd, exif, iconv
+          coverage: none
+      
+      - name: Run composer install
+        run: composer install -n --prefer-dist
+      
+      - name: Generate env
+        run: cp .env.example .env
+
+      - name: Run migrations
+        run: php artisan migrate --force --no-interaction
+
+      - name: Run tests
+        env:
+          DB_CONNECTION: mysql
+          DB_HOST: localhost
+          DB_PORT: 3306
+          DB_DATABASE: sevenbooks_test
+          DB_USERNAME: root
+          DB_PASSWORD: root
+        run: php artisan test

@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
+use Intervention\Image\Laravel\Facades\Image;
+
 class UserController extends Controller
 {
     /**
@@ -41,7 +43,7 @@ class UserController extends Controller
             'password' => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required|string|min:8',
             "level" => 'nullable|string',
-            "img" => "nullable|image|max:10240"
+            "img" => "nullable|image|mimes:jpeg,png,jpg|max:10240"
         ]);
 
         $user = new User();
@@ -51,6 +53,13 @@ class UserController extends Controller
             $file = $request->file('img');
             $fileName = time() . '_' . $file->getClientOriginalName();
             $filePath = $file->storeAs('uploads', $fileName, 'public');
+
+            $image = Image::read(public_path('storage/' . $filePath));
+            $image->resize(200, 200, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+
+            $image->save(public_path('storage/' . $filePath));
 
             $user->img = $filePath;
         }
@@ -101,7 +110,7 @@ class UserController extends Controller
             'password' => 'nullable|string|min:8|confirmed',
             'password_confirmation' => 'nullable|string|min:8',
             "level" => 'nullable|string',
-            "img" => "nullable|image|max:10240"
+            "img" => "nullable|image|mimes:jpeg,png,jpg|max:10240"
         ]);
 
         if ($request->hasFile('img')) {
@@ -113,6 +122,13 @@ class UserController extends Controller
     
             $fileName = time() . '_' . $file->getClientOriginalName();
             $filePath = $file->storeAs('uploads', $fileName, 'public');
+
+            $image = Image::read(public_path('storage/' . $filePath));
+            $image->resize(200, 200, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+
+            $image->save(public_path('storage/' . $filePath));
     
             $user->img = $filePath;
         }

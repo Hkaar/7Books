@@ -6,6 +6,9 @@ use App\Models\Book;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+
+use Intervention\Image\Laravel\Facades\Image;
 
 class BooksController extends Controller
 {
@@ -51,6 +54,31 @@ class BooksController extends Controller
     }
 
     /**
+     * Give a rating towards a book
+     */
+    public function rate(Request $request, int $id) {
+        $userId = Auth::id();
+        $rating = $request->input("rating");
+
+        if (!$userId) {
+            abort(401, "Unauthorized Access Was Denied...");
+        }
+
+        if ($rating > 5 || $rating < 0) {
+            abort(400, "Invalid rating value...");
+        }
+        
+        $book = Book::findOrFail($id);
+
+        $book->ratings()->create([
+            "user_id" => $userId,
+            "rating" => $rating
+        ]);
+
+        return response(200);
+    }
+
+    /**
      * Display the browsing page
      * 
      * @param Illuminate\Http\Request $request
@@ -80,7 +108,7 @@ class BooksController extends Controller
             "price" => "required|numeric",
             "stock" => "required|numeric",
             "rate" => "required|numeric|max:10",
-            "img" => "nullable|image|max:10240"
+            "img" => "nullable|image|mimes:jpeg,png,jpg|max:10240"
         ]);
 
         $book = new Book();
@@ -91,6 +119,13 @@ class BooksController extends Controller
         if ($file) {
             $fileName = time() . '_' . $file->getClientOriginalName();
             $filePath = $file->storeAs('uploads', $fileName, 'public');
+
+            $image = Image::read(public_path('storage/' . $filePath));
+            $image->resize(300, 450, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+
+            $image->save(public_path('storage/' . $filePath));
 
             $book->img = $filePath;
         }
@@ -144,7 +179,7 @@ class BooksController extends Controller
             "price" => "nullable|numeric",
             "stock" => "nullable|numeric",
             "rate" => "nullable|numeric|max:10",
-            "img" => "nullable|image|max:10240"
+            "img" => "nullable|image|mimes:jpeg,png,jpg|max:10240"
         ]);
 
         if ($request->hasFile('img')) {
@@ -156,6 +191,13 @@ class BooksController extends Controller
     
             $fileName = time() . '_' . $file->getClientOriginalName();
             $filePath = $file->storeAs('uploads', $fileName, 'public');
+
+            $image = Image::read(public_path('storage/' . $filePath));
+            $image->resize(300, 450, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+
+            $image->save(public_path('storage/' . $filePath));
     
             $book->img = $filePath;
         }

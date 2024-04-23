@@ -1,5 +1,6 @@
 /**
  * @typedef {import('jquery')}
+ * @type {import('bootstrap')}
  */
 
 /** @type {readonly string[]} */
@@ -55,15 +56,43 @@ function updateItemCards() {
     });
 }
 
+/**
+ * Shows the confirmation modal upon a event being triggered
+ * 
+ * @param {Event|JQuery.TriggeredEvent} e 
+ */
+function showConfirm(e) {
+    if (!$(e.target).attr("hx-confirm")) {
+        return;
+    }
+
+    e.preventDefault();
+
+    const confirmBtn = document.getElementById('confirmButton');
+    const modal = new bootstrap.Modal("#confirmModal", {
+        keyboard: false
+    });
+
+    if (!confirmBtn) {
+        return;
+    }
+
+    // @ts-ignore
+    $("#confirmText").text(e.detail.question);
+    modal.show();
+
+    confirmBtn.addEventListener('click', () => {
+        // @ts-ignore
+        e.detail.issueRequest(true);
+        modal.hide();
+    });
+}
+
 $(document).ready(() => {
     'use strict';
 
     const itemsField = document.getElementById("items");
     const sideNav = document.querySelector("#side-nav");
-
-    $(document).on("click", ".item-card", function() {
-        addItem(this);
-    })
 
     if (itemsField instanceof HTMLInputElement && !invalidLiterals.includes(itemsField.value)) {
         items = JSON.parse(itemsField.value);
@@ -78,6 +107,12 @@ $(document).ready(() => {
             sideNav.setAttribute("data-collapsed", "false");
         })
     }
+
+    $(document).on("click", ".item-card", function() {
+        addItem(this);
+    });
+
+    $(document).on("htmx:confirm", showConfirm);
 
     $(document).on("change", "#img", function() {
         let file = this.files[0];

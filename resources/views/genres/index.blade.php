@@ -34,6 +34,7 @@
               </button>
 
               <button type="button" class="btn btn-danger" 
+                hx-confirm="Are you sure you want to delete this genre?"
                 hx-headers='{"X-CSRF-TOKEN": "{{ csrf_token() }}"}' 
                 hx-delete="{{ route('genres.destroy', $genre->id) }}" 
                 hx-target="closest tr" 
