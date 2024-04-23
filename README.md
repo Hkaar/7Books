@@ -7,8 +7,6 @@ A website project to borrow physical books from a library through the internet.
 - PHP version >= 8.1
 - Composer
 - Node.js
-- JS-Doc
-- Typescript
 
 ## User Guide
 
@@ -30,6 +28,20 @@ Install the required dependecies
 
 ```bash
 composer install
+```
+
+Generate the env
+
+`Bash` :
+
+```bash
+mv .env.example .env && cp .env .env.example
+```
+
+`Powershell` :
+
+```powershell
+Rename-Item .\.env.example .\.env ; Copy-Item .\.env .\.env.example
 ```
 
 Generate the app key
@@ -84,26 +96,18 @@ composer install
 Install the node.js dependecies
 
 ```bash
-npm install jsdoc
-```
-
-```bash
-npm install typescript --save-dev
-```
-
-```bash
-npm install @types/jquery --save-dev
+npm install
 ```
 
 Copy & rename the .env.example to .env
 
-Bash :
+`Bash` :
 
 ```bash
 mv .env.example .env && cp .env .env.example
 ```
 
-Powershell :
+`Powershell` :
 
 ```powershell
 Rename-Item .\.env.example .\.env ; Copy-Item .\.env .\.env.example
@@ -152,13 +156,13 @@ git checkout <your-branch-name>
 Whenever you have a thing to save
 
 ```bash
-git add <path> // for staging a single file
+git add .
 ```
 
-or
+or you can stage a single file
 
 ```bash
-git add . // for adding all the current uncommited changes
+git add <path>
 ```
 
 Then commit it to the branch
@@ -172,7 +176,7 @@ git commit -m "<your-commit-message>"
 Once the features are done, you can push your changes to the repo
 
 ```bash
-git push https://github.com/Hkaar/7Books.git <local-branch-name>
+git push origin <local-branch-name>
 ```
 
 Your push is going to create a pull request for us to review
@@ -183,7 +187,7 @@ If the pull request is accepted, update your local repo with the changes
 
 ```bash
 git checkout master
-git pull https://github.com/Hkaar/7Books.git master
+git pull origin master
 ```
 
 ```bash
@@ -193,7 +197,7 @@ git branch -d <local-branch-name>
 Don't forget to always do a pull from the remote master to update your local repo!
 
 ```bash
-git pull https://github.com/Hkaar/7Books.git master
+git pull origin master
 ```
 
 And that's all, btw here's a table for your reward

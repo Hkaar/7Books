@@ -135,16 +135,41 @@ class OrdersController extends Controller
             "items" => "nullable|string"
         ]);
 
-        $order->user_id = $validated["user_id"] ?? $order->user_id;
-        $order->token = $validated['token'] ?? $order->token;
-        $order->return_date = $validated['return_date'] ?? $order->return_date;
-        $order->placed = $validated["placed"] ?? $order->placed;
-        $order->status = $validated['status'] ?? $order->status;
+        $this->updateModel($order, $validated, ["items"]);
         $order->save();
 
         if ($validated["items"]) {
             $items = json_decode($validated["items"], true);
-            $order->books()->sync(array_keys($items) ?? []);
+
+            $order_items = $order->items()->get();
+            $books = array_keys($items);
+            
+            foreach ($order_items as $key => $order_item) {
+                if (!in_array($order_item->book_id, $books)) 
+                {
+                    $order_item->delete();
+                } else 
+                {
+                    if ($order_item->amount != $items[$order_item->book_id]) 
+                    {
+                        $order_item->amount = $items[$order_item->book_id];
+                        $order_item->save();
+                    }
+
+                    if (in_array($order_item->book_id, $books)) 
+                    {
+                        unset($items[$order_item->book_id]);
+                    }
+                }
+            }
+
+            foreach ($items as $key => $value) 
+            {
+                $order->items()->create([
+                    "book_id" => $key,
+                    "amount" => $value
+                ]);
+            }
         }
 
         return redirect()->route('orders.index');

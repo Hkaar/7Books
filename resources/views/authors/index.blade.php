@@ -51,7 +51,7 @@
               </button>
   
               <a 
-                class="btn btn-small btn-secondary" 
+                class="btn btn-warning" 
                 href="{{ route('authors.edit', $author->id) }}"
                 >Edit
               </a>

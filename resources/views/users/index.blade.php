@@ -45,7 +45,7 @@
                 hx-swap="outerHTML">Delete
               </button>
   
-              <a class="btn btn-small btn-secondary" 
+              <a class="btn btn-small btn-warning" 
                 href="{{ route('users.edit', $user->id) }}">Edit
               </a>
             </td>

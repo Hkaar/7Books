@@ -3,9 +3,14 @@
 :root {
     --text: #040316;
     --text-light: #FFF;
+    
     --primary: #1B1A56;
     --secondary: #8F8EC2;
     --accent: #443DFF;
+    --error: #e61b37;
+    --success: #267d48;
+    --warning: #ffa500;
+    --info: #1fa2e2;
 
     --text-thin: 200;
     --text-semithin: 300;
@@ -13,14 +18,25 @@
     --text-medium: 500;
     --text-semibold: 600;
     --text-bold: 700;
-    --text-extra-bold: 800; 
+    --text-extra-bold: 800;
+    
+    --text-h1: 3.815rem;
+    --text-h2: 3.052rem;
+    --text-h3: 2.442rem;
+    --text-h4: 1.953rem;
+    --text-h5: 1.563rem;
+    --text-h6: 1.25rem;
+    --text-body: 1rem;
+    --text-small: 0.8rem;
 }
 
 /* Global Styles */
 * {
     font-family: 'Poppins';
-    font-size: 18px;
+    font-size: var(--text-body);
     font-weight: var(--text-regular);
+    line-height: 1.6;
+    letter-spacing: 0.03em;
 }
 
 body {
@@ -29,32 +45,37 @@ body {
 }
 
 h1 {
-    font-size: 64px;
+    font-size: var(--text-h1);
     font-weight: var(--text-bold);
 }
 
 h2 {
-    font-size: 48px;
+    font-size: var(--text-h2);
     font-weight: var(--text-semibold);
 }
 
 h3 {
-    font-size: 36px;
+    font-size: var(--text-h3);
     font-weight: var(--text-semibold);
 }
 
 h4 {
-    font-size: 28px;
+    font-size: var(--text-h4);
     font-weight: var(--text-semibold);
 }
 
 h5 {
-    font-size: 24px;
+    font-size: var(--text-h5);
     font-weight: var(--text-semibold);
 }
 
+h6 {
+    font-size: var(--text-h6);
+    font-weight: var(--text-medium);
+}
+
 small {
-    font-size: 14px;
+    font-size: var(--text-small);
     font-weight: var(--text-thin);
 }
 
@@ -69,6 +90,10 @@ th {
 p {
     word-wrap: break-word;
     overflow-wrap: break-word;
+}
+
+section {
+    padding: 40px 0;
 }
 
 /* Components */
@@ -86,7 +111,27 @@ p {
     color: var(--text-light) !important;
 }
 
-.btn-primary, .btn-secondary {
+.bg-danger, .bg-error, .btn-danger, .btn-error {
+    background-color: var(--error) !important;
+    color: var(--text-light) !important;
+}
+
+.bg-warning, .btn-warning {
+    background-color: var(--warning) !important;
+    color: var(--text-light) !important;
+}
+
+.bg-info, .btn-info {
+    background-color: var(--info) !important;
+    color: var(--text-light) !important;
+}
+
+.bg-success, .btn-success {
+    background-color: var(--success) !important;
+    color: var(--text-light) !important;
+}
+
+.btn-primary, .btn-secondary, .btn-danger, .btn-error, .btn-info, .btn-success, .btn-warning {
     border: none;
 }
 
@@ -97,6 +142,7 @@ p {
 
 #preview.cover-small img {
     max-height: 50vh;
+    aspect-ratio: 9 / 16;
 }
 
 #preview.profile img {
@@ -106,6 +152,11 @@ p {
 
 #preview.cover img {
     max-height: 65vh;
+    aspect-ratio: 9 / 16;
+}
+
+.large-thumbnail img {
+    max-height: 35vh;
 }
 
 .genre {
@@ -123,7 +174,7 @@ p {
 .brand {
     display: flex;
     gap: 15px;
-    align-items: start;
+    align-items: center;
     flex-flow: row wrap;
     justify-content: center;
 }
@@ -162,17 +213,14 @@ p {
     display: flex;
     align-items: center;
 }
-
-.navbar .brand {
-    display: flex;
-    gap: 10px;
-    align-items: start;
-}
-
 .navbar .brand h5 {
     margin: 0;
 }
 
+.navbar .btn-nav{
+    display: flex;
+
+}
 .navbar-toggler {
     border: none;
 }
@@ -322,4 +370,66 @@ p {
 
 .item-card:active, .item-card:hover {
     cursor: pointer;
+}
+
+
+
+/* Hero */
+
+.left-frame{
+    margin-top: 5rem;
+    margin-left: 4.5rem;
+}
+.hero-message{
+    margin-bottom: 2rem;
+    max-width: 700px;
+}
+
+.hero-message h5{
+    color: gray;
+    font-weight: var(--text-medium);
+}
+.hero-brand img {
+    width: 550px;
+    top: 9%;
+    right: 5%;
+    position: absolute;
+    filter: drop-shadow(10px 10px 10px rgba(0,0,0,0.4));     
+}
+
+/* About */
+
+.about{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.message h2{
+    font-size: 2.5rem;
+}
+.message p{
+    font-size: 1.1rem;
+}
+
+/* Book Showcase */
+
+.books-showcase h3{
+    color: var(--text);
+    text-align: left;
+    font-weight: var(--text-regular);
+    margin-left: 11rem;
+}
+.books-slide{
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+    padding: 0.5rem 9rem;
+    cursor: pointer;
+}
+.book img{
+    width:245px;
+    height: 377px;
+}
+.book h5{
+    font-size: 20px;
 }
