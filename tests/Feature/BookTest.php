@@ -3,6 +3,8 @@
 namespace Tests\Feature;
 
 use App\Models\User;
+use App\Models\Book;
+
 use Tests\TestCase;
 
 class BookTest extends TestCase
@@ -92,7 +94,9 @@ class BookTest extends TestCase
         ]);
         $this->actingAs($user);
 
-        $response = $this->post('/books/8/rate?rating=4');
+        $book = Book::factory()->create();
+
+        $response = $this->post("/books/$book->id/rate?rating=4");
 
         $response->assertStatus(200);
     }
