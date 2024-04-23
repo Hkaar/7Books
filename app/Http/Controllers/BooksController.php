@@ -54,16 +54,13 @@ class BooksController extends Controller
     }
 
     /**
-     * !! EXPERIMENTAL !!
      * Give a rating towards a book
-     * 
-     * @param int $id - the book id
-     * @param int $rating - rating given by the user
      */
-    public function rate(int $id, int $rating) {
-        $user = Auth::id();
+    public function rate(Request $request, int $id) {
+        $userId = Auth::id();
+        $rating = $request->input("rating");
 
-        if (!$user) {
+        if (!$userId) {
             abort(401, "Unauthorized Access Was Denied...");
         }
 
@@ -74,9 +71,11 @@ class BooksController extends Controller
         $book = Book::findOrFail($id);
 
         $book->ratings()->create([
-            "user_id" => $user,
+            "user_id" => $userId,
             "rating" => $rating
         ]);
+
+        return response(200);
     }
 
     /**

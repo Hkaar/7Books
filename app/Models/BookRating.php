@@ -15,7 +15,8 @@ class BookRating extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        "rating"
+        "user_id",
+        "rating",
     ];
 
     /**
