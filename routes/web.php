@@ -37,6 +37,10 @@ Route::prefix("/register")->group(function() {
 Route::get("/logout", [AuthController::class, "logout"])->name("logout");
 Route::get("/denied", [AuthController::class, "denied"])->name("denied");
 
+Route::middleware("auth")->group(function() {
+    Route::post("/books/{id}/rate", [BooksController::class, "rate"])->name("books.rate");
+});
+
 Route::prefix("/manage")->middleware(["auth", "check.level"])->group(function() {
     Route::get("/books/select", [BooksController::class, "select"])->name("books.select");
     Route::get("/books/multi-select", [BooksController::class, "multiSelect"])->name("books.multi-select");
