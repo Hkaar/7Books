@@ -36,7 +36,7 @@ jobs:
         run: composer install -n --prefer-dist
       
       - name: Generate env
-        run: mv .env.example .env
+        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
 
       - name: Run migrations
         run: php artisan migrate --force --no-interaction
