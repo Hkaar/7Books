@@ -96,7 +96,7 @@ class BookTest extends TestCase
 
         $book = Book::factory()->create();
 
-        $response = $this->post('/books/$book->id/rate?rating=4');
+        $response = $this->post("/books/$book->id/rate?rating=4");
 
         $response->assertStatus(200);
     }
