@@ -16,8 +16,6 @@ jobs:
         image: mysql:8.0
         env:
           MYSQL_DATABASE: sevenbooks
-          MYSQL_ROOT_USERNAME: root
-          MYSQL_ROOT_PASSWORD: root
         ports:
           - 3306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
@@ -36,27 +34,10 @@ jobs:
         run: composer install -n --prefer-dist
       
       - name: Generate env
-        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+        run: mv .env.example .env
 
       - name: Generate key
         run: php artisan key:generate
 
-      - name: Run migrations
-        env:
-          DB_CONNECTION: mysql
-          DB_HOST: localhost
-          DB_PORT: 3306
-          DB_DATABASE: sevenbooks
-          DB_USERNAME: root
-          DB_PASSWORD: root
-        run: php artisan migrate
-
       - name: Run tests
-        env:
-          DB_CONNECTION: mysql
-          DB_HOST: localhost
-          DB_PORT: 3306
-          DB_DATABASE: sevenbooks
-          DB_USERNAME: root
-          DB_PASSWORD: root
         run: php artisan test
