@@ -1,4 +1,6 @@
-# Introduction
+# Seven Books
+
+![Workflow Status](https://github.com/Hkaar/7Books/workflows/tests/badge.svg)
 
 A website project to borrow physical books from a library through the internet.
 
