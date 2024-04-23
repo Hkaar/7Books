@@ -38,6 +38,9 @@ jobs:
       - name: Generate env
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
 
+      - name: Generate key
+        run: php artisan key:generate
+
       - name: Run migrations
         env:
           DB_CONNECTION: mysql
