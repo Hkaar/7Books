@@ -38,6 +38,9 @@ jobs:
       - name: Generate env
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
 
+      - name: Setup Database
+        run: mysql -h 127.0.0.1 --port 8888 -u root -ppassword -e 'CREATE DATABASE IF NOT EXISTS test;'
+
       - name: Run migrations
         env:
           DB_CONNECTION: mysql
