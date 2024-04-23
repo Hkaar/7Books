@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string("isbn");
             $table->string("name");
-            $table->text("desc")->default("No description provided");
+            $table->text("desc");
             $table->float("price");
             $table->float("rate");
             $table->integer("stock");
