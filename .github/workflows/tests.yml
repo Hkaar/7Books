@@ -35,7 +35,9 @@ jobs:
         run: composer install -n --prefer-dist
       
       - name: Generate env
-        run: cp .env.example .env
+        run: 
+          mv .env.example .env
+          echo "DB_PASSWORD=root" >> .env
 
       - name: Run migrations
         run: php artisan migrate --force --no-interaction
