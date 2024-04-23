@@ -38,6 +38,9 @@ jobs:
       - name: Generate env
         run: mv .env.example .env
 
+      - name: Run migrations
+        run: php artisan migrate
+
       - name: Generate key
         run: php artisan key:generate
 
