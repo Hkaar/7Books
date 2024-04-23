@@ -15,7 +15,7 @@ jobs:
       mysql:
         image: mysql:8.0
         env:
-          MYSQL_DATABASE: sevenbooks_test
+          MYSQL_DATABASE: sevenbooks
           MYSQL_ROOT_USERNAME: root
           MYSQL_ROOT_PASSWORD: root
         ports:
@@ -39,14 +39,21 @@ jobs:
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
 
       - name: Run migrations
-        run: php artisan migrate --force --no-interaction
+        env:
+          DB_CONNECTION: mysql
+          DB_HOST: localhost
+          DB_PORT: 3306
+          DB_DATABASE: sevenbooks
+          DB_USERNAME: root
+          DB_PASSWORD: root
+        run: php artisan migrate
 
       - name: Run tests
         env:
           DB_CONNECTION: mysql
           DB_HOST: localhost
           DB_PORT: 3306
-          DB_DATABASE: sevenbooks_test
+          DB_DATABASE: sevenbooks
           DB_USERNAME: root
           DB_PASSWORD: root
         run: php artisan test
