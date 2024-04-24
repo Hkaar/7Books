@@ -46,7 +46,21 @@ class UserTest extends TestCase
         ]);
         $this->actingAs($user);
 
-        $response = $this->get("/manage/users/edit");
+        $response = $this->get("/manage/users/$user->id/edit");
+        $response->assertStatus(200);
+    }
+
+    /**
+     * Test whether the show route is working
+     */
+    public function test_show(): void
+    {
+        $user = User::factory()->create([
+            "level" => "admin"
+        ]);
+        $this->actingAs($user);
+
+        $response = $this->get("/manage/users/$user->id");
         $response->assertStatus(200);
     }
 }
