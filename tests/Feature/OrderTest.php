@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\User;
+use App\Models\Order;
 
 use Tests\TestCase;
 
@@ -46,7 +47,25 @@ class OrderTest extends TestCase
         ]);
         $this->actingAs($user);
 
-        $response = $this->get("/manage/orders/edit");
+        $order = Order::factory()->create();
+
+        $response = $this->get("/manage/orders/$order->id/edit");
+        $response->assertStatus(200);
+    }
+
+    /**
+     * Test whether the show route is working
+     */
+    public function test_show(): void
+    {
+        $user = User::factory()->create([
+            "level" => "admin"
+        ]);
+        $this->actingAs($user);
+
+        $order = Order::factory()->create();
+
+        $response = $this->get("/manage/orders/$order->id");
         $response->assertStatus(200);
     }
 }
