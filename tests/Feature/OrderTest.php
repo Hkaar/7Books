@@ -2,19 +2,70 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+use App\Models\User;
+use App\Models\Order;
+
 use Tests\TestCase;
 
 class OrderTest extends TestCase
 {
     /**
-     * A basic feature test example.
+     * Test whether the index route is working
      */
-    public function test_example(): void
+    public function test_index(): void
     {
-        $response = $this->get('/');
+        $user = User::factory()->create([
+            "level" => "admin"
+        ]);
+        $this->actingAs($user);
 
+        $response = $this->get('/manage/orders');
+        $response->assertStatus(200);
+    }
+
+    /**
+     * Test whether the create route is working
+     */
+    public function test_create(): void
+    {
+        $user = User::factory()->create([
+            "level" => "admin"
+        ]);
+        $this->actingAs($user);
+
+        $response = $this->get("/manage/orders/create");
+        $response->assertStatus(200);
+    }
+
+    /**
+     * Test whether the edit route is working
+     */
+    public function test_edit(): void
+    {
+        $user = User::factory()->create([
+            "level" => "admin"
+        ]);
+        $this->actingAs($user);
+
+        $order = Order::factory()->create();
+
+        $response = $this->get("/manage/orders/$order->id/edit");
+        $response->assertStatus(200);
+    }
+
+    /**
+     * Test whether the show route is working
+     */
+    public function test_show(): void
+    {
+        $user = User::factory()->create([
+            "level" => "admin"
+        ]);
+        $this->actingAs($user);
+
+        $order = Order::factory()->create();
+
+        $response = $this->get("/manage/orders/$order->id");
         $response->assertStatus(200);
     }
 }
