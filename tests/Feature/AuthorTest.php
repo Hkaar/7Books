@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\User;
+use App\Models\Author;
 
 use Tests\TestCase;
 
@@ -46,7 +47,22 @@ class AuthorTest extends TestCase
         ]);
         $this->actingAs($user);
 
-        $response = $this->get("/manage/authors/edit");
+        $author = Author::factory()->create();
+
+        $response = $this->get("/manage/authors/$author->id/edit");
+        $response->assertStatus(200);
+    }
+
+    public function test_show(): void
+    {
+        $user = User::factory()->create([
+            "level" => "admin"
+        ]);
+        $this->actingAs($user);
+
+        $author = Author::factory()->create();
+
+        $response = $this->get("/manage/authors/$author->id");
         $response->assertStatus(200);
     }
 }
