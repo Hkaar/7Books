@@ -2,19 +2,51 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+use App\Models\User;
+
 use Tests\TestCase;
 
 class UserTest extends TestCase
 {
     /**
-     * A basic feature test example.
+     * Test whether the index route is working
      */
-    public function test_example(): void
+    public function test_index(): void
     {
-        $response = $this->get('/');
+        $user = User::factory()->create([
+            "level" => "admin"
+        ]);
+        $this->actingAs($user);
 
+        $response = $this->get('/manage/users');
+        $response->assertStatus(200);
+    }
+
+    /**
+     * Test whether the create route is working
+     */
+    public function test_create(): void
+    {
+        $user = User::factory()->create([
+            "level" => "admin"
+        ]);
+        $this->actingAs($user);
+
+        $response = $this->get("/manage/users/create");
+        $response->assertStatus(200);
+    }
+
+    /**
+     * Test whether the edit route is working
+     */
+    public function test_edit(): void
+    {
+        $user = User::factory()->create([
+            "level" => "admin"
+        ]);
+        $this->actingAs($user);
+
+        $response = $this->get("/manage/users/edit");
         $response->assertStatus(200);
     }
 }
