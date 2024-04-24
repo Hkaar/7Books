@@ -10,7 +10,7 @@ use Tests\TestCase;
 class BookTest extends TestCase
 {
     /**
-     * Tests whether the index dashboard route is working
+     * Test whether the index dashboard route is working
      */
     public function test_index(): void
     {
@@ -20,12 +20,11 @@ class BookTest extends TestCase
         $this->actingAs($user);
 
         $request = $this->get("/manage/books");
-
         $request->assertStatus(200);
     }
 
     /**
-     * Tests whether the CRUD create route is working 
+     * Test whether the create route is working 
      */
     public function test_create(): void
     {
@@ -35,12 +34,11 @@ class BookTest extends TestCase
         $this->actingAs($user);
 
         $request = $this->get("/manage/books/create");
-
         $request->assertStatus(200);
     }
 
     /**
-     * Tests whether the CRUD edit route is working 
+     * Test whether the edit route is working 
      */
     public function test_edit(): void
     {
@@ -49,13 +47,14 @@ class BookTest extends TestCase
         ]);
         $this->actingAs($user);
 
-        $request = $this->get("/manage/books/create");
+        $book = Book::factory()->create();
 
+        $request = $this->get("/manage/books/$book->id/edit");
         $request->assertStatus(200);
     }
 
     /**
-     * Tests whether the CRUD select route is working 
+     * Test whether the select route is working 
      */
     public function test_select(): void
     {
@@ -65,12 +64,11 @@ class BookTest extends TestCase
         $this->actingAs($user);
 
         $request = $this->get("/manage/books/select");
-
         $request->assertStatus(200);
     }
 
     /**
-     * Tests whether the CRUD multi select route is working 
+     * Test whether the multi select route is working 
      */
     public function test_multi_select(): void
     {
@@ -80,12 +78,24 @@ class BookTest extends TestCase
         $this->actingAs($user);
 
         $request = $this->get("/manage/books/multi-select");
+        $request->assertStatus(200);
+    }
 
+    public function test_show(): void
+    {
+        $user = User::factory()->create([
+            "level" => "admin"
+        ]);
+        $this->actingAs($user);
+
+        $book = Book::factory()->create();
+
+        $request = $this->get("/manage/books/$book->id");
         $request->assertStatus(200);
     }
 
     /**
-     * Tests whether the rating a book route works
+     * Test whether the rating a book route works
      */
     public function test_book_rate(): void 
     {
@@ -97,7 +107,6 @@ class BookTest extends TestCase
         $book = Book::factory()->create();
 
         $response = $this->post("/books/$book->id/rate?rating=4");
-
         $response->assertStatus(200);
     }
 }
