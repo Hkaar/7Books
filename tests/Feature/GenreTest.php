@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\User;
+use App\Models\Genre;
 
 use Tests\TestCase;
 
@@ -46,7 +47,25 @@ class GenreTest extends TestCase
         ]);
         $this->actingAs($user);
 
-        $response = $this->get("/manage/genres/edit");
+        $genre = Genre::factory()->create();
+
+        $response = $this->get("/manage/genres/$genre->id/edit");
+        $response->assertStatus(200);
+    }
+
+    /**
+     * Test whether the show route is working
+     */
+    public function test_show(): void
+    {
+        $user = User::factory()->create([
+            "level" => "admin"
+        ]);
+        $this->actingAs($user);
+
+        $genre = Genre::factory()->create();
+
+        $response = $this->get("/manage/genres/$genre->id");
         $response->assertStatus(200);
     }
 }
