@@ -57,6 +57,6 @@
     </table>
   </div>
 
-  {{ $books->links() }}
+  <x-paginate-links :links="$books"></x-paginate-links>
 </div>
 @endsection

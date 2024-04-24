@@ -51,6 +51,6 @@
     </table>
   </div>
 
-  {{ $genres->links() }}
+  <x-paginate-links :links="$genres"></x-paginate-links>
 </div>
 @endsection
