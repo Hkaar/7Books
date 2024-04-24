@@ -55,6 +55,6 @@
     </table>
   </div>
 
-  {{ $authors->links() }}
+  <x-paginate-links :links="$authors"></x-paginate-links>
 </div>
 @endsection
