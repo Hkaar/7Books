@@ -85,7 +85,7 @@ class BooksController extends Controller
      * @return view
      */
     public function browse(Request $request) {
-        return view("welcome");
+        return view("browse");
     }
 
     /**
