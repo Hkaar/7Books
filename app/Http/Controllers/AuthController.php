@@ -105,12 +105,4 @@ class AuthController extends Controller
     {
         return view("auth.denied");
     }
-
-    /**
-     * Show the account info page
-     */
-    public function show()
-    {
-        return view("auth.show");
-    }
 }
