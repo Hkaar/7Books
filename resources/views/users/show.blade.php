@@ -21,13 +21,6 @@
         <b>Email</b>
         {{ $user->email }}
       </article>
-
-      <article class="info mb-3">
-        <b>Password</b>
-        <p class="max-width: 200px;">
-          {{ $user->password }}
-        </p>
-      </article>
     </div>
   </div>
 </div>
