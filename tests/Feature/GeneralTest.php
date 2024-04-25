@@ -2,19 +2,38 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+use App\Models\User;
 use Tests\TestCase;
 
 class GeneralTest extends TestCase
 {
     /**
-     * A basic feature test example.
+     * Test whether the landing page route is working
      */
     public function test_home(): void
     {
         $response = $this->get('/');
+        $response->assertStatus(200);
+    }
 
+    /**
+     * Test whether the browse route is working
+     */
+    public function test_browse(): void
+    {
+        $response = $this->get('/browse');
+        $response->assertStatus(200);
+    }
+
+    /**
+     * Test whether the member show route is working
+     */
+    public function test_member_show(): void
+    {
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
+        $response = $this->get('/me');
         $response->assertStatus(200);
     }
 }
