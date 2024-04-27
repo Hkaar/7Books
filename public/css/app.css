@@ -377,22 +377,26 @@ section {
 /* Hero */
 
 .left-frame{
-    margin-top: 5rem;
-    margin-left: 4.5rem;
+    margin-top: 4rem;
+    margin-left: 4rem;
 }
 .hero-message{
     margin-bottom: 2rem;
-    max-width: 700px;
+    max-width: 750px;
 }
 
+.hero button{
+    font-weight: var(--text-semibold);
+}
 .hero-message h5{
     color: gray;
     font-weight: var(--text-medium);
+    font-size: 1.2rem;
 }
 .hero-brand img {
-    width: 550px;
+    width: 500px;
     top: 9%;
-    right: 5%;
+    right: 3%;
     position: absolute;
     filter: drop-shadow(10px 10px 10px rgba(0,0,0,0.4));     
 }
@@ -404,24 +408,21 @@ section {
     justify-content: space-evenly;
     align-items: center;
 }
-.message h2{
-    font-size: 2.5rem;
-}
 .message p{
     font-size: 1.1rem;
 }
 
 /* Book Showcase */
 
-.books-showcase h3{
+.books-showcase h4{
     color: var(--text);
     text-align: left;
     font-weight: var(--text-regular);
-    margin-left: 11rem;
+    margin-left: 9rem;
 }
 .books-slide{
     display: flex;
-    justify-content:space-evenly;
+    justify-content:space-around;
     align-items: center;
     padding: 0.5rem 9rem;
     cursor: pointer;
@@ -431,5 +432,12 @@ section {
     height: 377px;
 }
 .book h5{
-    font-size: 20px;
+    font-size: 15px;
+}
+.text p:nth-child(2){
+    padding-top: 5rem;
+    font-weight: var(--text-);
+}
+.right-frame{
+    padding-left: 20%;
 }
