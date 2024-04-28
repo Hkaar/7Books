@@ -1,6 +1,10 @@
 @extends('layouts.dashboard')
 
-@section('title', "Dashboard - Authors")
+@section('title', "Dashboard - Genres")
+
+@section('top-nav')
+  <x-dashboard-navigation selected="genres"></x-dashboard-navigation>
+@endsection
 
 @section('content')
 <x-dashboard-side-bar selected="genre"></x-dashboard-side-bar>
