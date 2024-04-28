@@ -213,6 +213,7 @@ section {
     display: flex;
     align-items: center;
 }
+
 .navbar .brand h5 {
     margin: 0;
 }
