@@ -39,6 +39,8 @@ Route::get("/denied", [AuthController::class, "denied"])->name("denied");
 
 Route::middleware("auth")->group(function() {
     Route::post("/books/{id}/rate", [BooksController::class, "rate"])->name("books.rate");
+    
+    Route::get("/me", [AuthController::class, "show"])->name("user.me");
 });
 
 Route::prefix("/manage")->middleware(["auth", "check.level"])->group(function() {

@@ -1,6 +1,10 @@
 @extends('layouts.dashboard')
 
-@section('title', "Dashboard - Books")
+@section('title', "Dashboard - Orders")
+
+@section('top-nav')
+  <x-dashboard-navigation selected="orders"></x-dashboard-navigation>
+@endsection
 
 @section('content')
 <x-dashboard-side-bar selected="order"></x-dashboard-side-bar>

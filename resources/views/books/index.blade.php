@@ -2,6 +2,10 @@
 
 @section('title', "Dashboard - Books")
 
+@section('top-nav')
+  <x-dashboard-navigation selected="books"></x-dashboard-navigation>
+@endsection
+
 @section('content')
 <x-dashboard-side-bar selected="book"></x-dashboard-side-bar>
 
