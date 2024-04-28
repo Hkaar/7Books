@@ -1,4 +1,5 @@
-<ul class="pagination" style="margin: 0">
+<div class="container overflow-scroll">
+  <ul class="pagination" style="margin: 0">
   @if ($links->onFirstPage())
     <li class="page-item disabled">
       <span class="page-link">Previous</span>
@@ -25,3 +26,4 @@
     </li>
   @endif
 </ul>
+</div>
