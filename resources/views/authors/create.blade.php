@@ -2,6 +2,10 @@
 
 @section('title', "Dashboard - Authors")
 
+@section('top-nav')
+  <x-dashboard-navigation selected="authors"></x-dashboard-navigation>
+@endsection
+
 @section('content')
 <x-dashboard-side-bar selected="author"></x-dashboard-side-bar>
 
