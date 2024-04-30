@@ -440,5 +440,8 @@ section {
     font-weight: var(--text-);
 }
 .right-frame{
-    padding-left: 20%;
+    padding-left: 10%;
+}
+.brand-icon{
+    padding-left: 10%;
 }
