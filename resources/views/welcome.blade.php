@@ -46,7 +46,7 @@
       </div>
   </div>
   <div class="hero-brand">
-      <img src="{{ URL::asset('assets/imgs/7books.png') }}" alt="">
+      <img src="{{ URL::asset('assets/imgs/7books.png') }}" alt="#" class="img-fluid object-fit-cover">
   </div>
 </section>
 <section class="about pt-5">
@@ -190,7 +190,7 @@
     </div>
   </div>
 </section>
-<footer class="d-inline-flex justify-content-start align-items-center bg-secondary pb-4">
+<footer class="d-flex justify-content-start align-items-center bg-secondary pb-5">
   <div class="left-frame">
     <div class="brand justify-content-start">
       <img src="{{ URL::asset('assets/imgs/logo.png') }}">
@@ -201,14 +201,27 @@
       <p>Copyright © SevenBooks Team. All rights reserved.</p>
     </div>
   </div>
-  <div class="right-frame pt-3">
-    <h5 class="ml-5">Explore</h5>
-      <div>
+  <div class="right-frame ml-5 mt-4">
+    <h5>Explore</h5>
+      <ul class="list-unstyled">
         <li class="list-group"><a href="#" class="text-decoration-none text-light lh-lg">Terms of service</a></li>
         <li class="list-group"><a href="#" class="text-decoration-none text-light lh-lg">Privacy of policy</a></li>
         <li class="list-group"><a href="#" class="text-decoration-none text-light lh-lg">Contact us</a></li>
         <li class="list-group"><a href="#" class="text-decoration-none text-light lh-lg">Supported regions</a></li>
-      </div>
+      </ul>
   </div>
-</footer>
+  <div class="brand-icon d-block ml-5 pb-1 mb-3 mt-3">
+    <h5 class="ms-2">Social Media</h5>
+    <ul class="d-flex justify-content-around list-unstyled gap-3">
+      <li><a href="#"><i class="fa-brands fa-facebook fs-3 text-light"></i></a></li>
+      <li><a href="#"><i class="fa-brands fa-instagram fs-3 text-light"></i></a></li>
+      <li><a href="#"><i class="fa-brands fa-whatsapp fs-3 text-light"></i></a></li>
+      <li><a href="#"><i class="fa-brands fa-youtube fs-3 text-light"></i></a></li>
+    </ul>
+    <p class="ms-2">Contact : +62 812-3710-2017 <br>
+    sevenbooks.com    
+    </p>
+
+  </div>
+</footer> 
 @endsection
