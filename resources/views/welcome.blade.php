@@ -26,7 +26,7 @@
         <li class="nav-item">
           <a class="nav-link cursor-pointer">Contact us</a>
         </li>
-        <div class="d-flex align-items-center justify-content-center text-decoration-none color-white fs-5">
+        <div class="d-flex align-items-center justify-content-center text-decoration-none color-white">
           <button class="btn btn-secondary me-1">Login</button>
           <button class="btn btn-primary">Register</button>
         </div>
@@ -34,22 +34,22 @@
     </div>
   </div>
 </nav>
-<section class="hero d-flex justify-content-space-beetween align-items-center mb-5">
-  <div class="left-frame">
+<section class="container d-flex justify-content-space-beetween align-items-center mb-5">
+  <div class="row mt-5">
       <div class="hero-message">
           <h1 class="mb-3">Sail the Knowledge Seas</h1>
-          <h5 class="lh-lg">Looking for a way to read a book from a library? Use our <br> service to read books from your local library</h5>   
+          <h6 class="lh-lg">Looking for a way to read a book from a library? Use our <br> service to read books from your local library</h6>   
       </div>
-      <div class="d-flex">
+      <div class="d-flex mt-4">
           <button class="btn btn-secondary me-3 pt-2 pb-2">What is this?</button>
           <button class="btn btn-primary pt-2 pb-2">Get Started </button>
       </div>
   </div>
   <div class="hero-brand">
-      <img src="{{ URL::asset('assets/imgs/7books.png') }}" alt="#" class="img-fluid object-fit-cover">
+      <img src="{{ URL::asset('assets/imgs/7books.png') }}" class="img-fluid">
   </div>
 </section>
-<section class="about pt-5">
+<section class="container d-flex justify-content-evenly text-justify pt-5">
   <div class="message">
       <h3>Who we are</h3>
       <p class="mb-1">We are a bunch of nerdy bookworm students that <br>
@@ -58,7 +58,7 @@
       </p>
   </div>
   <div class="message">
-      <h3 class="pt-3">Our Mission</h3>
+      <h3>Our Mission</h3>
       <p class="mb-1">Our mission is to provide an easy way for anyone to <br>
       borrow books from their local library, and provide a <br> way to read books
       from places that people forget <br> nowadays
@@ -70,42 +70,42 @@
       <div class="books-slide">
           <div class="book">
               <img src="{{ URL::asset('assets/imgs/book.jpg') }}" alt="">
-              <h5 class="text-center mt-2">Harry Potter</h5>
+              <h6 class="text-center mt-2">Harry Potter</h6>
           </div>
               <div class="book">
                   <img src="{{ URL::asset('assets/imgs/book.jpg') }}" alt="">
-                  <h5 class="text-center mt-2">Lord of the Rings</h5>
+                  <h6 class="text-center mt-2">Lord of the Rings</h6>
               </div>
               <div class="book">
                   <img src="{{ URL::asset('assets/imgs/book.jpg') }}" alt="">
-                  <h5 class="text-center mt-2">Dungeons & Dragons</h5>
+                  <h6 class="text-center mt-2">Dungeons & Dragons</h6>
               </div>
           <div class="book">
               <img src="{{ URL::asset('assets/imgs/book.jpg') }}" alt="">
-              <h5 class="text-center mt-2">Florida Man</h5>
+              <h6 class="text-center mt-2">Florida Man</h6>
           </div>
       </div>
       <h4 class="text-left mt-5">Newly Released</h4>
       <div class="books-slide">
           <div class="book">
               <img src="{{ URL::asset('assets/imgs/book.jpg') }}" alt="">
-              <h5 class="text-center mt-2">Harry Potter</h5>
+              <h6 class="text-center mt-2">Harry Potter</h6>
           </div>
               <div class="book">
                   <img src="{{ URL::asset('assets/imgs/book.jpg') }}" alt="">
-                  <h5 class="text-center mt-2">Lord of the Rings</h5>
+                  <h6 class="text-center mt-2">Lord of the Rings</h6>
               </div>
               <div class="book">
                   <img src="{{ URL::asset('assets/imgs/book.jpg') }}" alt="">
-                  <h5 class="text-center mt-2">Dungeons & Dragons</h5>
+                  <h6 class="text-center mt-2">Dungeons & Dragons</h6>
               </div>
           <div class="book">
               <img src="{{ URL::asset('assets/imgs/book.jpg') }}" alt="">
-              <h5 class="text-center mt-2">Florida Man</h5>
+              <h6 class="text-center mt-2">Florida Man</h6>
           </div>
       </div>
 </section>
-<section class="faq container">
+<section class="container">
   <div class="row">
     <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
       <div class="message">
@@ -191,7 +191,7 @@
   </div>
 </section>
 <footer class="d-flex justify-content-start align-items-center bg-secondary pb-5">
-  <div class="left-frame">
+  <div class="left-frame mt-5 ms-5">
     <div class="brand justify-content-start">
       <img src="{{ URL::asset('assets/imgs/logo.png') }}">
       <h5>Seven Books</h5>
