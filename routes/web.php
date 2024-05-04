@@ -40,7 +40,7 @@ Route::get("/denied", [AuthController::class, "denied"])->name("denied");
 Route::middleware("auth")->group(function() {
     Route::post("/books/{id}/rate", [BooksController::class, "rate"])->name("books.rate");
     
-    Route::get("/me", [AuthController::class, "show"])->name("user.me");
+    Route::get("/me", [AuthController::class, "show"])->name("users.me");
 });
 
 Route::prefix("/manage")->middleware(["auth", "check.level"])->group(function() {
@@ -55,12 +55,10 @@ Route::prefix("/manage")->middleware(["auth", "check.level"])->group(function() 
     Route::resource("/authors", AuthorsController::class)->names("authors");
     Route::resource("/genres", GenreController::class)->names("genres");
     
-
     Route::middleware("check.admin")->group(function() {
         Route::resource("/users", UserController::class)->names("users");
     });
 });
 
 Route::redirect("/manage", "/manage/orders");
-
 Route::get("/browse", [BooksController::class, "browse"])->name("browse");
