@@ -20,7 +20,7 @@
     </article>
   </div>
 
-  <divcol-12 class="col-lg-6">
+  <div class="col-12 col-lg-6">
     <article class="info mb-3">
       <b>Placed at :</b>
       {{ $order->placed }}
