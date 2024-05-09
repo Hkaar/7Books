@@ -372,76 +372,10 @@ section {
 .item-card:active, .item-card:hover {
     cursor: pointer;
 }
-
-
-
-/* Hero */
-
-.left-frame{
-    margin-top: 4rem;
-    margin-left: 4rem;
-}
-.hero-message{
-    margin-bottom: 2rem;
-    max-width: 750px;
-}
-
-.hero button{
-    font-weight: var(--text-semibold);
-}
-.hero-message h5{
-    color: gray;
-    font-weight: var(--text-medium);
-    font-size: 1.2rem;
-}
-.hero-brand img {
-    width: 500px;
-    top: 9%;
-    right: 3%;
-    position: absolute;
-    filter: drop-shadow(10px 10px 10px rgba(0,0,0,0.4));     
-}
-
-/* About */
-
-.about{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
-.message p{
-    font-size: 1.1rem;
-}
-
-/* Book Showcase */
-
-.books-showcase h4{
-    color: var(--text);
-    text-align: left;
-    font-weight: var(--text-regular);
-    margin-left: 9rem;
-}
-.books-slide{
-    display: flex;
-    justify-content:space-around;
-    align-items: center;
-    padding: 0.5rem 9rem;
-    cursor: pointer;
-}
-.book img{
-    width:245px;
+.card img{
+    width: 245px;
     height: 377px;
 }
-.book h5{
-    font-size: 15px;
-}
-.text p:nth-child(2){
-    padding-top: 5rem;
-    font-weight: var(--text-);
-}
-.right-frame{
-    padding-left: 10%;
-}
-.brand-icon{
-    padding-left: 10%;
+.card-text{
+    margin-top: 1rem;
 }

@@ -17,106 +17,148 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active cursor-pointer" aria-current="page" href="#">Browse</a>
+          <a class="nav-link active cursor-pointer" aria-current="page" href="#browse">Browse</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">About us</a>
+          <a class="nav-link" href="#about">About us</a>
         </li>
         </li>
         <li class="nav-item">
-          <a class="nav-link cursor-pointer">Contact us</a>
+          <a class="nav-link cursor-pointer" href="#">Contact us</a>
         </li>
-        <div class="d-flex align-items-center justify-content-center text-decoration-none color-white fs-5">
-          <button class="btn btn-secondary me-1">Login</button>
-          <button class="btn btn-primary">Register</button>
+        <div class="d-flex align-items-center justify-content-start">
+          <button class="btn btn-secondary me-1 fw-medium">Login</button>
+          <button class="btn btn-primary fw-medium">Register</button>
         </div>
       </ul>
     </div>
   </div>
 </nav>
-<section class="hero d-flex justify-content-space-beetween align-items-center mb-5">
-  <div class="left-frame">
-      <div class="hero-message">
-          <h1 class="mb-3">Sail the Knowledge Seas</h1>
-          <h5 class="lh-lg">Looking for a way to read a book from a library? Use our <br> service to read books from your local library</h5>   
+<section id="browse">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-5 d-block d-md-none">
+        <img src="{{ URL::asset('assets/imgs/7books.png') }}" class="img-fluid">
       </div>
-      <div class="d-flex">
-          <button class="btn btn-secondary me-3 pt-2 pb-2">What is this?</button>
-          <button class="btn btn-primary pt-2 pb-2">Get Started </button>
+      <div class="col-md-7 mt-5">
+        <h1 class="mb-3 fw-bold">Sail the Knowledge Seas</h1>
+        <h6 class="lh-lg text-secondary">Looking for a way to read a book from a library? Use our <br> service to read books from your local library</h6>
+        <div class="d-flex mt-4">
+          <button class="btn btn-secondary me-3 fw-semibold">What is this?</button>
+          <button class="btn btn-primary fw-semibold">Get Started </button>
+        </div>
       </div>
-  </div>
-  <div class="hero-brand">
-      <img src="{{ URL::asset('assets/imgs/7books.png') }}" alt="#" class="img-fluid object-fit-cover">
-  </div>
-</section>
-<section class="about pt-5">
-  <div class="message">
-      <h3>Who we are</h3>
-      <p class="mb-1">We are a bunch of nerdy bookworm students that <br>
-      provide a easy way to borrow books from a library <br>
-      through an online platform
-      </p>
-  </div>
-  <div class="message">
-      <h3 class="pt-3">Our Mission</h3>
-      <p class="mb-1">Our mission is to provide an easy way for anyone to <br>
-      borrow books from their local library, and provide a <br> way to read books
-      from places that people forget <br> nowadays
-      </p>
+      <div class="col-md-5 d-none d-md-block">
+      <img src="{{ URL::asset('assets/imgs/7books.png') }}" class="img-fluid">
+      </div>
+    </div>
   </div>
 </section>
-<section class="books-showcase d-block justify-content-center align-items-center mb-5">
-  <h4 class="text-left mt-5">Curently Trending</h4>
-      <div class="books-slide">
-          <div class="book">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" alt="">
-              <h5 class="text-center mt-2">Harry Potter</h5>
-          </div>
-              <div class="book">
-                  <img src="{{ URL::asset('assets/imgs/book.jpg') }}" alt="">
-                  <h5 class="text-center mt-2">Lord of the Rings</h5>
-              </div>
-              <div class="book">
-                  <img src="{{ URL::asset('assets/imgs/book.jpg') }}" alt="">
-                  <h5 class="text-center mt-2">Dungeons & Dragons</h5>
-              </div>
-          <div class="book">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" alt="">
-              <h5 class="text-center mt-2">Florida Man</h5>
-          </div>
+<section id="about">
+  <div class="container">
+    <div class="row justify-content-around align-items-center mt-5 mb-5">
+      <div class="col-md-5">
+        <h3>Who We Are</h3>
+        <p class="mb-1 text-start">
+          We are a bunch of nerdy bookworm students that
+          provide a easy way to borrow books from a library
+          through an online platform
+        </p>
       </div>
-      <h4 class="text-left mt-5">Newly Released</h4>
-      <div class="books-slide">
-          <div class="book">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" alt="">
-              <h5 class="text-center mt-2">Harry Potter</h5>
-          </div>
-              <div class="book">
-                  <img src="{{ URL::asset('assets/imgs/book.jpg') }}" alt="">
-                  <h5 class="text-center mt-2">Lord of the Rings</h5>
-              </div>
-              <div class="book">
-                  <img src="{{ URL::asset('assets/imgs/book.jpg') }}" alt="">
-                  <h5 class="text-center mt-2">Dungeons & Dragons</h5>
-              </div>
-          <div class="book">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" alt="">
-              <h5 class="text-center mt-2">Florida Man</h5>
-          </div>
+      <div class="col-md-5">
+        <h3 class="pt-3">Our Mission</h3>
+        <p class="mb-1">
+          Our mission is to provide an easy way for anyone to
+          borrow books from their local library, and provide away to read books
+          from places that people forget nowadays
+        </p>
       </div>
+    </div>
+  </div>
 </section>
-<section class="faq container">
-  <div class="row">
-    <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
-      <div class="message">
+<section id="books">
+  <div class="container">
+    <div class="row justify-content-evenly text-center mt-5 mb-5">
+      <h4 class="fw-normal text-start mb-3">Curently Trending</h4>
+      <div class="col-md-3">
+        <div class="border-0">
+          <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid">
+          <div class="card-body">
+            <p class="card-text">Harry Potter</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="border-0">
+          <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid">
+          <div class="card-body">
+            <p class="card-text">Lord Of The Rings</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="border-0">
+          <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid">
+          <div class="card-body">
+            <p class="card-text">Dungeons & Dragons</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="border-0">
+          <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid">
+          <div class="card-body">
+            <p class="card-text">Florida Man</p>
+          </div>
+        </div>
+      </div>
+      <h4 class="fw-normal text-start mb-3 mt-5">Newly Released</h4>
+      <div class="col-md-3">
+        <div class="border-0">
+          <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid">
+          <div class="card-body">
+            <p class="card-text">Harry Potter</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="border-0">
+          <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid">
+          <div class="card-body">
+            <p class="card-text">Lord Of The Rings</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="border-0">
+          <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid">
+          <div class="card-body">
+            <p class="card-text">Dungeons & Dragons</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="border-0">
+          <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid">
+          <div class="card-body">
+            <p class="card-text">Florida Man</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="faq">
+  <div class="container">
+    <div class="row justify-content-center align-items-center mt-5">
+      <div class="col-md-6">
         <h4>FAQ</h4>
-          <p>
-            Want to know more? See the answers to our <br>
-            commonly asked questions
-          </p>
+        <p>
+          Want to know more? See the answers to our <br>
+          commonly asked questions
+        </p>
       </div>
-    </div> 
-    <div class="col-12 col-md-6">
+      <div class="col-md-6">
       <div class="accordion" id="accordionPanelsStayOpenExample">
         <div class="accordion-item mb-3">
           <h2 class="accordion-header" id="panelsStayOpen-headingOne">
@@ -188,9 +230,18 @@
         </div>
       </div>
     </div>
+    </div>
   </div>
 </section>
-<footer class="d-flex justify-content-start align-items-center bg-secondary pb-5">
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col"></div>
+    </div>
+  </div>
+</footer>
+
+<!-- <footer class="d-flex justify-content-start align-items-center bg-secondary pb-5">
   <div class="left-frame">
     <div class="brand justify-content-start">
       <img src="{{ URL::asset('assets/imgs/logo.png') }}">
@@ -223,5 +274,5 @@
     </p>
 
   </div>
-</footer> 
+</footer>  -->
 @endsection
