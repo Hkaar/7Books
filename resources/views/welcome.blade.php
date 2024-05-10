@@ -24,9 +24,9 @@
         </li>
         </li>
         <li class="nav-item">
-          <a class="nav-link cursor-pointer">Contact us</a>
+          <a class="nav-link" href="#">Contact us</a>
         </li>
-        <div class="d-flex align-items-center justify-content-center text-decoration-none color-white">
+        <div class="d-flex align-items-center justify-content-start">
           <button class="btn btn-secondary me-1">Login</button>
           <button class="btn btn-primary">Register</button>
         </div>
@@ -34,89 +34,135 @@
     </div>
   </div>
 </nav>
-<section class="container d-flex justify-content-space-beetween align-items-center mb-5">
-  <div class="row mt-5">
-      <div class="hero-message">
-          <h1 class="mb-3">Sail the Knowledge Seas</h1>
-          <h6 class="lh-lg">Looking for a way to read a book from a library? Use our <br> service to read books from your local library</h6>   
+<section id="hero">
+  <div class="container mb-5">
+    <div class="row">
+      <div class="col-md-5 d-block d-md-none">
+        <img src="{{ URL::asset('assets/imgs/7books.png') }}" class="img-fluid">
       </div>
-      <div class="d-flex mt-4">
-          <button class="btn btn-secondary me-3 pt-2 pb-2">What is this?</button>
-          <button class="btn btn-primary pt-2 pb-2">Get Started </button>
+      <div class="col-md-7 mt-5">
+        <h1>Sail The Knowledge Seas</h1>
+        <h6 class="text-secondary lh-lg">Looking for a way to read a book from a library? Use our <br>
+         service to read books from your local library</h6>
+         <div class="flex mt-3">
+          <button class="btn btn-secondary fw-medium">What is this</button>
+          <button class="btn btn-primary ms-3 fw-medium">Get Started</button>
+         </div>
       </div>
-  </div>
-  <div class="hero-brand">
-      <img src="{{ URL::asset('assets/imgs/7books.png') }}" class="img-fluid">
-  </div>
-</section>
-<section class="container d-flex justify-content-evenly text-justify pt-5">
-  <div class="message">
-      <h3>Who we are</h3>
-      <p class="mb-1">We are a bunch of nerdy bookworm students that <br>
-      provide a easy way to borrow books from a library <br>
-      through an online platform
-      </p>
-  </div>
-  <div class="message">
-      <h3>Our Mission</h3>
-      <p class="mb-1">Our mission is to provide an easy way for anyone to <br>
-      borrow books from their local library, and provide a <br> way to read books
-      from places that people forget <br> nowadays
-      </p>
+      <div class="col-md-5 d-none d-md-block">
+        <img src="{{ URL::asset('assets/imgs/7books.png') }}" class="img-fluid">
+      </div>
+    </div>
   </div>
 </section>
-<section class="books-showcase d-block justify-content-center align-items-center mb-5">
-  <h4 class="text-left mt-5">Curently Trending</h4>
-      <div class="books-slide">
-          <div class="book">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" alt="">
-              <h6 class="text-center mt-2">Harry Potter</h6>
-          </div>
-              <div class="book">
-                  <img src="{{ URL::asset('assets/imgs/book.jpg') }}" alt="">
-                  <h6 class="text-center mt-2">Lord of the Rings</h6>
-              </div>
-              <div class="book">
-                  <img src="{{ URL::asset('assets/imgs/book.jpg') }}" alt="">
-                  <h6 class="text-center mt-2">Dungeons & Dragons</h6>
-              </div>
-          <div class="book">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" alt="">
-              <h6 class="text-center mt-2">Florida Man</h6>
-          </div>
+<section id="about">
+  <div class="container">
+    <div class="row justify-content-around">
+      <div class="col-md-5">
+        <h3>Who We Are</h3>
+        <p>We  are a bunch of nerdy bookworm students that provide 
+          a easy way to borrow books from a library through an online platform</p>
       </div>
-      <h4 class="text-left mt-5">Newly Released</h4>
-      <div class="books-slide">
-          <div class="book">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" alt="">
-              <h6 class="text-center mt-2">Harry Potter</h6>
-          </div>
-              <div class="book">
-                  <img src="{{ URL::asset('assets/imgs/book.jpg') }}" alt="">
-                  <h6 class="text-center mt-2">Lord of the Rings</h6>
-              </div>
-              <div class="book">
-                  <img src="{{ URL::asset('assets/imgs/book.jpg') }}" alt="">
-                  <h6 class="text-center mt-2">Dungeons & Dragons</h6>
-              </div>
-          <div class="book">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" alt="">
-              <h6 class="text-center mt-2">Florida Man</h6>
-          </div>
+      <div class="col-md-5">
+        <h3>Our Mission</h3>
+        <p>Our mission is to provide an easy way for anyone to borrow books from their local library,
+           and provide a way to read books from places that people forget nowadays</p>
       </div>
+    </div>
+  </div>
 </section>
-<section class="container">
-  <div class="row">
-    <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
-      <div class="message">
+<section id="books">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+      <h4 class="fw-normal mb-3">Currently Trending</h4>
+      </div>
+    </div>
+    <div class="row text-center">
+      <div class="col-md-3">
+        <div class="border-0">
+          <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid" style="width:245px; height:377px">
+          <div class="card-body mt-3">
+            <p class="fw-semibold">Harry Potter</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="border-0">
+          <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid" style="width:245px; height:377px">
+          <div class="card-body mt-3">
+            <p class="fw-semibold">Lord Of The Rings</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="border-0">
+          <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid" style="width:245px; height:377px">
+          <div class="card-body mt-3">
+            <p class="fw-semibold">Dungeons & Dragons</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="border-0">
+          <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid" style="width:245px; height:377px">
+          <div class="card-body mt-3">
+            <p class="fw-semibold">Florida Man</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+      <h4 class="fw-normal mb-3 mt-5">Newly Released</h4>
+      </div>
+    </div>
+    <div class="row text-center">
+      <div class="col-md-3">
+        <div class="border-0">
+          <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid" style="width:245px; height:377px">
+          <div class="card-body mt-3">
+            <p class="fw-semibold">Harry Potter</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="border-0">
+          <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid" style="width:245px; height:377px">
+          <div class="card-body mt-3">
+            <p class="fw-semibold">Lord Of The Rings</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="border-0">
+          <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid" style="width:245px; height:377px">
+          <div class="card-body mt-3">
+            <p class="fw-semibold">Dungeons & Dragons</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="border-0">
+          <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid" style="width:245px; height:377px">
+          <div class="card-body mt-3">
+            <p class="fw-semibold">Florida Man</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="faq">
+  <div class="container mt-5">
+    <div class="row justify-content-around align-items-center">
+      <div class="col-md-6">
         <h4>FAQ</h4>
-          <p>
-            Want to know more? See the answers to our <br>
-            commonly asked questions
-          </p>
+        <p>
+        Want to know more? See the answers to our <br> commonly asked questions
+        </p>
       </div>
-    </div> 
-    <div class="col-12 col-md-6">
+      <div class="col-md-6">
       <div class="accordion" id="accordionPanelsStayOpenExample">
         <div class="accordion-item mb-3">
           <h2 class="accordion-header" id="panelsStayOpen-headingOne">
@@ -188,40 +234,42 @@
         </div>
       </div>
     </div>
+    </div>
   </div>
 </section>
-<footer class="d-flex justify-content-start align-items-center bg-secondary pb-5">
-  <div class="left-frame mt-5 ms-5">
-    <div class="brand justify-content-start">
-      <img src="{{ URL::asset('assets/imgs/logo.png') }}">
-      <h5>Seven Books</h5>
+<footer class="bg-secondary">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col mt-5">
+        <div class="col-md-8 d-flex align-items-center">
+          <img src="{{ URL::asset('assets/imgs/logo.png') }}" class="img-fluid" style="width:50px">
+          <h5 class="ms-2">Seven Books</h5>
+        </div>
+        <p class="mt-3">Sail through the sea of knowledge</p>
+      </div>
+      <div class="col-md-4 mt-5">
+        <h5>Exproller</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-decoration-none text-light">Terms of service</a></li>
+          <li><a href="#" class="text-decoration-none text-light">Privacy Policy</a></li>
+          <li><a href="#" class="text-decoration-none text-light">Contact us</a></li>
+          <li><a href="#" class="text-decoration-none text-light">Supported Regions</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3 mt-5">
+        <h5>Follow us</h5>
+        <div class="mt-2">
+          <a href=""><i class="fa-brands fa-facebook fs-3 text-light"></i></a>
+          <a href=""><i class="fa-brands fa-instagram fs-3 text-light ms-2"></i></a>
+          <a href=""><i class="fa-brands fa-youtube fs-3 text-light ms-2"></i></a>
+          <a href=""><i class="fa-brands fa-whatsapp fs-3 text-light ms-2"></i></a>
+        </div>
+        <div class="mt-2">
+        <i class="fa-solid fa-user"><a href="#" class="text-decoration-none text-light ms-2">+62 812-3710-2017</a></i>
+        </div>
+      </div>
+      <a href="#" class="text-decoration-none text-light mt-4 pb-2">Copyright © SevenBooks Team. All rights reserved.</a>
     </div>
-    <div class="text d-block justify-content-start align-items-center">
-      <p class="mt-3">Sail through the sea of knowledge</p>
-      <p>Copyright © SevenBooks Team. All rights reserved.</p>
-    </div>
   </div>
-  <div class="right-frame ml-5 mt-4">
-    <h5>Explore</h5>
-      <ul class="list-unstyled">
-        <li class="list-group"><a href="#" class="text-decoration-none text-light lh-lg">Terms of service</a></li>
-        <li class="list-group"><a href="#" class="text-decoration-none text-light lh-lg">Privacy of policy</a></li>
-        <li class="list-group"><a href="#" class="text-decoration-none text-light lh-lg">Contact us</a></li>
-        <li class="list-group"><a href="#" class="text-decoration-none text-light lh-lg">Supported regions</a></li>
-      </ul>
-  </div>
-  <div class="brand-icon d-block ml-5 pb-1 mb-3 mt-3">
-    <h5 class="ms-2">Social Media</h5>
-    <ul class="d-flex justify-content-around list-unstyled gap-3">
-      <li><a href="#"><i class="fa-brands fa-facebook fs-3 text-light"></i></a></li>
-      <li><a href="#"><i class="fa-brands fa-instagram fs-3 text-light"></i></a></li>
-      <li><a href="#"><i class="fa-brands fa-whatsapp fs-3 text-light"></i></a></li>
-      <li><a href="#"><i class="fa-brands fa-youtube fs-3 text-light"></i></a></li>
-    </ul>
-    <p class="ms-2">Contact : +62 812-3710-2017 <br>
-    sevenbooks.com    
-    </p>
-
-  </div>
-</footer> 
+</footer>
 @endsection
