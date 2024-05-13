@@ -32,15 +32,12 @@ jobs:
       
       - name: Run composer install
         run: composer install -n --prefer-dist
-      
-      - name: Generate env
-        run: mv .env.example .env
 
       - name: Run migrations
-        run: php artisan migrate
+        run: php artisan migrate --env=testing
 
       - name: Generate key
-        run: php artisan key:generate
+        run: php artisan key:generate --env=testing
 
       - name: Run tests
         run: php artisan test
