@@ -135,6 +135,14 @@ section {
     border: none;
 }
 
+.text-inherit {
+    color: inherit !important;
+}
+
+.text-none {
+    text-decoration: none;
+}
+
 #preview img {
     object-fit: cover;
     border-radius: 20px;
@@ -171,39 +179,30 @@ section {
     padding: 40px;
 }
 
-.brand {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-    flex-flow: row wrap;
-    justify-content: center;
+.ratio-box {
+    aspect-ratio: 1/1;
 }
 
-.brand img {
-    max-width: 50px;
-    max-height: 50px;
+.ratio-wide-box {
+    aspect-ratio: 4/3;
 }
 
-/* Authentication */
-.auth-box {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    align-items: center;
-    max-width: 500px;
+.ratio-landscape {
+    aspect-ratio: 16/9;
 }
 
-.auth-box .fields {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+.ratio-portrait {
+    aspect-ratio: 9/16;
 }
 
-.auth-box .actions {
-    display: flex;
-    gap: 10px;
+.img-logo {
+    width: 50px;
+    height: 50px;
+}
+
+.img-small-logo {
+    width: 40px;
+    height: 40px;
 }
 
 /* Navigation */
