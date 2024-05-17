@@ -3,15 +3,14 @@
 @section('title', "Login")
     
 @section('main')
-<div class="flex-fill d-flex align-items-center justify-content-center">
-  <div class="auth-box bordered">
-
-    <article class="brand">
-      <img src="{{ URL::asset('assets/imgs/logo.png') }}" alt="Image not available">
+<div class="container min-vh-100 d-flex align-items-center justify-content-center">
+  <div class="shadow px-4 py-3 p-md-5 rounded">
+    <a href="{{ route('/') }}" class="d-flex align-items-center justify-content-center flex-column flex-md-row gap-2 mb-4 text-center text-inherit text-none">
+      <img src="{{ URL::asset('assets/imgs/logo.png') }}" alt="Image not available" class="img-fluid ratio-box img-logo">
       <h3>Seven Books</h3>
-    </article>
+    </a>
 
-    <form method="POST" action="{{ route('login') }}" class="fields">
+    <form method="POST" action="{{ route('login') }}" class="d-flex flex-column gap-3 w-100 mb-4">
       @csrf
 
       <div>
@@ -26,7 +25,7 @@
       <div>
         <label for="password" class="form-label">Password</label>
         <input class="form-control" id="password" type="password" name="password" required>
-       
+        
         @error('password')
           <span>{{ $message }}</span>
         @enderror
@@ -44,7 +43,7 @@
     </form>
 
     <p>
-      Don’t have a account? try <a href="/register">registering</a> with us!
+      Don't have a account? try <a href="/register">registering</a> with us!
     </p>
   </div>
 </div>
