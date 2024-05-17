@@ -200,6 +200,11 @@ section {
     height: 50px;
 }
 
+.img-small-logo {
+    width: 40px;
+    height: 40px;
+}
+
 /* Navigation */
 .navbar {
     border-bottom: 1px solid gray;
