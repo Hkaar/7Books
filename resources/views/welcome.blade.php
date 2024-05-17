@@ -5,13 +5,13 @@
 @section('main')
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
-    <article class="brand">
-      <img src="{{ URL::asset('assets/imgs/logo.png') }}" alt="">
-      <h5>Seven Books</h5>
-    </article>
+    <a href="{{ route('/') }}" class="d-flex align-items-center justify-content-center gap-2 text-center text-inherit text-none">
+      <img src="{{ URL::asset('assets/imgs/logo.png') }}" alt="Image not available" class="img-fluid ratio-box img-small-logo">
+      <h6 class="fw-bold">Seven Books</h6>
+    </a>
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+      <i class="fa-solid fa-bars text-inherit"></i>
     </button>
     
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -27,13 +27,14 @@
           <a class="nav-link" href="#">Contact us</a>
         </li>
         <div class="d-flex align-items-center justify-content-start">
-          <button class="btn btn-secondary me-1">Login</button>
-          <button class="btn btn-primary">Register</button>
+          <a href="{{ route('login') }}" class="btn btn-secondary me-1">Login</a>
+          <a href="{{ route('register') }}" class="btn btn-primary">Register</a>
         </div>
       </ul>
     </div>
   </div>
 </nav>
+
 <section id="hero">
   <div class="container mb-5">
     <div class="row">
