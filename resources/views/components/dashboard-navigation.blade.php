@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg shadow-sm">
   <div class="container-fluid">
     <article class="brand">
       <h5>Dashboard</h5>
@@ -9,7 +9,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto mb-3 mb-lg-0 mt-2 mt-lg-0">
+      <ul class="navbar-nav ms-auto mb-lg-0 mt-2 mt-lg-0">
         @if ($selected == "users")
           <li class="nav-item d-lg-none">
             <a class="nav-link active" aria-current="page" href="{{ route('users.index') }}">Users</a>
@@ -61,7 +61,7 @@
         @endif
 
         <li class="nav-item mt-3 mt-lg-0">
-          <a class="nav-link btn btn-danger px-3" aria-current="page" href="{{ route('logout') }}">Logout</a>
+          <a class="nav-link text-danger px-3" aria-current="page" href="{{ route('logout') }}">Logout</a>
         </li>
       </ul>
     </div>
