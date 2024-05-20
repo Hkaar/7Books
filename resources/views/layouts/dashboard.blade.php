@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @section('main')
-@yield('top-nav')
-
-<div class="d-flex flex-fill" style="gap: 20px">
+<div class="d-flex min-vh-100">
   @yield('content')
 </div>
 @endsection

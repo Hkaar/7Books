@@ -14,7 +14,7 @@
   <script src="{{ URL::asset('js/modules/htmx.js') }}"></script>
 </head>
 <body>
-  <main id="app" class="d-flex flex-column">
+  <main id="app" class="min-vh-100">
     @yield('main')
   </main>
 
