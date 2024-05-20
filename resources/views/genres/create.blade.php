@@ -2,53 +2,56 @@
 
 @section('title', "Dashboard - Genres")
 
-@section('top-nav')
-  <x-dashboard-navigation selected="Genres"></x-dashboard-navigation>
-@endsection
-
 @section('content')
 <x-dashboard-side-bar selected="genre"></x-dashboard-side-bar>
 
-<div id="dashboardLeftFrame" class="container">
-  <div class="row flex-fill">
-    <div class="col-12 col-md-6 d-flex align-items-center justify-content-center mb-3">
-      <div class="large-thumbnail">
-        <img src="{{ URL::asset('assets/imgs/logo.png') }}" alt="Image not available...">
-      </div>
-    </div>
+<div id="dashboardLeftFrame" class="flex-fill mw-100 d-flex flex-column">
+  <x-dashboard-navigation selected="Genres"></x-dashboard-navigation>
 
-    <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
-      <div class="container">
-        <form method="POST" action="{{ route('genres.store') }}" enctype="multipart/form-data">
-          @csrf
-      
-          <div class="mb-3">
-            <label for="name" class="form-label">Name</label>
-            <input class="form-control" id="name" type="text" name="name" required autofocus>
-            
-            @error('name')
-              <span>{{ $message }}</span>
-            @enderror
-          </div>
-      
-          <div class="d-flex align-items-center">
-            <button type="button" class="btn btn-secondary me-auto"
-              data-bs-target="#selectItems"
-              data-bs-toggle="modal"
-              hx-get="{{ route('books.select') }}"
-              hx-target="#selectItemsBody"
-              hx-on::after-request="updateItemCards()"
-              hx-swap="innerHTML"
-            >Select Books</button>
-      
-            <a href="{{ route('genres.index') }}" class="btn btn-danger me-1">Cancel</a>
-            <button type="submit" class="btn btn-primary">Create</button>
-          </div>
-      
-          <input type="hidden" name="items" id="items">
-        </form>
+  <div class="container flex-fill d-flex flex-column">
+    <div class="row flex-fill mt-auto">
+      <div class="col-12 col-md-6 d-flex align-items-center justify-content-center mb-3">
+        <div class="large-thumbnail mb-3 mb-md-0 mt-3 mt-md-0">
+          <img src="{{ URL::asset('assets/imgs/logo.png') }}" alt="Image not available...">
+        </div>
+      </div>
+  
+      <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
+        <div class="container">
+          <form method="POST" action="{{ route('genres.store') }}" enctype="multipart/form-data" class="shadow p-3 rounded">
+            @csrf
+        
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input class="form-control" id="name" type="text" name="name" required autofocus>
+              
+              @error('name')
+                <span>{{ $message }}</span>
+              @enderror
+            </div>
+        
+            <div class="d-flex align-items-md-center flex-column flex-md-row gap-1">
+              <button type="button" class="btn btn-secondary me-0 me-md-auto"
+                data-bs-target="#selectItems"
+                data-bs-toggle="modal"
+                hx-get="{{ route('books.select') }}"
+                hx-target="#selectItemsBody"
+                hx-on::after-request="updateItemCards()"
+                hx-swap="innerHTML"
+              >Select Books</button>
+        
+              <div class="d-flex gap-1">
+                <a href="{{ route('genres.index') }}" class="btn btn-danger flex-fill">Cancel</a>
+                <button type="submit" class="btn btn-primary flex-fill">Create</button>
+              </div>
+            </div>
+        
+            <input type="hidden" name="items" id="items">
+          </form>
+        </div>
       </div>
     </div>
   </div>
+  
 </div>
 @endsection
