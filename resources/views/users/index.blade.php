@@ -8,7 +8,7 @@
 <div id="dashboardLeftFrame" class="flex-fill mw-100">
   <x-dashboard-navigation selected="users"></x-dashboard-navigation>
   
-  <div class="container mt-3">
+  <div class="container my-3">
     <div class="mb-3 d-flex align-items-center justify-content-end">
       <a class="btn btn-success" href="{{ route('users.create') }}">Add a user</a>
     </div>
