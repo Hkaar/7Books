@@ -266,7 +266,7 @@
           <a href=""><i class="fa-brands fa-whatsapp fs-3 text-light ms-2"></i></a>
         </div>
         <div class="mt-2">
-        <i class="fa-solid fa-user"><a href="#" class="text-decoration-none text-light ms-2">+62 812-3710-2017</a></i>
+        <i class="fa-solid fa-user"><a href="#" class="text-decoration-none text-light ms-2">+62 813-3820-2018</a></i>
         </div>
       </div>
       <a href="#" class="text-decoration-none text-light mt-4 pb-2">Copyright © SevenBooks Team. All rights reserved.</a>
