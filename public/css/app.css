@@ -360,3 +360,16 @@ section {
 .item-card:active, .item-card:hover {
     cursor: pointer;
 }
+
+#hero, #about, p{
+    text-align: justify;
+    padding: 0 0.3rem;
+}
+
+#books p{
+    text-align: center;
+}
+
+#faq .accordion-body{
+    text-align: justify;
+}
