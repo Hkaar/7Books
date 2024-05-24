@@ -368,8 +368,18 @@ section {
 
 #books p{
     text-align: center;
+    font-size: 0.8rem;
 }
 
 #faq .accordion-body{
     text-align: justify;
 }
+
+.card{
+    transition: 0.4s;
+}
+.card:hover{
+    cursor: pointer;
+    transform: scale(0.90);
+}
+
