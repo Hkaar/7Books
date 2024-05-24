@@ -52,7 +52,7 @@
       </div>
       <div class="col-md-6 d-none d-md-block">
         <h2 class="fw-bold">Sail The Knowledge Seas</h2>
-        <p class="text-secondary lh-lg">Looking for a way to read a book from a library? Use our 
+        <p class="text-secondary lh-lg">Looking for a way to read a book from a library? Use our
          service to read books from your local library</p>
          <div class="flex mt-2">
           <button class="btn btn-secondary fw-medium">What is this</button>
@@ -263,7 +263,7 @@
           <img src="{{ URL::asset('assets/imgs/logo.png') }}" class="img-fluid" style="width:50px">
           <h5 class="ms-2">Seven Books</h5>
         </div>
-        <p class="mt-3">Sail through the sea of knowledge</p>
+        <h6 class="mt-3 fs-6">Sail through the sea of knowledge</h6>
       </div>
       <div class="col-md-4 mt-5">
         <h5>Exproller</h5>
@@ -276,14 +276,14 @@
       </div>
       <div class="col-md-3 mt-5">
         <h5>Follow us</h5>
-        <div class="mt-2">
-          <a href=""><i class="fa-brands fa-facebook fs-3 text-light"></i></a>
-          <a href=""><i class="fa-brands fa-instagram fs-3 text-light ms-2"></i></a>
-          <a href=""><i class="fa-brands fa-youtube fs-3 text-light ms-2"></i></a>
-          <a href=""><i class="fa-brands fa-whatsapp fs-3 text-light ms-2"></i></a>
+        <div>
+          <a href="#"><i class="fa-brands fa-facebook fs-4 text-light"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram fs-4 text-light ms-2"></i></a>
+          <a href="#"><i class="fa-brands fa-youtube fs-4 text-light ms-2"></i></a>
+          <a href="#"><i class="fa-brands fa-whatsapp fs-4 text-light ms-2"></i></a>
         </div>
         <div class="mt-2">
-        <i class="fa-solid fa-user"><a href="#" class="text-decoration-none text-light ms-2">+62 813-3820-2018</a></i>
+        <i class="fa-solid fa-user"><a href="whatsapp://send?text=Hello&phone=+6281237102017" class="text-decoration-none text-light ms-2">+62 812-3710-2017</a></i>
         </div>
       </div>
       <a href="#" class="text-decoration-none text-light mt-4 pb-2">Copyright © SevenBooks Team. All rights reserved.</a>
