@@ -17,14 +17,7 @@ class Genre extends Model
     protected $fillable = [
         "name"
     ];
-
-    /**
-     * Indicates if the model should be timestamped.
-     *
-     * @var bool
-     */
-    public $timestamps = false;
-
+    
     /**
      * Define the relationship with books
      */
