@@ -19,6 +19,7 @@ return new class extends Migration
             $table->dateTime("placed")->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->dateTime("return_date");
             $table->string("status")->default("pending");
+            $table->timestamps();
         });
     }
 
