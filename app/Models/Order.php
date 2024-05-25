@@ -23,13 +23,6 @@ class Order extends Model
     ];
 
     /**
-     * Indicates if the model should be timestamped.
-     *
-     * @var bool
-     */
-    public $timestamps = false;
-
-    /**
      * Define the relationship with order items
      */
     public function items()
