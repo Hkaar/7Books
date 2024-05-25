@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer("stock");
             $table->integer("amount_borrowed")->default(0);
             $table->string("img")->nullable();
+            $table->timestamps();
         });
     }
 

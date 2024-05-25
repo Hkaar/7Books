@@ -9,8 +9,24 @@
   <x-dashboard-navigation selected="users"></x-dashboard-navigation>
   
   <div class="container my-3">
-    <div class="mb-3 d-flex align-items-center justify-content-end">
+    <div class="mb-3 d-flex align-items-center justify-content-between">
       <a class="btn btn-success" href="{{ route('users.create') }}">Add a user</a>
+
+      <form action="" method="get" class="d-flex gap-1">
+        <label for="sortBy">Sort by</label>
+        <select class="form-select" id="sortBy" aria-label="Default select example">
+          <option selected>Slect date</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+
+        <select class="form-select" aria-label="Default select example">
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+      </form>
     </div>
     
     <div class="table-responsive">
