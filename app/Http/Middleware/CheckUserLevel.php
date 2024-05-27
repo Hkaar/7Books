@@ -24,6 +24,6 @@ class CheckUserLevel
             return $next($request);
         }
 
-        return redirect()->route("login.show");
+        return redirect()->route("denied");
     }
 }
