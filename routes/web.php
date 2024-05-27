@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\OrdersController;
-use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AuthorsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BooksController;
@@ -24,23 +23,26 @@ Route::get('/', function () {
     return view('welcome');
 })->name("/");
 
-Route::prefix("/login")->group(function() {
-    Route::get("", [AuthController::class, "showLogin"])->name("login.show");
-    Route::post("", [AuthController::class, "authenticate"])->name("login");
+Route::group(["namespace" => "App\Http\Controllers"], function() {
+    Route::group(["middleware" => ["guest"]], function() {
+        Route::get("/register", "RegisterController@show")->name("register.show");
+        Route::post("/register", "RegisterController@register")->name("register");
+
+        Route::get("/login", "LoginController@show")->name("login.show");
+        Route::post("/login", "LoginController@login")->name("login");
+    });
+
+    Route::group(["middleware" => ["auth"]], function() {
+        Route::get("/logout", "LogoutController@perform")->name("logout");
+    });
 });
 
-Route::prefix("/register")->group(function() {
-    Route::get("", [AuthController::class, "showRegister"])->name("register.show");
-    Route::post("", [AuthController::class, "register"])->name("register");
-});
-
-Route::get("/logout", [AuthController::class, "logout"])->name("logout");
-Route::get("/denied", [AuthController::class, "denied"])->name("denied");
+Route::get("/denied", function() {
+    return view("auth.denied");
+})->name("denied");
 
 Route::middleware("auth")->group(function() {
     Route::post("/books/{id}/rate", [BooksController::class, "rate"])->name("books.rate");
-    
-    Route::get("/me", [AuthController::class, "show"])->name("users.me");
 });
 
 Route::prefix("/manage")->middleware(["auth", "check.level"])->group(function() {
