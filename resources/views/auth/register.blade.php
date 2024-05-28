@@ -14,9 +14,9 @@
       @csrf
 
       <div>
-        <label for="name" class="form-label">Name</label>
-        <input class="form-control" id="name" type="text" name="name" value="{{ old('name') }}" required autofocus>
-        @error('name')
+        <label for="username" class="form-label">Username</label>
+        <input class="form-control" id="username" type="text" name="username" value="{{ old('username') }}" required autofocus>
+        @error('username')
           <span>{{ $message }}</span>
         @enderror
       </div>
