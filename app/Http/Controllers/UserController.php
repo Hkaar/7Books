@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\User;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 use Intervention\Image\Laravel\Facades\Image;
@@ -39,7 +38,8 @@ class UserController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'username' => 'required|string|max:255|unique:users,username',
+            'email' => 'required|string|email|max:255|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required|string|min:8',
             "level" => 'nullable|string',
@@ -47,6 +47,7 @@ class UserController extends Controller
         ]);
 
         $user = new User();
+        $user->fill($validated);
 
         if ($request->hasFile('img'))
         {
@@ -64,10 +65,6 @@ class UserController extends Controller
             $user->img = $filePath;
         }
 
-        $user->name = $validated['name'];
-        $user->email = $validated['email'];
-        $user->password = Hash::make($validated['password']);
-        $user->level = $validated["level"];
         $user->save();
 
         return redirect()->route('users.index');
@@ -106,6 +103,7 @@ class UserController extends Controller
 
         $validated = $request->validate([
             'name' => 'nullable|string|max:255',
+            'username' => 'nullable|string|max:255|unique:users,username',
             'email' => 'nullable|string|email|max:255|unique:users',
             'password' => 'nullable|string|min:8|confirmed',
             'password_confirmation' => 'nullable|string|min:8',
@@ -134,12 +132,8 @@ class UserController extends Controller
         }
 
         unset($validated["img"]);
+
         $this->updateModel($user, $validated, ["password_confirmation"]);
-
-        if ($validated["password"]) {
-            $user->password = Hash::make($validated['password']);
-        }
-
         $user->save();
 
         return redirect()->route('users.index');
