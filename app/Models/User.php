@@ -3,10 +3,13 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -20,6 +23,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'username',
         'password',
     ];
 
@@ -44,6 +48,16 @@ class User extends Authenticatable
     ];
 
     /**
+     * Always encrypt the password when it is updated.
+     */
+    public function setPasswordAttribute($value)
+    {
+        if ($value !== $this->attributes["password"]) {
+            $this->attributes['password'] = Hash::make($value);
+        }
+    }
+
+    /**
      * Define the relationship with orders
      */
     public function orders()
@@ -57,5 +71,26 @@ class User extends Authenticatable
     public function ratings()
     {
         return $this->hasMany(BookRating::class, "user_id", "id");
+    }
+
+    /**
+     * Scope a query to only include admins
+     */
+    public function scopeAdmins(Builder $query) {
+        return $query->where("level", "==", "admin");
+    }
+
+    /**
+     * Scope a query to only include operators
+     */
+    public function scopeOperators(Builder $query) {
+        return $query->where("level", "==", "operator");
+    }
+
+    /**
+     * Scope a query to only include members
+     */
+    public function scopeMembers(Builder $query) {
+        return $query->where("level", "==", "member");
     }
 }
