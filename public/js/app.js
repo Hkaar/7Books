@@ -45,7 +45,7 @@ function addItem(card) {
  * Updates the item cards
  */
 function updateItemCards() {
-    const cards = document.querySelectorAll(".item-card");
+    const cards = document.querySelectorAll(".svb-card");
 
     cards.forEach(card => {
         const itemId = Number(card.getAttribute("data-item"));
@@ -59,7 +59,7 @@ function updateItemCards() {
 /**
  * Shows the confirmation modal upon a event being triggered
  * 
- * @param {Event|JQuery.TriggeredEvent} e 
+ * @param {CustomEvent|JQuery.TriggeredEvent} e 
  */
 function showConfirm(e) {
     if (!$(e.target).attr("hx-confirm")) {
@@ -69,23 +69,25 @@ function showConfirm(e) {
     e.preventDefault();
 
     const confirmBtn = document.getElementById('confirmButton');
+    const cancelButton = document.getElementById('cancelButton');
+
     const modal = new bootstrap.Modal("#confirmModal", {
         keyboard: false
     });
 
-    if (!confirmBtn) {
-        return;
-    }
-
-    // @ts-ignore
     $("#confirmText").text(e.detail.question);
     modal.show();
 
-    confirmBtn.addEventListener('click', () => {
-        // @ts-ignore
-        e.detail.issueRequest(true);
+    confirmBtn?.addEventListener('click', () => {
+        e.detail?.issueRequest(true);
         modal.hide();
     });
+
+    cancelButton?.addEventListener('click', () => {
+        modal.hide();
+        // @ts-ignore
+        e.detail = null;
+    })
 }
 
 $(document).ready(() => {
@@ -108,7 +110,7 @@ $(document).ready(() => {
         })
     }
 
-    $(document).on("click", ".item-card", function() {
+    $(document).on("click", ".svb-card", function() {
         addItem(this);
     });
 
