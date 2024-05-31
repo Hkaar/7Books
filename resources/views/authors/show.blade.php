@@ -7,17 +7,17 @@
 
   <div class="col-12 col-md-6 d-flex align-items-center">
     <div class="d-flex flex-column p-3 align-items-start">
-      <article class="info mb-3">
+      <article class="d-flex flex-column gap-1 flex-fill mb-3">
         <b>Name</b>
         {{ $author->name }}
       </article>
 
-      <article class="info mb-3">
+      <article class="d-flex flex-column gap-1 flex-fill mb-3">
         <b>Address</b>
         {{ $author->address }}
       </article>
 
-      <article class="info mb-3">
+      <article class="d-flex flex-column gap-1 flex-fill mb-3">
         <b>Phone</b>
         {{ $author->phone }}
       </article>
