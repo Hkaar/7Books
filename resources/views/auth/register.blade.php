@@ -10,7 +10,7 @@
       <h3>Seven Books</h3>
     </a>
 
-    <form method="POST" action="{{ route('register') }}" class="d-flex flex-column gap-3 w-100 mb-4">
+    <form method="POST" action="{{ route('register') }}" class="d-flex flex-column gap-2 w-100 mb-4">
       @csrf
 
       <div>
@@ -37,20 +37,20 @@
         @enderror
       </div>
 
-      <div>
+      <div class="mb-3">
         <label for="password_confirmation" class="form-label">Confirm Password</label>
         <input class="form-control" id="password_confirmation" type="password" name="password_confirmation" required>
       </div>
 
-      <div class="actions">
+      <div class="d-flex gap-1">
         <button type="reset" class="btn btn-secondary">Reset</button>
         <button type="submit" class="btn btn-primary">Register</button>
       </div>
     </form>
 
-    <p>
+    <span>
       Already have a account? try <a href="/login">logging in!</a>
-    </p>
+    </span>
   </div>
 </div>
 @endsection
