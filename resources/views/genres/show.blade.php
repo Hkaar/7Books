@@ -1,25 +1,16 @@
 <div class="row h-100">
-    <div class="col-12">
-      <b class="mb-3">
-        Name :
-      </b>
-      <p>
-        {{ $genre->name }}
-      </p>
+    <div class="col-12 mb-3">
+      <h5 class="m-0">{{ $genre->name }}</h5>
     </div>
   
     <div class="col-12">
-      <b class="mb-3">
-        Related Books :
-      </b>
-
       <div id="genreBooks" class="row">
         @foreach ($books as $book)
         <div class="col-12 col-md-4 mb-3">
-          <div class="card item-card" data-item="{{ $book->id }}">
+          <div class="card svb-card svb-transition" data-item="{{ $book->id }}">
             <img src="{{ Storage::url($book->img) }}" class="card-img-top" alt="Image not available...">
       
-            <div class="title">
+            <div class="title svb-transition-fast">
               {{$book->name}}
             </div>
           </div>
