@@ -6,20 +6,25 @@
   </div>
 
   <div class="col-12 col-lg-6">
-    <div class="d-flex flex-column p-3">
-      <article class="info mb-3">
-        <b>Name</b>
+    <div class="shadow-sm p-3 d-flex flex-column p-3 gap-2">
+      <article class="d-flex flex-column gap-1 flex-fill">
+        <b>Display Name</b>
         {{ $user->name }}
       </article>
 
-      <article class="info mb-3">
-        <b>Level</b>
-        {{ $user->level }}
+      <article class="d-flex flex-column gap-1 flex-fill">
+        <b>Username</b>
+        {{ $user->username }}
       </article>
-
-      <article class="info mb-3">
+      
+      <article class="d-flex flex-column gap-1 flex-fill">
         <b>Email</b>
         {{ $user->email }}
+      </article>
+
+      <article class="d-flex flex-column gap-1 flex-fill">
+        <b>Level</b>
+        {{ $user->level }}
       </article>
     </div>
   </div>
