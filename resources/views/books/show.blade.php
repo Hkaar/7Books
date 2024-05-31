@@ -21,7 +21,7 @@
           </h2>
           <div id="genres" class="accordion-collapse collapse" data-bs-parent="#infoAccordion">
             <div class="accordion-body">
-              <div class="info-list">
+              <div class="d-flex gap-1 flex-column">
                 @foreach ($genres as $genre)
                   <span>{{ $genre->name }}</span>
                 @endforeach
@@ -38,7 +38,7 @@
           </h2>
           <div id="authors" class="accordion-collapse collapse" data-bs-parent="#infoAccordion">
             <div class="accordion-body">     
-              <div class="info-list">
+              <div class="d-flex gap-1 flex-column">
                 @foreach ($authors as $author)
                   <span>{{ $author->name }}</span>
                 @endforeach
@@ -57,21 +57,21 @@
             <div class="accordion-body">
               <div class="row">
                 <div class="col-12 col-md-6">
-                  <article class="info mb-3">
+                  <article class="d-flex flex-column gap-1 flex-fill mb-3">
                     <b>Price :</b>
                     ${{ $book->price }}
                   </article>
                 </div>
         
                 <div class="col-12 col-md-6">
-                  <article class="info mb-3">
+                  <article class="d-flex flex-column gap-1 flex-fill mb-3">
                     <b>Rate :</b>
                     ${{ $book->rate }}/hour
                   </article>
                 </div>
         
                 <div class="col-12 col-md-6">
-                  <article class="info mb-3">
+                  <article class="d-flex flex-column gap-1 flex-fill mb-3">
                     <b>Stock :</b>
                     {{ $book->stock }}
                   </article>
