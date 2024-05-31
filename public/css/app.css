@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
 
 :root {
     --text: #040316;
-    --text-light: #FFF;
-    
-    --primary: #1B1A56;
-    --secondary: #8F8EC2;
-    --accent: #443DFF;
+    --text-light: #fff;
+
+    --primary: #1b1a56;
+    --secondary: #8f8ec2;
+    --accent: #443dff;
     --error: #e61b37;
     --success: #267d48;
     --warning: #ffa500;
@@ -19,7 +19,7 @@
     --text-semibold: 600;
     --text-bold: 700;
     --text-extra-bold: 800;
-    
+
     --text-h1: 3.815rem;
     --text-h2: 3.052rem;
     --text-h3: 2.442rem;
@@ -30,9 +30,9 @@
     --text-small: 0.8rem;
 }
 
-/* Global Styles */
+/* ----- Global Styles ----- */
 * {
-    font-family: 'Poppins';
+    font-family: "Poppins";
     font-size: var(--text-body);
     font-weight: var(--text-regular);
     line-height: 1.6;
@@ -96,42 +96,56 @@ section {
     padding: 40px 0;
 }
 
-/* Components */
+/* ----- Components ----- */
 #app {
     min-height: 100vh;
 }
 
-.bg-primary, .btn-primary {
+.bg-primary,
+.btn-primary {
     background-color: var(--primary) !important;
     color: var(--text-light) !important;
 }
 
-.bg-secondary, .btn-secondary {
+.bg-secondary,
+.btn-secondary {
     background-color: var(--secondary) !important;
     color: var(--text-light) !important;
 }
 
-.bg-danger, .bg-error, .btn-danger, .btn-error {
+.bg-danger,
+.bg-error,
+.btn-danger,
+.btn-error {
     background-color: var(--error) !important;
     color: var(--text-light) !important;
 }
 
-.bg-warning, .btn-warning {
+.bg-warning,
+.btn-warning {
     background-color: var(--warning) !important;
     color: var(--text-light) !important;
 }
 
-.bg-info, .btn-info {
+.bg-info,
+.btn-info {
     background-color: var(--info) !important;
     color: var(--text-light) !important;
 }
 
-.bg-success, .btn-success {
+.bg-success,
+.btn-success {
     background-color: var(--success) !important;
     color: var(--text-light) !important;
 }
 
-.btn-primary, .btn-secondary, .btn-danger, .btn-error, .btn-info, .btn-success, .btn-warning {
+.btn-primary,
+.btn-secondary,
+.btn-danger,
+.btn-error,
+.btn-info,
+.btn-success,
+.btn-warning {
     border: none;
 }
 
@@ -145,7 +159,6 @@ section {
 
 #preview img {
     object-fit: cover;
-    border-radius: 20px;
 }
 
 #preview.cover-small img {
@@ -165,18 +178,6 @@ section {
 
 .large-thumbnail img {
     max-height: 35vh;
-}
-
-.genre {
-    border: 1px solid black;
-    padding: 10px 15px;
-    border-radius: 20px;
-}
-
-.bordered {
-    border: 1px solid gray;
-    border-radius: 20px;
-    padding: 40px;
 }
 
 .ratio-box {
@@ -205,11 +206,79 @@ section {
     height: 40px;
 }
 
-.w-fit {
-    width: fit-content;
+.svb-card {
+    overflow: hidden;
+    height: 350px;
 }
 
-/* Navigation */
+.svb-card.active {
+    opacity: 50%;
+}
+
+.svb-card:not(.active) .title {
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    color: var(--text-light);
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    user-select: none;
+}
+
+.svb-card:not(.active) .title:hover {
+    opacity: 100%;
+}
+
+.svb-card img {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* ----- Animations ----- */
+.svb-transition-fast {
+    transition: all .3s ease-in-out;
+}
+
+.svb-transition {
+    transition: all 1.3s ease-in-out;
+}
+
+.svb-transition-slow {
+    transition: all 2.1s ease-in-out;
+}
+
+.transition-none {
+    transition: none;
+}
+
+.hover-darkened:hover {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+        rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+
+.hover-shrink:hover {
+    transform: scale(0.95);
+}
+
+.hover-grow:hover {
+    transform: scale(1.05);
+}
+
+.active-shrink:active {
+    transform: scale(0.95);
+}
+
+/* ----- Navigation ----- */
 .navbar {
     background: transparent;
     display: flex;
@@ -220,17 +289,16 @@ section {
     margin: 0;
 }
 
-.navbar .btn-nav{
+.navbar .btn-nav {
     display: flex;
-
 }
 .navbar-toggler {
     border: none;
 }
-  
+
 .navbar-toggler:focus {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
-    rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+        rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
     outline: none;
 }
 
@@ -289,97 +357,23 @@ section {
     display: none;
 }
 
-/* Dashboard */
-.info {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-.item-card {
-    transition: all .3s;
-    height: 350px;
-    overflow: hidden;
-}
-
-.item-card.active {
-    opacity: 50%;
-}
-
-.item-card .card-title {
-    text-align: center;
-}
-
-.item-card .card-body {
-    padding: 6px 0;
-}
-
-.item-card:not(.active) .title {
-    z-index: 2;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-light);
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    transition: all .3s;
-    user-select: none;
-}
-
-.item-card:not(.active) .title:hover {
-    opacity: 100%;
-}
-
-.item-card img {
-    z-index: 1;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-}
-
-.item-card:hover {
-    transform: scale(1.05);
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-}
-
-.item-card:active {
-    opacity: 75%;
-    transform: scale(.99);
-}
-
-.item-card:active, .item-card:hover {
-    cursor: pointer;
-}
-
-#hero, #about, p{
+/* ----- Landing ----- */
+#hero,
+#about,
+p {
     text-align: justify;
     padding: 0 0.3rem;
 }
 
-#books p{
+#books p {
     text-align: center;
     font-size: 0.8rem;
 }
 
-#faq .accordion-body{
+#faq .accordion-body {
     text-align: justify;
 }
 
-.card{
+.card {
     transition: 0.4s;
 }
-.card:hover{
-    cursor: pointer;
-    transform: scale(0.90);
-}
-
