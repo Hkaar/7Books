@@ -25,6 +25,7 @@ class User extends Authenticatable
         'email',
         'username',
         'password',
+        'level',
     ];
 
     /**
@@ -77,20 +78,20 @@ class User extends Authenticatable
      * Scope a query to only include admins
      */
     public function scopeAdmins(Builder $query) {
-        return $query->where("level", "==", "admin");
+        return $query->where("level", "=", "admin");
     }
 
     /**
      * Scope a query to only include operators
      */
     public function scopeOperators(Builder $query) {
-        return $query->where("level", "==", "operator");
+        return $query->where("level", "=", "operator");
     }
 
     /**
      * Scope a query to only include members
      */
     public function scopeMembers(Builder $query) {
-        return $query->where("level", "==", "member");
+        return $query->where("level", "=", "member");
     }
 }
