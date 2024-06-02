@@ -182,34 +182,28 @@ section {
 }
 
 .btn-outline-primary:hover {
-
     background-color: var(--primary) !important;
 }
 
 .btn-outline-secondary:hover {
-
     background-color: var(--secondary) !important;
 }
 
 .btn-outline-success:hover {
-
     background-color: var(--success) !important;
 }
 
 .btn-outline-danger:hover,
 .btn-outline-error:hover {
-
     background-color: var(--error) !important;
 }
 
 .btn-outline-info:hover {
-
     background-color: var(--info) !important;
 }
 
 .btn-outline-caution:hover,
 .btn-outline-warning:hover {
-
     background-color: var(--warning) !important;
 }
 
