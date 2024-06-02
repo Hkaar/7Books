@@ -3,7 +3,7 @@
 @section('title', "Dashboard - Genres")
 
 @section('content')
-<x-dashboard-side-bar selected="genre"></x-dashboard-side-bar>
+<x-dashboard-side-bar selected="genre" class="bg-primary"></x-dashboard-side-bar>
 
 <div id="dashboardLeftFrame" class="flex-fill mw-100 d-flex flex-column">
   <x-dashboard-navigation selected="Genres"></x-dashboard-navigation>

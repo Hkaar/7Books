@@ -14,13 +14,54 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::paginate(20);
+        $users = User::query();
+
+        if ($request->has("search")) {
+            $searchQuery = $request->get("search");
+            $users->where('name', 'like', '%' . $searchQuery . '%');
+        } 
+
+        if ($request->has("o")) {
+            $orderQuery = $request->get('o');
+            
+            if ($orderQuery === 'latest') {
+                $users->latest();
+            } elseif ($orderQuery === "oldest") {
+                $users->oldest();
+            }
+        }
+
+        if ($request->has("p")) {
+            $permissionQuery = $request->get("p");
+
+            if ($permissionQuery === "admin") {
+                $users->admins();
+            } elseif ($permissionQuery === "operator") {
+                $users->operators();
+            } elseif ($permissionQuery === "member") {
+                $users->members();
+            } 
+        }
+
+        $users = $users->paginate(20);
+        $users->appends($request->query());
 
         return view('users.index')->with([
-            "users" => $users
+            "users" => $users,
         ]);
+    }
+    
+    /**
+     * Apply request filters and redirect to index route.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function applyFilter(Request $request) {
+        $queries = $request->except('_token');
+        return redirect()->route('users.index', $queries);
     }
 
     /**

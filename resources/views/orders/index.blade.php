@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-<x-dashboard-side-bar selected="order"></x-dashboard-side-bar>
+<x-dashboard-side-bar selected="order" class="bg-primary"></x-dashboard-side-bar>
 
 <div id="dashboardLeftFrame" class="flex-fill mw-100">
   <x-dashboard-navigation selected="orders"></x-dashboard-navigation>

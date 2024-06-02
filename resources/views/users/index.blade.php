@@ -3,18 +3,64 @@
 @section('title', "Dashboard - Users")
 
 @section('content')
-<x-dashboard-side-bar selected="user"></x-dashboard-side-bar>
+<x-dashboard-side-bar selected="user" class="bg-primary"></x-dashboard-side-bar>
 
 <div id="dashboardLeftFrame" class="flex-fill mw-100">
   <x-dashboard-navigation selected="users"></x-dashboard-navigation>
   
-  <div class="container my-3">
-    <div class="mb-3 d-flex align-items-center justify-content-end">
+  <div class="container my-4">
+    <div class="mb-3 d-flex align-items-center justify-content-between">
       <a class="btn btn-success" href="{{ route('users.create') }}">Add a user</a>
+
+      <form action="{{ route('users.filter') }}" method="get" class="d-flex gap-1">
+        @csrf
+        
+        <input name="search" class="form-control" type="search" placeholder="Search" value="{{ request()->query('search', '') }}" aria-label="Search">
+
+        <select name="o" class="form-select" aria-label="Default select example">
+          <option selected disabled>Order by</option>
+
+          @if (request()->query('o') === "oldest")
+            <option selected value="oldest">Oldest</option> 
+          @else
+            <option value="oldest">Oldest</option>
+          @endif
+
+          @if (request()->query('o') === "latest")
+            <option selected value="latest">Latest</option> 
+          @else
+            <option value="latest">Latest</option>
+          @endif
+        </select>
+
+        <select name="p" class="form-select" aria-label="Default select example">
+          <option selected disabled>Filter by</option>
+
+          @if (request()->query('p') === "member")
+            <option selected value="member">Members only</option> 
+          @else
+            <option value="member">Members only</option>
+          @endif
+
+          @if (request()->query('p') === "operator")
+            <option selected value="operator">Operators only</option> 
+          @else
+            <option value="operator">Operators only</option>
+          @endif
+
+          @if (request()->query('p') === "admin")
+            <option selected value="admin">Admins only</option> 
+          @else
+            <option value="admin">Admins only</option>
+          @endif
+        </select>
+
+        <button class="btn btn-outline-primary" type="submit">Apply</button>
+      </form>
     </div>
     
     <div class="table-responsive">
-      <table class="table table-striped table-bordered table-hover">
+      <table class="table table-striped table-bordered table-hover">     
         <thead>
           <th scope="col" width="5%">ID</th>
           <th scope="col">Username</th>
@@ -27,7 +73,7 @@
           @foreach ($users as $user)
             <tr>
               <td>{{ $user->id }}</td>
-              <td>{{ $user->name }}</td>
+              <td>{{ $user->username }}</td>
               <td>{{ $user->email }}</td>
               <td>{{ $user->level }}</td>
       
@@ -58,7 +104,7 @@
         </tbody>
       </table>
     </div>
-  
+
     <x-paginate-links :links="$users"></x-paginate-links>
   </div>
 </div>

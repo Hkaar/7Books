@@ -46,6 +46,7 @@ Route::group(["namespace" => "App\Http\Controllers"], function() {
         Route::resource("/genres", "GenreController")->names("genres");
         
         Route::middleware("check.admin")->group(function() {
+            Route::get("/users/filter", "UserController@applyFilter")->name("users.filter");
             Route::resource("/users", "UserController")->names("users");
         });
     });

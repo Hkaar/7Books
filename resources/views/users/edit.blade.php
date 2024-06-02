@@ -3,7 +3,7 @@
 @section('title', 'Dashboard - Users')
     
 @section('content')
-<x-dashboard-side-bar selected="user"></x-dashboard-side-bar>
+<x-dashboard-side-bar selected="user" class="bg-primary"></x-dashboard-side-bar>
 
 <div id="dashboardLeftFrame" class="flex-fill mw-100 d-flex flex-column">
   <x-dashboard-navigation selected="users"></x-dashboard-navigation>
@@ -30,10 +30,47 @@
                 <span>{{ $message }}</span>
               @enderror
             </div>
+
+            <div class="mb-3">
+              <label for="level" class="form-label">Level</label>
+              
+              <select name="level" id="level" class="form-select">
+                @if ($user->level == "member")
+                  <option selected value="member">Member</option>
+                @else
+                  <option value="member">Member</option>  
+                @endif
+                
+                @if ($user->level == "operator")
+                  <option selected value="operator">Operator</option>
+                @else
+                <option value="operator">Operator</option>
+                @endif
+
+                @if ($user->level == "admin")
+                  <option selected value="admin">Admin</option>
+                @else
+                  <option value="admin">Admin</option>  
+                @endif
+              </select>
+      
+              @error('level')
+                <span>{{ $message }}</span>
+              @enderror
+            </div>
+
+            <div>
+              <label for="username" class="form-label">Username</label>
+              <input class="form-control" id="username" type="text" name="username" placeholder="{{ $user->username }}">
+              @error('username')
+                <span>{{ $message }}</span>
+              @enderror
+            </div>      
           
             <div class="mb-3">
               <label for="name" class="form-label">Name</label>
-              <input class="form-control" id="name" type="text" name="name" value="{{ $user->name }}" required autofocus>
+              <input class="form-control" id="name" type="text" name="name" placeholder="{{ $user->name }}">
+              
               @error('name')
                 <span>{{ $message }}</span>
               @enderror
@@ -59,34 +96,6 @@
               <label for="password_confirmation" class="form-label">Confirm Password</label>
               <input class="form-control" id="password_confirmation" type="password" name="password_confirmation">
             </div>
-        
-            <div class="mb-3">
-                <label for="level" class="form-label">Level</label>
-                
-                <select name="level" id="level" class="form-select">
-                  @if ($user->level == "member")
-                    <option selected value="member">Member</option>
-                  @else
-                    <option value="member">Member</option>  
-                  @endif
-                  
-                  @if ($user->level == "operator")
-                    <option selected value="operator">Operator</option>
-                  @else
-                  <option value="operator">Operator</option>
-                  @endif
-  
-                  @if ($user->level == "admin")
-                    <option selected value="admin">Admin</option>
-                  @else
-                    <option value="admin">Admin</option>  
-                  @endif
-                </select>
-        
-                @error('level')
-                  <span>{{ $message }}</span>
-                @enderror
-              </div>
         
             <div class="actions">
               <a href="{{ route('users.index') }}" class="btn btn-danger">Cancel</a>

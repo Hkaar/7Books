@@ -3,7 +3,7 @@
 @section('title', 'Dashboard - Users')
     
 @section('content')
-<x-dashboard-side-bar selected="user"></x-dashboard-side-bar>
+<x-dashboard-side-bar selected="user" class="bg-primary"></x-dashboard-side-bar>
 
 <div id="dashboardLeftFrame" class="flex-fill mw-100 d-flex flex-column">
   <x-dashboard-navigation selected="users"></x-dashboard-navigation>
@@ -29,16 +29,7 @@
                 <span>{{ $message }}</span>
               @enderror
             </div>
-          
-            <div class="mb-3">
-              <label for="name" class="form-label">Name</label>
-              <input class="form-control" id="name" type="text" name="name" value="{{ old('name') }}" required autofocus>
-              
-              @error('name')
-                <span>{{ $message }}</span>
-              @enderror
-            </div>
-  
+
             <div class="mb-3">
               <label for="level" class="form-label">Level</label>
               
@@ -52,7 +43,24 @@
                 <span>{{ $message }}</span>
               @enderror
             </div>
-        
+
+            <div>
+              <label for="username" class="form-label">Username</label>
+              <input class="form-control" id="username" type="text" name="username" value="{{ old('username') }}" required autofocus>
+              @error('username')
+                <span>{{ $message }}</span>
+              @enderror
+            </div>      
+          
+            <div class="mb-3">
+              <label for="name" class="form-label">Display Name</label>
+              <input class="form-control" id="name" type="text" name="name" value="{{ old('name') }}" required autofocus>
+              
+              @error('name')
+                <span>{{ $message }}</span>
+              @enderror
+            </div>
+
             <div class="mb-3">
               <label for="email" class="form-label">Email</label>
               <input class="form-control" id="email" type="email" name="email" value="{{ old('email') }}" required>
