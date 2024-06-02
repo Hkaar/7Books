@@ -1,4 +1,4 @@
-<nav id="side-nav" class="d-none d-lg-block" data-collapsed="false">
+<nav id="side-nav" {{ $attributes->merge(["class" => "d-none d-lg-block shadow-sm"]) }} data-collapsed="true">
   <div class="nav-items">
     <a href="#" class="nav-item side-nav-open">
       <i class="fa-solid fa-arrow-right"></i>

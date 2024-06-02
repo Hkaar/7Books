@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg shadow-sm">
+<nav {{ $attributes->merge(["class" => "navbar navbar-expand-lg shadow-sm"]) }}>
   <div class="container-fluid">
     <article class="brand">
       <h5>Dashboard</h5>
