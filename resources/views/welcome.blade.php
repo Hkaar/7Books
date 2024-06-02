@@ -35,7 +35,7 @@
   </div>
 </nav>
 
-<section id="hero">
+<section id="hero" style="padding-top:4rem">
   <div class="container">
     <div class="row justify-content-center align-items-center mb-5">
       <div class="col-md-5 d-block d-md-none">
@@ -65,9 +65,9 @@
     </div>
   </div>
 </section>
-<section id="about" style="padding-top:3rem;">
+<section id="about" style="padding-top:5rem;">
   <div class="container">
-    <div class="row justify-content-evenly align-items-center">
+    <div class="row justify-content-center align-items-center gap-5">
       <div class="col-md-6 d-block d-md-none">
         <h4 class="text-center">Who We Are</h4>
         <p>We are a bunch of nerdy bookworm students that provide 
@@ -78,7 +78,7 @@
         <p>Our mission is to provide an easy way for anyone to borrow books from their local library,
             and provide a way to read books from places that people forget nowadays</p>
       </div>
-      <div class="col-md-5 d-none d-md-block">
+      <div class="col-md-5 d-none d-md-block mt-1">
         <h3>Who We Are</h3>
         <p>We are a bunch of nerdy bookworm students that provide 
             a easy way to borrow books from a library through an online platform</p>
@@ -92,13 +92,13 @@
   </div>
 </section>
 
-<section id="books" style="padding-top:6rem;">
+<section id="books" style="padding-top:6.5rem;">
   <div class="container">
     <h4 class="fw-normal mb-3 d-none d-md-block">Currently Trending</h4>
     <h5 class="fw-normal mb-3 d-block d-md-none text-center">Currently Trending</h5>
     <div class="row justify-content-center align-items-center">
       <div class="col-md-3">
-        <div class="card border-0">
+        <div class="card ratio-portrait border-0">
           <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid">
           <div class="card-body">
             <p class="fw-semibold">Harry Potter</p>
@@ -106,7 +106,7 @@
         </div>
       </div>
       <div class="col-md-3">
-        <div class="card border-0">
+        <div class="card ratio-portrait border-0">
           <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid">
           <div class="card-body">
             <p class="fw-semibold">Lord Of The Rings</p>
@@ -114,7 +114,7 @@
         </div>
       </div>
       <div class="col-md-3">
-        <div class="card border-0">
+        <div class="card ratio-portrait border-0">
           <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid">
           <div class="card-body">
             <p class="fw-semibold">Dungeons & Dragons</p>
@@ -122,7 +122,7 @@
         </div>
       </div>
       <div class="col-md-3">
-        <div class="card border-0">
+        <div class="card ratio-portrait border-0">
           <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid">
           <div class="card-body">
             <p class="fw-semibold">Florida Man</p>
@@ -135,7 +135,7 @@
     <h4 class="fw-normal mb-3 mt-5 d-none d-md-block">Newly Released</h4>
     <div class="row justify-content-center align-items-center">
       <div class="col-md-3">
-        <div class="card border-0">
+        <div class="card ratio-portrait border-0">
           <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid">
           <div class="card-body">
             <p class="fw-semibold">Harry Potter</p>
@@ -143,7 +143,7 @@
         </div>
       </div>
       <div class="col-md-3">
-        <div class="card border-0">
+        <div class="card ratio-portrait border-0">
           <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid">
           <div class="card-body">
             <p class="fw-semibold">Lord Of The Rings</p>
@@ -151,7 +151,7 @@
         </div>
       </div>
       <div class="col-md-3">
-        <div class="card border-0">
+        <div class="card ratio-portrait border-0">
           <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid">
           <div class="card-body">
             <p class="fw-semibold">Dungeons & Dragons</p>
@@ -159,7 +159,7 @@
         </div>
       </div>
       <div class="col-md-3">
-        <div class="card border-0">
+        <div class="card ratio-portrait border-0">
           <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid">
           <div class="card-body">
             <p class="fw-semibold">Florida Man</p>
@@ -183,7 +183,7 @@
       <div class="col-md-6 border-0">
       <div class="accordion" id="accordionPanelsStayOpenExample">
         <div class="accordion-item mb-3">
-          <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+          <h2 class="accordion-header border-0" id="panelsStayOpen-headingOne">
             <button class="accordion-button bg-secondary p-4 rounded-bottom collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
               What is SevenBooks?
             </button>

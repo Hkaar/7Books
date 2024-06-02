@@ -37,6 +37,8 @@
     font-weight: var(--text-regular);
     line-height: 1.6;
     letter-spacing: 0.03em;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 body {
@@ -430,6 +432,6 @@ p {
     text-align: justify;
 }
 
-.card {
-    transition: 0.4s;
+.card{
+    padding: 0.8rem;
 }
