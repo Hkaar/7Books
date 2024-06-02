@@ -2,11 +2,8 @@
 
 @section('title', "Dashboard - Authors")
 
-@section('top-nav')
-@endsection
-
 @section('content')
-<x-dashboard-side-bar selected="author"></x-dashboard-side-bar>
+<x-dashboard-side-bar selected="author" class="bg-primary"></x-dashboard-side-bar>
 
 <div id="dashboardLeftFrame" class="flex-fill mw-100 d-flex flex-column">
   <x-dashboard-navigation selected="authors"></x-dashboard-navigation>
