@@ -149,6 +149,64 @@ section {
     border: none;
 }
 
+.btn-outline-primary {
+    border: 1px solid var(--primary) !important;
+    background: none;
+}
+
+.btn-outline-secondary {
+    border: 1px solid var(--secondary) !important;
+    background: none;
+}
+
+.btn-outline-success {
+    border: 1px solid var(--success) !important;
+    background: none;
+}
+
+.btn-outline-danger,
+.btn-outline-error {
+    border: 1px solid var(--error) !important;
+    background: none;
+}
+
+.btn-outline-info {
+    border: 1px solid var(--info) !important;
+    background: none;
+}
+
+.btn-outline-caution,
+.btn-outline-warning {
+    border: 1px solid var(--warning) !important;
+    background: none;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary) !important;
+}
+
+.btn-outline-secondary:hover {
+    background-color: var(--secondary) !important;
+}
+
+.btn-outline-success:hover {
+    background-color: var(--success) !important;
+}
+
+.btn-outline-danger:hover,
+.btn-outline-error:hover {
+    background-color: var(--error) !important;
+}
+
+.btn-outline-info:hover {
+    background-color: var(--info) !important;
+}
+
+.btn-outline-caution:hover,
+.btn-outline-warning:hover {
+    background-color: var(--warning) !important;
+}
+
 .text-inherit {
     color: inherit !important;
 }
@@ -246,7 +304,7 @@ section {
 
 /* ----- Animations ----- */
 .svb-transition-fast {
-    transition: all .3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 .svb-transition {
@@ -304,8 +362,6 @@ section {
 
 #side-nav {
     max-width: 90px;
-    background-color: var(--primary);
-    color: var(--text-light);
     padding: 20px;
     width: 100%;
     transition: all 0.4s;
