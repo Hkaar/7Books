@@ -65,7 +65,7 @@ And then serve it!
 php artisan serve
 ```
 
-### How do i contribute?
+## How do i contribute?
 
 See on how to contribute by going to the [contribution guide](https://github.com/Hkaar/7Books/blob/master/CONTRIBUTION.md) of the project
 
