@@ -11,6 +11,14 @@ class HomeController extends Controller
      */
     public function home()
     {
+        return view("home");
+    }
+
+    /**
+     * Display the welcome page
+     */
+    public function welcome()
+    {
         return view("welcome");
     }
     
