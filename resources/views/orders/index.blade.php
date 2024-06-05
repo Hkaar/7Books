@@ -11,16 +11,55 @@
 <div id="dashboardLeftFrame" class="flex-fill mw-100">
   <x-dashboard-navigation selected="orders"></x-dashboard-navigation>
 
-  <div class="container my-3">
-    <div class="mb-3 d-flex align-items-center justify-content-end">
+  <div class="container my-4">
+    <div class="mb-3 d-flex align-items-center justify-content-between">
       <a class="btn btn-success" href="{{ route('orders.create') }}">Add a new order</a>
+
+      <form action="{{ route('orders.filter') }}" method="get" class="d-flex gap-1">
+        @csrf
+        <input name="search" class="form-control" type="search" placeholder="Search" value="{{ request()->query('search', '') }}" aria-label="Search">
+
+        <select name="o" class="form-select" aria-label="Default select example">
+          <option selected disabled>Order by</option>
+
+          @if (request()->query('o') === "oldest")
+            <option selected value="oldest">Oldest</option> 
+          @else
+            <option value="oldest">Oldest</option>
+          @endif
+
+          @if (request()->query('o') === "latest")
+            <option selected value="latest">Latest</option> 
+          @else
+            <option value="latest">Latest</option>
+          @endif
+        </select>
+
+        <select name="f" class="form-select" aria-label="Default select example">
+          <option selected disabled>Filter by</option>
+
+          @if (request()->query('f') === "overdue")
+            <option selected value="overdue">Overdue only</option>
+          @else
+            <option value="overdue">Overdue only</option>
+          @endif
+
+          @if (request()->query('f') === "due")
+            <option selected value="due">Non overdue only</option>
+          @else
+            <option value="due">Non overdue only</option>
+          @endif
+        </select>
+        
+        <button class="btn btn-outline-primary" type="submit">Apply</button>
+      </form>
     </div>
 
     <div class="table-responsive">
       <table class="table table-striped table-bordered table-hover">
         <thead>
           <th scope="col" width="5%">ID</th>
-          <th scope="col" width="10%">User ID</th>
+          <th scope="col">Username</th>
           <th scope="col">Token</th>
           <th scope="col">Status</th>
           <th scope="col" width="18%">Actions</th>
@@ -30,7 +69,7 @@
           @foreach ($orders as $order)
             <tr>
               <td>{{ $order->id }}</td>
-              <td>{{ $order->user_id }}</td>
+              <td>{{ $order->user->username }}</td>
               <td>{{ $order->token }}</td>
               <td>{{ $order->status }}</td>
       
