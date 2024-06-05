@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -55,5 +56,30 @@ class Book extends Model
     public function items()
     {
         return $this->hasMany(OrderItem::class, "book_id", "id");
+    }
+
+    /**
+     * Scope a query to only include a specific genre
+     */
+    public function scopeByGenre(Builder $query, string $genre) {
+        return $query->whereHas("genres", function (Builder $query) use ($genre) {
+            $query->where("name", "=", $genre);
+        });
+    }
+
+    /**
+     * Scope a query to only include a specific author
+     */
+    public function scopeByAuthor(Builder $query, string $author) {
+        return $query->whereHas("authors", function (Builder $query) use ($author) {
+            $query->where("name", "=", $author);
+        });
+    }
+
+    /**
+     * Scope a query to only include books that have been borrowed
+     */
+    public function scopeOnlyBorrowed(Builder $query) {
+        return $query->where("borrowed", ">", 0);
     }
 }
