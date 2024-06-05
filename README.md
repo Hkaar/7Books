@@ -67,7 +67,7 @@ php artisan serve
 
 ## How do i contribute?
 
-See on how to contribute by going to the [contribution guide](https://github.com/Hkaar/7Books/blob/master/CONTRIBUTION.md) of the project
+See on how to contribute by going to the [contribution guide](https://github.com/Hkaar/7Books/blob/master/CONTRIBUTING.md) of the project
 
 And that's all, btw here's a table for your reward
 
