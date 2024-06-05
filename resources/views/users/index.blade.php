@@ -14,7 +14,6 @@
 
       <form action="{{ route('users.filter') }}" method="get" class="d-flex gap-1">
         @csrf
-        
         <input name="search" class="form-control" type="search" placeholder="Search" value="{{ request()->query('search', '') }}" aria-label="Search">
 
         <select name="o" class="form-select" aria-label="Default select example">
@@ -33,22 +32,22 @@
           @endif
         </select>
 
-        <select name="p" class="form-select" aria-label="Default select example">
+        <select name="f" class="form-select" aria-label="Default select example">
           <option selected disabled>Filter by</option>
 
-          @if (request()->query('p') === "member")
+          @if (request()->query('f') === "member")
             <option selected value="member">Members only</option> 
           @else
             <option value="member">Members only</option>
           @endif
 
-          @if (request()->query('p') === "operator")
+          @if (request()->query('f') === "operator")
             <option selected value="operator">Operators only</option> 
           @else
             <option value="operator">Operators only</option>
           @endif
 
-          @if (request()->query('p') === "admin")
+          @if (request()->query('f') === "admin")
             <option selected value="admin">Admins only</option> 
           @else
             <option value="admin">Admins only</option>
