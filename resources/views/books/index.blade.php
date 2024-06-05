@@ -8,9 +8,35 @@
 <div id="dashboardLeftFrame" class="flex-fill mw-100">
   <x-dashboard-navigation selected="books"></x-dashboard-navigation>
 
-  <div class="container my-3">
-    <div class="mb-3 d-flex align-items-center justify-content-end">
+  <div class="container my-4">
+    <div class="mb-3 d-flex align-items-center justify-content-between">
       <a class="btn btn-success" href="{{ URL::to('manage/books/create') }}">Add a new book</a>
+
+      <form action="{{ route('books.filter') }}" method="get" class="d-flex gap-1">
+        @csrf
+        <input name="search" class="form-control" type="search" placeholder="Search" value="{{ request()->query('search', '') }}" aria-label="Search">
+
+        <select name="o" class="form-select" aria-label="Default select example">
+          <option selected disabled>Order by</option>
+
+          @if (request()->query('o') === "oldest")
+            <option selected value="oldest">Oldest</option> 
+          @else
+            <option value="oldest">Oldest</option>
+          @endif
+
+          @if (request()->query('o') === "latest")
+            <option selected value="latest">Latest</option> 
+          @else
+            <option value="latest">Latest</option>
+          @endif
+        </select>
+
+        <input type="text" class="form-control" name="genre" placeholder="Filter by genre" value="{{ request()->query('genre', '') }}">
+        <input type="text" class="form-control" name="author" placeholder="Filter by author" value="{{ request()->query('author', '') }}">
+        
+        <button class="btn btn-outline-primary" type="submit">Apply</button>
+      </form>
     </div>
     
     <div class="table-responsive">

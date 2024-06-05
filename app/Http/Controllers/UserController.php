@@ -33,16 +33,10 @@ class UserController extends Controller
             }
         }
 
-        if ($request->has("p")) {
-            $permissionQuery = $request->get("p");
+        if ($request->has("f")) {
+            $users->byPermission($request->get("f"));
 
-            if ($permissionQuery === "admin") {
-                $users->admins();
-            } elseif ($permissionQuery === "operator") {
-                $users->operators();
-            } elseif ($permissionQuery === "member") {
-                $users->members();
-            } 
+            // Additional filters can be added here!
         }
 
         $users = $users->paginate(20);
@@ -55,11 +49,8 @@ class UserController extends Controller
     
     /**
      * Apply request filters and redirect to index route.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\RedirectResponse
      */
-    public function applyFilter(Request $request) {
+    public function filter(Request $request) {
         $queries = $request->except('_token');
         return redirect()->route('users.index', $queries);
     }

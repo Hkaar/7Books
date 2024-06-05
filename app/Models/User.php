@@ -75,23 +75,10 @@ class User extends Authenticatable
     }
 
     /**
-     * Scope a query to only include admins
+     * Scope a query to only include a specific permission level
      */
-    public function scopeAdmins(Builder $query) {
-        return $query->where("level", "=", "admin");
-    }
-
-    /**
-     * Scope a query to only include operators
-     */
-    public function scopeOperators(Builder $query) {
-        return $query->where("level", "=", "operator");
-    }
-
-    /**
-     * Scope a query to only include members
-     */
-    public function scopeMembers(Builder $query) {
-        return $query->where("level", "=", "member");
+    public function scopeByPermission(Builder $query, string $permission) 
+    {
+        return $query->where("level", "=", $permission);
     }
 }
