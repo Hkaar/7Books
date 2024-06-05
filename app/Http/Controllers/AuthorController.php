@@ -9,18 +9,43 @@ use Illuminate\Support\Facades\Storage;
 
 use Intervention\Image\Laravel\Facades\Image;
 
-class AuthorsController extends Controller
+class AuthorController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $authors = Author::paginate(20);
+        $authors = Author::query();
+
+        if ($request->has("search")) {
+            $searchQuery = $request->get("search");
+            $authors->where("name", "like", "%".$searchQuery."%");
+        } 
+
+        if ($request->has("o")) {
+            $orderQuery = $request->get('o');
+            
+            if ($orderQuery === 'latest') {
+                $authors->latest();
+            } elseif ($orderQuery === "oldest") {
+                $authors->oldest();
+            }
+        }
+        $authors = $authors->paginate(20);
+        $authors->appends($request->query());
 
         return view('authors.index')->with([
             "authors" => $authors
         ]);
+    }
+
+    /**
+     * Apply request filters and redirect to index route.
+     */
+    public function filter(Request $request) {
+        $queries = $request->except('_token');
+        return redirect()->route('authors.index', $queries);
     }
 
     /**
