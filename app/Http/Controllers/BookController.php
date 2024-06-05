@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 use Intervention\Image\Laravel\Facades\Image;
 
-class BooksController extends Controller
+class BookController extends Controller
 {
     /**
      * ISBN regex to check valid isbn-13 and isbn-10 numbers
@@ -20,13 +20,50 @@ class BooksController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $books = Book::paginate(20);
+        $books = Book::query();
+
+        if ($request->has("search")) {
+            $searchQuery = $request->get("search");
+            $books->where("name", "like", "%".$searchQuery."%");
+        }
+
+        if ($request->has("genre")) {
+            $genreQuery = $request->get("genre");
+            $books->byGenre($genreQuery);
+        }
+
+        if ($request->has("author")) {
+            $authorQuery = $request->get("author");
+            $books->byAuthor($authorQuery);
+        }
+
+        if ($request->has("o")) {
+            $orderQuery = $request->get('o');
+            
+            if ($orderQuery === 'latest') {
+                $books->latest();
+            } elseif ($orderQuery === "oldest") {
+                $books->oldest();
+            }
+        }
+
+        $books = $books->paginate(20);
+        $books->appends($request->query());
 
         return view('books.index')->with([
             "books" => $books
         ]);
+    }
+
+    /**
+     * Apply request filters and redirect to index route.
+     */
+    public function filter(Request $request) 
+    {
+        $queries = $request->except('_token');
+        return redirect()->route('books.index', $queries);
     }
 
     /**
