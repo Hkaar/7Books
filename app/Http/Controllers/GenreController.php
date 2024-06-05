@@ -10,13 +10,38 @@ class GenreController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $genres = Genre::paginate(20);
+        $genres = Genre::query();
+
+        if ($request->has("search")) {
+            $searchQuery = $request->get("search");
+            $genres->where("name", "like", "%".$searchQuery."%");
+        } 
+
+        if ($request->has("o")) {
+            $orderQuery = $request->get('o');
+            
+            if ($orderQuery === 'latest') {
+                $genres->latest();
+            } elseif ($orderQuery === "oldest") {
+                $genres->oldest();
+            }
+        }
+        $genres = $genres->paginate(20);
+        $genres->appends($request->query());
 
         return view("genres.index")->with([
             "genres" => $genres
         ]);
+    }
+
+    /**
+     * Apply request filters and redirect to index route.
+     */
+    public function filter(Request $request) {
+        $queries = $request->except('_token');
+        return redirect()->route('genres.index', $queries);
     }
 
     /**
