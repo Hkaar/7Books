@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Order;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Order>
@@ -26,7 +27,7 @@ class OrderFactory extends Factory
     {
         return [
             "user_id" => fn() => \App\Models\User::factory()->create()->id,
-            "token" => $this->faker->sentence(8),
+            "token" => Str::random(8),
             "placed" => $this->faker->dateTime(),
             "return_date" => $this->faker->dateTime(),
             "status" => "pending",
