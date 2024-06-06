@@ -17,6 +17,11 @@ class BookSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Book::factory()
+            ->count(20)
+            ->has(Genre::factory()->count(2), "genres")
+            ->has(Author::factory()->count(2), "authors")
+            ->has(BookRating::factory()->count(2), "ratings")
+            ->create();
     }
 }
