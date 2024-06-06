@@ -2,21 +2,21 @@
 
 namespace Database\Factories;
 
-use App\Models\Order;
+use App\Models\BookRating;
+
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Order>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\BookRating>
  */
-class OrderFactory extends Factory
+class BookRatingFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Order::class;
+    protected $model = BookRating::class;
 
     /**
      * Define the model's default state.
@@ -27,10 +27,8 @@ class OrderFactory extends Factory
     {
         return [
             "user_id" => fn() => \App\Models\User::factory()->create()->id,
-            "token" => Str::random(8),
-            "placed" => $this->faker->dateTime(),
-            "return_date" => $this->faker->dateTime(),
-            "status" => "pending",
+            "book_id" => fn() => \App\Models\Book::factory()->create()->id,
+            "rating" => random_int(0, 5),
         ];
     }
 }
