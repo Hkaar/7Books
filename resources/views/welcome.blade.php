@@ -3,7 +3,7 @@
 @section('title', "Seven Books")
 
 @section('main')
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-md">
   <div class="container-fluid">
     <a href="{{ route('/') }}" class="d-flex align-items-center justify-content-center gap-2 text-center text-inherit text-none">
       <img src="{{ URL::asset('assets/imgs/logo.png') }}" alt="Image not available" class="img-fluid ratio-box img-small-logo">
@@ -35,7 +35,13 @@
   </div>
 </nav>
 
-<section id="hero" style="padding-top:4rem">
+{{-- @if (auth()->user())
+    <h1 class="text-center">sudah login pace</h1>
+@else
+    <h1 class="text-center">belum login pace</h1>
+@endif --}}
+
+<section id="hero" style="margin-top:2rem">
   <div class="container">
     <div class="row justify-content-center align-items-center mb-5">
       <div class="col-md-5 d-block d-md-none">
@@ -50,7 +56,7 @@
           <button class="btn btn-primary ms-3 fw-medium">Get Started</button>
          </div>
       </div>
-      <div class="col-md-6 d-none d-md-block">
+      <div class="col-md-7 d-none d-md-block">
         <h2 class="fw-bold">Sail The Knowledge Seas</h2>
         <p class="text-secondary lh-lg">Looking for a way to read a book from a library? Use our
          service to read books from your local library</p>
@@ -59,7 +65,7 @@
           <button class="btn btn-primary ms-3 fw-medium">Get Started</button>
          </div>
       </div>
-      <div class="col-md-5 d-none d-md-block">
+      <div class="col-md-4 d-none d-md-block">
         <img src="{{ URL::asset('assets/imgs/7books.png') }}" class="img-fluid">
       </div>
     </div>
@@ -70,22 +76,22 @@
     <div class="row justify-content-center align-items-center gap-5">
       <div class="col-md-6 d-block d-md-none">
         <h4 class="text-center">Who We Are</h4>
-        <p>We are a bunch of nerdy bookworm students that provide 
+        <p style="font-size: 15px">We are a bunch of nerdy bookworm students that provide 
             a easy way to borrow books from a library through an online platform</p>
       </div>
       <div class="col-md-6 d-block d-md-none mt-4">
         <h4 class="text-center">Our Mission</h4>
-        <p>Our mission is to provide an easy way for anyone to borrow books from their local library,
+        <p style="font-size: 15px">Our mission is to provide an easy way for anyone to borrow books from their local library,
             and provide a way to read books from places that people forget nowadays</p>
       </div>
       <div class="col-md-5 d-none d-md-block mt-1">
         <h3>Who We Are</h3>
-        <p>We are a bunch of nerdy bookworm students that provide 
+        <p style="font-size: 15px">We are a bunch of nerdy bookworm students that provide 
             a easy way to borrow books from a library through an online platform</p>
       </div>
       <div class="col-md-5 d-none d-md-block">
         <h3>Our Mission</h3>
-        <p>Our mission is to provide an easy way for anyone to borrow books from their local library,
+        <p style="font-size: 15px">Our mission is to provide an easy way for anyone to borrow books from their local library,
             and provide away to read books from places that people forget nowadays</p>
       </div>
     </div>
@@ -94,7 +100,7 @@
 
 <section id="books" style="padding-top:6.5rem;">
   <div class="container">
-    <h4 class="fw-normal mb-3 d-none d-md-block">Currently Trending</h4>
+    <h5 class="fw-normal mb-3 d-none d-md-block">Currently Trending</h5>
     <h5 class="fw-normal mb-3 d-block d-md-none text-center">Currently Trending</h5>
     <div class="row justify-content-center align-items-center">
       <div class="col-md-3">
@@ -130,9 +136,8 @@
         </div>
       </div>
     </div>
-    
     <h5 class="fw-normal mb-3 mt-5 d-block d-md-none text-center">Newly Released</h5>
-    <h4 class="fw-normal mb-3 mt-5 d-none d-md-block">Newly Released</h4>
+    <h5 class="fw-normal mb-3 mt-5 d-none d-md-block">Newly Released</h5>
     <div class="row justify-content-center align-items-center">
       <div class="col-md-3">
         <div class="card ratio-portrait border-0">
@@ -176,11 +181,11 @@
         <h4>FAQ</h4>
         <p>Want to know more? See the answers to our commonly asked questions</p>
       </div>
-      <div class="col-md-6 d-none d-md-block">
+      <div class="col-md-4 d-none d-md-block">
         <h4>FAQ</h4>
-        <p>Want to know more? See the answers to our <br>commonly asked questions</p>
+        <p style="font-size:0.87rem;">Want to know more? See the answers to our commonly asked questions</p>
       </div>
-      <div class="col-md-6 border-0">
+      <div class="col-md-7 border-0">
       <div class="accordion" id="accordionPanelsStayOpenExample">
         <div class="accordion-item mb-3">
           <h2 class="accordion-header border-0" id="panelsStayOpen-headingOne">
@@ -259,19 +264,19 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col mt-5">
-        <div class="col-md-8 d-flex align-items-center">
-          <img src="{{ URL::asset('assets/imgs/logo.png') }}" class="img-fluid" style="width:50px">
-          <h5 class="ms-2">Seven Books</h5>
+        <div class="col-lg-8 d-flex align-items-center">
+          <img src="{{ URL::asset('assets/imgs/logo.png') }}" class="img-fluid" style="width:45px">
+          <h5 class="ms-2 fw-semibold">Seven Books</h5>
         </div>
         <h6 class="mt-3 fs-6">Sail through the sea of knowledge</h6>
       </div>
       <div class="col-md-4 mt-5">
         <h5>Exproller</h5>
         <ul class="list-unstyled">
-          <li><a href="#" class="text-decoration-none text-light">Terms of service</a></li>
-          <li><a href="#" class="text-decoration-none text-light">Privacy Policy</a></li>
-          <li><a href="#" class="text-decoration-none text-light">Contact us</a></li>
-          <li><a href="#" class="text-decoration-none text-light">Supported Regions</a></li>
+          <li><a href="#" class="text-decoration-none text-light" style="font-size:15px">Terms of service</a></li>
+          <li><a href="#" class="text-decoration-none text-light" style="font-size:15px">Privacy Policy</a></li>
+          <li><a href="#" class="text-decoration-none text-light" style="font-size:15px">Contact us</a></li>
+          <li><a href="#" class="text-decoration-none text-light" style="font-size:15px">Supported Regions</a></li>
         </ul>
       </div>
       <div class="col-md-3 mt-5">
@@ -286,7 +291,7 @@
         <i class="fa-solid fa-user"><a href="whatsapp://send?text=Hello&phone=+6281237102017" class="text-decoration-none text-light ms-2">+62 812-3710-2017</a></i>
         </div>
       </div>
-      <a href="#" class="text-decoration-none text-light mt-4 pb-2">Copyright © SevenBooks Team. All rights reserved.</a>
+      <a href="#" class="text-decoration-none text-light mt-4 pb-2" style="font-size: 15px">Copyright © SevenBooks Team. All rights reserved.</a>
     </div>
   </div>
 </footer>

@@ -425,13 +425,18 @@ p {
 
 #books p {
     text-align: center;
-    font-size: 0.8rem;
+    font-size: 10.1px;
 }
 
-#faq .accordion-body {
-    text-align: justify;
+.card > img{
+    width:235px;
+    margin:auto;
 }
 
-.card{
-    padding: 0.8rem;
+.accordion-button{
+    font-size:15px;
+}
+.accordion-body{
+    font-size:14px;
+    text-align:justify;
 }
