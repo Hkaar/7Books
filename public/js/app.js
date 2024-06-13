@@ -90,6 +90,25 @@ function showConfirm(e) {
     })
 }
 
+/**
+ * Toggle the state of the side navigation element
+ * 
+ * @param {Element} sideNav 
+ * @param {boolean} collapsed 
+ */
+function toggleSideNav(sideNav, collapsed) {
+    if (collapsed) {
+        sideNav.setAttribute("data-collapsed", "true");
+        sideNav.classList.replace("over-none", "over-left");
+        document.body.classList.remove("overflow-hidden", "lg-overflow-y-auto");
+        
+    } else {
+        sideNav.setAttribute("data-collapsed", "false");
+        sideNav.classList.replace("over-left", "over-none");
+        document.body.classList.add("overflow-hidden", "lg-overflow-y-auto");
+    }
+}
+
 $(document).ready(() => {
     'use strict';
 
@@ -101,12 +120,20 @@ $(document).ready(() => {
     }
 
     if (sideNav) {
-        $(document).on("click", ".side-nav-close", (event) => {
-            sideNav.setAttribute("data-collapsed", "true");
+        $(document).on("click", ".side-nav-close", (_) => {
+            toggleSideNav(sideNav, true);
         })
     
-        $(document).on("click", ".side-nav-open", (event) => {
-            sideNav.setAttribute("data-collapsed", "false");
+        $(document).on("click", ".side-nav-open", (_) => {
+            toggleSideNav(sideNav, false);
+        })
+
+        $(document).on("click", ".side-nav-toggle", (_) => {
+            if (sideNav.getAttribute("data-collapsed") === "true") {
+                toggleSideNav(sideNav, false);
+            } else {
+                toggleSideNav(sideNav, true);
+            }
         })
     }
 
