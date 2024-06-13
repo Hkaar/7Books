@@ -9,31 +9,33 @@
   <x-dashboard-navigation selected="genres"></x-dashboard-navigation>
 
   <div class="container my-4">
-    <div class="mb-3 d-flex align-items-center justify-content-between">
-      <a class="btn btn-success" href="{{ route('genres.create') }}">Add a genre</a>
+    <div class="mb-3 d-flex align-items-center justify-content-between flex-column flex-lg-row gap-2">
+      <a class="btn btn-success w-100 w-lg-fit" href="{{ route('genres.create') }}">Add a new genre</a>
 
-      <form action="{{ route('genres.filter') }}" method="get" class="d-flex gap-1">
-        @csrf
-        <input name="search" class="form-control" type="search" placeholder="Search" value="{{ request()->query('search', '') }}" aria-label="Search">
-
-        <select name="o" class="form-select" aria-label="Default select example">
-          <option selected disabled>Order by</option>
-
-          @if (request()->query('o') === "oldest")
-            <option selected value="oldest">Oldest</option> 
-          @else
-            <option value="oldest">Oldest</option>
-          @endif
-
-          @if (request()->query('o') === "latest")
-            <option selected value="latest">Latest</option> 
-          @else
-            <option value="latest">Latest</option>
-          @endif
-        </select>
-
-        <button class="btn btn-outline-primary" type="submit">Apply</button>
-      </form>
+      <x-query-accordion>
+        <form action="{{ route('genres.filter') }}" method="get" class="d-flex gap-2 flex-column flex-lg-row gap-lg-1 py-3 py-lg-0">
+          @csrf
+          <input name="search" class="form-control" type="search" placeholder="Search" value="{{ request()->query('search', '') }}" aria-label="Search">
+  
+          <select name="o" class="form-select" aria-label="Default select example">
+            <option selected disabled>Order by</option>
+  
+            @if (request()->query('o') === "oldest")
+              <option selected value="oldest">Oldest</option> 
+            @else
+              <option value="oldest">Oldest</option>
+            @endif
+  
+            @if (request()->query('o') === "latest")
+              <option selected value="latest">Latest</option> 
+            @else
+              <option value="latest">Latest</option>
+            @endif
+          </select>
+  
+          <button class="btn btn-outline-primary" type="submit">Apply</button>
+        </form>
+      </x-query-accordion>
     </div>
     
     <div class="table-responsive">

@@ -9,53 +9,55 @@
   <x-dashboard-navigation selected="users"></x-dashboard-navigation>
   
   <div class="container my-4">
-    <div class="mb-3 d-flex align-items-center justify-content-between">
-      <a class="btn btn-success" href="{{ route('users.create') }}">Add a user</a>
+    <div class="mb-3 d-flex align-items-center justify-content-between flex-column flex-lg-row gap-2">
+      <a class="btn btn-success w-100 w-lg-fit" href="{{ route('users.create') }}">Add a new user</a>
 
-      <form action="{{ route('users.filter') }}" method="get" class="d-flex gap-1">
-        @csrf
-        <input name="search" class="form-control" type="search" placeholder="Search" value="{{ request()->query('search', '') }}" aria-label="Search">
-
-        <select name="o" class="form-select" aria-label="Default select example">
-          <option selected disabled>Order by</option>
-
-          @if (request()->query('o') === "oldest")
-            <option selected value="oldest">Oldest</option> 
-          @else
-            <option value="oldest">Oldest</option>
-          @endif
-
-          @if (request()->query('o') === "latest")
-            <option selected value="latest">Latest</option> 
-          @else
-            <option value="latest">Latest</option>
-          @endif
-        </select>
-
-        <select name="f" class="form-select" aria-label="Default select example">
-          <option selected disabled>Filter by</option>
-
-          @if (request()->query('f') === "member")
-            <option selected value="member">Members only</option> 
-          @else
-            <option value="member">Members only</option>
-          @endif
-
-          @if (request()->query('f') === "operator")
-            <option selected value="operator">Operators only</option> 
-          @else
-            <option value="operator">Operators only</option>
-          @endif
-
-          @if (request()->query('f') === "admin")
-            <option selected value="admin">Admins only</option> 
-          @else
-            <option value="admin">Admins only</option>
-          @endif
-        </select>
-
-        <button class="btn btn-outline-primary" type="submit">Apply</button>
-      </form>
+      <x-query-accordion>
+        <form action="{{ route('users.filter') }}" method="get" class="d-flex flex-lg-row flex-column gap-2 gap-lg-1 py-3 py-lg-0">
+          @csrf
+          <input name="search" class="form-control" type="search" placeholder="Search" value="{{ request()->query('search', '') }}" aria-label="Search">
+  
+          <select name="o" class="form-select" aria-label="Default select example">
+            <option selected disabled>Order by</option>
+  
+            @if (request()->query('o') === "oldest")
+              <option selected value="oldest">Oldest</option> 
+            @else
+              <option value="oldest">Oldest</option>
+            @endif
+  
+            @if (request()->query('o') === "latest")
+              <option selected value="latest">Latest</option> 
+            @else
+              <option value="latest">Latest</option>
+            @endif
+          </select>
+  
+          <select name="f" class="form-select" aria-label="Default select example">
+            <option selected disabled>Filter by</option>
+  
+            @if (request()->query('f') === "member")
+              <option selected value="member">Members only</option> 
+            @else
+              <option value="member">Members only</option>
+            @endif
+  
+            @if (request()->query('f') === "operator")
+              <option selected value="operator">Operators only</option> 
+            @else
+              <option value="operator">Operators only</option>
+            @endif
+  
+            @if (request()->query('f') === "admin")
+              <option selected value="admin">Admins only</option> 
+            @else
+              <option value="admin">Admins only</option>
+            @endif
+          </select>
+  
+          <button class="btn btn-outline-primary" type="submit">Apply</button>
+        </form>
+      </x-query-accordion>
     </div>
     
     <div class="table-responsive">

@@ -1,13 +1,17 @@
-<nav id="side-nav" {{ $attributes->merge(["class" => "d-none d-lg-block shadow-sm"]) }} data-collapsed="true">
+<aside id="side-nav" {{ $attributes->merge(["class" => "z-10 absolute over-left lg-z-0 inset-0 lg-over-none min-vh-100 lg-relative shadow-sm"]) }} data-collapsed="true">
   <div class="nav-items">
-    <a href="#" class="nav-item side-nav-open">
-      <i class="fa-solid fa-arrow-right"></i>
-    </a>
+    <span class="d-flex align-items-center justify-content-between">
+      <a href="{{ route('users.me') }}" class="d-flex gap-3 align-items-center">
+        <img src="{{ Storage::url(auth()->user()->img) }}" alt="Image not available" class="img-fluid rounded-circle">
+        <span class="nav-item-title overflow-hidden">{{ auth()->user()->username }}</span>
+      </a>
 
-    <a href="#" class="nav-item side-nav-close">
-      <i class="fa-solid fa-arrow-left"></i>
-      <span class="nav-item-title">Close</span>
-    </a>
+      <button type="button" class="side-nav-toggle btn btn-danger nav-item-title d-lg-none">
+        <i class="fa-solid fa-x"></i>
+      </button>
+    </span>
+
+    <hr>
 
     @if ($selected == "user")
     <a href="#" class="nav-item active">
@@ -59,4 +63,4 @@
       <span class="nav-item-title">Settings</span>
     </a>
   </div>
-</nav>
+</aside>

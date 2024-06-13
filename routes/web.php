@@ -22,7 +22,7 @@ Route::group(["namespace" => "App\Http\Controllers"], function() {
         Route::get("/logout", "LogoutController@perform")->name("logout");
 
         Route::get("/home", "HomeController@home")->name("home");
-        Route::get("/me", "HomeController@userShow")->name("user.me");
+        Route::get("/me", "HomeController@userShow")->name("users.me");
 
         Route::post("/books/{id}/rate", "BookController@rate")->name("books.rate");
     });
