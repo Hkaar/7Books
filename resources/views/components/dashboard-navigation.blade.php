@@ -1,67 +1,28 @@
-<nav {{ $attributes->merge(["class" => "navbar navbar-expand-lg shadow-sm"]) }}>
-  <div class="container-fluid">
-    <article class="brand">
-      <h5>Dashboard</h5>
-    </article>
-    
+<nav {{ $attributes->merge(["class" => "navbar navbar-expand-md shadow-sm py-2"]) }}>
+  <div class="container-fluid d-flex justify-content-between align-items-center">
+    <div class="d-flex gap-2">
+      <button type="button" class="btn btn-light border side-nav-toggle">
+        <i class="fa-solid fa-bars fs-5 m-0"></i>
+      </button>
+
+      <article class="d-flex gap-1 align-items-center">
+        <img src="{{ URL::asset('assets/imgs/logo.png') }}" alt="Image not available" class="img-fluid ratio-box img-small-logo">
+        Dashboard
+      </article>
+    </div>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+      <i class="fa-solid fa-ellipsis-vertical"></i>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto mb-lg-0 mt-2 mt-lg-0">
-        @if ($selected == "users")
-          <li class="nav-item d-lg-none">
-            <a class="nav-link active" aria-current="page" href="{{ route('users.index') }}">Users</a>
-          </li>
-        @else
-          <li class="nav-item d-lg-none">
-            <a class="nav-link" aria-current="page" href="{{ route('users.index') }}">Users</a>
-          </li>
-        @endif
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="{{ route('home') }}">Home</a>
+        </li>
 
-        @if ($selected == "orders")
-          <li class="nav-item d-lg-none">
-            <a class="nav-link active" aria-current="page" href="{{ route('orders.index') }}">Orders</a>
-          </li>
-        @else
-          <li class="nav-item d-lg-none">
-            <a class="nav-link" aria-current="page" href="{{ route('orders.index') }}">Orders</a>
-          </li>
-        @endif
-
-        @if ($selected == "books")
-          <li class="nav-item d-lg-none">
-            <a class="nav-link active" aria-current="page" href="{{ route('books.index') }}">Books</a>
-          </li>
-        @else
-          <li class="nav-item d-lg-none">
-            <a class="nav-link" aria-current="page" href="{{ route('books.index') }}">Books</a>
-          </li>
-        @endif
-        
-        @if ($selected == "authors")
-          <li class="nav-item d-lg-none">
-            <a class="nav-link active" aria-current="page" href="{{ route('authors.index') }}">Authors</a>
-          </li>
-        @else
-          <li class="nav-item d-lg-none">
-            <a class="nav-link" aria-current="page" href="{{ route('authors.index') }}">Authors</a>
-          </li>
-        @endif
-
-        @if ($selected == "genres")
-          <li class="nav-item d-lg-none">
-            <a class="nav-link active" aria-current="page" href="{{ route('genres.index') }}">Genres</a>
-          </li>
-        @else
-          <li class="nav-item d-lg-none">
-            <a class="nav-link" aria-current="page" href="{{ route('genres.index') }}">Genres</a>
-          </li>
-        @endif
-
-        <li class="nav-item mt-3 mt-lg-0">
-          <a class="nav-link text-danger px-3" aria-current="page" href="{{ route('logout') }}">Logout</a>
+        <li class="nav-item">
+          <a class="nav-link text-danger" aria-current="page" href="{{ route('logout') }}">Logout</a>
         </li>
       </ul>
     </div>
