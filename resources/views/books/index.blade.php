@@ -9,34 +9,47 @@
   <x-dashboard-navigation selected="books"></x-dashboard-navigation>
 
   <div class="container my-4">
-    <div class="mb-3 d-flex align-items-center justify-content-between">
-      <a class="btn btn-success" href="{{ URL::to('manage/books/create') }}">Add a new book</a>
+    <div class="mb-3 d-flex align-items-center justify-content-between flex-column flex-lg-row gap-2">
+      <a class="btn btn-success w-100 w-lg-fit" href="{{ route('books.create') }}">Add a new book</a>
 
-      <form action="{{ route('books.filter') }}" method="get" class="d-flex gap-1">
-        @csrf
-        <input name="search" class="form-control" type="search" placeholder="Search" value="{{ request()->query('search', '') }}" aria-label="Search">
+      <x-query-accordion>
+        <form action="{{ route('books.filter') }}" method="get" class="d-flex gap-2 flex-column flex-lg-row gap-lg-1 py-3 py-lg-0">
+          @csrf
+          <input name="search" class="form-control" type="search" placeholder="Search" value="{{ request()->query('search', '') }}" aria-label="Search">
+  
+          <select name="o" class="form-select" aria-label="Default select example">
+            <option selected disabled>Order by</option>
+  
+            @if (request()->query('o') === "oldest")
+              <option selected value="oldest">Oldest</option> 
+            @else
+              <option value="oldest">Oldest</option>
+            @endif
+  
+            @if (request()->query('o') === "latest")
+              <option selected value="latest">Latest</option> 
+            @else
+              <option value="latest">Latest</option>
+            @endif
+          </select>
 
-        <select name="o" class="form-select" aria-label="Default select example">
-          <option selected disabled>Order by</option>
-
-          @if (request()->query('o') === "oldest")
-            <option selected value="oldest">Oldest</option> 
-          @else
-            <option value="oldest">Oldest</option>
-          @endif
-
-          @if (request()->query('o') === "latest")
-            <option selected value="latest">Latest</option> 
-          @else
-            <option value="latest">Latest</option>
-          @endif
-        </select>
-
-        <input type="text" class="form-control" name="genre" placeholder="Filter by genre" value="{{ request()->query('genre', '') }}">
-        <input type="text" class="form-control" name="author" placeholder="Filter by author" value="{{ request()->query('author', '') }}">
-        
-        <button class="btn btn-outline-primary" type="submit">Apply</button>
-      </form>
+          <div class="dropdown w-100 w-lg-fit">
+            <button class="btn btn-secondary dropdown-toggle w-100 w-lg-fit" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Filter by
+            </button>
+            <ul class="dropdown-menu w-100 w-lg-fit p-1">
+              <li class="mb-1">
+                <input type="text" class="form-control" name="genre" placeholder="Enter a genre" value="{{ request()->query('genre', '') }}">
+              </li>
+              <li>
+                <input type="text" class="form-control" name="author" placeholder="Enter a author" value="{{ request()->query('author', '') }}">
+              </li>
+            </ul>
+          </div>
+          
+          <button class="btn btn-outline-primary" type="submit">Apply</button>
+        </form>
+      </x-query-accordion>
     </div>
     
     <div class="table-responsive">
