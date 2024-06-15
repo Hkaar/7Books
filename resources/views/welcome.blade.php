@@ -3,7 +3,7 @@
 @section('title', "Seven Books")
 
 @section('main')
-<x-svb-navigation-bar :search=true :menus=true></x-svb-navigation-bar>
+<x-svb-navigation-bar :search=true :menus=true active=""></x-svb-navigation-bar>
 
 <section id="hero" style="margin-top:2rem">
   <div class="container">
