@@ -99,10 +99,6 @@ section {
 }
 
 /* ----- Components ----- */
-#app {
-  min-height: 100vh;
-}
-
 .bg-primary,
 .btn-primary {
   background-color: var(--primary) !important;
@@ -266,6 +262,11 @@ section {
   height: 40px;
 }
 
+.img-x-small-logo {
+  width: 30px;
+  height: 30px;
+}
+
 .svb-card {
   overflow: hidden;
   height: 350px;
@@ -347,15 +348,15 @@ section {
 
 /* ----- Animations ----- */
 .svb-transition-fast {
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease;
 }
 
 .svb-transition {
-  transition: all 1.3s ease-in-out;
+  transition: all 1.3s ease;
 }
 
 .svb-transition-slow {
-  transition: all 2.1s ease-in-out;
+  transition: all 2.1s ease;
 }
 
 .transition-none {
@@ -367,12 +368,16 @@ section {
     rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 }
 
-.hover-shrink:hover {
-  transform: scale(0.95);
-}
-
 .hover-grow:hover {
   transform: scale(1.05);
+}
+
+.hover-text-greyed:hover {
+  color: gray !important;
+}
+
+.hover-text-lightgrayed:hover {
+  color: lightgray !important;
 }
 
 .active-shrink:active {

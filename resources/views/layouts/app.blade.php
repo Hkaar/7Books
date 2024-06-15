@@ -14,7 +14,7 @@
   <script src="{{ URL::asset('js/modules/htmx.js') }}"></script>
 </head>
 <body>
-  <main id="app" class="min-vh-100">
+  <main id="min-vh-100" class="min-vh-100">
     @yield('main')
   </main>
 
