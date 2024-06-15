@@ -15,14 +15,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(["namespace" => "App\Http\Controllers"], function() {
     Route::get("/", "HomeController@welcome")->name("/");
-    Route::get("/browse", "HomeController@browse")->name("/browse");
+    Route::get("/browse", "HomeController@browse")->name("browse");
     Route::get("/denied", "HomeController@denied")->name("denied");
 
     Route::group(["middleware" => ["auth"]], function() {
         Route::get("/logout", "LogoutController@perform")->name("logout");
 
         Route::get("/home", "HomeController@home")->name("home");
-        Route::get("/me", "HomeController@userShow")->name("users.me");
+        Route::get("/me", "HomeController@me")->name("users.me");
 
         Route::post("/books/{id}/rate", "BookController@rate")->name("books.rate");
     });

@@ -24,6 +24,7 @@ class svbNavigationBar extends Component
         return view('components.svb-navigation-bar', [
             "search" => $this->search,
             "menus" => $this->menus,
+            "active" => $this->active,
         ]);
     }
 }
