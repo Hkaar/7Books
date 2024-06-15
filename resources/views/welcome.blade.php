@@ -3,43 +3,7 @@
 @section('title', "Seven Books")
 
 @section('main')
-<nav class="navbar navbar-expand-md">
-  <div class="container-fluid">
-    <a href="{{ route('/') }}" class="d-flex align-items-center justify-content-center gap-2 text-center text-inherit text-none">
-      <img src="{{ URL::asset('assets/imgs/logo.png') }}" alt="Image not available" class="img-fluid ratio-box img-small-logo">
-      <h6 class="fw-bold">Seven Books</h6>
-    </a>
-    
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <i class="fa-solid fa-bars text-inherit"></i>
-    </button>
-    
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active cursor-pointer" aria-current="page" href="#">Browse</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#about">About us</a>
-        </li>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact us</a>
-        </li>
-        <div class="d-flex align-items-center justify-content-start">
-          <a href="{{ route('login') }}" class="btn btn-secondary me-1">Login</a>
-          <a href="{{ route('register') }}" class="btn btn-primary">Register</a>
-        </div>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-{{-- @if (auth()->user())
-    <h1 class="text-center">sudah login pace</h1>
-@else
-    <h1 class="text-center">belum login pace</h1>
-@endif --}}
+<x-svb-navigation-bar :search=true :menus=true></x-svb-navigation-bar>
 
 <section id="hero" style="margin-top:2rem">
   <div class="container">
@@ -260,39 +224,6 @@
     </div>
   </div>
 </section>
-<footer class="bg-secondary">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col mt-5">
-        <div class="col-lg-8 d-flex align-items-center">
-          <img src="{{ URL::asset('assets/imgs/logo.png') }}" class="img-fluid" style="width:45px">
-          <h5 class="ms-2 fw-semibold">Seven Books</h5>
-        </div>
-        <h6 class="mt-3 fs-6">Sail through the sea of knowledge</h6>
-      </div>
-      <div class="col-md-4 mt-5">
-        <h5>Exproller</h5>
-        <ul class="list-unstyled">
-          <li><a href="#" class="text-decoration-none text-light" style="font-size:15px">Terms of service</a></li>
-          <li><a href="#" class="text-decoration-none text-light" style="font-size:15px">Privacy Policy</a></li>
-          <li><a href="#" class="text-decoration-none text-light" style="font-size:15px">Contact us</a></li>
-          <li><a href="#" class="text-decoration-none text-light" style="font-size:15px">Supported Regions</a></li>
-        </ul>
-      </div>
-      <div class="col-md-3 mt-5">
-        <h5>Follow us</h5>
-        <div>
-          <a href="#"><i class="fa-brands fa-facebook fs-4 text-light"></i></a>
-          <a href="#"><i class="fa-brands fa-instagram fs-4 text-light ms-2"></i></a>
-          <a href="#"><i class="fa-brands fa-youtube fs-4 text-light ms-2"></i></a>
-          <a href="#"><i class="fa-brands fa-whatsapp fs-4 text-light ms-2"></i></a>
-        </div>
-        <div class="mt-2">
-        <i class="fa-solid fa-user"><a href="whatsapp://send?text=Hello&phone=+6281237102017" class="text-decoration-none text-light ms-2">+62 812-3710-2017</a></i>
-        </div>
-      </div>
-      <a href="#" class="text-decoration-none text-light mt-4 pb-2" style="font-size: 15px">Copyright © SevenBooks Team. All rights reserved.</a>
-    </div>
-  </div>
-</footer>
+
+<x-svb-footer></x-svb-footer>
 @endsection
