@@ -25,7 +25,7 @@ class HomeController extends Controller
     /**
      * Display the current logged in user account page
      */
-    public function userShow()
+    public function me()
     {
         return view("auth.show");
     }
@@ -36,6 +36,14 @@ class HomeController extends Controller
     public function browse()
     {
         return view("browse");
+    }
+
+    /**
+     * Display the supported regions page
+     */
+    public function regions()
+    {
+        return view("regions");
     }
 
     /**
