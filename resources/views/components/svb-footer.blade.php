@@ -1,4 +1,4 @@
-<footer class="bg-body-tertiary pt-5">
+<footer class="bg-secondary pt-5">
   <div class="container mb-5">
     <div class="row">
       <div class="col-12 col-md-6 col-lg-4 mb-3">
@@ -30,16 +30,16 @@
         <h5 class="mb-3">Contact us</h5>
 
         <div class="d-flex gap-3 align-items-center mb-3">
-          <a href="#"><i class="fa-brands fa-facebook fs-3 svb-transition-fast hover-grow active-shrink"></i></a>
-          <a href="#"><i class="fa-brands fa-instagram fs-3 svb-transition-fast hover-grow active-shrink"></i></a>
-          <a href="#"><i class="fa-brands fa-youtube fs-3 svb-transition-fast hover-grow active-shrink"></i></a>
-          <a href="#"><i class="fa-brands fa-whatsapp fs-3 svb-transition-fast hover-grow active-shrink"></i></a>
+          <a href="#"><i class="fa-brands fa-facebook fs-3 svb-transition-fast hover-grow active-shrink text-light"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram fs-3 svb-transition-fast hover-grow active-shrink text-light"></i></a>
+          <a href="#"><i class="fa-brands fa-youtube fs-3 svb-transition-fast hover-grow active-shrink text-light"></i></a>
+          <a href="#"><i class="fa-brands fa-whatsapp fs-3 svb-transition-fast hover-grow active-shrink text-light"></i></a>
         </div>
 
         <div class="d-flex align-items-center gap-1">
           <i class="fa-solid fa-envelope fs-5"></i>
 
-          <span class="text-body-secondary">
+          <span class="text-light">
             Hkaar@users.noreply.github.com
           </span>
         </div>
