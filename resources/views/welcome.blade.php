@@ -41,10 +41,10 @@
     <h1 class="text-center">belum login pace</h1>
 @endif --}}
 
-<section id="hero" style="margin-top:2rem">
+<section id="hero" style="margin:5rem 0">
   <div class="container">
     <div class="row justify-content-center align-items-center mb-5">
-      <div class="col-md-5 d-block d-md-none">
+      <div class="col-md-4 d-block d-md-none">
         <img src="{{ URL::asset('assets/imgs/7books.png') }}" class="img-fluid">
       </div>
       <div class="col-md-6 d-block d-md-none text-center">
@@ -56,9 +56,9 @@
           <button class="btn btn-primary ms-3 fw-medium">Get Started</button>
          </div>
       </div>
-      <div class="col-md-7 d-none d-md-block">
-        <h2 class="fw-bold">Sail The Knowledge Seas</h2>
-        <p class="text-secondary lh-lg">Looking for a way to read a book from a library? Use our
+      <div class="col-md-8 col-lg-7 d-none d-md-block">
+      <h2 class="fw-bold">Sail The Knowledge Seas</h2>
+      <p class="text-secondary lh-lg">Looking for a way to read a book from a library? Use our
          service to read books from your local library</p>
          <div class="flex mt-2">
           <button class="btn btn-secondary fw-medium">What is this</button>
@@ -98,45 +98,185 @@
   </div>
 </section>
 
-<section id="books" style="padding-top:6.5rem;">
+<section id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel" style="margin:3rem 0">
   <div class="container">
-    <h5 class="fw-normal mb-3 d-none d-md-block">Currently Trending</h5>
-    <h5 class="fw-normal mb-3 d-block d-md-none text-center">Currently Trending</h5>
-    <div class="row justify-content-center align-items-center">
-      <div class="col-md-3">
-        <div class="card ratio-portrait border-0">
-          <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid">
-          <div class="card-body">
-            <p class="fw-semibold">Harry Potter</p>
+    <h5 class="fw-normal mb-3 mt-5 d-block d-md-none text-center">Curently Trending</h5>
+    <h5 class="fw-normal mb-3 mt-5 d-none d-md-block ms-4">Curently Trending</h5>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="card-wrapper d-flex  justify-content-around">
+          <div class="col-md-3">
+            <div class="card border-0">
+              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid">
+                <div class="card-body">
+                  <p class="card-title text-center">Harry Potter</p>
+                </div>
+            </div>
           </div>
-        </div>
+          <div class="col-md-3">
+            <div class="card border-0">
+              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid">
+                <div class="card-body">
+                  <p class="card-title text-center">Harry Potter</p>
+                </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card border-0">
+              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid">
+                <div class="card-body">
+                  <p class="card-title text-center">Harry Potter</p>
+                </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card border-0">
+              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid">
+                <div class="card-body">
+                  <p class="card-title text-center">Harry Potter</p>
+                </div>
+            </div>
+          </div>
+        </div>   
       </div>
-      <div class="col-md-3">
-        <div class="card ratio-portrait border-0">
-          <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid">
-          <div class="card-body">
-            <p class="fw-semibold">Lord Of The Rings</p>
+      <div class="carousel-item">
+        <div class="card-wrapper d-flex  justify-content-around">
+          <div class="col-md-3">
+            <div class="card border-0">
+              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid">
+                <div class="card-body">
+                  <p class="card-title text-center">Harry Potter</p>
+                </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card ratio-portrait border-0">
-          <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid">
-          <div class="card-body">
-            <p class="fw-semibold">Dungeons & Dragons</p>
+          <div class="col-md-3">
+            <div class="card border-0">
+              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid">
+                <div class="card-body">
+                  <p class="card-title text-center">Harry Potter</p>
+                </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card ratio-portrait border-0">
-          <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid">
-          <div class="card-body">
-            <p class="fw-semibold">Florida Man</p>
+          <div class="col-md-3">
+            <div class="card border-0">
+              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid">
+                <div class="card-body">
+                  <p class="card-title text-center">Harry Potter</p>
+                </div>
+            </div>
           </div>
-        </div>
+          <div class="col-md-3">
+            <div class="card border-0">
+              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid">
+                <div class="card-body">
+                  <p class="card-title text-center">Harry Potter</p>
+                </div>
+            </div>
+          </div>
+        </div>   
       </div>
     </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</section>
+
+<section id="carouselExampleControlsTwo" class="carousel carousel-dark slide" data-bs-ride="carousel">
+  <div class="container">
     <h5 class="fw-normal mb-3 mt-5 d-block d-md-none text-center">Newly Released</h5>
+    <h5 class="fw-normal mb-3 mt-5 d-none d-md-block ms-4">Newly Released</h5>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="card-wrapper d-flex justify-content-around">
+          <div class="col-md-3">
+            <div class="card border-0">
+              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid">
+                <div class="card-body">
+                  <p class="card-title text-center">Harry Potter</p>
+                </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card border-0">
+              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid">
+                <div class="card-body">
+                  <p class="card-title text-center">Harry Potter</p>
+                </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card border-0">
+              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid">
+                <div class="card-body">
+                  <p class="card-title text-center">Harry Potter</p>
+                </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card border-0">
+              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid">
+                <div class="card-body">
+                  <p class="card-title text-center">Harry Potter</p>
+                </div>
+            </div>
+          </div>
+        </div>   
+      </div>
+      <div class="carousel-item">
+        <div class="card-wrapper d-flex  justify-content-around">
+          <div class="col-md-3">
+            <div class="card border-0">
+              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid">
+                <div class="card-body">
+                  <p class="card-title text-center">Harry Potter</p>
+                </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card border-0">
+              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid">
+                <div class="card-body">
+                  <p class="card-title text-center">Harry Potter</p>
+                </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card border-0">
+              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid">
+                <div class="card-body">
+                  <p class="card-title text-center">Harry Potter</p>
+                </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card border-0">
+              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="img-fluid">
+                <div class="card-body">
+                  <p class="card-title text-center">Harry Potter</p>
+                </div>
+            </div>
+          </div>
+        </div>   
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsTwo" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsTwo" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</section>
+
+    {{-- <h5 class="fw-normal mb-3 mt-5 d-block d-md-none text-center">Newly Released</h5>
     <h5 class="fw-normal mb-3 mt-5 d-none d-md-block">Newly Released</h5>
     <div class="row justify-content-center align-items-center">
       <div class="col-md-3">
@@ -172,8 +312,8 @@
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</section> --}}
 <section id="faq" style="padding-top:3rem;">
   <div class="container mt-5">
     <div class="row justify-content-around align-items-center">
