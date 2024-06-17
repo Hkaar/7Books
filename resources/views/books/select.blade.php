@@ -19,37 +19,7 @@
     @endif
   
     <div class="col-12 mt-auto">
-      <div class="row d-flex align-items-center">
-        <div class="col-12 col-md-6">
-          <ul class="pagination" hx-target="#selectItemsBody" hx-swap="innerHTML" style="margin: 0">
-            @if ($books->onFirstPage())
-              <li class="page-item disabled">
-                <span class="page-link">Previous</span>
-              </li>
-            @else
-              <li class="page-item">
-                <a class="page-link" href="#" hx-get="{{ $books->previousPageUrl() }}">Previous</a>
-              </li>
-            @endif
-        
-            @for ($i = 1; $i <= $books->lastPage(); $i++)
-              <li class="page-item {{ ($books->currentPage() == $i) ? 'active' : '' }}">
-                <a class="page-link" href="#" hx-get="{{ $books->url($i) }}">{{ $i }}</a>
-              </li>
-            @endfor
-        
-            @if ($books->hasMorePages())
-              <li class="page-item">
-                <a class="page-link" href="#" hx-get="{{ $books->nextPageUrl() }}">Next</a>
-              </li>
-            @else
-              <li class="page-item disabled">
-                <span class="page-link">Next</span>
-              </li>
-            @endif
-          </ul>
-        </div>
-      </div>
+      <x-paginate-links :links="$books" :useHtmx=true hx-target="#selectItemsBody" hx-swap="innerHTML"></x-paginate-links>
     </div>
   </div>
 </div>

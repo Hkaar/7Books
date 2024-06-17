@@ -8,14 +8,12 @@ use Illuminate\View\Component;
 
 class PaginateLinks extends Component
 {
-    public $links;
-
     /**
      * Create a new component instance.
      */
-    public function __construct($links)
+    public function __construct(public $links, public bool $useHtmx = false)
     {
-        $this->links = $links; 
+        //
     }
 
     /**
@@ -25,6 +23,7 @@ class PaginateLinks extends Component
     {
         return view('components.paginate-links')->with([
             "links" => $this->links,
+            "useHtmx" => $this->useHtmx,
         ]);
     }
 }
