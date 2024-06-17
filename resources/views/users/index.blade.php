@@ -106,7 +106,7 @@
       </table>
     </div>
 
-    <x-paginate-links :links="$users"></x-paginate-links>
+    <x-paginate-links :links="$users" :useHtmx=false></x-paginate-links>
   </div>
 </div>
 @endsection

@@ -83,7 +83,7 @@
       </table>
     </div>
   
-    <x-paginate-links :links="$authors"></x-paginate-links>
+    <x-paginate-links :links="$authors" :useHtmx=false></x-paginate-links>
   </div>
 </div>
 @endsection
