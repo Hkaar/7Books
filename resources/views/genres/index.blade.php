@@ -79,7 +79,7 @@
       </table>
     </div>
   
-    <x-paginate-links :links="$genres"></x-paginate-links>
+    <x-paginate-links :links="$genres" :useHtmx=false></x-paginate-links>
   </div>
 </div>
 @endsection
