@@ -2,10 +2,10 @@
   <div class="row flex-fill d-flex align-items-center container">
     @foreach ($items as $item)
     <div class="col-12 col-md-4 mb-3">
-      <div class="card item-card" data-item="{{ $item->book->id }}">
+      <div class="card svb-card svb-transition" data-item="{{ $item->book->id }}">
         <img src="{{ Storage::url($item->book->img) }}" class="card-img-top" alt="Image not available...">
   
-        <div class="title">
+        <div class="title svb-transition-fast">
           {{$item->book->name}}
         </div>
       </div>
