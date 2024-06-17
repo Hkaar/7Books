@@ -7,7 +7,13 @@
 
       <article class="d-flex gap-1 align-items-center">
         <img src="{{ URL::asset('assets/imgs/logo.png') }}" alt="Image not available" class="img-fluid ratio-box img-small-logo">
-        Dashboard
+        <span class="d-none d-md-block text-body-secondary">
+          {{ str_replace("manage", "Dashboard", request()->path()) }}
+        </span>
+
+        <span class="d-md-none text-body-secondary">
+          Dashboard
+        </span>
       </article>
     </div>
 
