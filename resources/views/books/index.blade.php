@@ -99,7 +99,7 @@
       </table>
     </div>
   
-    <x-paginate-links :links="$books"></x-paginate-links>
+    <x-paginate-links :links="$books" :useHtmx=false></x-paginate-links>
   </div>
 </div>
 @endsection

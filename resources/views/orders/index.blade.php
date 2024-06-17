@@ -102,7 +102,7 @@
       </table>
     </div>
   
-    <x-paginate-links :links="$orders"></x-paginate-links>
+    <x-paginate-links :links="$orders" :useHtmx=false></x-paginate-links>
   </div>
 </div>
 @endsection
