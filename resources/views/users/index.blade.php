@@ -14,7 +14,6 @@
 
       <x-query-accordion>
         <form action="{{ route('users.index') }}" method="get" class="d-flex flex-lg-row flex-column gap-2 gap-lg-1 py-3 py-lg-0">
-          @csrf
           <input name="search" class="form-control" type="search" placeholder="Search" value="{{ request()->query('search', '') }}" aria-label="Search">
   
           <select name="o" class="form-select" aria-label="Default select example">
