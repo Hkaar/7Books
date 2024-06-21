@@ -13,7 +13,7 @@
       <a class="btn btn-success w-100 w-lg-fit" href="{{ route('authors.index') }}">Add a new author</a>
 
       <x-query-accordion>
-        <form action="{{ route('authors.filter') }}" method="get" class="d-flex gap-2 flex-column flex-lg-row gap-lg-1 py-3 py-lg-0">
+        <form action="{{ route('authors.index') }}" method="get" class="d-flex gap-2 flex-column flex-lg-row gap-lg-1 py-3 py-lg-0">
           @csrf
           <input name="search" class="form-control" type="search" placeholder="Search" value="{{ request()->query('search', '') }}" aria-label="Search">
   
