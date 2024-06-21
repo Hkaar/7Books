@@ -25,10 +25,10 @@
             <input type="hidden" name="items" id="items" value="{{ $items }}">
   
             <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
-              <input class="form-control" id="email" type="email" name="email" value="{{ $email }}" autofocus>
+              <label for="username" class="form-label">Username or Email</label>
+              <input class="form-control" id="username" type="text" name="username" value="{{ $user->username }}" autofocus>
               
-              @error('email')
+              @error('username')
                 <span>{{ $message }}</span>
               @enderror
             </div>
