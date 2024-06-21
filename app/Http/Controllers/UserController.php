@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Services\UserFilterService;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -11,35 +12,25 @@ use Intervention\Image\Laravel\Facades\Image;
 
 class UserController extends Controller
 {
+    public function __construct(public UserFilterService $filterService) {}
+
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
-        $users = User::query();
-
-        if ($request->has("search")) {
-            $searchQuery = $request->get("search");
-            $users->where('name', 'like', '%' . $searchQuery . '%');
-        } 
+        $filters = $request->only(["search", "level"]);
 
         if ($request->has("o")) {
             $orderQuery = $request->get('o');
-            
-            if ($orderQuery === 'latest') {
-                $users->latest();
-            } elseif ($orderQuery === "oldest") {
-                $users->oldest();
-            }
+
+            match ($orderQuery) {
+                "latest" => array_push($filters, "latest"),
+                "oldest" => array_push($filters, "oldest"),
+            };
         }
 
-        if ($request->has("f")) {
-            $users->byPermission($request->get("f"));
-
-            // Additional filters can be added here!
-        }
-
-        $users = $users->paginate(20);
+        $users = $this->filterService->filter($filters);
         $users->appends($request->query());
 
         return view('users.index')->with([
@@ -47,14 +38,6 @@ class UserController extends Controller
         ]);
     }
     
-    /**
-     * Apply request filters and redirect to index route.
-     */
-    public function filter(Request $request) {
-        $queries = $request->except('_token');
-        return redirect()->route('users.index', $queries);
-    }
-
     /**
      * Show the form for creating a new resource.
      */
