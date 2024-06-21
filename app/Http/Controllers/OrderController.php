@@ -6,8 +6,6 @@ use App\Models\Order;
 use App\Models\User;
 use App\Services\OrderFilterService;
 
-use App\Http\Requests\OrderRequest;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -68,7 +66,7 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            "username" => "required|string",
+            "email" => "required|string|exists:users,email",
             "return_date" => "required|date",
             "status" => "nullable|string",
             "placed" => "nullable|date",
