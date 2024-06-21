@@ -3,45 +3,36 @@
 namespace App\Http\Controllers;
 
 use App\Models\Genre;
+use App\Services\GenreFilterService;
+
 use Illuminate\Http\Request;
 
 class GenreController extends Controller
 {
+    public function __construct(public GenreFilterService $filterService) {}
+
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
-        $genres = Genre::query();
-
-        if ($request->has("search")) {
-            $searchQuery = $request->get("search");
-            $genres->where("name", "like", "%".$searchQuery."%");
-        } 
+        $filters = $request->only(["search"]);
 
         if ($request->has("o")) {
             $orderQuery = $request->get('o');
             
-            if ($orderQuery === 'latest') {
-                $genres->latest();
-            } elseif ($orderQuery === "oldest") {
-                $genres->oldest();
-            }
+            match ($orderQuery) {
+                "latest" => array_push($filters, "latest"),
+                "oldest" => array_push($filters, "oldest"),
+            };
         }
-        $genres = $genres->paginate(20);
+
+        $genres = $this->filterService->filter($filters);
         $genres->appends($request->query());
 
         return view("genres.index")->with([
             "genres" => $genres
         ]);
-    }
-
-    /**
-     * Apply request filters and redirect to index route.
-     */
-    public function filter(Request $request) {
-        $queries = $request->except('_token');
-        return redirect()->route('genres.index', $queries);
     }
 
     /**
