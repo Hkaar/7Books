@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Services\BookFilterService;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -12,6 +13,8 @@ use Intervention\Image\Laravel\Facades\Image;
 
 class BookController extends Controller
 {
+    public function __construct(public BookFilterService $filterService) {}
+
     /**
      * ISBN regex to check valid isbn-13 and isbn-10 numbers
      */
@@ -22,48 +25,23 @@ class BookController extends Controller
      */
     public function index(Request $request)
     {
-        $books = Book::query();
-
-        if ($request->has("search")) {
-            $searchQuery = $request->get("search");
-            $books->where("name", "like", "%".$searchQuery."%");
-        }
-
-        if ($request->has("genre")) {
-            $genreQuery = $request->get("genre");
-            $books->byGenre($genreQuery);
-        }
-
-        if ($request->has("author")) {
-            $authorQuery = $request->get("author");
-            $books->byAuthor($authorQuery);
-        }
+        $filters = $request->only(['search', 'genre', 'author']);
 
         if ($request->has("o")) {
             $orderQuery = $request->get('o');
             
-            if ($orderQuery === 'latest') {
-                $books->latest();
-            } elseif ($orderQuery === "oldest") {
-                $books->oldest();
-            }
+            match ($orderQuery) {
+                "latest" => array_push($filters, "latest"),
+                "oldest" => array_push($filters, "oldest"),
+            };
         }
 
-        $books = $books->paginate(20);
+        $books = $this->filterService->filter($filters);
         $books->appends($request->query());
 
         return view('books.index')->with([
             "books" => $books
         ]);
-    }
-
-    /**
-     * Apply request filters and redirect to index route.
-     */
-    public function filter(Request $request) 
-    {
-        $queries = $request->except('_token');
-        return redirect()->route('books.index', $queries);
     }
 
     /**
