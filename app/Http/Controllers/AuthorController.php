@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Author;
+use App\Services\AuthorFilterService;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -11,41 +12,30 @@ use Intervention\Image\Laravel\Facades\Image;
 
 class AuthorController extends Controller
 {
+    public function __construct(public AuthorFilterService $filterService) {}
+    
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
-        $authors = Author::query();
-
-        if ($request->has("search")) {
-            $searchQuery = $request->get("search");
-            $authors->where("name", "like", "%".$searchQuery."%");
-        } 
+        $filters = $request->only(["search"]);
 
         if ($request->has("o")) {
             $orderQuery = $request->get('o');
             
-            if ($orderQuery === 'latest') {
-                $authors->latest();
-            } elseif ($orderQuery === "oldest") {
-                $authors->oldest();
-            }
+            match ($orderQuery) {
+                "latest" => array_push($filters, "latest"),
+                "oldest" => array_push($filters, "oldest"),
+            };
         }
-        $authors = $authors->paginate(20);
+
+        $authors = $this->filterService->filter($filters);
         $authors->appends($request->query());
 
         return view('authors.index')->with([
             "authors" => $authors
         ]);
-    }
-
-    /**
-     * Apply request filters and redirect to index route.
-     */
-    public function filter(Request $request) {
-        $queries = $request->except('_token');
-        return redirect()->route('authors.index', $queries);
     }
 
     /**
