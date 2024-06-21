@@ -10,7 +10,7 @@
 
   <div class="container my-4">
     <div class="mb-3 d-flex align-items-center justify-content-between flex-column flex-lg-row gap-2">
-      <a class="btn btn-success w-100 w-lg-fit" href="{{ route('authors.index') }}">Add a new author</a>
+      <a class="btn btn-success w-100 w-lg-fit" href="{{ route('authors.create') }}">Add a new author</a>
 
       <x-query-accordion>
         <form action="{{ route('authors.index') }}" method="get" class="d-flex gap-2 flex-column flex-lg-row gap-lg-1 py-3 py-lg-0">
