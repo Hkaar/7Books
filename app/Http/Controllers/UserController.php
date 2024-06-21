@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+
+use App\Traits\Uploader;
 use App\Services\UserFilterService;
 
 use Illuminate\Http\Request;
@@ -12,6 +14,8 @@ use Intervention\Image\Laravel\Facades\Image;
 
 class UserController extends Controller
 {
+    use Uploader;
+
     public function __construct(public UserFilterService $filterService) {}
 
     /**
@@ -66,16 +70,10 @@ class UserController extends Controller
 
         if ($request->hasFile('img'))
         {
-            $file = $request->file('img');
-            $fileName = time() . '_' . $file->getClientOriginalName();
-            $filePath = $file->storeAs('uploads', $fileName, 'public');
-
-            $image = Image::read(public_path('storage/' . $filePath));
-            $image->resize(200, 200, function ($constraint) {
-                $constraint->aspectRatio();
-            });
-
-            $image->save(public_path('storage/' . $filePath));
+            $filePath = $this->uploadImage(
+                file: $request->file('img'), 
+                size: [200, 200],
+            );
 
             $user->img = $filePath;
         }
@@ -126,23 +124,16 @@ class UserController extends Controller
             "img" => "nullable|image|mimes:jpeg,png,jpg|max:10240"
         ]);
 
-        if ($request->hasFile('img')) {
-            $file = $request->file('img');
-            
+        if ($request->hasFile('img')) {            
             if ($user->img) {
                 Storage::disk('public')->delete($user->img);
             }
     
-            $fileName = time() . '_' . $file->getClientOriginalName();
-            $filePath = $file->storeAs('uploads', $fileName, 'public');
-
-            $image = Image::read(public_path('storage/' . $filePath));
-            $image->resize(200, 200, function ($constraint) {
-                $constraint->aspectRatio();
-            });
-
-            $image->save(public_path('storage/' . $filePath));
-    
+            $filePath = $this->uploadImage(
+                file: $request->file('img'), 
+                size: [200, 200],
+            );
+            
             $user->img = $filePath;
         }
 
