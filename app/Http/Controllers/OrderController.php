@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\User;
+
 use App\Services\OrderFilterService;
+use App\Http\Requests\OrderCreateRequest;
+use App\Http\Requests\OrderUpdateRequest;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -45,6 +48,9 @@ class OrderController extends Controller
         return view("orders.create");
     }
 
+    /**
+     * Show all the books that a order has
+     */
     public function items(int $id)
     {
         $order = Order::findOrFail($id);
@@ -63,22 +69,13 @@ class OrderController extends Controller
      * @param Illuminate\Http\Request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(OrderCreateRequest $request)
     {
-        $validated = $request->validate([
-            "email" => "required|string|exists:users,email",
-            "return_date" => "required|date",
-            "status" => "nullable|string",
-            "placed" => "nullable|date",
-            "items" => "nullable|string"
-        ]);
+        $validated = $request->getOrderData();
 
         $token = Str::uuid()->toString();
         $token = substr($token, 0, 8);
 
-        $user = User::query()->where("email", "=", $validated["email"])->get()[0];
-        
-        $validated["user_id"] = $user->id;
         $validated["token"] = $token;
 
         $order = new Order();
@@ -121,7 +118,7 @@ class OrderController extends Controller
         $order = Order::findOrFail($id);
 
         $books = $order->items()->get(["book_id", "amount"]);
-        $userEmail = User::findOrFail($order->user_id)->email;
+        $user = User::findOrFail($order->user_id);
 
         $items = [];
 
@@ -133,7 +130,7 @@ class OrderController extends Controller
 
         return view("orders.edit")->with([
             "order" => $order,
-            "email" => $userEmail,
+            "user" => $user,
             "items" => $items
         ]);
     }
@@ -144,21 +141,11 @@ class OrderController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response 
      */
-    public function update(Request $request, int $id)
+    public function update(OrderUpdateRequest $request, int $id)
     {
         $order = Order::findOrFail($id);
 
-        $validated = $request->validate([
-            "email" => "nullable|string|exists:users,email",
-            "token" => "nullable|string|max:8|unique:orders,token",
-            "return_date" => "nullable|date",
-            "placed" => "nullable|date",
-            "status" => "nullable|string",
-            "items" => "nullable|string"
-        ]);
-
-        $user = User::query()->where("email", "=", $validated["email"])->get()[0];
-        $validated["user_id"] = $user->id;
+        $validated = $request->getOrderData();
 
         $this->updateModel($order, $validated, ["items"]);
         $order->save();
