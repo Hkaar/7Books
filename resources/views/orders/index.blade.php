@@ -16,7 +16,7 @@
       <a class="btn btn-success w-100 w-lg-fit" href="{{ route('orders.create') }}">Add a new order</a>
 
       <x-query-accordion>
-        <form action="{{ route('orders.filter') }}" method="get" class="d-flex gap-2 flex-column flex-lg-row gap-lg-1 py-3 py-lg-0">
+        <form action="{{ route('orders.index') }}" method="get" class="d-flex gap-2 flex-column flex-lg-row gap-lg-1 py-3 py-lg-0">
           @csrf
           <input name="search" class="form-control" type="search" placeholder="Search" value="{{ request()->query('search', '') }}" aria-label="Search">
   
@@ -36,16 +36,16 @@
             @endif
           </select>
   
-          <select name="f" class="form-select" aria-label="Default select example">
+          <select name="filter" class="form-select" aria-label="Default select example">
             <option selected disabled>Filter by</option>
   
-            @if (request()->query('f') === "overdue")
+            @if (request()->query('filter') === "overdue")
               <option selected value="overdue">Overdue only</option>
             @else
               <option value="overdue">Overdue only</option>
             @endif
   
-            @if (request()->query('f') === "due")
+            @if (request()->query('filter') === "due")
               <option selected value="due">Non overdue only</option>
             @else
               <option value="due">Non overdue only</option>

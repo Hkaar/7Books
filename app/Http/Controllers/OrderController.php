@@ -4,65 +4,37 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\User;
+use App\Services\OrderFilterService;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class OrderController extends Controller
 {
+    public function __construct(public OrderFilterService $filterService) {}
+
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
-        $orders = Order::query();
+        $filters = $request->only(["search", "status", "filter"]);
         
-        if ($request->has("search")) {
-            $searchQuery = $request->get("search");
-            $orders->byUser($searchQuery);
-        } 
-
-        if ($request->has("status")) {
-            $orders->byStatus($request->get("status"));
-        }
-
-        if ($request->has("f")) {
-            $filterQuery = $request->get("f");
-
-            if ($filterQuery === "overdue") {
-                $orders->byOverdue();
-            } else if ($filterQuery === "due") {
-                $orders->byDue();
-            }
-
-            // Add other additional filters here!
-        }
-
         if ($request->has("o")) {
             $orderQuery = $request->get('o');
             
-            if ($orderQuery === 'latest') {
-                $orders->latest();
-            } elseif ($orderQuery === "oldest") {
-                $orders->oldest();
-            }
+            match ($orderQuery) {
+                "latest" => array_push($filters, "latest"),
+                "oldest" => array_push($filters, "oldest"),
+            };
         }
 
-        $orders = $orders->paginate(20);
+        $orders = $this->filterService->filter($filters);
         $orders->appends($request->query());
 
         return view("orders.index")->with([
             "orders" => $orders
         ]);
-    }
-
-    /**
-     * Apply request filters and redirect to index route.
-     */
-    public function filter(Request $request)
-    {
-        $queries = $request->except('_token');
-        return redirect()->route('orders.index', $queries);
     }
 
     /**

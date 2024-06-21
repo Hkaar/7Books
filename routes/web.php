@@ -41,11 +41,6 @@ Route::group(["namespace" => "App\Http\Controllers"], function() {
         
         Route::get("/authors/authored/{id}", "AuthorController@authored")->name("authors.authored");
         Route::get("/orders/items/{id}", "OrderController@items")->name("orders.items");
-
-        Route::get("/books/filter", "BookController@filter")->name("books.filter");
-        Route::get("/orders/filter", "OrderController@filter")->name("orders.filter");
-        Route::get("/authors/filter", "AuthorController@filter")->name("authors.filter");
-        Route::get("/genres/filter", "GenreController@filter")->name("genres.filter");
         
         Route::resource("/books", "BookController")->names("books");
         Route::resource("/orders", "OrderController")->names("orders");
@@ -53,7 +48,6 @@ Route::group(["namespace" => "App\Http\Controllers"], function() {
         Route::resource("/genres", "GenreController")->names("genres");
         
         Route::middleware("check.admin")->group(function() {
-            Route::get("/users/filter", "UserController@filter")->name("users.filter");
             Route::resource("/users", "UserController")->names("users");
         });
     });

@@ -13,7 +13,7 @@
       <a class="btn btn-success w-100 w-lg-fit" href="{{ route('users.create') }}">Add a new user</a>
 
       <x-query-accordion>
-        <form action="{{ route('users.filter') }}" method="get" class="d-flex flex-lg-row flex-column gap-2 gap-lg-1 py-3 py-lg-0">
+        <form action="{{ route('users.index') }}" method="get" class="d-flex flex-lg-row flex-column gap-2 gap-lg-1 py-3 py-lg-0">
           @csrf
           <input name="search" class="form-control" type="search" placeholder="Search" value="{{ request()->query('search', '') }}" aria-label="Search">
   
@@ -33,22 +33,22 @@
             @endif
           </select>
   
-          <select name="f" class="form-select" aria-label="Default select example">
+          <select name="level" class="form-select" aria-label="Default select example">
             <option selected disabled>Filter by</option>
   
-            @if (request()->query('f') === "member")
+            @if (request()->query('level') === "member")
               <option selected value="member">Members only</option> 
             @else
               <option value="member">Members only</option>
             @endif
   
-            @if (request()->query('f') === "operator")
+            @if (request()->query('level') === "operator")
               <option selected value="operator">Operators only</option> 
             @else
               <option value="operator">Operators only</option>
             @endif
   
-            @if (request()->query('f') === "admin")
+            @if (request()->query('level') === "admin")
               <option selected value="admin">Admins only</option> 
             @else
               <option value="admin">Admins only</option>
