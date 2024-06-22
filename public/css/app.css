@@ -37,8 +37,6 @@
   font-weight: var(--text-regular);
   line-height: 1.6;
   letter-spacing: 0.03em;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
 }
 
 body {
@@ -466,13 +464,6 @@ section {
 }
 
 /* ----- Landing ----- */
-#hero,
-#about,
-p {
-  text-align: justify;
-  padding: 0 0.3rem;
-}
-
 #books p {
   text-align: center;
   font-size: 10.1px;
@@ -485,10 +476,6 @@ p {
 
 .accordion-button{
     font-size:15px;
-}
-.accordion-body{
-    font-size:14px;
-    text-align:justify;
 }
 
 .card {
