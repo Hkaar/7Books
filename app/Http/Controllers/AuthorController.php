@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Author;
+
+use App\Traits\Uploader;
 use App\Services\AuthorFilterService;
 
 use Illuminate\Http\Request;
@@ -12,6 +14,8 @@ use Intervention\Image\Laravel\Facades\Image;
 
 class AuthorController extends Controller
 {
+    use Uploader;
+
     public function __construct(public AuthorFilterService $filterService) {}
     
     /**
@@ -79,17 +83,10 @@ class AuthorController extends Controller
         $author->fill($validated);
 
         if ($request->hasFile("img")) {
-            $file = $request->file('img');
-
-            $fileName = time() . '_' . $file->getClientOriginalName();
-            $filePath = $file->storeAs('uploads', $fileName, 'public');
-
-            $image = Image::read(public_path('storage/' . $filePath));
-            $image->resize(200, 200, function ($constraint) {
-                $constraint->aspectRatio();
-            });
-
-            $image->save(public_path('storage/' . $filePath));
+            $filePath = $this->uploadImage(
+                file: $request->file('img'), 
+                size: [200, 200],
+            );
 
             $author->img = $filePath;
         }
@@ -159,22 +156,15 @@ class AuthorController extends Controller
         ]);
 
         if ($request->hasFile('img')) {
-            $file = $request->file('img');
-            
             if ($author->img) {
                 Storage::disk('public')->delete($author->img);
             }
     
-            $fileName = time() . '_' . $file->getClientOriginalName();
-            $filePath = $file->storeAs('uploads', $fileName, 'public');
+            $filePath = $this->uploadImage(
+                file: $request->file('img'), 
+                size: [200, 200],
+            );
 
-            $image = Image::read(public_path('storage/' . $filePath));
-            $image->resize(200, 200, function ($constraint) {
-                $constraint->aspectRatio();
-            });
-
-            $image->save(public_path('storage/' . $filePath));
-    
             $author->img = $filePath;
         }
 
