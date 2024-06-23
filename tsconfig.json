@@ -4,11 +4,15 @@
         "allowJs": true,
         "checkJs": true,
         "strict": true,
-        "outDir": "./dist"
+        "outDir": "./dist",
+        "moduleResolution": "NodeNext",
+        "esModuleInterop": true,
+        "module": "NodeNext"
     },
 
     "exclude": [
         "./public/js/modules/*",
-        "./dist/*"
+        "./dist/*",
+        "build/**/*"
     ]
 }
