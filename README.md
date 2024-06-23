@@ -47,6 +47,12 @@ mv .env.example .env && cp .env .env.example
 Rename-Item .\.env.example .\.env ; Copy-Item .\.env .\.env.example
 ```
 
+Build the assets
+
+```bash
+npm run build
+```
+
 Generate the app key
 
 ```bash
