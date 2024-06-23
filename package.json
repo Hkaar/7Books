@@ -7,13 +7,16 @@
     },
     "devDependencies": {
         "@types/bootstrap": "^5.2.10",
-        "@types/jquery": "^3.5.29",
+        "@types/jquery": "^3.5.30",
         "axios": "^1.6.4",
         "laravel-vite-plugin": "^1.0.0",
         "typescript": "^5.4.5",
         "vite": "^5.0.0"
     },
     "dependencies": {
-        "jsdoc": "^4.0.2"
+        "bootstrap": "^5.3.3",
+        "jquery": "^3.7.1",
+        "jsdoc": "^4.0.2",
+        "swiper": "^11.1.4"
     }
 }
