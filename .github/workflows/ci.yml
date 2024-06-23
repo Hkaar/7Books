@@ -33,6 +33,12 @@ jobs:
       - name: Run composer install
         run: composer install -n --prefer-dist
 
+      - name: Run npm install
+        run: npm install
+
+      - name: Build assets
+        run: npm run build
+
       - name: Run migrations
         run: php artisan migrate --env=testing
 
