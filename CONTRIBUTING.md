@@ -163,6 +163,19 @@ Make sure it's working by serving it
 php artisan serve
 ```
 
+Make sure that you have another terminal running vite
+for compiling the assets dynamically **(Recommended!)**
+
+```bash
+npm run dev
+```
+
+Or if you want, you can just compile the assets manually
+
+```bash
+npm run dev
+```
+
 #### Step 2: Work setup
 
 Go to the project directory (if you haven't)
