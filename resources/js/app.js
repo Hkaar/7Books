@@ -1,8 +1,5 @@
-import './bootstrap';
-
 import { Swiper } from "swiper";
 import 'jquery';
-import 'bootstrap';
 
 /** @type {readonly string[]} */
 const invalidLiterals = ["", "[]"];
