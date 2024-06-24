@@ -94,13 +94,15 @@ class BookController extends Controller
     }
 
     /**
-     * Display the browsing page
-     * 
-     * @param Illuminate\Http\Request $request
-     * @return view
+     * Display the book view page
      */
-    public function browse(Request $request) {
-        return view("browse");
+    public function display(Request $request, int $id)
+    {
+        $book = Book::findOrFail($id);
+
+        return view("books.display", [
+            "book" => $book,
+        ]);
     }
 
     /**
