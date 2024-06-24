@@ -16,24 +16,27 @@
       <div>
         <label for="username" class="form-label">Username</label>
         <input class="form-control" id="username" type="text" name="username" value="{{ old('username') }}" required autofocus>
+
         @error('username')
-          <span>{{ $message }}</span>
+          <span class="text-danger">{{ $message }}</span>
         @enderror
       </div>
 
       <div>
         <label for="email" class="form-label">Email</label>
         <input class="form-control" id="email" type="email" name="email" value="{{ old('email') }}" required>
+
         @error('email')
-          <span>{{ $message }}</span>
+          <span class="text-danger">{{ $message }}</span>
         @enderror
       </div>
 
       <div>
         <label for="password" class="form-label">Password</label>
         <input class="form-control" id="password" type="password" name="password" required>
+
         @error('password')
-          <span>{{ $message }}</span>
+          <span class="text-danger">{{ $message }}</span>
         @enderror
       </div>
 
@@ -43,7 +46,7 @@
       </div>
 
       <div class="d-flex gap-1">
-        <button type="reset" class="btn btn-secondary">Reset</button>
+        <a href="{{ route('/') }}" class="btn btn-danger">Cancel</a>
         <button type="submit" class="btn btn-primary">Register</button>
       </div>
     </form>

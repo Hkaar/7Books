@@ -18,6 +18,8 @@ Route::group(["namespace" => "App\Http\Controllers"], function() {
     Route::get("/browse", "HomeController@browse")->name("browse");
     Route::get("/denied", "HomeController@denied")->name("denied");
 
+    Route::get("/books/{id}", "BookController@display")->name("books.display");
+
     Route::group(["middleware" => ["auth"]], function() {
         Route::get("/logout", "LogoutController@perform")->name("logout");
 

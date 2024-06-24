@@ -18,7 +18,7 @@
         <input class="form-control" id="username" type="text" name="username" value="{{ old('username') }}" required autofocus>
         
         @error('username')
-          <span>{{ $message }}</span>
+          <span class="text-danger">{{ $message }}</span>
         @enderror
       </div>
 
@@ -27,17 +27,17 @@
         <input class="form-control" id="password" type="password" name="password" required>
         
         @error('password')
-          <span>{{ $message }}</span>
+          <span class="text-danger">{{ $message }}</span>
         @enderror
       </div>
 
       <div class="mb-3">
-        <input type="checkbox" id="remember" name="remember">
+        <input type="checkbox" id="remember" name="remember" value="1">
         <label for="remember">Remember Me</label>
       </div>
 
       <div class="d-flex gap-1">
-        <button type="reset" class="btn btn-secondary">Reset</button>
+        <a href="{{ route('/') }}" class="btn btn-danger">Cancel</a>
         <button type="submit" class="btn btn-primary">Login</button>
       </div>
     </form>

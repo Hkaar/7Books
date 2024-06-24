@@ -32,7 +32,7 @@ class LoginController extends Controller
 
         $user = Auth::getProvider()->retrieveByCredentials($credentials);
 
-        Auth::login($user);
+        Auth::login($user, $request->get("remember"));
 
         return redirect()->intended("/");
     }
