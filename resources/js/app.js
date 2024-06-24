@@ -171,6 +171,11 @@ document.addEventListener("DOMContentLoaded", () => {
         addItem(this);
     });
 
+    let swiper = new Swiper(".mySwiper", {
+        effect: "cards",
+        grabCursor: true,
+      });
+
     $(document).on("htmx:confirm", showConfirm);
 
     $(document).on("change", "#img", function() {
