@@ -299,6 +299,16 @@ p {
   object-fit: cover;
 }
 
+#display img{
+  width: 320px;
+  height: 480px;
+}
+#display h6{
+  font-size: var(--text-body);
+}
+
+
+
 .z-0 {
   z-index: 0;
 }
