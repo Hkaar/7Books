@@ -21,7 +21,7 @@ class FileUploadTest extends TestCase
     {
         Storage::fake("test");
 
-        $file = UploadedFile::fake()->image("test_image.jpg");
+        $file = UploadedFile::fake()->image("test_image.jpg", 300, 300);
 
         $path = $this->uploadImage($file, [
             "name" => "test_image.jpg",
