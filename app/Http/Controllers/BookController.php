@@ -3,16 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+
+use App\Traits\Uploader;
 use App\Services\BookFilterService;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 
-use Intervention\Image\Laravel\Facades\Image;
-
 class BookController extends Controller
 {
+    use Uploader;
+
     public function __construct(public BookFilterService $filterService) {}
 
     /**
@@ -134,16 +136,9 @@ class BookController extends Controller
         $file = $request->file('img');
 
         if ($file) {
-            $fileName = time() . '_' . $file->getClientOriginalName();
-            $filePath = $file->storeAs('uploads', $fileName, 'public');
-
-            $image = Image::read(public_path('storage/' . $filePath));
-            $image->resize(300, 450, function ($constraint) {
-                $constraint->aspectRatio();
-            });
-
-            $image->save(public_path('storage/' . $filePath));
-
+            $filePath = $this->uploadImage($request->file('img'), [
+                "size" => [1000, 1600],
+            ]);
             $book->img = $filePath;
         }
 
@@ -200,22 +195,13 @@ class BookController extends Controller
         ]);
 
         if ($request->hasFile('img')) {
-            $file = $request->file('img');
-            
             if ($book->img) {
                 Storage::disk('public')->delete($book->img);
             }
     
-            $fileName = time() . '_' . $file->getClientOriginalName();
-            $filePath = $file->storeAs('uploads', $fileName, 'public');
-
-            $image = Image::read(public_path('storage/' . $filePath));
-            $image->resize(300, 450, function ($constraint) {
-                $constraint->aspectRatio();
-            });
-
-            $image->save(public_path('storage/' . $filePath));
-    
+            $filePath = $this->uploadImage($request->file('img'), [
+                "size" => [1000, 1600],
+            ]);
             $book->img = $filePath;
         }
 
