@@ -83,10 +83,9 @@ class AuthorController extends Controller
         $author->fill($validated);
 
         if ($request->hasFile("img")) {
-            $filePath = $this->uploadImage(
-                file: $request->file('img'), 
-                size: [200, 200],
-            );
+            $filePath = $this->uploadImage($request->file('img'), [
+                "size" => [200, 200],
+            ]);
 
             $author->img = $filePath;
         }
@@ -160,10 +159,9 @@ class AuthorController extends Controller
                 Storage::disk('public')->delete($author->img);
             }
     
-            $filePath = $this->uploadImage(
-                file: $request->file('img'), 
-                size: [200, 200],
-            );
+            $filePath = $this->uploadImage($request->file('img'), [
+                "size" => [200, 200],
+            ]);
 
             $author->img = $filePath;
         }

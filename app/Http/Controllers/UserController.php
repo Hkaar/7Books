@@ -70,10 +70,9 @@ class UserController extends Controller
 
         if ($request->hasFile('img'))
         {
-            $filePath = $this->uploadImage(
-                file: $request->file('img'), 
-                size: [200, 200],
-            );
+            $filePath = $this->uploadImage($request->file('img'), [
+                "size" => [200, 200],
+            ]);
 
             $user->img = $filePath;
         }
@@ -129,10 +128,9 @@ class UserController extends Controller
                 Storage::disk('public')->delete($user->img);
             }
     
-            $filePath = $this->uploadImage(
-                file: $request->file('img'), 
-                size: [200, 200],
-            );
+            $filePath = $this->uploadImage($request->file('img'), [
+                "size" => [200, 200],
+            ]);
             
             $user->img = $filePath;
         }

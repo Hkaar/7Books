@@ -109,4 +109,15 @@ class BookTest extends TestCase
         $response = $this->post("/books/$book->id/rate?rating=4");
         $response->assertStatus(200);
     }
+
+    /**
+     * Test whether the book display route is working
+     */
+    public function test_book_display(): void
+    {
+        $book = Book::factory()->create();
+
+        $response = $this->get("/books/" . $book->id);
+        $response->assertStatus(200);
+    }
 }
