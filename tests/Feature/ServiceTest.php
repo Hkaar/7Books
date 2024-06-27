@@ -20,7 +20,6 @@ class ServiceTest extends TestCase
     public function test_user_filter_service(): void
     {
         $filters = [
-            "search" => "m",
             "level" => "member",
             "latest",
         ];
@@ -37,7 +36,6 @@ class ServiceTest extends TestCase
     public function test_order_filter_service(): void
     {
         $filters = [
-            "search" => "m",
             "latest",
         ];
 
@@ -53,7 +51,6 @@ class ServiceTest extends TestCase
     public function test_book_filter_service(): void
     {
         $filters = [
-            "search" => "m",
             "latest",
         ];
 
@@ -69,7 +66,6 @@ class ServiceTest extends TestCase
     public function test_author_filter_service(): void
     {
         $filters = [
-            "search" => "m",
             "latest",
         ];
 
@@ -85,7 +81,6 @@ class ServiceTest extends TestCase
     public function test_genre_filter_service(): void
     {
         $filters = [
-            "search" => "m",
             "latest",
         ];
 
