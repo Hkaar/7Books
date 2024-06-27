@@ -5,6 +5,8 @@ namespace App\Traits;
 use Illuminate\Http\UploadedFile;
 use Intervention\Image\Laravel\Facades\Image;
 
+use Illuminate\Support\Facades\Storage;
+
 trait Uploader
 {
     /**
@@ -20,13 +22,12 @@ trait Uploader
         $name = $options["name"] ?? time(). '_' . $file->getClientOriginalName();
         $path = $file->storeAs($folder, $name, $disk);
 
-        $image = Image::read(public_path("storage/" . $path));
-
         if ($width && $height) {
+            $image = Image::read(public_path("storage/" . $path));
             $image->resize($width, $height, fn($constraint) => $constraint->aspectRatio());
-        }
 
-        $image->save(public_path("storage/" . $path));
+            $image->save(public_path("storage/" . $path));
+        }
         
         return $path;
     }

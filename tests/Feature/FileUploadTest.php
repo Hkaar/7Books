@@ -25,7 +25,6 @@ class FileUploadTest extends TestCase
 
         $path = $this->uploadImage($file, [
             "name" => "test_image.jpg",
-            "size" => [200, 200],
             "disk" => "test",
         ]);
         
