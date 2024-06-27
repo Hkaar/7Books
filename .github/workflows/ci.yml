@@ -42,6 +42,9 @@ jobs:
       - name: Run migrations
         run: php artisan migrate --env=testing
 
+      - name: Run linking
+        run: php artisan storage:link
+
       - name: Generate key
         run: php artisan key:generate --env=testing
 
