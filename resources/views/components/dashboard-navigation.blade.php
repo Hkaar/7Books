@@ -24,11 +24,15 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="{{ route('home') }}">Home</a>
+          <a class="nav-link" href="{{ route('home') }}">Home</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link text-danger" aria-current="page" href="{{ route('logout') }}">Logout</a>
+          <a class="nav-link"  href="{{ route('browse') }}">Browse</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link text-danger" href="{{ route('logout') }}">Logout</a>
         </li>
       </ul>
     </div>
