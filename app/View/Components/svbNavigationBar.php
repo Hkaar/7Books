@@ -8,12 +8,16 @@ use Illuminate\View\Component;
 
 class svbNavigationBar extends Component
 {
+    public bool $isPriviledged = false;
+
     /**
      * Create a new component instance.
      */
     public function __construct(public bool $search = false, public bool $menus = false, public string $active = "")
     {
-        //
+        if (auth()->user() && in_array(auth()->user()->level, ["admin", "operator"])) {
+            $this->isPriviledged = true;
+        }
     }
 
     /**
@@ -25,6 +29,7 @@ class svbNavigationBar extends Component
             "search" => $this->search,
             "menus" => $this->menus,
             "active" => $this->active,
+            "priviledged" => $this->isPriviledged,
         ]);
     }
 }
