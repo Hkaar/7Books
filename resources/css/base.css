@@ -40,48 +40,53 @@ body {
   scroll-behavior: smooth;
   font-size: var(--text-body);
   font-weight: var(--text-regular);
-  line-height: 1.6;
-  letter-spacing: 0.02em;
+  line-height: 1.5;
+  letter-spacing: 0.065em;
 }
 
 h1 {
   font-size: var(--text-h1);
   font-weight: var(--text-bold);
-  line-height: 1.3;
 }
 
 h2 {
   font-size: var(--text-h2);
   font-weight: var(--text-semibold);
-  line-height: 1.4;
 }
 
 h3 {
   font-size: var(--text-h3);
   font-weight: var(--text-semibold);
-  line-height: 1.5;
 }
 
 h4 {
   font-size: var(--text-h4);
   font-weight: var(--text-semibold);
-  line-height: 1.5;
 }
 
 h5 {
   font-size: var(--text-h5);
   font-weight: var(--text-semibold);
-  line-height: 1.5;
 }
 
 h6 {
   font-size: var(--text-h6);
   font-weight: var(--text-medium);
-  line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.1;
+  letter-spacing: -1%;
 }
 
 a {
   color: var(--accent);
+  letter-spacing: 0.05em;
 }
 
 th {
@@ -96,7 +101,6 @@ p {
 small {
   font-size: var(--text-small);
   font-weight: var(--text-thin);
-  letter-spacing: 0.01em;
 }
 
 
