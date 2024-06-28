@@ -187,7 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     let swiper = new Swiper(".bookSwiper", {
-        slidesPerView: 4.5,
+        slidesPerView: 1.5,
         spaceBetween: 20,
         loop: true,
         autoplay: {
@@ -203,6 +203,15 @@ document.addEventListener("DOMContentLoaded", () => {
             nextEl: '.book-swiper-button-next', 
             prevEl: '.book-swiper-button-prev', 
         }, 
+
+        breakpoints: {
+            768: {
+                slidesPerView: 3.5,
+            },
+            1024: {
+                slidesPerView: 4.5,
+            },
+        },
     });
 
     $(document).on("htmx:confirm", showConfirm);
