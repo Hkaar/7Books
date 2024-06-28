@@ -34,6 +34,6 @@ class LoginController extends Controller
 
         Auth::login($user, $request->get("remember"));
 
-        return redirect()->intended("/");
+        return redirect()->intended(route('home'));
     }
 }
