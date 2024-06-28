@@ -10,9 +10,9 @@
     <div class="row flex-fill">
       <div class="col-12 col-md-6 d-flex flex-column justify-content-center">
         <article>
-          <h1 class="mb-3">Welcome back {{ auth()->user()->name }}!</h1>
+          <h1 class="mb-4">Welcome back {{ auth()->user()->name }}!</h1>
 
-          <p class="w-75">
+          <p class="w-75 text-body-secondary">
             Here are some quick suggestions for new book
             series that you might want to check
           </p>
@@ -50,10 +50,10 @@
       </h3>
   
       <div class="d-flex gap-1">
-        <div class="book-swiper-button-prev btn btn-light rounded-circle">
+        <div class="book-swiper-button-prev btn btn-light rounded-circle d-none d-md-block">
           <i class="fa-solid fa-chevron-left"></i>
         </div>
-        <div class="book-swiper-button-next btn btn-light rounded-circle">
+        <div class="book-swiper-button-next btn btn-light rounded-circle d-none d-md-block">
           <i class="fa-solid fa-chevron-right"></i>
         </div>
       </div>
@@ -85,10 +85,10 @@
       </h3>
   
       <div class="d-flex gap-1">
-        <div class="book-swiper-button-prev btn btn-light rounded-circle">
+        <div class="book-swiper-button-prev btn btn-light rounded-circle d-none d-md-block">
           <i class="fa-solid fa-chevron-left"></i>
         </div>
-        <div class="book-swiper-button-next btn btn-light rounded-circle">
+        <div class="book-swiper-button-next btn btn-light rounded-circle d-none d-md-block">
           <i class="fa-solid fa-chevron-right"></i>
         </div>
       </div>
@@ -120,10 +120,10 @@
       </h3>
   
       <div class="d-flex gap-1">
-        <div class="book-swiper-button-prev btn btn-light rounded-circle">
+        <div class="book-swiper-button-prev btn btn-light rounded-circle d-none d-md-block">
           <i class="fa-solid fa-chevron-left"></i>
         </div>
-        <div class="book-swiper-button-next btn btn-light rounded-circle">
+        <div class="book-swiper-button-next btn btn-light rounded-circle d-none d-md-block">
           <i class="fa-solid fa-chevron-right"></i>
         </div>
       </div>
@@ -150,10 +150,10 @@
 <section id="browseAction" class="py-5">
   <div class="container">
     <article class="d-flex flex-column align-items-center py-5">
-      <h3>Can't find anything you like?</h3>
+      <h3 class="mb-3">Can't find anything you like?</h3>
       
-      <span class="mb-4">
-        Nothing interesting? Check out our browse page instead by clicking the button below
+      <span class="mb-4 text-body-secondary">
+        Check out our browse page instead by clicking the button below
       </span>
     
       <a href="{{ route('browse') }}" class="btn btn-primary">
