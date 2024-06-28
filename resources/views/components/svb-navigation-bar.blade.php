@@ -1,8 +1,18 @@
-<nav class="navbar navbar-expand-lg shadow-sm sticky-top bg-body-tertiary">
+<nav {{ $attributes->merge(["class" => "navbar navbar-expand-lg shadow-sm bg-body-tertiary"]) }}>
   <div class="container-fluid">
     <span class="d-flex align-items-center gap-2 me-auto">
       <img src="{{ URL::asset('assets/imgs/logo.png') }}" class="img-fluid img-small-logo">
-      <h6 class="m-0">Seven Books</h6>
+      @auth
+        <a href="{{ route('home') }}" class="text-h6 text-none text-inherit">
+          Seven Books
+        </a>
+      @endauth
+
+      @guest
+        <a href="{{ route('/') }}" class="text-h6 text-none text-inherit ">
+          Seven Books
+        </a>
+      @endguest
     </span>
   
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,7 +49,12 @@
               <a class="nav-link" href="{{ route('browse') }}">Browse</a>
             </li>
           @endif
-          
+
+          @if ($priviledged)
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('orders.index') }}">Dashboard</a>
+            </li>
+          @endif
         @endif
 
         @auth
