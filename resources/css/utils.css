@@ -33,6 +33,17 @@
   font-size: var(--text-h6);
 }
 
+.text-h1,
+.text-h2,
+.text-h3,
+.text-h4,
+.text-h5,
+.text-h6
+{
+  line-height: 1.1;
+  letter-spacing: -1%;
+}
+
 .text-primary {
   color: var(--primary);
 }
