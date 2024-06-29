@@ -2,14 +2,23 @@
   <div class="container mb-5">
     <div class="row">
       <div class="col-12 col-md-6 col-lg-4 mb-3">
-        <div class="d-flex align-items-center gap-2 mb-3">
-          <img src="{{ URL::asset('assets/imgs/logo.png') }}" class="img-fluid img-small-logo">
-          <h5>Seven Books</h5>
-        </div>
+        <article class="mb-3">
+          @auth
+            <a href="{{ route('home') }}" class="text-h5 text-inherit fw-semibold text-none">
+              Seven Books
+            </a>
+          @endauth
 
+          @guest
+            <a href="{{ route('/') }}" class="text-h5 text-inherit fw-semibold text-none">
+              Seven Books
+            </a>
+          @endguest
+        </article>
+        
         <div class="row">
-          <div class="col-12 col-md-6">
-            <div class="d-flex flex-column gap-1">
+          <div class="col-12 col-md-6 mb-2 mb-md-0">
+            <div class="d-flex flex-column gap-2">
               <a href="#" class="text-decoration-none text-inherit hover-text-greyed svb-transition-fast">Home</a>
               <a href="#" class="text-decoration-none text-inherit hover-text-greyed svb-transition-fast">Browse</a>
               <a href="#" class="text-decoration-none text-inherit hover-text-greyed svb-transition-fast">About us</a>
@@ -18,7 +27,7 @@
           </div>
 
           <div class="col-12 col-md-6">
-            <div class="d-flex flex-column gap-1">
+            <div class="d-flex flex-column gap-2">
               <a href="#" class="text-decoration-none text-inherit hover-text-greyed svb-transition-fast">Supported Regions</a>
               <a href="#" class="text-decoration-none text-inherit hover-text-greyed svb-transition-fast">FAQ</a>
             </div>
