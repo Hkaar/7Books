@@ -1,15 +1,15 @@
 <nav {{ $attributes->merge(["class" => "navbar navbar-expand-lg shadow-sm bg-body-tertiary"]) }}>
   <div class="container-fluid">
-    <span class="d-flex align-items-center gap-2 me-auto">
+    <span class="d-flex align-items-center gap-1 me-auto">
       <img src="{{ URL::asset('assets/imgs/logo.png') }}" class="img-fluid img-small-logo">
       @auth
-        <a href="{{ route('home') }}" class="text-h6 text-none text-inherit">
+        <a href="{{ route('home') }}" class="text-h6 text-none text-inherit fw-medium">
           Seven Books
         </a>
       @endauth
 
       @guest
-        <a href="{{ route('/') }}" class="text-h6 text-none text-inherit ">
+        <a href="{{ route('/') }}" class="text-h6 text-none text-inherit fw-medium ">
           Seven Books
         </a>
       @endguest
@@ -59,7 +59,7 @@
 
         @auth
           @if ($search)
-            <li class="nav-item">
+            <li class="nav-item ms-2">
               <form class="d-flex gap-1" role="search">
                 <input class="form-control" type="search" placeholder="Search" aria-label="Search">
 
@@ -72,7 +72,11 @@
 
           <li class="nav-item dropdown dropstart ms-2 mt-2 mt-lg-0">
             <a class="d-flex gap-1 align-items-center text-decoration-none text-inherit" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="{{ Storage::url(auth()->user()->img) }}" alt="Image not available" class="img-fluid rounded-circle img-small-logo">
+              @if (auth()->user()->img)
+                <img src="{{ Storage::url(auth()->user()->img) }}" alt="Image not available" class="img-fluid rounded-circle img-small-logo">
+              @else
+               <img src="{{ URL::asset('assets/imgs/default-avatar.png') }}" alt="Image not available" class="img-fluid rounded-circle img-small-logo">
+              @endif
 
               <i class="fa-solid fa-ellipsis-vertical d-none d-lg-block"></i>
               
