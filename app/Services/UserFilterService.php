@@ -23,8 +23,8 @@ class UserFilterService
             $users->where('name', 'like', '%' . $filters["search"] . '%');
         }
 
-        if (in_array("level", $filterKeys) && !empty($filters["level"])) {
-            $users->byPermission($filters["level"]);
+        if (in_array("role", $filterKeys) && !empty($filters["role"])) {
+            $users->byPermission($filters["role"]);
         }
 
         return $users->paginate(20);
