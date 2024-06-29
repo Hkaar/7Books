@@ -18,7 +18,13 @@ return new class extends Migration
             $table->string("token");
             $table->dateTime("placed")->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->dateTime("return_date");
-            $table->string("status")->default("pending");
+            $table->enum("status", [
+                "pending",
+                "placed",
+                "not_returned",
+                "returned",
+                "cancelled",
+            ])->default("pending");
             $table->timestamps();
         });
     }
