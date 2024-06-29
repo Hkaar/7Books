@@ -22,7 +22,7 @@
             @csrf
   
             <div class="mb-3">
-              <label for="img" class="form-label">Image</label>
+              <label for="img" class="form-label">Profile Image</label>
               <input class="form-control" id="img" type="file" name="img" accept="image/gif, image/jpeg, image/png, image/jpg">
               
               @error('img')
@@ -31,15 +31,15 @@
             </div>
 
             <div class="mb-3">
-              <label for="level" class="form-label">Level</label>
+              <label for="role" class="form-label">Role</label>
               
-              <select name="level" id="level" class="form-select">
+              <select name="role" id="role" class="form-select">
                   <option value="member">Member</option>
                   <option value="operator">Operator</option>
                   <option value="admin">Admin</option>
               </select>
       
-              @error('level')
+              @error('role')
                 <span>{{ $message }}</span>
               @enderror
             </div>

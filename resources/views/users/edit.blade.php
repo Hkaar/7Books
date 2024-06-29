@@ -23,7 +23,7 @@
             @method('PUT')
   
             <div class="mb-3">
-              <label for="img" class="form-label">Image</label>
+              <label for="img" class="form-label">Profile Image</label>
               <input class="form-control" id="img" type="file" name="img" accept="image/gif, image/jpeg, image/png, image/jpg">
               
               @error('img')
@@ -32,29 +32,29 @@
             </div>
 
             <div class="mb-3">
-              <label for="level" class="form-label">Level</label>
+              <label for="role" class="form-label">Role</label>
               
-              <select name="level" id="level" class="form-select">
-                @if ($user->level == "member")
+              <select name="role" id="role" class="form-select">
+                @if ($user->role == "member")
                   <option selected value="member">Member</option>
                 @else
                   <option value="member">Member</option>  
                 @endif
                 
-                @if ($user->level == "operator")
+                @if ($user->role == "operator")
                   <option selected value="operator">Operator</option>
                 @else
                 <option value="operator">Operator</option>
                 @endif
 
-                @if ($user->level == "admin")
+                @if ($user->role == "admin")
                   <option selected value="admin">Admin</option>
                 @else
                   <option value="admin">Admin</option>  
                 @endif
               </select>
       
-              @error('level')
+              @error('role')
                 <span>{{ $message }}</span>
               @enderror
             </div>
@@ -68,7 +68,7 @@
             </div>      
           
             <div class="mb-3">
-              <label for="name" class="form-label">Name</label>
+              <label for="name" class="form-label">Display Name</label>
               <input class="form-control" id="name" type="text" name="name" placeholder="{{ $user->name }}">
               
               @error('name')

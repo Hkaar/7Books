@@ -32,22 +32,22 @@
             @endif
           </select>
   
-          <select name="level" class="form-select" aria-label="Default select example">
+          <select name="role" class="form-select" aria-label="Default select example">
             <option selected disabled>Filter by</option>
   
-            @if (request()->query('level') === "member")
+            @if (request()->query('role') === "member")
               <option selected value="member">Members only</option> 
             @else
               <option value="member">Members only</option>
             @endif
   
-            @if (request()->query('level') === "operator")
+            @if (request()->query('role') === "operator")
               <option selected value="operator">Operators only</option> 
             @else
               <option value="operator">Operators only</option>
             @endif
   
-            @if (request()->query('level') === "admin")
+            @if (request()->query('role') === "admin")
               <option selected value="admin">Admins only</option> 
             @else
               <option value="admin">Admins only</option>
@@ -75,7 +75,7 @@
               <td>{{ $user->id }}</td>
               <td>{{ $user->username }}</td>
               <td>{{ $user->email }}</td>
-              <td>{{ $user->level }}</td>
+              <td>{{ $user->role }}</td>
       
               <td class="d-flex gap-1">
                 <button type="button" class="btn btn-info" 
