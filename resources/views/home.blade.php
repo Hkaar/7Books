@@ -9,10 +9,10 @@
   <div class="container flex-fill d-flex flex-column">
     <div class="row flex-fill">
       <div class="col-12 col-md-6 d-flex flex-column justify-content-center">
-        <article>
-          <h1 class="mb-4">Welcome back {{ auth()->user()->name }}!</h1>
+        <article class="d-flex flex-column align-items-center align-items-md-start">
+          <h1 class="mb-4 text-center text-md-start">Welcome back {{ auth()->user()->name }}!</h1>
 
-          <p class="w-75 text-body-secondary">
+          <p class="w-75 text-body-secondary text-center text-md-start">
             Here are some quick suggestions for new book
             series that you might want to check
           </p>
@@ -150,9 +150,9 @@
 <section id="browseAction" class="py-5">
   <div class="container">
     <article class="d-flex flex-column align-items-center py-5">
-      <h3 class="mb-3">Can't find anything you like?</h3>
+      <h3 class="mb-3 text-center text-md-start">Can't find anything you like?</h3>
       
-      <span class="mb-4 text-body-secondary">
+      <span class="mb-4 text-body-secondary text-center">
         Check out our browse page instead by clicking the button below
       </span>
     
