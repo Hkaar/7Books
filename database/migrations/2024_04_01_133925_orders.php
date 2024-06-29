@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId("user_id")->constrained("users");
             $table->string("token");
-            $table->dateTime("placed")->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->dateTime("placed_date")->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->dateTime("return_date");
             $table->enum("status", [
                 "pending",
