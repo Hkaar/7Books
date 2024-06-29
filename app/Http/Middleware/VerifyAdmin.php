@@ -7,10 +7,8 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
-class CheckUserLevel
+class VerifyAdmin
 {
-    private $trusted = ["admin", "operator"];
-
     /**
      * Handle an incoming request.
      *
@@ -20,10 +18,10 @@ class CheckUserLevel
     {
         $user = Auth::user();
 
-        if ($user && in_array($user->level, $this->trusted)) {
+        if ($user && $user->role == "admin") {
             return $next($request);
         }
 
-        return redirect()->route("denied");
+        return redirect()->route('denied');
     }
 }
