@@ -20,7 +20,7 @@ class ServiceTest extends TestCase
     public function test_user_filter_service(): void
     {
         $filters = [
-            "level" => "member",
+            "role" => "member",
             "latest",
         ];
 

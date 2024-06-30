@@ -25,7 +25,7 @@ class User extends Authenticatable
         'email',
         'username',
         'password',
-        'level',
+        'role',
     ];
 
     /**
@@ -79,6 +79,6 @@ class User extends Authenticatable
      */
     public function scopeByPermission(Builder $query, string $permission) 
     {
-        return $query->where("level", "=", $permission);
+        return $query->where("role", "=", $permission);
     }
 }

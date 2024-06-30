@@ -15,7 +15,7 @@ class MakeUser extends Command
      *
      * @var string
      */
-    protected $signature = 'make:user {username} {email} {password} {level}';
+    protected $signature = 'make:user {username} {email} {password} {role=member}';
 
     /**
      * The console command description.
@@ -39,14 +39,14 @@ class MakeUser extends Command
 
         if ($validator->fails()) {
             $this->error("\nUsername or email was already taken!");
-            return 0;
+            return 1;
         }
 
         User::factory()->create([
             "username" => $this->argument("username"),
-            "password" => Hash::make($this->argument("password")),
+            "password" => $this->argument("password"),
             "email" => $this->argument("email"),
-            "level" => $this->argument("level"),
+            "role" => $this->argument("role"),
         ]);
 
         $this->info("\nGenerated User Profile\n".
@@ -54,7 +54,7 @@ class MakeUser extends Command
         "username\t: "  . $this->argument("username")."\n".
         "email\t\t: "   . $this->argument("email")."\n".
         "password\t: "  . $this->argument("password")."\n".
-        "level\t\t: "   . $this->argument("level")
+        "role\t\t: "   . $this->argument("role")
         );
     }
 }

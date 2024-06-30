@@ -15,7 +15,7 @@ class svbNavigationBar extends Component
      */
     public function __construct(public bool $search = false, public bool $menus = false, public string $active = "")
     {
-        if (auth()->user() && in_array(auth()->user()->level, ["admin", "operator"])) {
+        if (auth()->user() && in_array(auth()->user()->role, ["admin", "operator"])) {
             $this->isPriviledged = true;
         }
     }

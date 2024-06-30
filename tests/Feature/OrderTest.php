@@ -15,7 +15,7 @@ class OrderTest extends TestCase
     public function test_index(): void
     {
         $user = User::factory()->create([
-            "level" => "admin"
+            "role" => "admin"
         ]);
         $this->actingAs($user);
 
@@ -29,7 +29,7 @@ class OrderTest extends TestCase
     public function test_create(): void
     {
         $user = User::factory()->create([
-            "level" => "admin"
+            "role" => "admin"
         ]);
         $this->actingAs($user);
 
@@ -43,7 +43,7 @@ class OrderTest extends TestCase
     public function test_edit(): void
     {
         $user = User::factory()->create([
-            "level" => "admin"
+            "role" => "admin"
         ]);
         $this->actingAs($user);
 
@@ -59,7 +59,7 @@ class OrderTest extends TestCase
     public function test_show(): void
     {
         $user = User::factory()->create([
-            "level" => "admin"
+            "role" => "admin"
         ]);
         $this->actingAs($user);
 
