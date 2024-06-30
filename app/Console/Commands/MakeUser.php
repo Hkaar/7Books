@@ -44,7 +44,7 @@ class MakeUser extends Command
 
         User::factory()->create([
             "username" => $this->argument("username"),
-            "password" => Hash::make($this->argument("password")),
+            "password" => ($this->argument("password")),
             "email" => $this->argument("email"),
             "level" => $this->argument("level"),
         ]);
