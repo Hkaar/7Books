@@ -57,7 +57,7 @@
             </li>
           @endif
 
-          @if ($privileged)
+          @if (auth()->user()->isPrivileged())
             <li class="nav-item">
               <a class="nav-link" href="{{ route('orders.index') }}">Dashboard</a>
             </li>

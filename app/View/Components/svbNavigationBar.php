@@ -20,14 +20,7 @@ class SVBNavigationBar extends Component
         public bool $login = true,
         public bool $logo = true,
         public bool $avatar = true,
-        public readonly bool $privileged = false
-    ) {
-        $user = auth()->user();
-
-        if ($user instanceof User && $user->checkRole(["admin", "operator"])) {
-            $this->privileged = true;
-        }
-    }
+    ) {}
 
     /**
      * Get the view / contents that represent the component.
@@ -38,7 +31,6 @@ class SVBNavigationBar extends Component
             "search" => $this->search,
             "menus" => $this->menus,
             "active" => $this->active,
-            "privileged" => $this->privileged,
             "login" => $this->login,
             "logo" => $this->logo,
             "avatar" => $this->avatar,

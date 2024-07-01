@@ -75,19 +75,15 @@ class User extends Authenticatable
     }
 
     /**
-     * Check if the user is within a set of role(s)
+     * Check if the user has a role that is privileged
      */
-    public function checkRole(string|array $role): bool
+    public function isPrivileged(bool $strict = false):bool
     {
-        if (is_array($role)) {
-            return in_array($this->role, $role);
+        if ($strict) {
+            return $this->role === "admin";
         } 
-        else if (is_string($role)) {
-            return $this->role === $role;
-        }
 
-        return false;
-        
+        return in_array($this->role, ["admin", "operator"]);
     }
 
     /**
