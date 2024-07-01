@@ -8,7 +8,7 @@ use Illuminate\View\Component;
 
 use App\Models\User;
 
-class svbNavigationBar extends Component
+class SVBNavigationBar extends Component
 {
     public bool $isPriviledged = false;
 

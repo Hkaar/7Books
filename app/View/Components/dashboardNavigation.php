@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class dashboardNavigation extends Component
+class DashboardNavigation extends Component
 {
     public string $selected;
     /**
