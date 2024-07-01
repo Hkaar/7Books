@@ -57,11 +57,13 @@
             </li>
           @endif
 
-          @if (auth()->user()->isPrivileged())
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('orders.index') }}">Dashboard</a>
-            </li>
-          @endif
+          @auth
+            @if (auth()->user()->isPrivileged())
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('orders.index') }}">Dashboard</a>
+              </li>
+            @endif
+          @endauth
         @endif
 
         @if ($search)
