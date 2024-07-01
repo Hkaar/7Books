@@ -125,7 +125,6 @@ class BookController extends Controller
             "isbn" => ["required", "string", "regex:/$this->isbnRegex/"],
             "desc" => "nullable|string|max:1000",
             "price" => "required|numeric",
-            "stock" => "required|numeric",
             "rate" => "required|numeric|max:10",
             "img" => "nullable|image|mimes:jpeg,png,jpg|max:10240"
         ]);
@@ -189,7 +188,6 @@ class BookController extends Controller
             "name" => "nullable|string|max:500",
             "desc" => "nullable|string|max:1000",
             "price" => "nullable|numeric",
-            "stock" => "nullable|numeric",
             "rate" => "nullable|numeric|max:10",
             "img" => "nullable|image|mimes:jpeg,png,jpg|max:10240"
         ]);
