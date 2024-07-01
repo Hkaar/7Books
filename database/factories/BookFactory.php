@@ -27,7 +27,6 @@ class BookFactory extends Factory
             'desc' => $this->faker->paragraph,
             'price' => $this->faker->randomFloat(2, 10, 100),
             'rate' => $this->faker->randomFloat(2, 1, 5),
-            'stock' => $this->faker->numberBetween(0, 100),
             'amount_borrowed' => 0,
             'img' => $this->faker->imageUrl(),
         ];
