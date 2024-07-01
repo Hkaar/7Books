@@ -6,6 +6,8 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
+use App\Models\User;
+
 class svbNavigationBar extends Component
 {
     public bool $isPriviledged = false;
@@ -13,9 +15,17 @@ class svbNavigationBar extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public bool $search = false, public bool $menus = false, public string $active = "")
-    {
-        if (auth()->user() && in_array(auth()->user()->role, ["admin", "operator"])) {
+    public function __construct(
+        public bool $search = false, 
+        public bool $menus = false, 
+        public string $active = "", 
+        public bool $login = true,
+        public bool $logo = true,
+        public bool $avatar = true,
+    ) {
+        $user = auth()->user();
+
+        if ($user instanceof User && $user->checkRole(["admin", "operator"])) {
             $this->isPriviledged = true;
         }
     }
@@ -30,6 +40,9 @@ class svbNavigationBar extends Component
             "menus" => $this->menus,
             "active" => $this->active,
             "priviledged" => $this->isPriviledged,
+            "login" => $this->login,
+            "logo" => $this->logo,
+            "avatar" => $this->avatar,
         ]);
     }
 }
