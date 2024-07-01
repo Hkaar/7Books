@@ -57,7 +57,7 @@
             </li>
           @endif
 
-          @if ($priviledged)
+          @if ($privileged)
             <li class="nav-item">
               <a class="nav-link" href="{{ route('orders.index') }}">Dashboard</a>
             </li>
