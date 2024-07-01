@@ -173,7 +173,7 @@ npm run dev
 Or if you want, you can just compile the assets manually
 
 ```bash
-npm run dev
+npm run build
 ```
 
 #### Step 2: Work setup
