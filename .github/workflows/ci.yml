@@ -43,7 +43,7 @@ jobs:
         run: php artisan migrate --env=testing
 
       - name: Seed the database
-        run: php artisan db:seed
+        run: php artisan db:seed --force
 
       - name: Run storage link
         run: php artisan storage:link
