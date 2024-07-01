@@ -10,7 +10,7 @@ use App\Models\User;
 
 class SVBNavigationBar extends Component
 {
-    public bool $isPriviledged = false;
+    public bool $priviledged = false;
 
     /**
      * Create a new component instance.
@@ -26,7 +26,7 @@ class SVBNavigationBar extends Component
         $user = auth()->user();
 
         if ($user instanceof User && $user->checkRole(["admin", "operator"])) {
-            $this->isPriviledged = true;
+            $this->priviledged = true;
         }
     }
 
@@ -39,7 +39,7 @@ class SVBNavigationBar extends Component
             "search" => $this->search,
             "menus" => $this->menus,
             "active" => $this->active,
-            "priviledged" => $this->isPriviledged,
+            "priviledged" => $this->priviledged,
             "login" => $this->login,
             "logo" => $this->logo,
             "avatar" => $this->avatar,
