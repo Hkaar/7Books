@@ -58,15 +58,6 @@
             </div>
         
             <div class="mb-3">
-              <label for="stock" class="form-label">Stock</label>
-              <input class="form-control" id="stock" type="number" name="stock" value="{{ old('stock') }}" required>
-              
-              @error('stock')
-                <span>{{ $message }}</span>
-              @enderror
-            </div>
-        
-            <div class="mb-3">
               <label for="rate" class="form-label">Rate</label>
               <input class="form-control" id="rate" type="number" name="rate" value="{{ old('rate') }}" required>
               
