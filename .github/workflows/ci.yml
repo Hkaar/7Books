@@ -51,5 +51,8 @@ jobs:
       - name: Generate key
         run: php artisan key:generate --env=testing
 
+      - name: Clear view cache
+        run: php artisan view:clear
+
       - name: Run tests
         run: php artisan test
