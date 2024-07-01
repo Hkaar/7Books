@@ -4,7 +4,7 @@
 
 @section('main')
 <section id="hero" class="min-vh-100 d-flex flex-column">
-  <x-svb-navigation-bar :search=true :menus=true active="home" class="sticky-top"></x-svb-navigation-bar>
+  <x-svb-navigation-bar :search=true :menus=true active="home" :logo=true :login=true :avatar=true class="sticky-top"></x-svb-navigation-bar>
 
   <div class="container flex-fill d-flex flex-column">
     <div class="row flex-fill">
