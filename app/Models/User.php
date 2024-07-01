@@ -75,6 +75,22 @@ class User extends Authenticatable
     }
 
     /**
+     * Check if the user is within a set of role(s)
+     */
+    public function checkRole(string|array $role): bool
+    {
+        if (is_array($role)) {
+            return in_array($this->role, $role);
+        } 
+        else if (is_string($role)) {
+            return $this->role === $role;
+        }
+
+        return false;
+        
+    }
+
+    /**
      * Scope a query to only include a specific permission level
      */
     public function scopeByPermission(Builder $query, string $permission) 
