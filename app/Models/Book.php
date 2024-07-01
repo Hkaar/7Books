@@ -20,7 +20,6 @@ class Book extends Model
         "name",
         "desc",
         "price",
-        "stock",
         "rate",
         "amount_borrowed",
         "img"
@@ -56,6 +55,22 @@ class Book extends Model
     public function items()
     {
         return $this->hasMany(OrderItem::class, "book_id", "id");
+    }
+
+    /**
+     * Define the relationship with libraries
+     */
+    public function libraries()
+    {
+        return $this->belongsToMany(Library::class, "library_books");
+    }
+
+    /**
+     * Define the relationship with regions
+     */
+    public function regions()
+    {
+        return $this->belongsToMany(Region::class, "region_books");
     }
 
     /**
