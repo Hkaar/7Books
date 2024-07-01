@@ -25,7 +25,7 @@ class User extends Authenticatable
         'email',
         'username',
         'password',
-        'level',
+        'role',
     ];
 
     /**
@@ -75,10 +75,22 @@ class User extends Authenticatable
     }
 
     /**
+     * Check if the user has a role that is privileged
+     */
+    public function isPrivileged(bool $strict = false):bool
+    {
+        if ($strict) {
+            return $this->role === "admin";
+        } 
+
+        return in_array($this->role, ["admin", "operator"]);
+    }
+
+    /**
      * Scope a query to only include a specific permission level
      */
     public function scopeByPermission(Builder $query, string $permission) 
     {
-        return $query->where("level", "=", $permission);
+        return $query->where("role", "=", $permission);
     }
 }

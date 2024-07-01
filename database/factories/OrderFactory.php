@@ -28,7 +28,7 @@ class OrderFactory extends Factory
         return [
             "user_id" => fn() => \App\Models\User::factory()->create()->id,
             "token" => Str::random(8),
-            "placed" => $this->faker->dateTime(),
+            "placed_date" => $this->faker->dateTime(),
             "return_date" => $this->faker->dateTime(),
             "status" => "pending",
         ];

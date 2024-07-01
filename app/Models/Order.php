@@ -19,6 +19,7 @@ class Order extends Model
         "user_id",
         "token",
         "created",
+        'placed_date',
         "return_date",
         "status"
     ];

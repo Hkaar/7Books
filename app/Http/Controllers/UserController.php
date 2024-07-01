@@ -23,7 +23,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $filters = $request->only(["search", "level"]);
+        $filters = $request->only(["search", "role"]);
 
         if ($request->has("o")) {
             $orderQuery = $request->get('o');
@@ -61,7 +61,7 @@ class UserController extends Controller
             'email' => 'required|string|email|max:255|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required|string|min:8',
-            "level" => 'nullable|string',
+            "role" => 'nullable|string',
             "img" => "nullable|image|mimes:jpeg,png,jpg|max:10240"
         ]);
 
@@ -119,7 +119,7 @@ class UserController extends Controller
             'email' => 'nullable|string|email|max:255|unique:users',
             'password' => 'nullable|string|min:8|confirmed',
             'password_confirmation' => 'nullable|string|min:8',
-            "level" => 'nullable|string',
+            "role" => 'nullable|string',
             "img" => "nullable|image|mimes:jpeg,png,jpg|max:10240"
         ]);
 

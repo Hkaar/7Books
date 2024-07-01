@@ -1,0 +1,106 @@
+/* Base styles for Seven Books */
+
+:root {
+  --text: #040316;
+  --text-light: #fff;
+
+  --primary: #1b1a56;
+  --secondary: #8f8ec2;
+  --accent: #443dff;
+  --error: #e61b37;
+  --success: #267d48;
+  --warning: #ffa500;
+  --info: #1fa2e2;
+
+  --text-thin: 200;
+  --text-semithin: 300;
+  --text-regular: 400;
+  --text-medium: 500;
+  --text-semibold: 600;
+  --text-bold: 700;
+  --text-extra-bold: 800;
+
+  --text-h1: 3.815rem;
+  --text-h2: 3.052rem;
+  --text-h3: 2.442rem;
+  --text-h4: 1.953rem;
+  --text-h5: 1.563rem;
+  --text-h6: 1.25rem;
+  --text-body: 1rem;
+  --text-small: 0.8rem;
+}
+
+/* ----- Globals ----- */
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  font-size: var(--text-body);
+  font-weight: var(--text-regular);
+  line-height: 1.5;
+  letter-spacing: 0.065em;
+}
+
+h1 {
+  font-size: var(--text-h1);
+  font-weight: var(--text-bold);
+}
+
+h2 {
+  font-size: var(--text-h2);
+  font-weight: var(--text-semibold);
+}
+
+h3 {
+  font-size: var(--text-h3);
+  font-weight: var(--text-semibold);
+}
+
+h4 {
+  font-size: var(--text-h4);
+  font-weight: var(--text-semibold);
+}
+
+h5 {
+  font-size: var(--text-h5);
+  font-weight: var(--text-semibold);
+}
+
+h6 {
+  font-size: var(--text-h6);
+  font-weight: var(--text-medium);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.1;
+  letter-spacing: -1%;
+}
+
+a {
+  color: var(--accent);
+  letter-spacing: 0.05em;
+}
+
+th {
+  font-weight: var(--text-semibold);
+}
+
+p {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+small {
+  font-size: var(--text-small);
+  font-weight: var(--text-thin);
+}
+
+

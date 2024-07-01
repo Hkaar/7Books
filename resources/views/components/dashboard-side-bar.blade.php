@@ -2,7 +2,11 @@
   <div class="nav-items">
     <span class="d-flex align-items-center justify-content-between">
       <a href="{{ route('users.me') }}" class="d-flex gap-3 align-items-center">
-        <img src="{{ Storage::url(auth()->user()->img) }}" alt="Image not available" class="img-fluid rounded-circle">
+        @if (auth()->user()->img)
+          <img src="{{ Storage::url(auth()->user()->img) }}" alt="Image not available" class="img-fluid rounded-circle ratio-box">
+        @else
+          <img src="{{ URL::asset('assets/imgs/default-avatar.png') }}" alt="Image not available" class="img-fluid rounded-circle ratio-box">
+        @endif
         <span class="nav-item-title overflow-hidden">{{ auth()->user()->username }}</span>
       </a>
 

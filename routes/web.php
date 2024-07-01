@@ -37,7 +37,7 @@ Route::group(["namespace" => "App\Http\Controllers"], function() {
         Route::post("/login", "LoginController@login")->name("login");
     });
 
-    Route::group(["prefix" => "/manage", "middleware" => ["auth", "check.level"]], function() {
+    Route::group(["prefix" => "/manage", "middleware" => ["auth", "verify.role"]], function() {
         Route::get("/books/select", "BookController@select")->name("books.select");
         Route::get("/books/multi-select", "BookController@multiSelect")->name("books.multi-select");
         
@@ -49,7 +49,7 @@ Route::group(["namespace" => "App\Http\Controllers"], function() {
         Route::resource("/authors", "AuthorController")->names("authors");
         Route::resource("/genres", "GenreController")->names("genres");
         
-        Route::middleware("check.admin")->group(function() {
+        Route::middleware("verify.admin")->group(function() {
             Route::resource("/users", "UserController")->names("users");
         });
     });

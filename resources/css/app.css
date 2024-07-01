@@ -1,96 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
 
-:root {
-  --text: #040316;
-  --text-light: #fff;
-
-  --primary: #1b1a56;
-  --secondary: #8f8ec2;
-  --accent: #443dff;
-  --error: #e61b37;
-  --success: #267d48;
-  --warning: #ffa500;
-  --info: #1fa2e2;
-
-  --text-thin: 200;
-  --text-semithin: 300;
-  --text-regular: 400;
-  --text-medium: 500;
-  --text-semibold: 600;
-  --text-bold: 700;
-  --text-extra-bold: 800;
-
-  --text-h1: 3.815rem;
-  --text-h2: 3.052rem;
-  --text-h3: 2.442rem;
-  --text-h4: 1.953rem;
-  --text-h5: 1.563rem;
-  --text-h6: 1.25rem;
-  --text-body: 1rem;
-  --text-small: 0.8rem;
-}
-
-/* ----- Global Styles ----- */
-* {
-  font-family: "Poppins";
-  font-size: var(--text-body);
-  font-weight: var(--text-regular);
-  line-height: 1.6;
-  letter-spacing: 0.03em;
-}
-
-body {
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-}
-
-h1 {
-  font-size: var(--text-h1);
-  font-weight: var(--text-bold);
-}
-
-h2 {
-  font-size: var(--text-h2);
-  font-weight: var(--text-semibold);
-}
-
-h3 {
-  font-size: var(--text-h3);
-  font-weight: var(--text-semibold);
-}
-
-h4 {
-  font-size: var(--text-h4);
-  font-weight: var(--text-semibold);
-}
-
-h5 {
-  font-size: var(--text-h5);
-  font-weight: var(--text-semibold);
-}
-
-h6 {
-  font-size: var(--text-h6);
-  font-weight: var(--text-medium);
-}
-
-small {
-  font-size: var(--text-small);
-  font-weight: var(--text-thin);
-}
-
-a {
-  color: var(--accent);
-}
-
-th {
-  font-weight: var(--text-semibold);
-}
-
-p {
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-}
+@import "base.css";
+@import "utils.css";
 
 /* ----- Components ----- */
 .bg-primary,
@@ -199,14 +110,6 @@ p {
   background-color: var(--warning) !important;
 }
 
-.text-inherit {
-  color: inherit !important;
-}
-
-.text-none {
-  text-decoration: none;
-}
-
 #preview img {
   object-fit: cover;
 }
@@ -228,37 +131,6 @@ p {
 
 .large-thumbnail img {
   max-height: 35vh;
-}
-
-.ratio-box {
-  aspect-ratio: 1/1;
-}
-
-.ratio-wide-box {
-  aspect-ratio: 4/3;
-}
-
-.ratio-landscape {
-  aspect-ratio: 16/9;
-}
-
-.ratio-portrait {
-  aspect-ratio: 9/16;
-}
-
-.img-logo {
-  width: 50px;
-  height: 50px;
-}
-
-.img-small-logo {
-  width: 40px;
-  height: 40px;
-}
-
-.img-x-small-logo {
-  width: 30px;
-  height: 30px;
 }
 
 .svb-card {
@@ -303,89 +175,9 @@ p {
   width: 320px;
   height: 480px;
 }
+
 #display h6{
   font-size: var(--text-body);
-}
-
-
-
-.z-0 {
-  z-index: 0;
-}
-
-.z-10 {
-  z-index: 10;
-}
-
-.z-20 {
-  z-index: 20;
-}
-
-.z-30 {
-  z-index: 30;
-}
-
-.relative {
-  position: relative;
-}
-
-.absolute {
-  position: absolute;
-}
-
-.inset-0 {
-  left: 0;
-  top: 0;
-}
-
-.over-left {
-  transform: translateX(-100%);
-}
-
-.over-none {
-  transform: translateX(0%);
-}
-
-.overflow-hidden {
-  overflow: hidden;
-}
-
-/* ----- Animations ----- */
-.svb-transition-fast {
-  transition: all 0.3s ease;
-}
-
-.svb-transition {
-  transition: all 1.3s ease;
-}
-
-.svb-transition-slow {
-  transition: all 2.1s ease;
-}
-
-.transition-none {
-  transition: none;
-}
-
-.hover-darkened:hover {
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
-    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-}
-
-.hover-grow:hover {
-  transform: scale(1.05);
-}
-
-.hover-text-greyed:hover {
-  color: gray !important;
-}
-
-.hover-text-lightgrayed:hover {
-  color: lightgray !important;
-}
-
-.active-shrink:active {
-  transform: scale(0.95);
 }
 
 /* ----- Navigation ----- */
@@ -476,12 +268,12 @@ p {
 }
 
 .card > img{
-    width:235px;
-    margin:auto;
+  width:235px;
+  margin:auto;
 }
 
 .accordion-button{
-    font-size:15px;
+  font-size:15px;
 }
 
 .card {
@@ -489,92 +281,8 @@ p {
 }
 
 /* ----- Media Queries ----- */
-@media screen and (min-width: 768px) {
-  .md-z-0 {
-    z-index: 0;
-  }
-
-  .md-z-10 {
-    z-index: 10;
-  }
-
-  .md-z-20 {
-    z-index: 20;
-  }
-
-  .md-z-30 {
-    z-index: 30;
-  }
-
-  .md-absolute {
-    position: absolute;
-  }
-
-  .md-relative {
-    position: relative;
-  }
-
-  .md-over-none {
-    transform: translate(0%);
-  }
-
-  .md-inset-0 {
-    left: 0;
-    top: 0;
-  }
-
-  .w-md-fit {
-    width: fit-content !important;
-  }
-}
-
 @media screen and (min-width: 992px) {
   #side-nav[data-collapsed="false"] {
     max-width: 250px !important;
-  }
-
-  .lg-z-0 {
-    z-index: 0;
-  }
-
-  .lg-z-10 {
-    z-index: 10;
-  }
-
-  .lg-z-20 {
-    z-index: 20;
-  }
-
-  .lg-z-30 {
-    z-index: 30;
-  }
-
-  .lg-absolute {
-    position: absolute;
-  }
-
-  .lg-relative {
-    position: relative;
-  }
-
-  .lg-inset-0 {
-    left: 0;
-    top: 0;
-  }
-
-  .lg-over-left {
-    transform: translateX(-100%);
-  }
-
-  .lg-overflow-y-auto {
-    overflow-y: auto !important;
-  }
-  
-  .lg-over-none {
-    transform: translateX(0%);
-  }
-
-  .w-lg-fit {
-    width: fit-content !important;
   }
 }

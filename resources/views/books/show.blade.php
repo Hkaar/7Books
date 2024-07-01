@@ -69,13 +69,6 @@
                     ${{ $book->rate }}/hour
                   </article>
                 </div>
-        
-                <div class="col-12 col-md-6">
-                  <article class="d-flex flex-column gap-1 flex-fill mb-3">
-                    <b>Stock :</b>
-                    {{ $book->stock }}
-                  </article>
-                </div>
               </div>
             </div>
           </div>
