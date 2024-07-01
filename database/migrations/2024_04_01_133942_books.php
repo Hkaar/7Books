@@ -18,7 +18,6 @@ return new class extends Migration
             $table->text("desc");
             $table->float("price");
             $table->float("rate");
-            $table->integer("stock");
             $table->integer("amount_borrowed")->default(0);
             $table->string("img")->nullable();
             $table->timestamps();
