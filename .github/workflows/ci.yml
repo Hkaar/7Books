@@ -42,7 +42,10 @@ jobs:
       - name: Run migrations
         run: php artisan migrate --env=testing
 
-      - name: Run linking
+      - name: Seed the database
+        run: php artisan db:seed
+
+      - name: Run storage link
         run: php artisan storage:link
 
       - name: Generate key
