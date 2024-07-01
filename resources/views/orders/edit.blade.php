@@ -52,10 +52,10 @@
             </div>
   
             <div class="mb-3">
-              <label for="placed" class="form-label">Placed Date</label>
-              <input class="form-control" id="placed" type="datetime-local" name="placed" value="{{ $order->placed }}" autofocus>
+              <label for="placed_date" class="form-label">Placed Date</label>
+              <input class="form-control" id="placed_date" type="datetime-local" name="placed_date" value="{{ $order->placed_date }}" autofocus>
               
-              @error('placed')
+              @error('placed_date')
                 <span>{{ $message }}</span>
               @enderror
             </div>
