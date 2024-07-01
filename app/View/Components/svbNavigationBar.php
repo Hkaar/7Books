@@ -10,8 +10,6 @@ use App\Models\User;
 
 class SVBNavigationBar extends Component
 {
-    public bool $priviledged = false;
-
     /**
      * Create a new component instance.
      */
@@ -22,6 +20,7 @@ class SVBNavigationBar extends Component
         public bool $login = true,
         public bool $logo = true,
         public bool $avatar = true,
+        public readonly bool $priviledged = false
     ) {
         $user = auth()->user();
 
