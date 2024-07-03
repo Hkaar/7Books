@@ -21,7 +21,6 @@ class Book extends Model
         "desc",
         "price",
         "rate",
-        "amount_borrowed",
         "img"
     ];
 
