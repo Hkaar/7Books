@@ -17,7 +17,8 @@ class OrderItem extends Model
     protected $fillable = [
         "order_id",
         "book_id",
-        "amount"
+        "region_id",
+        "amount",
     ];
 
     /**
