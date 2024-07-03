@@ -20,7 +20,7 @@ class OrderCreateRequest extends FormRequest
             "username" => "required|string",
             "return_date" => "required|date",
             "status" => "nullable|string",
-            "placed_date" => "nullable|date",
+            "placed_date" => "required|date",
             "items" => "nullable|string"
         ];
     }
