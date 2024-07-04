@@ -25,7 +25,7 @@ class User extends Authenticatable
         'email',
         'username',
         'password',
-        'role',
+        'role_id',
     ];
 
     /**
@@ -72,6 +72,14 @@ class User extends Authenticatable
     public function ratings()
     {
         return $this->hasMany(BookRating::class, "user_id", "id");
+    }
+
+    /**
+     * Define the relationship with roles
+     */
+    public function role()
+    {
+        return $this->belongsTo(Role::class, "role_id", "id");
     }
 
     /**
