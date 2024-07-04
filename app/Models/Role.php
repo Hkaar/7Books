@@ -18,4 +18,12 @@ class Role extends Model
     protected $fillable = [
         'name',
     ];
+
+    /**
+     * Define the relationship with users
+     */
+    public function users()
+    {
+        return $this->hasMany(User::class, "role_id", "id");
+    }
 }
