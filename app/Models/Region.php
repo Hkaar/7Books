@@ -41,4 +41,12 @@ class Region extends Model
     {
         return $this->belongsToMany(Book::class, "region_books");
     }
+
+    /**
+     * Define relationship with order items
+     */
+    public function items()
+    {
+        return $this->hasMany(OrderItem::class, "region_id", "id");
+    }
 }
