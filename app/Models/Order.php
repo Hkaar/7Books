@@ -21,7 +21,6 @@ class Order extends Model
         "created",
         'placed_date',
         "return_date",
-        "status"
     ];
 
     /**
