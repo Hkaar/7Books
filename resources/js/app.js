@@ -1,8 +1,11 @@
 import './bootstrap';
 
-import Swiper from "swiper/bundle";
 import $ from 'jquery';
+import 'htmx.org';
 
+import * as bootstrap from 'bootstrap';
+
+import Swiper from "swiper/bundle";
 import 'swiper/css/bundle';
 
 /** @type {readonly string[]} */
