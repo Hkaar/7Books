@@ -24,7 +24,7 @@
 
       <article class="d-flex flex-column gap-1 flex-fill">
         <b>Level</b>
-        {{ $user->role }}
+        {{ ucfirst($user->role->name) }}
       </article>
     </div>
   </div>
