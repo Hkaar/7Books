@@ -49,7 +49,9 @@ class Order extends Model
      * Scope a query to only include a specific order status
      */
     public function scopeByStatus(Builder $query, string $status) {
-        return $query->where("status", "=", $status);
+        return $query->whereHas("status", function(Builder $query) use ($status) {
+            $query->where("name", "=", $status);
+        });
     }
 
     /**
