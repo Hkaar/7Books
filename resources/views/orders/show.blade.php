@@ -30,7 +30,7 @@
   <div class="col-12 col-lg-6">
     <article class="d-flex flex-column gap-1 flex-fill mb-3">
       <b>Status :</b>
-      {{ $order->status }}
+      {{ ucfirst(str_replace('_', ' ', $order->status->name)) }}
     </article>
   </div>
 

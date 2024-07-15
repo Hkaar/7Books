@@ -43,4 +43,12 @@ class OrderItem extends Model
     {
         return $this->belongsTo(Book::class, "book_id", "id");
     }
+
+    /**
+     * Define relationship with regions
+     */
+    public function region()
+    {
+        return $this->belongsTo(Region::class, "region_id", "id");
+    }
 }

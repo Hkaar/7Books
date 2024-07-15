@@ -45,18 +45,8 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed',
+        'password' => 'hashed'
     ];
-
-    /**
-     * Always encrypt the password when it is updated.
-     */
-    public function setPasswordAttribute($value)
-    {
-        if ($value !== $this->password) {
-            $this->attributes['password'] = Hash::make($value);
-        }
-    }
 
     /**
      * Define the relationship with orders
@@ -88,10 +78,10 @@ class User extends Authenticatable
     public function isPrivileged(bool $strict = false):bool
     {
         if ($strict) {
-            return $this->role === "admin";
+            return $this->role->name === "admin";
         } 
 
-        return in_array($this->role, ["admin", "operator"]);
+        return in_array($this->role->name, ["admin", "operator"]);
     }
 
     /**
@@ -99,6 +89,8 @@ class User extends Authenticatable
      */
     public function scopeByPermission(Builder $query, string $permission) 
     {
-        return $query->where("role", "=", $permission);
+        return $query->whereHas('role', function ($roleQuery) use ($permission) {
+            $roleQuery->where('name', "=", $permission);
+        });
     }
 }

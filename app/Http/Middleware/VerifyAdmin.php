@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,7 +19,7 @@ class VerifyAdmin
     {
         $user = Auth::user();
 
-        if ($user && $user->role == "admin") {
+        if ($user instanceof User && $user->isPrivileged(true)) {
             return $next($request);
         }
 

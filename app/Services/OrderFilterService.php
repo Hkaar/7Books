@@ -27,8 +27,8 @@ class OrderFilterService
             $orders->byStatus($filters["status"]);
         }
         
-        if (in_array("filter", $filterKeys) && !empty($filters["filter"])) {
-            $filterQuery = $filters["filter"];
+        if (in_array("date", $filterKeys) && !empty($filters["date"])) {
+            $filterQuery = $filters["date"];
 
             match ($filterQuery) {
                 "overdue" => $orders->byOverdue(),

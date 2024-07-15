@@ -31,10 +31,19 @@
                 <span>{{ $message }}</span>
               @enderror
             </div>
+
+            <div class="mb-3">
+              <label for="placed_date" class="form-label">Placed Date</label>
+              <input class="form-control" id="placed_date" type="datetime-local" name="placed_date" min="{{ now()->format('Y-m-d\TH:i') }}" required autofocus>
+              
+              @error('placed_date')
+                <span>{{ $message }}</span>
+              @enderror
+            </div>
   
             <div class="mb-3">
               <label for="return_date" class="form-label">Return Date</label>
-              <input class="form-control" id="return_date" type="datetime-local" name="return_date" required autofocus>
+              <input class="form-control" id="return_date" type="datetime-local" name="return_date" min="{{ now()->format('Y-m-d\TH:i') }}" required autofocus>
               
               @error('return_date')
                 <span>{{ $message }}</span>
@@ -42,15 +51,15 @@
             </div>
   
             <div class="mb-3">
-              <label for="status" class="form-label">Status</label>
+              <label for="status_id" class="form-label">Status</label>       
               
-              <select name="status" id="status" class="form-select">
-                <option value="pending">Pending</option>
-                <option value="paid">Paid</option>
-                <option value="returned">Returned</option>
+              <select name="status_id" id="status_id" class="form-select">
+                @foreach ($statuses as $status)
+                  <option value="{{ $status->id }}">{{ ucfirst(str_replace('_', ' ', $status->name)) }}</option>
+                @endforeach
               </select>
       
-              @error('status')
+              @error('status_id')
                 <span>{{ $message }}</span>
               @enderror
             </div>
