@@ -2,7 +2,7 @@
   <div class="container-fluid">
     @if ($logo)
       <span class="d-flex align-items-center gap-1 me-auto">
-        <img src="{{ URL::asset('assets/imgs/logo.png') }}" class="img-fluid img-small-logo">
+        <img src="{{ URL::asset('assets/imgs/logo.png') }}" class="img-fluid logo-md">
         @auth
           <a href="{{ route('home') }}" class="text-h6 text-none text-inherit fw-medium">
             Seven Books
@@ -83,9 +83,9 @@
             <li class="nav-item dropdown dropstart ms-2 mt-2 mt-lg-0">
               <a class="d-flex gap-1 align-items-center text-decoration-none text-inherit" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 @if (auth()->user()->img)
-                  <img src="{{ Storage::url(auth()->user()->img) }}" alt="Image not available" class="img-fluid rounded-circle img-small-logo">
+                  <img src="{{ Storage::url(auth()->user()->img) }}" alt="Image not available" class="img-fluid rounded-circle logo-md">
                 @else
-                <img src="{{ URL::asset('assets/imgs/default-avatar.png') }}" alt="Image not available" class="img-fluid rounded-circle img-small-logo">
+                <img src="{{ URL::asset('assets/imgs/default-avatar.png') }}" alt="Image not available" class="img-fluid rounded-circle logo-md">
                 @endif
 
                 <i class="fa-solid fa-ellipsis-vertical d-none d-lg-block"></i>
