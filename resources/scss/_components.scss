@@ -1,0 +1,229 @@
+// Custom Components for Seven Books
+
+/* ===== SVB Card ===== */
+.svb-card {
+    overflow: hidden;
+    height: 350px;
+}
+
+.svb-card.active {
+    opacity: 50%;
+}
+
+.svb-card:not(.active) .title {
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    color: var(--text-light);
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    user-select: none;
+}
+
+.svb-card:not(.active) .title:hover {
+    opacity: 100%;
+}
+
+.svb-card img {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* ===== Preview ===== */
+#preview img {
+    object-fit: cover;
+}
+
+#preview.cover-small img {
+    max-height: 50vh;
+    aspect-ratio: 9 / 16;
+}
+
+#preview.profile img {
+    aspect-ratio: 4 / 3;
+    max-height: 30vh;
+}
+
+#preview.cover img {
+    max-height: 65vh;
+    aspect-ratio: 9 / 16;
+}
+
+/* ===== Side Navigation ===== */
+#side-nav {
+    max-width: 90px;
+    padding: 20px;
+    width: 100%;
+    transition: all 0.4s;
+}
+
+#side-nav a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#side-nav .nav-items {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 12px;
+}
+
+#side-nav .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 20px;
+    padding: 15px;
+    transition: all 0.4s ease;
+}
+
+#side-nav .nav-item:hover,
+#side-nav .active {
+    background-color: var(--secondary);
+}
+
+#side-nav .nav-item i {
+    font-size: 20px;
+}
+
+#side-nav[data-collapsed="false"] {
+    max-width: 100vw;
+}
+
+#side-nav[data-collapsed="false"] .side-nav-open {
+    display: none;
+}
+
+#side-nav[data-collapsed="true"] .side-nav-close {
+    display: none;
+}
+
+#side-nav[data-collapsed="true"] .nav-item-title {
+    display: none;
+}
+
+#side-nav[data-collapsed="false"] img {
+    max-width: 23%;
+}
+
+/* ===== Navigation ===== */
+.navbar {
+    background: transparent;
+    display: flex;
+    align-items: center;
+}
+
+.navbar .brand h5 {
+    margin: 0;
+}
+
+.navbar .btn-nav {
+    display: flex;
+}
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler:focus {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+        rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+    outline: none;
+}
+
+/* ===== Media Queries ===== */
+@media screen and (min-width: 768px) {
+    .md-z-0 {
+        z-index: 0;
+    }
+
+    .md-z-10 {
+        z-index: 10;
+    }
+
+    .md-z-20 {
+        z-index: 20;
+    }
+
+    .md-z-30 {
+        z-index: 30;
+    }
+
+    .md-absolute {
+        position: absolute;
+    }
+
+    .md-relative {
+        position: relative;
+    }
+
+    .md-over-none {
+        transform: translate(0%);
+    }
+
+    .md-inset-0 {
+        left: 0;
+        top: 0;
+    }
+
+    .w-md-fit {
+        width: fit-content !important;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .lg-z-0 {
+        z-index: 0;
+    }
+
+    .lg-z-10 {
+        z-index: 10;
+    }
+
+    .lg-z-20 {
+        z-index: 20;
+    }
+
+    .lg-z-30 {
+        z-index: 30;
+    }
+
+    .lg-absolute {
+        position: absolute;
+    }
+
+    .lg-relative {
+        position: relative;
+    }
+
+    .lg-inset-0 {
+        left: 0;
+        top: 0;
+    }
+
+    .lg-over-left {
+        transform: translateX(-100%);
+    }
+
+    .lg-overflow-y-auto {
+        overflow-y: auto !important;
+    }
+
+    .lg-over-none {
+        transform: translateX(0%);
+    }
+
+    .w-lg-fit {
+        width: fit-content !important;
+    }
+}
