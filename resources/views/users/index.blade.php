@@ -34,24 +34,14 @@
   
           <select name="role" class="form-select" aria-label="Default select example">
             <option selected disabled>Filter by</option>
-  
-            @if (request()->query('role') === "member")
-              <option selected value="member">Members only</option> 
-            @else
-              <option value="member">Members only</option>
-            @endif
-  
-            @if (request()->query('role') === "operator")
-              <option selected value="operator">Operators only</option> 
-            @else
-              <option value="operator">Operators only</option>
-            @endif
-  
-            @if (request()->query('role') === "admin")
-              <option selected value="admin">Admins only</option> 
-            @else
-              <option value="admin">Admins only</option>
-            @endif
+
+            @foreach ($roles as $role)
+              @if (request()->query('role') === $role->name)
+                <option selected value="{{ strtolower( $role->name ) }}">{{ ucfirst($role->name) }} only</option> 
+              @else
+                <option value="{{ strtolower( $role->name ) }}">{{ ucfirst($role->name) }} only</option> 
+              @endif
+            @endforeach
           </select>
   
           <button class="btn btn-outline-primary" type="submit">Apply</button>
@@ -65,7 +55,7 @@
           <th scope="col" width="5%">ID</th>
           <th scope="col">Username</th>
           <th scope="col">Email</th>
-          <th scope="col">Level</th>
+          <th scope="col">Role</th>
           <th scope="col" width="18%">Actions</th>
         </thead>
       
@@ -75,7 +65,7 @@
               <td>{{ $user->id }}</td>
               <td>{{ $user->username }}</td>
               <td>{{ $user->email }}</td>
-              <td>{{ $user->role }}</td>
+              <td>{{ $user->role->name }}</td>
       
               <td class="d-flex gap-1">
                 <button type="button" class="btn btn-info" 
