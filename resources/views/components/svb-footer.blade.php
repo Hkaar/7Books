@@ -39,10 +39,10 @@
         <h5 class="mb-3">Contact us</h5>
 
         <div class="d-flex gap-3 align-items-center mb-3">
-          <a href="#"><i class="fa-brands fa-facebook fs-3 svb-transition-fast hover-grow active-shrink text-light"></i></a>
-          <a href="#"><i class="fa-brands fa-instagram fs-3 svb-transition-fast hover-grow active-shrink text-light"></i></a>
-          <a href="#"><i class="fa-brands fa-youtube fs-3 svb-transition-fast hover-grow active-shrink text-light"></i></a>
-          <a href="#"><i class="fa-brands fa-whatsapp fs-3 svb-transition-fast hover-grow active-shrink text-light"></i></a>
+          <a href="#"><i class="fa-brands fa-facebook fs-4 svb-transition-fast hover-grow active-shrink text-light"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram fs-4 svb-transition-fast hover-grow active-shrink text-light"></i></a>
+          <a href="#"><i class="fa-brands fa-youtube fs-4 svb-transition-fast hover-grow active-shrink text-light"></i></a>
+          <a href="#"><i class="fa-brands fa-whatsapp fs-4 svb-transition-fast hover-grow active-shrink text-light"></i></a>
         </div>
 
         <div class="d-flex align-items-center gap-1">
