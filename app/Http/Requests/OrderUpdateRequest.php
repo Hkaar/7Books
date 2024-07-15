@@ -21,7 +21,7 @@ class OrderUpdateRequest extends FormRequest
             "token" => "nullable|string|max:8|unique:orders,token",
             "return_date" => "nullable|date",
             "placed_date" => "nullable|date",
-            "status" => "nullable|string",
+            "status_id" => "nullable|numeric|exists:statuses,id",
             "items" => "nullable|string"
         ];
     }
@@ -36,7 +36,7 @@ class OrderUpdateRequest extends FormRequest
         $orderData = [
             "token" => $this->get("token"),
             "return_date" => $this->get("return_date"),
-            "status" => $this->get("status"),
+            "status_id" => $this->get("status_id"),
             "placed_date" => $this->get("placed_date"),
             "items" => $this->get("items"),
         ];
