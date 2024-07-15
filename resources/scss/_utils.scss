@@ -1,0 +1,182 @@
+// Custom Utilities for Seven Books
+
+/* ===== Text ===== */
+.text-inherit {
+    color: inherit;
+}
+
+.text-none {
+    text-decoration: none;
+}
+
+.h1,
+.text-h1 {
+    font-size: $h1-font-size;
+}
+
+.h2,
+.text-h2 {
+    font-size: $h2-font-size;
+}
+
+.h3,
+.text-h3 {
+    font-size: $h3-font-size;
+}
+
+.h4,
+.text-h4 {
+    font-size: $h4-font-size;
+}
+
+.h5,
+.text-h5 {
+    font-size: $h5-font-size;
+}
+
+.h6,
+.text-h6 {
+    font-size: $h6-font-size;
+}
+
+.body,
+.text-body {
+    font-size: $body-font-size;
+}
+
+.small,
+.text-small {
+    font-size: $small-font-size;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+.text-h1,
+.text-h2,
+.text-h3,
+.text-h4,
+.text-h5,
+.text-h6 {
+    line-height: $headings-line-height;
+    letter-spacing: $headings-letter-spacing;
+}
+
+/* ===== Content ===== */
+.ratio-box {
+    aspect-ratio: 1/1;
+}
+
+.ratio-wide-box {
+    aspect-ratio: 4/3;
+}
+
+.ratio-landscape {
+    aspect-ratio: 16/9;
+}
+
+.ratio-portrait {
+    aspect-ratio: 9/16;
+}
+
+.ratio-book-cover {
+    aspect-ratio: 1/1.5;
+}
+
+.logo-lg {
+    width: 50px;
+    height: 50px;
+}
+
+.logo-md {
+    width: 40px;
+    height: 40px;
+}
+
+.logo-sm {
+    width: 30px;
+    height: 30px;
+}
+
+/* ===== Positioning ===== */
+.z-0 {
+    z-index: 0;
+}
+
+.z-10 {
+    z-index: 10;
+}
+
+.z-20 {
+    z-index: 20;
+}
+
+.z-30 {
+    z-index: 30;
+}
+
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.inset-0 {
+    left: 0;
+    top: 0;
+}
+
+.over-left {
+    transform: translateX(-100%);
+}
+
+.over-none {
+    transform: translateX(0%);
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+/* ===== Animations ===== */
+.svb-transition-fast {
+    transition: all 0.3s ease;
+}
+
+.svb-transition {
+    transition: all 1.3s ease;
+}
+
+.svb-transition-slow {
+    transition: all 2.1s ease;
+}
+
+.transition-none {
+    transition: none;
+}
+
+.hover-darkened:hover {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+        rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+
+.hover-grow:hover {
+    transform: scale(1.05);
+}
+
+.hover-text-greyed:hover {
+    color: gray !important;
+}
+
+.hover-text-lightgrayed:hover {
+    color: lightgray !important;
+}
+
+.active-shrink:active {
+    transform: scale(0.95);
+}
