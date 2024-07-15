@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
-class VerifyUser
+class VerifyPrivilege
 {
     /**
      * Handle an incoming request.
