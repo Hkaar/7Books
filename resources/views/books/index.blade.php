@@ -34,14 +34,24 @@
 
           <div class="dropdown w-100 w-lg-fit">
             <button class="btn btn-secondary dropdown-toggle w-100 w-lg-fit" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Filter by
+              Filters
             </button>
             <ul class="dropdown-menu w-100 w-lg-fit p-1">
               <li class="mb-1">
-                <input type="text" class="form-control" name="genre" placeholder="Enter a genre" value="{{ request()->query('genre', '') }}">
+                <select name="genre" class="form-select" aria-label="Default select example">
+                  <option disabled selected>Genre</option>
+                  @foreach ($genres as $genre)
+                    <option value="{{ $genre->name }}" {{ request()->query('genre') === $genre->name ? 'selected' : '' }}>{{ str_replace('_', ' ', ucfirst($genre->name)) }}</option>
+                  @endforeach
+                </select>
               </li>
               <li>
-                <input type="text" class="form-control" name="author" placeholder="Enter a author" value="{{ request()->query('author', '') }}">
+                <select name="author" class="form-select" aria-label="Default select example">
+                  <option disabled selected>Author</option>
+                  @foreach ($authors as $author)
+                    <option value="{{ $author->name }}" {{ request()->query('author') === $author->name ? 'selected' : '' }}>{{ str_replace('_', ' ', ucfirst($author->name)) }}</option>
+                  @endforeach
+                </select>
               </li>
             </ul>
           </div>
