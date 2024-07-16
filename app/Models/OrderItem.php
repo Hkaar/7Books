@@ -17,8 +17,8 @@ class OrderItem extends Model
     protected $fillable = [
         "order_id",
         "book_id",
-        "region_id",
         "amount",
+        "library_id",
     ];
 
     /**
@@ -45,10 +45,10 @@ class OrderItem extends Model
     }
 
     /**
-     * Define relationship with regions
+     * Define relationship with libraries
      */
-    public function region()
+    public function library()
     {
-        return $this->belongsTo(Region::class, "region_id", "id");
+        return $this->belongsTo(Library::class, "library_id", "id");
     }
 }
