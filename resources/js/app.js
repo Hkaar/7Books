@@ -8,6 +8,11 @@ import * as bootstrap from 'bootstrap';
 import Swiper from "swiper/bundle";
 import 'swiper/css/bundle';
 
+import.meta.glob([
+    "../images/**/*",
+    "../fonts/**/*"
+]);
+
 /** @type {readonly string[]} */
 const invalidLiterals = ["", "[]"];
 
