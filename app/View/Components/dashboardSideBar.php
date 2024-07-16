@@ -8,15 +8,12 @@ use Illuminate\View\Component;
 
 class DashboardSideBar extends Component
 {
-    public $selected;
-
     /**
      * Create a new component instance.
      */
-    public function __construct(string $selected)
-    {
-        $this->selected = $selected;
-    }
+    public function __construct(
+        public string $selected,
+    ) {}
 
     /**
      * Get the view / contents that represent the component.
