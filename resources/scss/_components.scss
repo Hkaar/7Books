@@ -1,4 +1,9 @@
-// Custom Components for Seven Books
+// Component sets for Seven Books
+
+/* ===== Component overrides ===== */
+.bg-primary, .bg-secondary, .btn-primary, .btn-secondary {
+    color: $body-text-color;
+}
 
 /* ===== SVB Card ===== */
 .svb-card {
@@ -19,7 +24,7 @@
     width: 100%;
     display: grid;
     place-items: center;
-    color: var(--text-light);
+    color: $body-text-color;
     background-color: rgba(0, 0, 0, 0.5);
     opacity: 0;
     user-select: none;
@@ -90,7 +95,7 @@
 
 #side-nav .nav-item:hover,
 #side-nav .active {
-    background-color: var(--secondary);
+    background-color: $secondary;
 }
 
 #side-nav .nav-item i {
@@ -225,5 +230,9 @@
 
     .w-lg-fit {
         width: fit-content !important;
+    }
+
+    #side-nav[data-collapsed="false"] {
+        max-width: 250px !important;
     }
 }
