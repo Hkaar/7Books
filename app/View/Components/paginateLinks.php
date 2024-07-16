@@ -11,10 +11,10 @@ class PaginateLinks extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public $links, public bool $useHtmx = false)
-    {
-        //
-    }
+    public function __construct(
+        public $links, 
+        public bool $useHtmx = false
+    ) {}
 
     /**
      * Get the view / contents that represent the component.
