@@ -4,7 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\User;
 use App\Models\Author;
-
+use App\Models\Role;
 use Tests\TestCase;
 
 class AuthorTest extends TestCase
@@ -15,7 +15,7 @@ class AuthorTest extends TestCase
     public function test_index(): void
     {
         $user = User::factory()->create([
-            "role" => "admin"
+            "role_id" => Role::ByName("admin")->first()->id,
         ]);
         $this->actingAs($user);
 
@@ -29,7 +29,7 @@ class AuthorTest extends TestCase
     public function test_create(): void
     {
         $user = User::factory()->create([
-            "role" => "admin"
+            "role_id" => Role::ByName("admin")->first()->id,
         ]);
         $this->actingAs($user);
 
@@ -43,7 +43,7 @@ class AuthorTest extends TestCase
     public function test_edit(): void
     {
         $user = User::factory()->create([
-            "role" => "admin"
+            "role_id" => Role::ByName("admin")->first()->id,
         ]);
         $this->actingAs($user);
 
@@ -56,7 +56,7 @@ class AuthorTest extends TestCase
     public function test_show(): void
     {
         $user = User::factory()->create([
-            "role" => "admin"
+            "role_id" => Role::ByName("admin")->first()->id,
         ]);
         $this->actingAs($user);
 
