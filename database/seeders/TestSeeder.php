@@ -13,10 +13,10 @@ class TestSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            UserSeeder::class,
-            BookSeeder::class,
             StatusSeeder::class,
             RoleSeeder::class,
+            UserSeeder::class,
+            BookSeeder::class, 
         ]);
     }
 }
