@@ -21,7 +21,7 @@ class Order extends Model
         "created",
         'placed_date',
         "return_date",
-        "status"
+        "status_id"
     ];
 
     /**
@@ -40,11 +40,18 @@ class Order extends Model
         return $this->belongsTo(User::class, "user_id", "id");
     }
 
+    public function status()
+    {
+        return $this->belongsTo(Status::class, "status_id", "id");
+    }
+
     /**
      * Scope a query to only include a specific order status
      */
     public function scopeByStatus(Builder $query, string $status) {
-        return $query->where("status", "=", $status);
+        return $query->whereHas("status", function(Builder $query) use ($status) {
+            $query->where("name", "=", $status);
+        });
     }
 
     /**

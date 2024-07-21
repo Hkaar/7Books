@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\User;
 use App\Models\Book;
+use App\Models\Role;
 
 use Tests\TestCase;
 
@@ -15,7 +16,7 @@ class BookTest extends TestCase
     public function test_index(): void
     {
         $user = User::factory()->create([
-            "role" => "admin"
+            "role_id" => Role::ByName("admin")->first()->id,
         ]);
         $this->actingAs($user);
 
@@ -29,7 +30,7 @@ class BookTest extends TestCase
     public function test_create(): void
     {
         $user = User::factory()->create([
-            "role" => "admin"
+            "role_id" => Role::ByName("admin")->first()->id,
         ]);
         $this->actingAs($user);
 
@@ -43,7 +44,7 @@ class BookTest extends TestCase
     public function test_edit(): void
     {
         $user = User::factory()->create([
-            "role" => "admin"
+            "role_id" => Role::ByName("admin")->first()->id,
         ]);
         $this->actingAs($user);
 
@@ -59,7 +60,7 @@ class BookTest extends TestCase
     public function test_select(): void
     {
         $user = User::factory()->create([
-            "role" => "admin"
+            "role_id" => Role::ByName("admin")->first()->id,
         ]);
         $this->actingAs($user);
 
@@ -73,7 +74,7 @@ class BookTest extends TestCase
     public function test_multi_select(): void
     {
         $user = User::factory()->create([
-            "role" => "admin"
+            "role_id" => Role::ByName("admin")->first()->id,
         ]);
         $this->actingAs($user);
 
@@ -84,7 +85,7 @@ class BookTest extends TestCase
     public function test_show(): void
     {
         $user = User::factory()->create([
-            "role" => "admin"
+            "role_id" => Role::ByName("admin")->first()->id,
         ]);
         $this->actingAs($user);
 
@@ -100,7 +101,7 @@ class BookTest extends TestCase
     public function test_book_rate(): void 
     {
         $user = User::factory()->create([
-            "role" => "admin"
+            "role_id" => Role::ByName("admin")->first()->id,
         ]);
         $this->actingAs($user);
 

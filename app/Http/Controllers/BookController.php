@@ -141,7 +141,6 @@ class BookController extends Controller
             $book->img = $filePath;
         }
 
-        $book->amount_borrowed = 0;
         $book->save();
 
         return redirect()->route('books.index');
@@ -204,7 +203,6 @@ class BookController extends Controller
         }
 
         $this->updateModel($book, $validated, ["img"]);
-        $book->amount_borrowed = 0;
         
         $book->save();
 

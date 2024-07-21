@@ -31,15 +31,15 @@
             </div>
 
             <div class="mb-3">
-              <label for="role" class="form-label">Role</label>
+              <label for="role_id" class="form-label">Role</label>
               
-              <select name="role" id="role" class="form-select">
-                  <option value="member">Member</option>
-                  <option value="operator">Operator</option>
-                  <option value="admin">Admin</option>
+              <select name="role_id" id="role_id" class="form-select">
+                @foreach ($roles as $role)
+                  <option value="{{ $role->id }}">{{ ucfirst($role->name) }}</option> 
+                @endforeach
               </select>
       
-              @error('role')
+              @error('role_id')
                 <span>{{ $message }}</span>
               @enderror
             </div>

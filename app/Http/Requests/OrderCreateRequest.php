@@ -19,8 +19,8 @@ class OrderCreateRequest extends FormRequest
         return [
             "username" => "required|string",
             "return_date" => "required|date",
-            "status" => "nullable|string",
-            "placed_date" => "nullable|date",
+            "status_id" => "required|numeric|exists:statuses,id",
+            "placed_date" => "required|date",
             "items" => "nullable|string"
         ];
     }
@@ -34,7 +34,7 @@ class OrderCreateRequest extends FormRequest
 
         $orderData = [
             "return_date" => $this->get("return_date"),
-            "status" => $this->get("status"),
+            "status_id" => $this->get("status_id"),
             "placed_date" => $this->get("placed_date"),
             "items" => $this->get("items"),
         ];

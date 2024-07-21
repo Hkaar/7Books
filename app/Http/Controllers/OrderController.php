@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\User;
+use App\Models\Status;
 
 use App\Services\OrderFilterService;
 use App\Http\Requests\OrderCreateRequest;
@@ -21,7 +22,7 @@ class OrderController extends Controller
      */
     public function index(Request $request)
     {
-        $filters = $request->only(["search", "status", "filter"]);
+        $filters = $request->only(["search", "status", "date"]);
         
         if ($request->has("o")) {
             $orderQuery = $request->get('o');
@@ -35,8 +36,11 @@ class OrderController extends Controller
         $orders = $this->filterService->filter($filters);
         $orders->appends($request->query());
 
+        $statuses = Status::all(["id", "name"]);
+
         return view("orders.index")->with([
-            "orders" => $orders
+            "orders" => $orders,
+            "statuses" => $statuses,
         ]);
     }
 
@@ -45,7 +49,11 @@ class OrderController extends Controller
      */
     public function create()
     {
-        return view("orders.create");
+        $statuses = Status::all(["id", "name"]);
+
+        return view("orders.create", [
+            "statuses" => $statuses,
+        ]);
     }
 
     /**
@@ -104,9 +112,11 @@ class OrderController extends Controller
     public function show(int $id)
     {
         $order = Order::findOrFail($id);
+        $statuses = Status::all(["id", "name"]);
 
         return view("orders.show")->with([
-            "order" => $order
+            "order" => $order,
+            "statuses" => $statuses,
         ]);
     }
 
@@ -120,6 +130,7 @@ class OrderController extends Controller
         $books = $order->items()->get(["book_id", "amount"]);
         $user = User::findOrFail($order->user_id);
 
+        $statuses = Status::all(["id", "name"]);
         $items = [];
 
         foreach ($books as $key => $value) {
@@ -131,7 +142,8 @@ class OrderController extends Controller
         return view("orders.edit")->with([
             "order" => $order,
             "user" => $user,
-            "items" => $items
+            "items" => $items,
+            "statuses" => $statuses,
         ]);
     }
 

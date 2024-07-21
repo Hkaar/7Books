@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Role;
 
 use App\Traits\Uploader;
 use App\Services\UserFilterService;
@@ -37,8 +38,11 @@ class UserController extends Controller
         $users = $this->filterService->filter($filters);
         $users->appends($request->query());
 
+        $roles = Role::all(["id", "name"]);
+
         return view('users.index')->with([
             "users" => $users,
+            "roles" => $roles,
         ]);
     }
     
@@ -47,7 +51,11 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view("users.create");
+        $roles = Role::all(["id", "name"]);
+
+        return view("users.create", [
+            "roles" => $roles,
+        ]);
     }
 
     /**
@@ -61,7 +69,7 @@ class UserController extends Controller
             'email' => 'required|string|email|max:255|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required|string|min:8',
-            "role" => 'nullable|string',
+            "role_id" => 'required|numeric|exists:roles,id',
             "img" => "nullable|image|mimes:jpeg,png,jpg|max:10240"
         ]);
 
@@ -100,9 +108,11 @@ class UserController extends Controller
     public function edit(int $id)
     {
         $user = User::findOrFail($id);
+        $roles = Role::all(["id", "name"]);
 
         return view("users.edit")->with([
-            "user" => $user
+            "user" => $user,
+            "roles" => $roles,
         ]);
     }
 
@@ -119,7 +129,7 @@ class UserController extends Controller
             'email' => 'nullable|string|email|max:255|unique:users',
             'password' => 'nullable|string|min:8|confirmed',
             'password_confirmation' => 'nullable|string|min:8',
-            "role" => 'nullable|string',
+            "role_id" => 'required|numeric|exists:roles,id',
             "img" => "nullable|image|mimes:jpeg,png,jpg|max:10240"
         ]);
 

@@ -57,7 +57,6 @@
           <th scope="col" width="5%">ID</th>
           <th scope="col">Name</th>
           <th scope="col">Price</th>
-          <th scope="col" width="14%">Amount Borrowed</th>
           <th scope="col" width="18%">Actions</th>
         </thead>
       
@@ -67,7 +66,6 @@
               <td>{{ $book->id }}</td>
               <td>{{ $book->name }}</td>
               <td>{{ $book->price }}</td>
-              <td>{{ $book->amount_borrowed }}</td>
       
               <td class="d-flex gap-1">
                 <button type="button" class="btn btn-info" 

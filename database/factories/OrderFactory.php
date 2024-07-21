@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Order;
+use App\Models\Status;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -30,7 +31,7 @@ class OrderFactory extends Factory
             "token" => Str::random(8),
             "placed_date" => $this->faker->dateTime(),
             "return_date" => $this->faker->dateTime(),
-            "status" => "pending",
+            "status_id" => Status::first()->id,
         ];
     }
 }

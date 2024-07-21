@@ -32,29 +32,19 @@
             </div>
 
             <div class="mb-3">
-              <label for="role" class="form-label">Role</label>
+              <label for="role_id" class="form-label">Role</label>
               
-              <select name="role" id="role" class="form-select">
-                @if ($user->role == "member")
-                  <option selected value="member">Member</option>
-                @else
-                  <option value="member">Member</option>  
-                @endif
-                
-                @if ($user->role == "operator")
-                  <option selected value="operator">Operator</option>
-                @else
-                <option value="operator">Operator</option>
-                @endif
-
-                @if ($user->role == "admin")
-                  <option selected value="admin">Admin</option>
-                @else
-                  <option value="admin">Admin</option>  
-                @endif
+              <select name="role_id" id="role_id" class="form-select">
+                @foreach ($roles as $role)
+                  @if ($user->role->name === $role->name)
+                    <option selected value="{{ $role->id }}">{{ ucfirst($role->name) }}</option> 
+                  @else
+                    <option value="{{ $role->id }}">{{ ucfirst($role->name) }}</option> 
+                  @endif
+                @endforeach
               </select>
       
-              @error('role')
+              @error('role_id')
                 <span>{{ $message }}</span>
               @enderror
             </div>

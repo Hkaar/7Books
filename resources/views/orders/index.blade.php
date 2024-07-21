@@ -34,22 +34,33 @@
               <option value="latest">Latest</option>
             @endif
           </select>
-  
-          <select name="filter" class="form-select" aria-label="Default select example">
-            <option selected disabled>Filter by</option>
-  
-            @if (request()->query('filter') === "overdue")
-              <option selected value="overdue">Overdue only</option>
-            @else
-              <option value="overdue">Overdue only</option>
-            @endif
-  
-            @if (request()->query('filter') === "due")
-              <option selected value="due">Non overdue only</option>
-            @else
-              <option value="due">Non overdue only</option>
-            @endif
-          </select>
+
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Filters
+            </button>
+
+            <ul class="dropdown-menu px-1">
+              <li class="mb-1">
+                <select name="status" class="form-select" aria-label="Filter select">
+                  <option disabled selected>Status</option>
+
+                  @foreach ($statuses as $status)
+                    <option value="{{ $status->name }}" {{ strtolower($status->name) === request()->query('status') ? 'selected' : '' }}>
+                      {{ ucfirst(str_replace('_', ' ', $status->name)) }}
+                    </option>
+                  @endforeach
+                </select>
+              </li>
+              <li>
+                <select name="date" class="form-select" aria-label="Filter select">
+                  <option disabled selected>Due dates</option>
+                  <option value="overdue" {{ request()->query('date') === "overdue" ? 'selected' : '' }}>Overdue only</option>
+                  <option value="due" {{ request()->query('date') === "due" ? 'selected' : '' }}>Due only</option>
+                </select>
+              </li>
+            </ul>
+          </div>
           
           <button class="btn btn-outline-primary" type="submit">Apply</button>
         </form>
@@ -72,7 +83,7 @@
               <td>{{ $order->id }}</td>
               <td>{{ $order->user->username }}</td>
               <td>{{ $order->token }}</td>
-              <td>{{ $order->status }}</td>
+              <td>{{ ucfirst(str_replace('_', ' ', $order->status->name)) }}</td>
       
               <td class="d-flex gap-1">
                 <button type="button" class="btn btn-info" 
