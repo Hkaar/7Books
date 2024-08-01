@@ -8,6 +8,8 @@ import * as bootstrap from 'bootstrap';
 import Swiper from "swiper/bundle";
 import 'swiper/css/bundle';
 
+import { setupSlides } from "./slides.js";
+
 import.meta.glob([
     "../images/**/*",
     "../fonts/**/*"
@@ -156,6 +158,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (itemsField instanceof HTMLInputElement && !invalidLiterals.includes(itemsField.value)) {
         items = JSON.parse(itemsField.value);
     }
+
+    setupSlides();
 
     if (sideNav) {
         $(document).on("click", ".side-nav-close", (_) => {
