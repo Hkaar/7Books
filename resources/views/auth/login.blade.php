@@ -4,10 +4,10 @@
     
 @section('main')
 <div class="container min-vh-100 d-flex align-items-center justify-content-center">
-  <div class="shadow p-4 p-md-5 rounded">
+  <div class="shadow px-4 py-3 p-md-5 rounded">
     <a href="{{ route('/') }}" class="d-flex align-items-center justify-content-center flex-column flex-md-row gap-2 mb-4 text-center text-inherit text-none">
-      <img src="{{ URL::asset('assets/imgs/logo.png') }}" alt="Image not available" class="img-fluid ratio-box img-logo">
-      <h4 class="m-0">Seven Books</h4>
+      <img src="{{ Vite::asset('resources/images/logo.svg') }}" alt="Image not available" class="img-fluid ratio-box">
+      <h4 class="text-h4 fw-semibold">Seven Books</h4>
     </a>
 
     <form method="POST" action="{{ route('login') }}" class="d-flex flex-column gap-2 w-100 mb-4">
@@ -42,8 +42,8 @@
       </div>
     </form>
 
-    <span>
-      Don't have a account? try <a href="/register">registering</a> with us!
+    <span class="text-tertiary">
+      Don't have a account? try <a href="/register" class="text-primary">registering</a> with us!
     </span>
   </div>
 </div>
