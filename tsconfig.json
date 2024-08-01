@@ -14,5 +14,5 @@
     "exclude": [
         "./dist/*",
         "./public/build/**/*"
-    ]
+    ],
 }

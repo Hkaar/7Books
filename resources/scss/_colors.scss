@@ -1,0 +1,27 @@
+// Color themes for Seven Books
+
+$primary: #071952;
+$secondary: #088395;
+$tertiary: #37B7C3;
+$accent: #443dff;
+
+$danger: #e61b37;
+$success: #267d48;
+$warning: #ffa500;
+$info: #1fa2e2;
+
+$body-text-color: #fff;
+
+$body-light: #fff;
+
+$svb-themes: (
+    "primary": $primary,
+    "secondary": $secondary,
+    "tertiary": $tertiary,
+    "danger": $danger,
+    "success": $success,
+    "warning": $warning,
+    "info": $info,
+    "body": $body-light,
+    "accent": $accent,
+);

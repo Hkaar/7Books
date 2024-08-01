@@ -2,7 +2,7 @@
   <div class="container-fluid d-flex justify-content-between align-items-center">
     <div class="d-flex gap-3">
       <button type="button" class="btn btn-light border side-nav-toggle">
-        <i class="fa-solid fa-bars fs-5 m-0"></i>
+        <i class="fa-solid fa-bars fs-6 m-0"></i>
       </button>
 
       <article class="d-flex gap-1 align-items-center">
