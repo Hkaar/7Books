@@ -14,24 +14,28 @@ class StatusSeeder extends Seeder
      */
     public function run(): void
     {
-        Status::create([
-            "name" => "pending",
-        ]);
+        if (!Status::ByName("pending")->first()) {
+            Status::create(["name" => "pending"]);
+        }
+        
+        if (!Status::ByName("placed")->first()) {
+            Status::create(["name" => "placed"]);
+        }
 
-        Status::create([
-            "name" => "placed",
-        ]);
+        if (!Status::ByName("not_returned")->first()) {
+            Status::create(["name" => "not_returned"]);
+        }
 
-        Status::create([
-            "name" => "not_returned",
-        ]);
+        if (!Status::ByName("returned")->first()) {
+            Status::create(["name" => "returned"]);
+        }
 
-        Status::create([
-            "name" => "returned",
-        ]);
+        if (!Status::ByName("returned")->first()) {
+            Status::create(["name" => "returned"]);
+        }
 
-        Status::create([
-            "name" => "cancelled",
-        ]);
+        if (!Status::ByName("cancelled")->first()) {
+            Status::create(["name" => "cancelled"]);
+        }
     }
 }

@@ -8,7 +8,7 @@ use Illuminate\View\Component;
 
 use App\Models\User;
 
-class SVBNavigationBar extends Component
+class SvbNavigationBar extends Component
 {
     /**
      * Create a new component instance.

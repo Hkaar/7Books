@@ -48,6 +48,8 @@ Route::group(["namespace" => "App\Http\Controllers"], function() {
         Route::resource("/orders", "OrderController")->names("orders");
         Route::resource("/authors", "AuthorController")->names("authors");
         Route::resource("/genres", "GenreController")->names("genres");
+        Route::resource("/library", "LibraryController")->names("libraries");
+        Route::resource("/region", "RegionController")->names("regions");
         
         Route::middleware("verify.admin")->group(function() {
             Route::resource("/users", "UserController")->names("users");

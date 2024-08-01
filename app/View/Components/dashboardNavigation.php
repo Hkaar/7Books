@@ -8,22 +8,16 @@ use Illuminate\View\Component;
 
 class DashboardNavigation extends Component
 {
-    public string $selected;
     /**
      * Create a new component instance.
      */
-    public function __construct(string $selected)
-    {
-        $this->selected = $selected;
-    }
+    public function __construct() {}
 
     /**
      * Get the view / contents that represent the component.
      */
     public function render(): View|Closure|string
     {
-        return view('components.dashboard-navigation')->with([
-            "selected" => $this->selected,
-        ]);
+        return view('components.dashboard-navigation');
     }
 }

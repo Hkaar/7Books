@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Genre;
+use App\Models\Author;
 
 use App\Traits\Uploader;
 use App\Services\BookFilterService;
@@ -41,8 +43,13 @@ class BookController extends Controller
         $books = $this->filterService->filter($filters);
         $books->appends($request->query());
 
+        $genres = Genre::all(["id", "name"]);
+        $authors = Author::all(["id", "name"]);
+
         return view('books.index')->with([
-            "books" => $books
+            "books" => $books,
+            "authors" => $authors,
+            "genres" => $genres,
         ]);
     }
 

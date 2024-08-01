@@ -5,9 +5,9 @@
 @section('main')
 <div class="container min-vh-100 d-flex align-items-center justify-content-center">
   <div class="shadow px-4 py-3 p-md-5 rounded">
-    <a href="{{ route('/') }}" class="d-flex align-items-center justify-content-center flex-column flex-md-row gap-1 gap-md-3 mb-4 text-center text-inherit text-none">
+    <a href="{{ route('/') }}" class="d-flex align-items-center justify-content-center flex-column flex-md-row gap-2 mb-4 text-center text-inherit text-none">
       <img src="{{ URL::asset('assets/imgs/logo.png') }}" alt="Image not available" class="img-fluid ratio-box img-logo">
-      <h3>Seven Books</h3>
+      <h4 class="m-0">Seven Books</h4>
     </a>
 
     <form method="POST" action="{{ route('register') }}" class="d-flex flex-column gap-2 w-100 mb-4">
