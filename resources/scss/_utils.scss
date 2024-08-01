@@ -101,6 +101,16 @@
     height: 30px;
 }
 
+.logo-xs {
+    width: 25px;
+    height: 25px;
+}
+
+/* ===== Sizing ===== */
+.w-fit {
+    width: fit-content;
+}
+
 /* ===== Positioning ===== */
 .z-0 {
     z-index: 0;
@@ -166,7 +176,7 @@
 }
 
 .hover-grow:hover {
-    transform: scale(1.05);
+    transform: scale(105%);
 }
 
 .hover-text-greyed:hover {
@@ -179,4 +189,112 @@
 
 .active-shrink:active {
     transform: scale(0.95);
+}
+
+/* ===== Responsive styles (Medium sized) ===== */
+@media screen and (min-width: 768px) {
+    /* ===== Text ===== */
+    .text-md-inherit {
+        color: inherit;
+    }
+    
+    .text-md-none {
+        text-decoration: none;
+    }
+    
+    .text-md-h1 {
+        font-size: $h1-font-size;
+    }
+    
+    .text-md-h2 {
+        font-size: $h2-font-size;
+    }
+    
+    .text-md-h3 {
+        font-size: $h3-font-size;
+    }
+    
+    .text-md-h4 {
+        font-size: $h4-font-size;
+    }
+    
+    .text-md-h5 {
+        font-size: $h5-font-size;
+    }
+    
+    .text-md-h6 {
+        font-size: $h6-font-size;
+    }
+
+    .text-md-body {
+        font-size: $body-font-size;
+    }
+    
+    .text-md-small {
+        font-size: $small-font-size;
+    }
+    
+    .text-md-h1,
+    .text-md-h2,
+    .text-md-h3,
+    .text-md-h4,
+    .text-md-h5,
+    .text-md-h6 {
+        line-height: $headings-line-height;
+        letter-spacing: $headings-letter-spacing;
+    }
+}
+
+/* ===== Responsive styles (Large sized) ===== */
+@media screen and (min-width: 992px) {
+    /* ===== Text ===== */
+    .text-lg-inherit {
+        color: inherit;
+    }
+    
+    .text-lg-none {
+        text-decoration: none;
+    }
+    
+    .text-lg-h1 {
+        font-size: $h1-font-size;
+    }
+    
+    .text-lg-h2 {
+        font-size: $h2-font-size;
+    }
+    
+    .text-lg-h3 {
+        font-size: $h3-font-size;
+    }
+    
+    .text-lg-h4 {
+        font-size: $h4-font-size;
+    }
+    
+    .text-lg-h5 {
+        font-size: $h5-font-size;
+    }
+    
+    .text-lg-h6 {
+        font-size: $h6-font-size;
+    }
+    
+    .text-lg-body {
+        font-size: $body-font-size;
+    }
+    
+    .text-lg-small {
+        font-size: $small-font-size;
+    }
+    
+    .text-lg-h1,
+    .text-lg-h2,
+    .text-lg-h3,
+    .text-lg-h4,
+    .text-lg-h5,
+    .text-lg-h6 {
+        line-height: $headings-line-height;
+        letter-spacing: $headings-letter-spacing;
+    }
 }
