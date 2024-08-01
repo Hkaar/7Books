@@ -13,8 +13,7 @@ class SvbNavigationBar extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(
-        public bool $search = false, 
+    public function __construct( 
         public bool $menus = false, 
         public string $active = "", 
         public bool $login = true,
@@ -28,7 +27,6 @@ class SvbNavigationBar extends Component
     public function render(): View|Closure|string
     {
         return view('components.svb-navigation-bar', [
-            "search" => $this->search,
             "menus" => $this->menus,
             "active" => $this->active,
             "login" => $this->login,
