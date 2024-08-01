@@ -1,14 +1,18 @@
 // Component sets for Seven Books
 
 /* ===== Component overrides ===== */
-.bg-primary, .bg-secondary, .btn-primary, .btn-secondary {
+.bg-primary,
+.bg-secondary,
+.btn-primary,
+.btn-secondary {
     color: $body-text-color;
 }
 
 /* ===== SVB Card ===== */
 .svb-card {
     overflow: hidden;
-    height: 350px;
+    aspect-ratio: 1/1.5;
+    min-height: 240px;
 }
 
 .svb-card.active {
@@ -19,13 +23,16 @@
     z-index: 2;
     position: absolute;
     left: 0;
-    top: 0;
-    height: 100%;
+    bottom: 0;
+    height: 24%;
     width: 100%;
     display: grid;
     place-items: center;
     color: $body-text-color;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.2); 
+    backdrop-filter: blur(10px); 
+    border-radius: 0.5rem; 
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
     opacity: 0;
     user-select: none;
 }
@@ -77,19 +84,9 @@
     color: inherit;
 }
 
-#side-nav .nav-items {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    gap: 12px;
-}
-
 #side-nav .nav-item {
     display: flex;
     align-items: center;
-    gap: 6px;
-    border-radius: 20px;
-    padding: 15px;
     transition: all 0.4s ease;
 }
 
@@ -106,20 +103,20 @@
     max-width: 100vw;
 }
 
-#side-nav[data-collapsed="false"] .side-nav-open {
-    display: none;
-}
-
-#side-nav[data-collapsed="true"] .side-nav-close {
-    display: none;
-}
-
 #side-nav[data-collapsed="true"] .nav-item-title {
     display: none;
 }
 
+#side-nav[data-collapsed="true"] .nav-item {
+    justify-content: center;
+}
+
+#side-nav[data-collapsed="true"] img {
+    width: 50px;
+}
+
 #side-nav[data-collapsed="false"] img {
-    max-width: 23%;
+    max-width: 22%;
 }
 
 /* ===== Navigation ===== */
@@ -136,6 +133,7 @@
 .navbar .btn-nav {
     display: flex;
 }
+
 .navbar-toggler {
     border: none;
 }
