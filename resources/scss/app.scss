@@ -1,5 +1,7 @@
 $fa-font-path: "/node_modules/@fortawesome/fontawesome-free/WebFonts" !default;
 
+$base: 16;
+
 @import '/node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss';
 @import '/node_modules/@fortawesome/fontawesome-free/css/solid.min.css';
 @import '/node_modules/@fortawesome/fontawesome-free/css/brands.min.css';
@@ -56,42 +58,8 @@ body {
     font-family: 'Poppins', 'sans serif';
 }
 
-h1 {
-    font-size: $h1-font-size;
-    font-weight: $font-weight-bold;
-}
-
-h2 {
-    font-size: $h2-font-size;
-    font-weight: $font-weight-semibold;
-}
-
-h3 {
-    font-size: $h3-font-size;
-    font-weight: $font-weight-semibold;
-}
-
-h4 {
-    font-size: $h4-font-size;
-    font-weight: $font-weight-semibold;
-}
-
-h5{
-    font-size: $h5-font-size;
-    font-weight: $font-weight-medium;
-}
-
-h6 {
-    font-size: $h6-font-size;
-    font-weight: $font-weight-medium;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    letter-spacing: $headings-letter-spacing;
-    line-height: $headings-line-height;
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-weight: inherit;
+    font-size: inherit;
 }
