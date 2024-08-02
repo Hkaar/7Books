@@ -49,7 +49,7 @@ jobs:
         run: php artisan storage:link
 
       - name: Generate key
-        run: php artisan key:generate --env=
+        run: php artisan key:generate --env=testing
 
       - name: Clear view cache
         run: php artisan view:clear
