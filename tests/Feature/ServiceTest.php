@@ -2,28 +2,27 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Tests\TestCase;
-
-use App\Services\UserFilterService;
-use App\Services\OrderFilterService;
-use App\Services\BookFilterService;
 use App\Services\AuthorFilterService;
+use App\Services\BookFilterService;
 use App\Services\GenreFilterService;
+use App\Services\OrderFilterService;
+use App\Services\UserFilterService;
+use Tests\TestCase;
 
 class ServiceTest extends TestCase
 {
     /**
      * Test whether the user filter service is working
+     *
+     * @test
      */
-    public function test_user_filter_service(): void
+    public function user_filter_service(): void
     {
         $filters = [
-            "latest",
+            'latest',
         ];
 
-        $service = new UserFilterService();
+        $service = new UserFilterService;
         $results = $service->filter($filters);
 
         $this->assertNotEmpty($results);
@@ -31,14 +30,16 @@ class ServiceTest extends TestCase
 
     /**
      * Test whether the order filter service is working
+     *
+     * @test
      */
-    public function test_order_filter_service(): void
+    public function order_filter_service(): void
     {
         $filters = [
-            "latest",
+            'latest',
         ];
 
-        $service = new OrderFilterService();
+        $service = new OrderFilterService;
         $results = $service->filter($filters);
 
         $this->assertNotEmpty($results);
@@ -46,14 +47,16 @@ class ServiceTest extends TestCase
 
     /**
      * Test whether the book filter service is working
+     *
+     * @test
      */
-    public function test_book_filter_service(): void
+    public function book_filter_service(): void
     {
         $filters = [
-            "latest",
+            'latest',
         ];
 
-        $service = new BookFilterService();
+        $service = new BookFilterService;
         $results = $service->filter($filters);
 
         $this->assertNotEmpty($results);
@@ -61,14 +64,16 @@ class ServiceTest extends TestCase
 
     /**
      * Test whether the author filter service is working
+     *
+     * @test
      */
-    public function test_author_filter_service(): void
+    public function author_filter_service(): void
     {
         $filters = [
-            "latest",
+            'latest',
         ];
 
-        $service = new AuthorFilterService();
+        $service = new AuthorFilterService;
         $results = $service->filter($filters);
 
         $this->assertNotEmpty($results);
@@ -76,14 +81,16 @@ class ServiceTest extends TestCase
 
     /**
      * Test whether the genre filter service is working
+     *
+     * @test
      */
-    public function test_genre_filter_service(): void
+    public function genre_filter_service(): void
     {
         $filters = [
-            "latest",
+            'latest',
         ];
 
-        $service = new GenreFilterService();
+        $service = new GenreFilterService;
         $results = $service->filter($filters);
 
         $this->assertNotEmpty($results);

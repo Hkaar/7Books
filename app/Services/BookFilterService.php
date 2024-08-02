@@ -19,16 +19,16 @@ class BookFilterService
 
         $this->genericFilter($books, $filters);
 
-        if (in_array("search", $filterKeys) && !empty($filters["search"])) {
-            $books->where("name", "like", "%".$filters["search"]."%");
+        if (in_array('search', $filterKeys) && ! empty($filters['search'])) {
+            $books->where('name', 'like', '%' . $filters['search'] . '%');
         }
-        
-        if (in_array("genre", $filterKeys) && !empty($filters["genre"])) {
-            $books->byGenre($filters["genre"]);
+
+        if (in_array('genre', $filterKeys) && ! empty($filters['genre'])) {
+            $books->byGenre($filters['genre']);
         }
-        
-        if (in_array("author", $filterKeys) && !empty($filters["author"])) {
-            $books->byAuthor($filters["author"]);
+
+        if (in_array('author', $filterKeys) && ! empty($filters['author'])) {
+            $books->byAuthor($filters['author']);
         }
 
         return $books->paginate(20);

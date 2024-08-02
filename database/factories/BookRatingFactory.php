@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\BookRating;
-
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -26,9 +25,9 @@ class BookRatingFactory extends Factory
     public function definition(): array
     {
         return [
-            "user_id" => fn() => \App\Models\User::factory()->create()->id,
-            "book_id" => fn() => \App\Models\Book::factory()->create()->id,
-            "rating" => random_int(0, 5),
+            'user_id' => fn () => \App\Models\User::factory()->create()->id,
+            'book_id' => fn () => \App\Models\Book::factory()->create()->id,
+            'rating' => random_int(0, 5),
         ];
     }
 }

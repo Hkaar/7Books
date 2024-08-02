@@ -10,19 +10,19 @@
               @else
                 <img src="{{ URL::asset('assets/imgs/default-avatar.png') }}" alt="Image not available" class="img-fluid rounded-circle ratio-box">
               @endif
-              
+
               <span class="nav-item-title overflow-hidden">{{ auth()->user()->username }}</span>
             </div>
 
             <i class="fa-solid fa-chevron-down nav-item-title"></i>
-          </span>          
+          </span>
         </button>
-        
+
         <ul class="dropdown-menu w-100">
           <li>
             <a class="dropdown-item" href="{{ route('users.me') }}">View Profile</a>
           </li>
-          
+
           <li><hr class="dropdown-divider"></li>
 
           <li>
@@ -59,21 +59,21 @@
       <i class="fa-solid fa-book-open"></i>
       <span class="nav-item-title">Libraries</span>
     </a>
-    
+
     <a href="{{ $selected === 'author' ? '#' : route('authors.index') }}" class="nav-item p-3 rounded gap-2 {{ $selected === 'author' ? 'active' : '' }}">
       <i class="fa-solid fa-pen"></i>
       <span class="nav-item-title">Authors</span>
     </a>
-    
+
     <a href="{{ $selected === 'genre' ? '#' : route('genres.index') }}" class="nav-item p-3 rounded gap-2 {{ $selected === 'genre' ? 'active' : '' }}">
       <i class="fa-solid fa-tag"></i>
       <span class="nav-item-title">Genres</span>
     </a>
-    
+
     <a href="{{ $selected === 'region' ? '#' : route('regions.index') }}" class="nav-item p-3 rounded gap-2 {{ $selected === 'region' ? 'active' : '' }}">
       <i class="fa-solid fa-earth-americas"></i>
       <span class="nav-item-title">Regions</span>
-    </a>    
+    </a>
 
     <a href="#" class="nav-item p-3 rounded gap-2 mt-auto">
       <i class="fa-solid fa-gear"></i>

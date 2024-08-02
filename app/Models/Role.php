@@ -25,7 +25,7 @@ class Role extends Model
      */
     public function users()
     {
-        return $this->hasMany(User::class, "role_id", "id");
+        return $this->hasMany(User::class, 'role_id', 'id');
     }
 
     /**
@@ -33,6 +33,6 @@ class Role extends Model
      */
     public function scopeByName(Builder $query, string $name)
     {
-        return $query->where("name", "=", $name);
+        return $query->where('name', '=', $name);
     }
 }

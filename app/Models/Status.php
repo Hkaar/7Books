@@ -25,14 +25,14 @@ class Status extends Model
      */
     public function orders()
     {
-        return $this->hasMany(Order::class, "status_id", "id");
+        return $this->hasMany(Order::class, 'status_id', 'id');
     }
 
     /**
      * Scope a query by name
      */
-    public function scopeByName(Builder $query, string $name) 
+    public function scopeByName(Builder $query, string $name)
     {
-        return $query->where("name", "=", $name);
+        return $query->where('name', '=', $name);
     }
 }

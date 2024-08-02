@@ -32,7 +32,7 @@ class Library extends Model
      */
     public function region()
     {
-        return $this->belongsTo(Region::class, "region_id", "id");
+        return $this->belongsTo(Region::class, 'region_id', 'id');
     }
 
     /**
@@ -40,6 +40,6 @@ class Library extends Model
      */
     public function books()
     {
-        return $this->belongsToMany(Book::class, "library_books");
+        return $this->belongsToMany(Book::class, 'library_books');
     }
 }

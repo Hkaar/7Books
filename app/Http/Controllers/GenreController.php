@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Genre;
 use App\Services\GenreFilterService;
-
 use Illuminate\Http\Request;
 
 class GenreController extends Controller
@@ -16,22 +15,22 @@ class GenreController extends Controller
      */
     public function index(Request $request)
     {
-        $filters = $request->only(["search"]);
+        $filters = $request->only(['search']);
 
-        if ($request->has("o")) {
+        if ($request->has('o')) {
             $orderQuery = $request->get('o');
-            
+
             match ($orderQuery) {
-                "latest" => array_push($filters, "latest"),
-                "oldest" => array_push($filters, "oldest"),
+                'latest' => array_push($filters, 'latest'),
+                'oldest' => array_push($filters, 'oldest'),
             };
         }
 
         $genres = $this->filterService->filter($filters);
         $genres->appends($request->query());
 
-        return view("genres.index")->with([
-            "genres" => $genres
+        return view('genres.index')->with([
+            'genres' => $genres,
         ]);
     }
 
@@ -40,7 +39,7 @@ class GenreController extends Controller
      */
     public function create()
     {
-        return view("genres.create");
+        return view('genres.create');
     }
 
     /**
@@ -49,22 +48,22 @@ class GenreController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            "name" => "required|string|max:100|unique:genres,name",
-            "items" => "nullable|string"
+            'name' => 'required|string|max:100|unique:genres,name',
+            'items' => 'nullable|string',
         ]);
 
-        $genre = new Genre();
+        $genre = new Genre;
         $genre->fill($validated)->save();
 
-        if ($validated["items"]) {
-            $items = json_decode($validated["items"], true);
+        if ($validated['items']) {
+            $items = json_decode($validated['items'], true);
 
             foreach ($items as $key => $value) {
                 $genre->books()->attach($key);
             }
         }
 
-        return redirect()->route("genres.index");
+        return redirect()->route('genres.index');
     }
 
     /**
@@ -75,9 +74,9 @@ class GenreController extends Controller
         $genre = Genre::findOrFail($id);
         $books = $genre->books()->paginate(3);
 
-        return view("genres.show")->with([
-            "genre" => $genre,
-            "books" => $books
+        return view('genres.show')->with([
+            'genre' => $genre,
+            'books' => $books,
         ]);
     }
 
@@ -88,7 +87,7 @@ class GenreController extends Controller
     {
         $genre = Genre::findOrFail($id);
 
-        $books = $genre->books()->get(["book_id"]);
+        $books = $genre->books()->get(['book_id']);
         $items = [];
 
         foreach ($books as $key => $value) {
@@ -97,9 +96,9 @@ class GenreController extends Controller
 
         $items = json_encode($items);
 
-        return view("genres.edit")->with([
-            "genre" => $genre,
-            "items" => $items
+        return view('genres.edit')->with([
+            'genre' => $genre,
+            'items' => $items,
         ]);
     }
 
@@ -111,19 +110,19 @@ class GenreController extends Controller
         $genre = Genre::findOrFail($id);
 
         $validated = $request->validate([
-            "name" => "nullable|string|max:100|unique:genres,name",
-            "items" => "nullable|string"
+            'name' => 'nullable|string|max:100|unique:genres,name',
+            'items' => 'nullable|string',
         ]);
 
-        $genre->name = $validated["name"] ?? $genre->name;
+        $genre->name = $validated['name'] ?? $genre->name;
         $genre->save();
 
-        if ($validated["items"]) {
-            $items = json_decode($validated["items"], true);
+        if ($validated['items']) {
+            $items = json_decode($validated['items'], true);
             $genre->books()->sync(array_keys($items) ?? []);
         }
 
-        return redirect()->route("genres.index");
+        return redirect()->route('genres.index');
     }
 
     /**
@@ -135,6 +134,7 @@ class GenreController extends Controller
         $genre->books()->detach();
 
         $genre->delete();
+
         return response(null);
     }
 }

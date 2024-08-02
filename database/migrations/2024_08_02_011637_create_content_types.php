@@ -8,16 +8,14 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('content_types', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->softDeletes();
-            $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('content_types');
     }
 };

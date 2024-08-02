@@ -2,13 +2,10 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Tests\TestCase;
-
 use App\Traits\Uploader;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use Tests\TestCase;
 
 class FileUploadTest extends TestCase
 {
@@ -16,19 +13,21 @@ class FileUploadTest extends TestCase
 
     /**
      * Test whether the upload image works
+     *
+     * @test
      */
-    public function test_upload_image(): void
+    public function upload_image(): void
     {
-        Storage::fake("test");
+        Storage::fake('test');
 
-        $file = UploadedFile::fake()->image("test_image.jpg", 300, 300);
+        $file = UploadedFile::fake()->image('test_image.jpg', 300, 300);
 
         $path = $this->uploadImage($file, [
-            "name" => "test_image.jpg",
-            "disk" => "test",
+            'name' => 'test_image.jpg',
+            'disk' => 'test',
         ]);
-        
-        $this->assertTrue(Storage::disk("test")->exists($path));
+
+        $this->assertTrue(Storage::disk('test')->exists($path));
         Storage::disk('test')->delete($path);
 
     }

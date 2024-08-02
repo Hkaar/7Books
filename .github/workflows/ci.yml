@@ -49,10 +49,13 @@ jobs:
         run: php artisan storage:link
 
       - name: Generate key
-        run: php artisan key:generate --env=testing
+        run: php artisan key:generate --env=
 
       - name: Clear view cache
         run: php artisan view:clear
 
       - name: Run tests
         run: php artisan test
+
+      - name: Run linter
+        run: ./vendor/bin/duster lint

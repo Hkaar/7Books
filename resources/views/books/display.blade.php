@@ -49,7 +49,7 @@
             </div>
           </div>
           <button class="btn btn-primary rounded-pill">Borrow</button>
-          
+
         </div>
         <div class="col-md-6 d-block d-md-none p-3">
           <h5 class="fw-semibold text-center mt-3">Harry Potter & The Deathly Hollows</h5>
@@ -87,7 +87,7 @@
             </div>
           </div>
           <button class="btn btn-primary rounded-pill" style="text-align: center">Borrow</button>
-          
+
         </div>
       </div>
     </div>

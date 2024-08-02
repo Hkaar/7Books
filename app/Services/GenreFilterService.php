@@ -19,8 +19,8 @@ class GenreFilterService
 
         $this->genericFilter($genres, $filters);
 
-        if (in_array("search", $filterKeys) && !empty($filters["search"])) {
-            $genres->where("name", "like", "%".$filters["search"]."%");
+        if (in_array('search', $filterKeys) && ! empty($filters['search'])) {
+            $genres->where('name', 'like', '%' . $filters['search'] . '%');
         }
 
         return $genres->paginate(20);

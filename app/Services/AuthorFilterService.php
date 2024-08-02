@@ -19,8 +19,8 @@ class AuthorFilterService
 
         $this->genericFilter($authors, $filters);
 
-        if (in_array("search", $filterKeys) && !empty($filters["search"])) {
-            $authors->where("name", "like", "%".$filters["search"]."%");
+        if (in_array('search', $filterKeys) && ! empty($filters['search'])) {
+            $authors->where('name', 'like', '%' . $filters['search'] . '%');
         }
 
         return $authors->paginate(20);

@@ -21,10 +21,10 @@
         <b>Phone</b>
         {{ $author->phone }}
       </article>
-      
+
       <button type="button" class="btn btn-primary"
-        hx-get="{{ URL::to('/manage/authors/authored', $author->id) }}" 
-        hx-target="#detailsBody" 
+        hx-get="{{ URL::to('/manage/authors/authored', $author->id) }}"
+        hx-target="#detailsBody"
         hx-swap="innerHTML"
         >Show Books
       </button>

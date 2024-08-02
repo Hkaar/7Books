@@ -31,7 +31,7 @@ class Region extends Model
      */
     public function libraries()
     {
-        return $this->hasMany(Library::class, "region_id", "id");
+        return $this->hasMany(Library::class, 'region_id', 'id');
     }
 
     /**
@@ -39,7 +39,7 @@ class Region extends Model
      */
     public function books()
     {
-        return $this->belongsToMany(Book::class, "region_books");
+        return $this->belongsToMany(Book::class, 'region_books');
     }
 
     /**
@@ -47,6 +47,6 @@ class Region extends Model
      */
     public function items()
     {
-        return $this->hasMany(OrderItem::class, "region_id", "id");
+        return $this->hasMany(OrderItem::class, 'region_id', 'id');
     }
 }

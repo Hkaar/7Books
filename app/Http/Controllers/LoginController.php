@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-
-use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +12,7 @@ class LoginController extends Controller
      */
     public function show()
     {
-        return view("auth.login");
+        return view('auth.login');
     }
 
     /**
@@ -25,14 +22,14 @@ class LoginController extends Controller
     {
         $credentials = $request->getCredentials();
 
-        if (!Auth::validate($credentials)) {
+        if (! Auth::validate($credentials)) {
             return redirect()->to('login')
                 ->withErrors(trans('auth.failed'));
         }
 
         $user = Auth::getProvider()->retrieveByCredentials($credentials);
 
-        Auth::login($user, $request->get("remember"));
+        Auth::login($user, $request->get('remember'));
 
         return redirect()->intended(route('home'));
     }
