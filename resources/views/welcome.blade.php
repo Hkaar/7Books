@@ -5,22 +5,22 @@
 @section('main')
   <x-svb-navigation-bar :menus=true active="" :logo=true :login=true :avatar=true></x-svb-navigation-bar>
 
-  <section id="hero" class="min-vh-100 d-flex py-5">    
+  <section id="hero" class="min-vh-100 d-flex py-5">
     <div class="container flex-fill">
       <div class="row h-100">
         <div class="col-12 col-lg-6 d-flex align-items-center justify-content-center justify-content-lg-start">
           <article class="d-flex flex-column gap-4 align-items-center text-center align-items-lg-start text-lg-start">
             <h1 class="text-lg-h1 text-md-h2 text-h3 fw-bold">Stack up your Knowledge</h1>
-    
+
             <div class="d-flex flex-column gap-2 justify-content-center align-items-center align-items-lg-start">
               <span class="d-flex flex-column gap-1">
                 <h5 class="text-h5 fw-medium">Want to read a book from a library near you?</h5>
-      
+
                 <p>
                   Get started by clicking the button below
                 </p>
               </span>
-      
+
               <a href="#" class="btn btn-primary w-fit">
                 Get started
               </a>
@@ -57,9 +57,9 @@
     <div class="container">
       <div class="d-flex flex-column gap-1 mb-3">
         <h3 class="text-h4 text-md-h3 fw-semibold">Trending Reads</h3>
-        
+
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center">
-          <span class="text-tertiary"> 
+          <span class="text-tertiary">
             Current trends in papers
           </span>
 
@@ -82,7 +82,7 @@
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
               <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
-        
+
               <div class="title svb-transition-fast">
                 Harry potter
               </div>
@@ -92,7 +92,7 @@
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
               <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
-        
+
               <div class="title svb-transition-fast">
                 Harry potter
               </div>
@@ -102,7 +102,7 @@
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
               <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
-        
+
               <div class="title svb-transition-fast">
                 Harry potter
               </div>
@@ -112,7 +112,7 @@
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
               <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
-        
+
               <div class="title svb-transition-fast">
                 Harry potter
               </div>
@@ -122,7 +122,7 @@
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
               <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
-        
+
               <div class="title svb-transition-fast">
                 Harry potter
               </div>
@@ -132,7 +132,7 @@
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
               <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
-        
+
               <div class="title svb-transition-fast">
                 Harry potter
               </div>
@@ -142,7 +142,7 @@
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
               <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
-        
+
               <div class="title svb-transition-fast">
                 Harry potter
               </div>
@@ -159,9 +159,9 @@
     <div class="container">
       <div class="d-flex flex-column gap-1 mb-3">
         <h3 class="text-h4 text-md-h3 fw-semibold">Popular Authors</h3>
-        
+
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center">
-          <span class="text-tertiary"> 
+          <span class="text-tertiary">
             Reading is more than the content it's the people
           </span>
 
@@ -178,7 +178,7 @@
           </div>
         </div>
       </div>
-      
+
       <div id="authorProfileSlider" class="swiper">
         <div class="swiper-wrapper">
           <div class="swiper-slide bg-primary rounded-circle ratio-box" style="height: 200px">Slide 1</div>
@@ -199,9 +199,9 @@
     <div class="container">
       <div class="d-flex flex-column gap-1 mb-3">
         <h3 class="text-h4 text-md-h3 fw-semibold">New Releases</h3>
-        
+
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center">
-          <span class="text-tertiary"> 
+          <span class="text-tertiary">
             Newly released in libraries
           </span>
 
@@ -218,13 +218,13 @@
           </div>
         </div>
       </div>
-      
+
       <div id="newestBookSlider" class="swiper">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
               <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
-        
+
               <div class="title svb-transition-fast">
                 Harry potter
               </div>
@@ -234,7 +234,7 @@
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
               <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
-        
+
               <div class="title svb-transition-fast">
                 Harry potter
               </div>
@@ -244,7 +244,7 @@
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
               <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
-        
+
               <div class="title svb-transition-fast">
                 Harry potter
               </div>
@@ -254,7 +254,7 @@
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
               <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
-        
+
               <div class="title svb-transition-fast">
                 Harry potter
               </div>
@@ -264,7 +264,7 @@
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
               <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
-        
+
               <div class="title svb-transition-fast">
                 Harry potter
               </div>
@@ -274,7 +274,7 @@
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
               <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
-        
+
               <div class="title svb-transition-fast">
                 Harry potter
               </div>
@@ -284,7 +284,7 @@
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
               <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
-        
+
               <div class="title svb-transition-fast">
                 Harry potter
               </div>
@@ -301,9 +301,9 @@
     <div class="container">
       <div class="d-flex flex-column gap-1 mb-3">
         <h3 class="text-h4 text-md-h3 fw-semibold">Popular Genres</h3>
-        
+
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center">
-          <span class="text-tertiary"> 
+          <span class="text-tertiary">
             More of a kind
           </span>
 
@@ -320,7 +320,7 @@
           </div>
         </div>
       </div>
-      
+
       <div id="genreSlider" class="swiper">
         <div class="swiper-wrapper">
           <div class="swiper-slide bg-primary rounded-circle ratio-box" style="height: 200px">Slide 1</div>
@@ -382,7 +382,7 @@
                 </div>
               </div>
             </div>
-            
+
             <div class="accordion-item">
               <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">

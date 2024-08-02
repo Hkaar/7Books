@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use App\Models\User;
-
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Factory as ValidationFactory;
+use Illuminate\Foundation\Http\FormRequest;
 
 class OrderUpdateRequest extends FormRequest
 {
@@ -17,12 +16,12 @@ class OrderUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "username" => "nullable|string",
-            "token" => "nullable|string|max:8|unique:orders,token",
-            "return_date" => "nullable|date",
-            "placed_date" => "nullable|date",
-            "status_id" => "nullable|numeric|exists:statuses,id",
-            "items" => "nullable|string"
+            'username' => 'nullable|string',
+            'token' => 'nullable|string|max:8|unique:orders,token',
+            'return_date' => 'nullable|date',
+            'placed_date' => 'nullable|date',
+            'status_id' => 'nullable|numeric|exists:statuses,id',
+            'items' => 'nullable|string',
         ];
     }
 
@@ -31,38 +30,37 @@ class OrderUpdateRequest extends FormRequest
      */
     public function getOrderData(): array
     {
-        $username = $this->get("username");
+        $username = $this->get('username');
 
         $orderData = [
-            "token" => $this->get("token"),
-            "return_date" => $this->get("return_date"),
-            "status_id" => $this->get("status_id"),
-            "placed_date" => $this->get("placed_date"),
-            "items" => $this->get("items"),
+            'token' => $this->get('token'),
+            'return_date' => $this->get('return_date'),
+            'status_id' => $this->get('status_id'),
+            'placed_date' => $this->get('placed_date'),
+            'items' => $this->get('items'),
         ];
 
         if ($this->isEmail($username)) {
-            $user = User::where("email", $username)->first();
+            $user = User::where('email', $username)->first();
         } else {
-            $user = User::where("username", $username)->first();
+            $user = User::where('username', $username)->first();
         }
 
-        $orderData["user_id"] = $user->id;
+        $orderData['user_id'] = $user->id;
+
         return $orderData;
     }
 
     /**
      * Validate if provided parameter is valid email.
-     *
-     * @param $param
      */
     public function isEmail($param): bool
     {
         $factory = $this->container->make(ValidationFactory::class);
 
         return ! $factory->make(
-            ["username" => $param],
-            ["username" => "email"],
+            ['username' => $param],
+            ['username' => 'email'],
         )->fails();
     }
 }

@@ -19,12 +19,12 @@ class UserFilterService
 
         $this->genericFilter($users, $filters);
 
-        if (in_array("search", $filterKeys) && !empty($filters["search"])) {
-            $users->where('name', 'like', '%' . $filters["search"] . '%');
+        if (in_array('search', $filterKeys) && ! empty($filters['search'])) {
+            $users->where('name', 'like', '%' . $filters['search'] . '%');
         }
 
-        if (in_array("role", $filterKeys) && !empty($filters["role"])) {
-            $users->byPermission($filters["role"]);
+        if (in_array('role', $filterKeys) && ! empty($filters['role'])) {
+            $users->byPermission($filters['role']);
         }
 
         return $users->paginate(20);

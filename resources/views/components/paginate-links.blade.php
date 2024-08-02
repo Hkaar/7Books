@@ -22,7 +22,7 @@
       @endif
     </li>
   @endif
-   
+
   @for ($i = 1; $i <= $links->lastPage(); $i++)
     @if (($i >= $links->currentPage()-1 && $i <= $links->currentPage()+2) || $i == 1 || $i == $links->lastPage())
       @if ($useHtmx)
@@ -54,7 +54,7 @@
           <i class="fa-solid fa-chevron-right"></i>
         </a>
       @endif
-      
+
     </li>
   @else
     <li class="page-item disabled">

@@ -11,13 +11,13 @@ class LibraryBook extends Model
 
     /**
      * The attributes that are mass assignable
-     * 
+     *
      * @var array<int, string>
      */
     protected $fillable = [
-        "library_id",
-        "book_id",
-        "stock",
+        'library_id',
+        'book_id',
+        'stock',
     ];
 
     /**
@@ -25,7 +25,7 @@ class LibraryBook extends Model
      */
     public function library()
     {
-        return $this->belongsTo(Library::class, "library_id", "id");
+        return $this->belongsTo(Library::class, 'library_id', 'id');
     }
 
     /**
@@ -33,6 +33,6 @@ class LibraryBook extends Model
      */
     public function book()
     {
-        return $this->belongsTo(Book::class, "book_id", "id");
+        return $this->belongsTo(Book::class, 'book_id', 'id');
     }
 }

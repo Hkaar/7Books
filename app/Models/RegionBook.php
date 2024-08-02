@@ -11,13 +11,13 @@ class RegionBook extends Model
 
     /**
      * The attributes that are mass assignable
-     * 
+     *
      * @var array<int, string>
      */
     protected $fillable = [
-        "region_id",
-        "book_id",
-        "stock",
+        'region_id',
+        'book_id',
+        'stock',
     ];
 
     /**
@@ -25,7 +25,7 @@ class RegionBook extends Model
      */
     public function region()
     {
-        return $this->belongsTo(Region::class, "region_id", "id");
+        return $this->belongsTo(Region::class, 'region_id', 'id');
     }
 
     /**
@@ -33,6 +33,6 @@ class RegionBook extends Model
      */
     public function book()
     {
-        return $this->belongsTo(Book::class, "book_id", "id");
+        return $this->belongsTo(Book::class, 'book_id', 'id');
     }
 }

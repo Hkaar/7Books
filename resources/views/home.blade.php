@@ -48,7 +48,7 @@
       <h3 class="mb-3">
         Recommended for you
       </h3>
-  
+
       <div class="d-flex gap-1">
         <div class="book-swiper-button-prev btn btn-light rounded-circle d-none d-md-block">
           <i class="fa-solid fa-chevron-left"></i>
@@ -71,7 +71,7 @@
         <div class="swiper-slide bg-secondary ratio-book-cover h-75">Slide 8</div>
         <div class="swiper-slide bg-primary ratio-book-cover h-75">Slide 9</div>
       </div>
-      
+
       <div class="swiper-pagination"></div>
     </div>
   </div>
@@ -83,7 +83,7 @@
       <h3 class="mb-3">
         Trending picks
       </h3>
-  
+
       <div class="d-flex gap-1">
         <div class="book-swiper-button-prev btn btn-light rounded-circle d-none d-md-block">
           <i class="fa-solid fa-chevron-left"></i>
@@ -106,7 +106,7 @@
         <div class="swiper-slide bg-secondary ratio-book-cover h-75">Slide 8</div>
         <div class="swiper-slide bg-primary ratio-book-cover h-75">Slide 9</div>
       </div>
-      
+
       <div class="swiper-pagination"></div>
     </div>
   </div>
@@ -118,7 +118,7 @@
       <h3 class="mb-3">
         New Releases
       </h3>
-  
+
       <div class="d-flex gap-1">
         <div class="book-swiper-button-prev btn btn-light rounded-circle d-none d-md-block">
           <i class="fa-solid fa-chevron-left"></i>
@@ -141,7 +141,7 @@
         <div class="swiper-slide bg-secondary ratio-book-cover h-75">Slide 8</div>
         <div class="swiper-slide bg-primary ratio-book-cover h-75">Slide 9</div>
       </div>
-      
+
       <div class="swiper-pagination"></div>
     </div>
   </div>
@@ -151,11 +151,11 @@
   <div class="container">
     <article class="d-flex flex-column align-items-center py-5">
       <h3 class="mb-3 text-center text-md-start">Can't find anything you like?</h3>
-      
+
       <span class="mb-4 text-body-secondary text-center">
         Check out our browse page instead by clicking the button below
       </span>
-    
+
       <a href="{{ route('browse') }}" class="btn btn-primary">
         Go to browse
       </a>

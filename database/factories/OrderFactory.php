@@ -27,11 +27,11 @@ class OrderFactory extends Factory
     public function definition(): array
     {
         return [
-            "user_id" => fn() => \App\Models\User::factory()->create()->id,
-            "token" => Str::random(8),
-            "placed_date" => $this->faker->dateTime(),
-            "return_date" => $this->faker->dateTime(),
-            "status_id" => Status::first()->id,
+            'user_id' => fn () => \App\Models\User::factory()->create()->id,
+            'token' => Str::random(8),
+            'placed_date' => $this->faker->dateTime(),
+            'return_date' => $this->faker->dateTime(),
+            'status_id' => Status::first()->id,
         ];
     }
 }

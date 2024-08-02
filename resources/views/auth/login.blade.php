@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', "Login")
-    
+
 @section('main')
 <div class="container min-vh-100 d-flex align-items-center justify-content-center">
   <div class="shadow px-4 py-3 p-md-5 rounded">
@@ -16,7 +16,7 @@
       <div>
         <label for="username" class="form-label">Username or Email</label>
         <input class="form-control" id="username" type="text" name="username" value="{{ old('username') }}" required autofocus>
-        
+
         @error('username')
           <span class="text-danger">{{ $message }}</span>
         @enderror
@@ -25,7 +25,7 @@
       <div>
         <label for="password" class="form-label">Password</label>
         <input class="form-control" id="password" type="password" name="password" required>
-        
+
         @error('password')
           <span class="text-danger">{{ $message }}</span>
         @enderror

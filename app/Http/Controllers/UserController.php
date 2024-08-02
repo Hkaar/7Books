@@ -2,16 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Models\Role;
-
-use App\Traits\Uploader;
+use App\Models\User;
 use App\Services\UserFilterService;
-
+use App\Traits\Uploader;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-
-use Intervention\Image\Laravel\Facades\Image;
 
 class UserController extends Controller
 {
@@ -24,37 +20,37 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $filters = $request->only(["search", "role"]);
+        $filters = $request->only(['search', 'role']);
 
-        if ($request->has("o")) {
+        if ($request->has('o')) {
             $orderQuery = $request->get('o');
 
             match ($orderQuery) {
-                "latest" => array_push($filters, "latest"),
-                "oldest" => array_push($filters, "oldest"),
+                'latest' => array_push($filters, 'latest'),
+                'oldest' => array_push($filters, 'oldest'),
             };
         }
 
         $users = $this->filterService->filter($filters);
         $users->appends($request->query());
 
-        $roles = Role::all(["id", "name"]);
+        $roles = Role::all(['id', 'name']);
 
         return view('users.index')->with([
-            "users" => $users,
-            "roles" => $roles,
+            'users' => $users,
+            'roles' => $roles,
         ]);
     }
-    
+
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        $roles = Role::all(["id", "name"]);
+        $roles = Role::all(['id', 'name']);
 
-        return view("users.create", [
-            "roles" => $roles,
+        return view('users.create', [
+            'roles' => $roles,
         ]);
     }
 
@@ -69,17 +65,16 @@ class UserController extends Controller
             'email' => 'required|string|email|max:255|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required|string|min:8',
-            "role_id" => 'required|numeric|exists:roles,id',
-            "img" => "nullable|image|mimes:jpeg,png,jpg|max:10240"
+            'role_id' => 'required|numeric|exists:roles,id',
+            'img' => 'nullable|image|mimes:jpeg,png,jpg|max:10240',
         ]);
 
-        $user = new User();
+        $user = new User;
         $user->fill($validated);
 
-        if ($request->hasFile('img'))
-        {
+        if ($request->hasFile('img')) {
             $filePath = $this->uploadImage($request->file('img'), [
-                "size" => [200, 200],
+                'size' => [200, 200],
             ]);
 
             $user->img = $filePath;
@@ -97,8 +92,8 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
-        return view("users.show")->with([
-            "user" => $user
+        return view('users.show')->with([
+            'user' => $user,
         ]);
     }
 
@@ -108,11 +103,11 @@ class UserController extends Controller
     public function edit(int $id)
     {
         $user = User::findOrFail($id);
-        $roles = Role::all(["id", "name"]);
+        $roles = Role::all(['id', 'name']);
 
-        return view("users.edit")->with([
-            "user" => $user,
-            "roles" => $roles,
+        return view('users.edit')->with([
+            'user' => $user,
+            'roles' => $roles,
         ]);
     }
 
@@ -129,25 +124,25 @@ class UserController extends Controller
             'email' => 'nullable|string|email|max:255|unique:users',
             'password' => 'nullable|string|min:8|confirmed',
             'password_confirmation' => 'nullable|string|min:8',
-            "role_id" => 'required|numeric|exists:roles,id',
-            "img" => "nullable|image|mimes:jpeg,png,jpg|max:10240"
+            'role_id' => 'required|numeric|exists:roles,id',
+            'img' => 'nullable|image|mimes:jpeg,png,jpg|max:10240',
         ]);
 
-        if ($request->hasFile('img')) {            
+        if ($request->hasFile('img')) {
             if ($user->img) {
                 Storage::disk('public')->delete($user->img);
             }
-    
+
             $filePath = $this->uploadImage($request->file('img'), [
-                "size" => [200, 200],
+                'size' => [200, 200],
             ]);
-            
+
             $user->img = $filePath;
         }
 
-        unset($validated["img"]);
+        unset($validated['img']);
 
-        $this->updateModel($user, $validated, ["password_confirmation"]);
+        $this->updateModel($user, $validated, ['password_confirmation']);
         $user->save();
 
         return redirect()->route('users.index');
@@ -159,15 +154,16 @@ class UserController extends Controller
     public function destroy(int $id)
     {
         $user = User::findOrFail($id);
-        
+
         $user->orders()->delete();
         $user->ratings()->delete();
 
         if ($user->img) {
-            Storage::disk("public")->delete($user->img);
+            Storage::disk('public')->delete($user->img);
         }
 
         $user->delete();
+
         return response(null);
     }
 }

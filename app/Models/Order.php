@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
 
 class Order extends Model
 {
@@ -12,16 +12,16 @@ class Order extends Model
 
     /**
      * The attributes that are mass assignable
-     * 
+     *
      * @var array<int, string>
      */
     protected $fillable = [
-        "user_id",
-        "token",
-        "created",
+        'user_id',
+        'token',
+        'created',
         'placed_date',
-        "return_date",
-        "status_id"
+        'return_date',
+        'status_id',
     ];
 
     /**
@@ -29,7 +29,7 @@ class Order extends Model
      */
     public function items()
     {
-        return $this->hasMany(OrderItem::class, "order_id", "id");
+        return $this->hasMany(OrderItem::class, 'order_id', 'id');
     }
 
     /**
@@ -37,43 +37,47 @@ class Order extends Model
      */
     public function user()
     {
-        return $this->belongsTo(User::class, "user_id", "id");
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function status()
     {
-        return $this->belongsTo(Status::class, "status_id", "id");
+        return $this->belongsTo(Status::class, 'status_id', 'id');
     }
 
     /**
      * Scope a query to only include a specific order status
      */
-    public function scopeByStatus(Builder $query, string $status) {
-        return $query->whereHas("status", function(Builder $query) use ($status) {
-            $query->where("name", "=", $status);
+    public function scopeByStatus(Builder $query, string $status)
+    {
+        return $query->whereHas('status', function (Builder $query) use ($status) {
+            $query->where('name', '=', $status);
         });
     }
 
     /**
      * Scope a query to only include orders that have been overdue
      */
-    public function scopeByOverdue(Builder $query) {
-        return $query->where("return_date", "<", now());
+    public function scopeByOverdue(Builder $query)
+    {
+        return $query->where('return_date', '<', now());
     }
 
     /**
      * Scope a query ton only include orders that are due
      */
-    public function scopeByDue(Builder $query) {
-        return $query->where("return_date", ">", now());
+    public function scopeByDue(Builder $query)
+    {
+        return $query->where('return_date', '>', now());
     }
 
     /**
      * Scope a query to only include a certain user
      */
-    public function scopeByUser(Builder $query, string $username) {
-        return $query->whereHas("user", function (Builder $query) use ($username) {
-            $query->where("username", "like", "%".$username."%");
+    public function scopeByUser(Builder $query, string $username)
+    {
+        return $query->whereHas('user', function (Builder $query) use ($username) {
+            $query->where('username', 'like', '%' . $username . '%');
         });
     }
 }

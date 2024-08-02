@@ -11,14 +11,14 @@ class Author extends Model
 
     /**
      * The attributes that are mass assignable
-     * 
+     *
      * @var array<int, string>
      */
     protected $fillable = [
-        "name",
-        "address",
-        "phone",
-        "img"
+        'name',
+        'address',
+        'phone',
+        'img',
     ];
 
     /**
@@ -26,6 +26,6 @@ class Author extends Model
      */
     public function books()
     {
-        return $this->belongsToMany(Book::class, "book_authors");
+        return $this->belongsToMany(Book::class, 'book_authors');
     }
 }

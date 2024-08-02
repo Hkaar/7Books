@@ -36,8 +36,8 @@
 
   <div class="col-12">
     <button type="button" class="btn btn-primary"
-      hx-get="{{ route('orders.items', $order->id) }}" 
-      hx-target="#detailsBody" 
+      hx-get="{{ route('orders.items', $order->id) }}"
+      hx-target="#detailsBody"
       hx-swap="innerHTML"
       >Show Books
     </button>

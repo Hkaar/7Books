@@ -12,16 +12,16 @@ class Book extends Model
 
     /**
      * The attributes that are mass assignable
-     * 
+     *
      * @var array<int, string>
      */
     protected $fillable = [
-        "isbn",
-        "name",
-        "desc",
-        "price",
-        "rate",
-        "img"
+        'isbn',
+        'name',
+        'desc',
+        'price',
+        'rate',
+        'img',
     ];
 
     /**
@@ -29,7 +29,7 @@ class Book extends Model
      */
     public function genres()
     {
-        return $this->belongsToMany(Genre::class, "book_genres");
+        return $this->belongsToMany(Genre::class, 'book_genres');
     }
 
     /**
@@ -37,7 +37,7 @@ class Book extends Model
      */
     public function ratings()
     {
-        return $this->hasMany(BookRating::class, "book_id", "id");
+        return $this->hasMany(BookRating::class, 'book_id', 'id');
     }
 
     /**
@@ -45,7 +45,7 @@ class Book extends Model
      */
     public function authors()
     {
-        return $this->belongsToMany(Author::class, "book_authors");
+        return $this->belongsToMany(Author::class, 'book_authors');
     }
 
     /**
@@ -53,7 +53,7 @@ class Book extends Model
      */
     public function items()
     {
-        return $this->hasMany(OrderItem::class, "book_id", "id");
+        return $this->hasMany(OrderItem::class, 'book_id', 'id');
     }
 
     /**
@@ -61,7 +61,7 @@ class Book extends Model
      */
     public function libraries()
     {
-        return $this->belongsToMany(Library::class, "library_books");
+        return $this->belongsToMany(Library::class, 'library_books');
     }
 
     /**
@@ -69,31 +69,34 @@ class Book extends Model
      */
     public function regions()
     {
-        return $this->belongsToMany(Region::class, "region_books");
+        return $this->belongsToMany(Region::class, 'region_books');
     }
 
     /**
      * Scope a query to only include a specific genre
      */
-    public function scopeByGenre(Builder $query, string $genre) {
-        return $query->whereHas("genres", function (Builder $query) use ($genre) {
-            $query->where("name", "=", $genre);
+    public function scopeByGenre(Builder $query, string $genre)
+    {
+        return $query->whereHas('genres', function (Builder $query) use ($genre) {
+            $query->where('name', '=', $genre);
         });
     }
 
     /**
      * Scope a query to only include a specific author
      */
-    public function scopeByAuthor(Builder $query, string $author) {
-        return $query->whereHas("authors", function (Builder $query) use ($author) {
-            $query->where("name", "=", $author);
+    public function scopeByAuthor(Builder $query, string $author)
+    {
+        return $query->whereHas('authors', function (Builder $query) use ($author) {
+            $query->where('name', '=', $author);
         });
     }
 
     /**
      * Scope a query to only include books that have been borrowed
      */
-    public function scopeOnlyBorrowed(Builder $query) {
-        return $query->where("borrowed", ">", 0);
+    public function scopeOnlyBorrowed(Builder $query)
+    {
+        return $query->where('borrowed', '>', 0);
     }
 }

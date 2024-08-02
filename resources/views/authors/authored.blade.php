@@ -4,9 +4,9 @@
     <div class="col-12 col-md-4 mb-3">
       <div class="card svb-card svb-transition" data-item="{{ $book->id }}">
         <img src="{{ Storage::url($book->img) }}" class="card-img-top" alt="Image not available...">
-  
+
         <div class="title svb-transition-fast">
-          {{$book->name}}
+          {{ $book->name }}
         </div>
       </div>
     </div>
@@ -17,7 +17,7 @@
         No authored books were found...
       </div>
     @endif
-  
+
     <div class="col-12 mt-auto">
       <div class="row d-flex align-items-center">
         <div class="col-12 col-md-6">
@@ -31,13 +31,13 @@
                 <a class="page-link" href="{{ $books->previousPageUrl() }}" hx-get="{{ $books->previousPageUrl() }}">Previous</a>
               </li>
             @endif
-        
+
             @for ($i = 1; $i <= $books->lastPage(); $i++)
               <li class="page-item {{ ($books->currentPage() == $i) ? 'active' : '' }}">
                 <a class="page-link" href="{{ $books->url($i) }}" hx-get="{{ $books->url($i) }}">{{ $i }}</a>
               </li>
             @endfor
-        
+
             @if ($books->hasMorePages())
               <li class="page-item">
                 <a class="page-link" href="{{ $books->nextPageUrl() }}" hx-get="{{ $books->nextPageUrl() }}">Next</a>
@@ -52,8 +52,8 @@
 
         <div class="col-12 col-md-6 d-flex justify-content-md-end align-items-center">
           <button type="button" class="btn btn-primary"
-            hx-get="{{ route('authors.show', $author->id) }}" 
-            hx-target="#detailsBody" 
+            hx-get="{{ route('authors.show', $author->id) }}"
+            hx-target="#detailsBody"
             hx-swap="innerHTML"
             >Back to profile
           </button>
