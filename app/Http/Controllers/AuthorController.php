@@ -3,42 +3,38 @@
 namespace App\Http\Controllers;
 
 use App\Models\Author;
-
-use App\Traits\Uploader;
 use App\Services\AuthorFilterService;
-
+use App\Traits\Uploader;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-
-use Intervention\Image\Laravel\Facades\Image;
 
 class AuthorController extends Controller
 {
     use Uploader;
 
     public function __construct(public AuthorFilterService $filterService) {}
-    
+
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
-        $filters = $request->only(["search"]);
+        $filters = $request->only(['search']);
 
-        if ($request->has("o")) {
+        if ($request->has('o')) {
             $orderQuery = $request->get('o');
-            
+
             match ($orderQuery) {
-                "latest" => array_push($filters, "latest"),
-                "oldest" => array_push($filters, "oldest"),
+                'latest' => array_push($filters, 'latest'),
+                'oldest' => array_push($filters, 'oldest'),
             };
         }
 
         $authors = $this->filterService->filter($filters);
         $authors->appends($request->query());
 
-        return view('authors.index')->with([
-            "authors" => $authors
+        return view('authors.index', [
+            'authors' => $authors,
         ]);
     }
 
@@ -47,23 +43,7 @@ class AuthorController extends Controller
      */
     public function create()
     {
-        return view("authors.create");
-    }
-
-    /**
-     * Display all the authored books
-     * 
-     * @param int $id
-     */
-    public function authored(int $id) {
-        $author = Author::findOrFail($id);
-
-        $books = $author->books()->paginate(3);
-
-        return view("authors.authored")->with([
-            "books" => $books,
-            "author" => $author
-        ]);
+        return view('authors.create');
     }
 
     /**
@@ -72,35 +52,35 @@ class AuthorController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            "name" => "required|string|max:255|unique:authors,name",
-            "address" => "required|string|max:255",
-            "phone" => "required|string|max:64",
-            "img" => "nullable|image|mimes:jpeg,png,jpg|max:10240",
-            "items" => "nullable|string",
+            'name' => 'required|string|max:255|unique:authors,name',
+            'address' => 'required|string|max:255',
+            'phone' => 'required|string|max:64',
+            'img' => 'nullable|image|mimes:jpeg,png,jpg|max:10240',
+            'items' => 'nullable|string',
         ]);
 
-        $author = new Author();
+        $author = new Author;
         $author->fill($validated);
 
-        if ($request->hasFile("img")) {
+        if ($request->hasFile('img')) {
             $filePath = $this->uploadImage($request->file('img'), [
-                "size" => [200, 200],
+                'size' => [200, 200],
             ]);
 
             $author->img = $filePath;
         }
 
         $author->save();
-        
-        if ($validated["items"]) {
-            $items = json_decode($validated["items"], true);
-        
+
+        if ($validated['items']) {
+            $items = json_decode($validated['items'], true);
+
             foreach ($items as $key => $value) {
                 $author->books()->attach($key);
             }
         }
 
-        return redirect()->route("authors.index");
+        return redirect()->route('authors.index');
     }
 
     /**
@@ -109,11 +89,11 @@ class AuthorController extends Controller
     public function show(int $id)
     {
         $author = Author::findOrFail($id);
-        $books = $author->books()->get(["name"]);
+        $books = $author->books()->get(['name']);
 
-        return view("authors.show")->with([
-            "author" => $author,
-            "books" => $books
+        return view('authors.show', [
+            'author' => $author,
+            'books' => $books,
         ]);
     }
 
@@ -126,16 +106,16 @@ class AuthorController extends Controller
 
         $books = $author->books()->get();
         $items = [];
-        
+
         foreach ($books as $key => $value) {
             $items[$value->id] = 1;
         }
 
         $items = json_encode($items);
 
-        return view("authors.edit")->with([
-            "author" => $author,
-            "items" => $items
+        return view('authors.edit', [
+            'author' => $author,
+            'items' => $items,
         ]);
     }
 
@@ -147,34 +127,34 @@ class AuthorController extends Controller
         $author = Author::findOrFail($id);
 
         $validated = $request->validate([
-            "name" => "nullable|string|max:255|unique:authors,name",
-            "address" => "nullable|string|max:255",
-            "phone" => "nullable|string|max:64",
-            "img" => "nullable|image|mimes:jpeg,png,jpg|max:10240",
-            "items" => "nullable|string"
+            'name' => 'nullable|string|max:255|unique:authors,name',
+            'address' => 'nullable|string|max:255',
+            'phone' => 'nullable|string|max:64',
+            'img' => 'nullable|image|mimes:jpeg,png,jpg|max:10240',
+            'items' => 'nullable|string',
         ]);
 
         if ($request->hasFile('img')) {
             if ($author->img) {
                 Storage::disk('public')->delete($author->img);
             }
-    
+
             $filePath = $this->uploadImage($request->file('img'), [
-                "size" => [200, 200],
+                'size' => [200, 200],
             ]);
 
             $author->img = $filePath;
         }
 
-        $this->updateModel($author, $validated, ["img", "items"]);
+        $this->updateModel($author, $validated, ['img', 'items']);
         $author->save();
 
-        if ($validated["items"]) {
-            $items = json_decode($validated["items"], true);
+        if ($validated['items']) {
+            $items = json_decode($validated['items'], true);
             $author->books()->sync(array_keys($items) ?? []);
         }
 
-        return redirect()->route("authors.index");
+        return redirect()->route('authors.index');
     }
 
     /**
@@ -186,10 +166,26 @@ class AuthorController extends Controller
         $author->books()->detach();
 
         if ($author->img) {
-            Storage::disk("public")->delete($author->img);
+            Storage::disk('public')->delete($author->img);
         }
 
         $author->delete();
+
         return response(null);
+    }
+
+    /**
+     * Display all the authored books
+     */
+    public function authored(int $id)
+    {
+        $author = Author::findOrFail($id);
+
+        $books = $author->books()->paginate(3);
+
+        return view('authors.authored', [
+            'books' => $books,
+            'author' => $author,
+        ]);
     }
 }

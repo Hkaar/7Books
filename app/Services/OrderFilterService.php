@@ -19,20 +19,20 @@ class OrderFilterService
 
         $this->genericFilter($orders, $filters);
 
-        if (in_array("search", $filterKeys) && !empty($filters["search"])) {
-            $orders->byUser($filters["search"]);
+        if (in_array('search', $filterKeys) && ! empty($filters['search'])) {
+            $orders->byUser($filters['search']);
         }
-        
-        if (in_array("status", $filterKeys) && !empty($filters["status"])) {
-            $orders->byStatus($filters["status"]);
+
+        if (in_array('status', $filterKeys) && ! empty($filters['status'])) {
+            $orders->byStatus($filters['status']);
         }
-        
-        if (in_array("date", $filterKeys) && !empty($filters["date"])) {
-            $filterQuery = $filters["date"];
+
+        if (in_array('date', $filterKeys) && ! empty($filters['date'])) {
+            $filterQuery = $filters['date'];
 
             match ($filterQuery) {
-                "overdue" => $orders->byOverdue(),
-                "due" => $orders->byDue(),
+                'overdue' => $orders->byOverdue(),
+                'due' => $orders->byDue(),
             };
         }
 

@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use App\Models\User;
-
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Factory as ValidationFactory;
+use Illuminate\Foundation\Http\FormRequest;
 
 class OrderCreateRequest extends FormRequest
 {
@@ -17,11 +16,11 @@ class OrderCreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "username" => "required|string",
-            "return_date" => "required|date",
-            "status_id" => "required|numeric|exists:statuses,id",
-            "placed_date" => "required|date",
-            "items" => "nullable|string"
+            'username' => 'required|string',
+            'return_date' => 'required|date',
+            'status_id' => 'required|numeric|exists:statuses,id',
+            'placed_date' => 'required|date',
+            'items' => 'nullable|string',
         ];
     }
 
@@ -30,37 +29,36 @@ class OrderCreateRequest extends FormRequest
      */
     public function getOrderData(): array
     {
-        $username = $this->get("username");
+        $username = $this->get('username');
 
         $orderData = [
-            "return_date" => $this->get("return_date"),
-            "status_id" => $this->get("status_id"),
-            "placed_date" => $this->get("placed_date"),
-            "items" => $this->get("items"),
+            'return_date' => $this->get('return_date'),
+            'status_id' => $this->get('status_id'),
+            'placed_date' => $this->get('placed_date'),
+            'items' => $this->get('items'),
         ];
 
         if ($this->isEmail($username)) {
-            $user = User::where("email", $username)->first();
+            $user = User::where('email', $username)->first();
         } else {
-            $user = User::where("username", $username)->first();
+            $user = User::where('username', $username)->first();
         }
 
-        $orderData["user_id"] = $user->id;
+        $orderData['user_id'] = $user->id;
+
         return $orderData;
     }
 
     /**
      * Validate if provided parameter is valid email.
-     *
-     * @param $param
      */
     public function isEmail($param): bool
     {
         $factory = $this->container->make(ValidationFactory::class);
 
         return ! $factory->make(
-            ["username" => $param],
-            ["username" => "email"],
+            ['username' => $param],
+            ['username' => 'email'],
         )->fails();
     }
 }

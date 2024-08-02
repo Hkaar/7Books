@@ -3,7 +3,7 @@
 @section('title', "Seven Books")
 
 @section('main')
-<x-svb-navigation-bar :search=false :menus=false active="" :logo=false :login=false :avatar=true></x-svb-navigation-bar>
+<x-svb-navigation-bar :menus=false active="" :logo=false :login=false :avatar=true></x-svb-navigation-bar>
 <section id="display">
     <div class="container">
       <div class="row justify-content-center" style="margin-top: 2.1rem">
@@ -49,7 +49,7 @@
             </div>
           </div>
           <button class="btn btn-primary rounded-pill">Borrow</button>
-          
+
         </div>
         <div class="col-md-6 d-block d-md-none p-3">
           <h5 class="fw-semibold text-center mt-3">Harry Potter & The Deathly Hollows</h5>
@@ -87,7 +87,7 @@
             </div>
           </div>
           <button class="btn btn-primary rounded-pill" style="text-align: center">Borrow</button>
-          
+
         </div>
       </div>
     </div>

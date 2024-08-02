@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -45,7 +44,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed'
+        'password' => 'hashed',
     ];
 
     /**
@@ -53,7 +52,7 @@ class User extends Authenticatable
      */
     public function orders()
     {
-        return $this->hasMany(Order::class, "user_id", "id");
+        return $this->hasMany(Order::class, 'user_id', 'id');
     }
 
     /**
@@ -61,7 +60,7 @@ class User extends Authenticatable
      */
     public function ratings()
     {
-        return $this->hasMany(BookRating::class, "user_id", "id");
+        return $this->hasMany(BookRating::class, 'user_id', 'id');
     }
 
     /**
@@ -69,28 +68,28 @@ class User extends Authenticatable
      */
     public function role()
     {
-        return $this->belongsTo(Role::class, "role_id", "id");
+        return $this->belongsTo(Role::class, 'role_id', 'id');
     }
 
     /**
      * Check if the user has a role that is privileged
      */
-    public function isPrivileged(bool $strict = false):bool
+    public function isPrivileged(bool $strict = false): bool
     {
         if ($strict) {
-            return $this->role->name === "admin";
-        } 
+            return $this->role->name === 'admin';
+        }
 
-        return in_array($this->role->name, ["admin", "operator"]);
+        return in_array($this->role->name, ['admin', 'operator']);
     }
 
     /**
      * Scope a query to only include a specific permission level
      */
-    public function scopeByPermission(Builder $query, string $permission) 
+    public function scopeByPermission(Builder $query, string $permission)
     {
         return $query->whereHas('role', function ($roleQuery) use ($permission) {
-            $roleQuery->where('name', "=", $permission);
+            $roleQuery->where('name', '=', $permission);
         });
     }
 }

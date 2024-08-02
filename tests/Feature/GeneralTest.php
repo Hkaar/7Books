@@ -9,8 +9,10 @@ class GeneralTest extends TestCase
 {
     /**
      * Test whether the landing page route is working
+     *
+     * @test
      */
-    public function test_welcome(): void
+    public function welcome(): void
     {
         $response = $this->get('/');
         $response->assertStatus(200);
@@ -18,8 +20,10 @@ class GeneralTest extends TestCase
 
     /**
      * Test whether the browse route is working
+     *
+     * @test
      */
-    public function test_browse(): void
+    public function browse(): void
     {
         $response = $this->get('/browse');
         $response->assertStatus(200);
@@ -27,8 +31,10 @@ class GeneralTest extends TestCase
 
     /**
      * Test whether the member show route is working
+     *
+     * @test
      */
-    public function test_profile(): void
+    public function profile(): void
     {
         $user = User::factory()->create();
         $this->actingAs($user);
@@ -39,8 +45,10 @@ class GeneralTest extends TestCase
 
     /**
      * Test whether the home route is working
+     *
+     * @test
      */
-    public function test_home()
+    public function home()
     {
         $user = User::factory()->create();
         $this->actingAs($user);

@@ -7,26 +7,20 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
-        Schema::create("orders", function(Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("user_id")->constrained("users");
-            $table->string("token");
-            $table->dateTime("placed_date")->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->dateTime("return_date");
+            $table->foreignId('user_id')->constrained('users');
+            $table->string('token');
+            $table->dateTime('placed_date')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->dateTime('return_date');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists("orders");
+        Schema::dropIfExists('orders');
     }
 };

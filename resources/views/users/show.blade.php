@@ -14,9 +14,9 @@
 
       <article class="d-flex flex-column gap-1 flex-fill">
         <b>Username</b>
-        {{ $user->username }}    
+        {{ $user->username }}
       </article>
-      
+
       <article class="d-flex flex-column gap-1 flex-fill">
         <b>Email</b>
         {{ $user->email }}

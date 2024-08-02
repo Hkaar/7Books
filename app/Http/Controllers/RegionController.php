@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\GenericFilterService;
-
 use App\Models\Region;
+use App\Services\GenericFilterService;
 use Illuminate\Http\Request;
 
 class RegionController extends Controller
@@ -22,18 +21,18 @@ class RegionController extends Controller
             $orderQuery = $request->get('o');
 
             match ($orderQuery) {
-                "latest" => array_push($filters, "latest"),
-                "oldest" => array_push($filters, "oldest"),
+                'latest' => array_push($filters, 'latest'),
+                'oldest' => array_push($filters, 'oldest'),
             };
         }
 
         $regions = $this->filterService->filter(Region::class, $filters, [
-            "searchColumns" => ["name"],
+            'searchColumns' => ['name'],
         ]);
         $regions->appends($request->query());
 
-        return view("regions.index", [
-            "regions" => $regions,
+        return view('regions.index', [
+            'regions' => $regions,
         ]);
     }
 
@@ -42,7 +41,7 @@ class RegionController extends Controller
      */
     public function create()
     {
-        return view("regions.create");
+        return view('regions.create');
     }
 
     /**
@@ -51,14 +50,14 @@ class RegionController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            "name" => "required|string|max:255|unique:regions,name",
-            "desc" => "required|string|max:255"
+            'name' => 'required|string|max:255|unique:regions,name',
+            'desc' => 'required|string|max:255',
         ]);
 
         $region = new Region($validated);
         $region->save();
 
-        return redirect()->route("regions.index");
+        return redirect()->route('regions.index');
     }
 
     /**
@@ -68,8 +67,8 @@ class RegionController extends Controller
     {
         $region = Region::findOrFail($id);
 
-        return view("regions.show", [
-            "region" => $region,
+        return view('regions.show', [
+            'region' => $region,
         ]);
     }
 
@@ -80,8 +79,8 @@ class RegionController extends Controller
     {
         $region = Region::findOrFail($id);
 
-        return view("regions.edit", [
-            "region" => $region,
+        return view('regions.edit', [
+            'region' => $region,
         ]);
     }
 
@@ -93,14 +92,14 @@ class RegionController extends Controller
         $region = Region::findOrFail($id);
 
         $validated = $request->validate([
-            "name" => "required|string|max:255|unique:regions,name",
-            "desc" => "required|string|max:255"
+            'name' => 'required|string|max:255|unique:regions,name',
+            'desc' => 'required|string|max:255',
         ]);
 
         $this->updateModel($region, $validated);
         $region->save();
 
-        return redirect()->route("regions.index");
+        return redirect()->route('regions.index');
     }
 
     /**

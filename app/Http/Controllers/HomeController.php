@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class HomeController extends Controller
 {
     /**
@@ -11,7 +9,7 @@ class HomeController extends Controller
      */
     public function home()
     {
-        return view("home");
+        return view('home');
     }
 
     /**
@@ -19,15 +17,15 @@ class HomeController extends Controller
      */
     public function welcome()
     {
-        return view("welcome");
+        return view('welcome');
     }
-    
+
     /**
      * Display the current logged in user account page
      */
     public function me()
     {
-        return view("auth.show");
+        return view('auth.show');
     }
 
     /**
@@ -35,7 +33,7 @@ class HomeController extends Controller
      */
     public function browse()
     {
-        return view("browse");
+        return view('browse');
     }
 
     /**
@@ -43,7 +41,7 @@ class HomeController extends Controller
      */
     public function regions()
     {
-        return view("regions");
+        return view('regions');
     }
 
     /**
@@ -51,6 +49,6 @@ class HomeController extends Controller
      */
     public function denied()
     {
-        return view("auth.denied");
+        return view('auth.denied');
     }
 }

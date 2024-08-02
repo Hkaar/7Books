@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-
-use Illuminate\Http\Request;
 use App\Http\Requests\RegisterRequest;
+use App\Models\User;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -14,11 +13,11 @@ class RegisterController extends Controller
      */
     public function show()
     {
-        return view("auth.register");
+        return view('auth.register');
     }
 
     /**
-     * Handle account register request 
+     * Handle account register request
      */
     public function register(RegisterRequest $request)
     {
@@ -26,6 +25,6 @@ class RegisterController extends Controller
 
         auth()->login($user);
 
-        return redirect("/");
+        return redirect('/');
     }
 }

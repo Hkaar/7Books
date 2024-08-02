@@ -8,7 +8,7 @@
   <div class="col-12 col-md-6">
     <div class="d-flex flex-column p-3">
       <div class="mb-3">
-        <h5>{{$book->name}}</h5>
+        <h5>{{ $book->name }}</h5>
         <span>{{ $book->isbn }}</span>
       </div>
 
@@ -37,7 +37,7 @@
             </button>
           </h2>
           <div id="authors" class="accordion-collapse collapse" data-bs-parent="#infoAccordion">
-            <div class="accordion-body">     
+            <div class="accordion-body">
               <div class="d-flex gap-1 flex-column">
                 @foreach ($authors as $author)
                   <span>{{ $author->name }}</span>
@@ -62,7 +62,7 @@
                     ${{ $book->price }}
                   </article>
                 </div>
-        
+
                 <div class="col-12 col-md-6">
                   <article class="d-flex flex-column gap-1 flex-fill mb-3">
                     <b>Rate :</b>

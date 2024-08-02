@@ -18,18 +18,18 @@
       <x-query-accordion>
         <form action="{{ route('orders.index') }}" method="get" class="d-flex gap-2 flex-column flex-lg-row gap-lg-1 py-3 py-lg-0">
           <input name="search" class="form-control" type="search" placeholder="Search" value="{{ request()->query('search', '') }}" aria-label="Search">
-  
+
           <select name="o" class="form-select" aria-label="Default select example">
             <option selected disabled>Order by</option>
-  
+
             @if (request()->query('o') === "oldest")
-              <option selected value="oldest">Oldest</option> 
+              <option selected value="oldest">Oldest</option>
             @else
               <option value="oldest">Oldest</option>
             @endif
-  
+
             @if (request()->query('o') === "latest")
-              <option selected value="latest">Latest</option> 
+              <option selected value="latest">Latest</option>
             @else
               <option value="latest">Latest</option>
             @endif
@@ -61,7 +61,7 @@
               </li>
             </ul>
           </div>
-          
+
           <button class="btn btn-outline-primary" type="submit">Apply</button>
         </form>
       </x-query-accordion>
@@ -76,7 +76,7 @@
           <th scope="col">Status</th>
           <th scope="col" width="18%">Actions</th>
         </thead>
-      
+
         <tbody>
           @foreach ($orders as $order)
             <tr>
@@ -84,25 +84,25 @@
               <td>{{ $order->user->username }}</td>
               <td>{{ $order->token }}</td>
               <td>{{ ucfirst(str_replace('_', ' ', $order->status->name)) }}</td>
-      
+
               <td class="d-flex gap-1">
-                <button type="button" class="btn btn-info" 
-                  data-bs-target="#detailsModal" 
-                  data-bs-toggle="modal" 
-                  hx-get="{{ route('orders.show' , $order->id) }}" 
-                  hx-target="#detailsBody" 
+                <button type="button" class="btn btn-info"
+                  data-bs-target="#detailsModal"
+                  data-bs-toggle="modal"
+                  hx-get="{{ route('orders.show' , $order->id) }}"
+                  hx-target="#detailsBody"
                   hx-swap="innerHTML">Show
                 </button>
-  
+
                 <button type="button" class="btn btn-danger"
                   hx-confirm="Are you sure you want to delete this order?"
-                  hx-headers='{"X-CSRF-TOKEN": "{{ csrf_token() }}"}' 
-                  hx-delete="{{ route('orders.destroy', $order->id) }}" 
-                  hx-target="closest tr" 
+                  hx-headers='{"X-CSRF-TOKEN": "{{ csrf_token() }}"}'
+                  hx-delete="{{ route('orders.destroy', $order->id) }}"
+                  hx-target="closest tr"
                   hx-swap="outerHTML">Delete
                 </button>
-  
-                <a class="btn btn-warning" 
+
+                <a class="btn btn-warning"
                   href="{{ route('orders.edit', $order->id) }}">Edit
                 </a>
               </td>
@@ -111,7 +111,7 @@
         </tbody>
       </table>
     </div>
-  
+
     <x-paginate-links :links="$orders" :useHtmx=false></x-paginate-links>
   </div>
 </div>

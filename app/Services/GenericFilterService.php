@@ -18,10 +18,10 @@ class GenericFilterService
 
         $keys = array_keys($filters);
 
-        $searchQuery = $filters["search"] ?? null;
-        $searchColumns = $options["searchColumns"] ?? null;
+        $searchQuery = $filters['search'] ?? null;
+        $searchColumns = $options['searchColumns'] ?? null;
 
-        $amount = $filters["amount"] ?? 20;
+        $amount = $filters['amount'] ?? 20;
 
         $this->genericFilter($query, $filters);
 

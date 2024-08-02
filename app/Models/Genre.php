@@ -11,18 +11,18 @@ class Genre extends Model
 
     /**
      * The attributes that are mass assignable
-     * 
+     *
      * @var array<int, string>
      */
     protected $fillable = [
-        "name"
+        'name',
     ];
-    
+
     /**
      * Define the relationship with books
      */
     public function books()
     {
-        return $this->belongsToMany(Book::class, "book_genres");
+        return $this->belongsToMany(Book::class, 'book_genres');
     }
 }

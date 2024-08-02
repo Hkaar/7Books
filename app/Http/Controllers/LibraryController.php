@@ -14,8 +14,8 @@ class LibraryController extends Controller
     {
         $libraries = Library::paginate(20);
 
-        return view("library.index", [
-            "libraries" => $libraries,
+        return view('library.index', [
+            'libraries' => $libraries,
         ]);
     }
 
@@ -24,7 +24,7 @@ class LibraryController extends Controller
      */
     public function create()
     {
-        return view("library.create");
+        return view('library.create');
     }
 
     /**
@@ -33,15 +33,15 @@ class LibraryController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            "name" => "required|string|max:255",
-            "desc" => "required|string|max:255",
-            "region_id" => "required|numeric|exists:regions,id",
+            'name' => 'required|string|max:255',
+            'desc' => 'required|string|max:255',
+            'region_id' => 'required|numeric|exists:regions,id',
         ]);
 
-        $library = new Library();
+        $library = new Library;
         $library->fill($validated)->save();
 
-        return redirect()->route("library.index");
+        return redirect()->route('library.index');
     }
 
     /**
@@ -51,8 +51,8 @@ class LibraryController extends Controller
     {
         $library = Library::findOrFail($id);
 
-        return view("library.show", [
-            "library" => $library,
+        return view('library.show', [
+            'library' => $library,
         ]);
     }
 
@@ -63,8 +63,8 @@ class LibraryController extends Controller
     {
         $library = Library::findOrFail($id);
 
-        return view("library.edit", [
-            "library" => $library,
+        return view('library.edit', [
+            'library' => $library,
         ]);
     }
 
@@ -74,15 +74,15 @@ class LibraryController extends Controller
     public function update(Request $request, int $id)
     {
         $validated = $request->validate([
-            "name" => "nullable|string|max:255",
-            "desc" => "nullable|string|max:255",
-            "region_id" => "nullable|numeric|exists:regions,id",
+            'name' => 'nullable|string|max:255',
+            'desc' => 'nullable|string|max:255',
+            'region_id' => 'nullable|numeric|exists:regions,id',
         ]);
 
-        $library = new Library();
+        $library = new Library;
         $library->fill($validated)->save();
 
-        return redirect()->route("library.index");
+        return redirect()->route('library.index');
     }
 
     /**

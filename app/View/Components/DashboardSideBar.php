@@ -21,7 +21,7 @@ class DashboardSideBar extends Component
     public function render(): View|Closure|string
     {
         return view('components.dashboard-side-bar')->with([
-            "selected" => $this->selected
+            'selected' => $this->selected,
         ]);
     }
 }

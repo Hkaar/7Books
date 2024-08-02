@@ -12,7 +12,7 @@ class PaginateLinks extends Component
      * Create a new component instance.
      */
     public function __construct(
-        public $links, 
+        public $links,
         public bool $useHtmx = false
     ) {}
 
@@ -22,8 +22,8 @@ class PaginateLinks extends Component
     public function render(): View|Closure|string
     {
         return view('components.paginate-links')->with([
-            "links" => $this->links,
-            "useHtmx" => $this->useHtmx,
+            'links' => $this->links,
+            'useHtmx' => $this->useHtmx,
         ]);
     }
 }
