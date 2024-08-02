@@ -1,15 +1,45 @@
 import Swiper from "swiper/bundle";
 import "swiper/css/bundle";
 
+const bookSlideOptions = {
+    autoplay: {
+        delay: 8500,
+        disableOnInteraction: false,
+    },
+    spaceBetween: 20,
+    slidesPerView: 1.5,
+    loop: true,
+    breakpoints: {
+        768: {
+            slidesPerView: 3.5,
+        },
+        1024: {
+            slidesPerView: 4.5,
+        },
+    },
+}
+
+const profileSlideOptions = {
+    autoplay: {
+        delay: 4500,
+        disableOnInteraction: false,
+    },
+    spaceBetween: 20,
+    slidesPerView: 1.5,
+    loop: true,
+    breakpoints: {
+        768: {
+            slidesPerView: 4.5,
+        },
+        1024: {
+            slidesPerView: 5.5,
+        },
+    },
+}
+
 export function setupSlides() {
     const trendingBookSlider = new Swiper("#trendingBookSlider", {
-        autoplay: {
-            delay: 8500,
-            disableOnInteraction: false,
-        },
-        spaceBetween: 20,
-        slidesPerView: 1.5,
-        loop: true,
+        ...bookSlideOptions,
         pagination: {
             el: "#trendingBookSliderPagination",
             clickable: true,
@@ -18,24 +48,10 @@ export function setupSlides() {
             nextEl: "#trendingNext",
             prevEl: "#trendingPrev",
         },
-        breakpoints: {
-            768: {
-                slidesPerView: 3.5,
-            },
-            1024: {
-                slidesPerView: 4.5,
-            },
-        },
     });
 
     const newestBookSlider = new Swiper("#newestBookSlider", {
-        autoplay: {
-            delay: 8500,
-            disableOnInteraction: false,
-        },
-        spaceBetween: 20,
-        slidesPerView: 1.5,
-        loop: true,
+        ...bookSlideOptions,
         pagination: {
             el: "#newestBookSliderPagination",
             clickable: true,
@@ -44,24 +60,10 @@ export function setupSlides() {
             nextEl: "#newestNext",
             prevEl: "#newestPrev",
         },
-        breakpoints: {
-            768: {
-                slidesPerView: 3.5,
-            },
-            1024: {
-                slidesPerView: 4.5,
-            },
-        },
     });
 
     const authorProfileSlider = new Swiper("#authorProfileSlider", {
-        autoplay: {
-            delay: 4500,
-            disableOnInteraction: false,
-        },
-        spaceBetween: 20,
-        slidesPerView: 1.5,
-        loop: true,
+        ...profileSlideOptions,
         pagination: {
             el: "#authorProfileSliderPagination",
             clickable: true,
@@ -70,24 +72,10 @@ export function setupSlides() {
             nextEl: "#authorNext",
             prevEl: "#authorPrev",
         },
-        breakpoints: {
-            768: {
-                slidesPerView: 4.5,
-            },
-            1024: {
-                slidesPerView: 5.5,
-            },
-        },
     });
 
     const genreSlider = new Swiper("#genreSlider", {
-        autoplay: {
-            delay: 4500,
-            disableOnInteraction: false,
-        },
-        spaceBetween: 20,
-        slidesPerView: 1.5,
-        loop: true,
+        ...profileSlideOptions,
         pagination: {
             el: "#genreSliderPagination",
             clickable: true,
@@ -96,13 +84,17 @@ export function setupSlides() {
             nextEl: "#genreNext",
             prevEl: "#genrePrev",
         },
-        breakpoints: {
-            768: {
-                slidesPerView: 4.5,
-            },
-            1024: {
-                slidesPerView: 5.5,
-            },
+    });
+
+    const recomenddedSlide = new Swiper("#recommendedBookSlider", {
+        ...bookSlideOptions,
+        pagination: {
+            el: "#recomenddedBookSliderPagination",
+            clickable: true,
         },
+        navigation: {
+            nextEl: "#recomenddedNext",
+            prevEl: "#recomenddedPrev",
+        }
     });
 }
