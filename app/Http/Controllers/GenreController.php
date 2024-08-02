@@ -29,7 +29,7 @@ class GenreController extends Controller
         $genres = $this->filterService->filter($filters);
         $genres->appends($request->query());
 
-        return view('genres.index')->with([
+        return view('genres.index', [
             'genres' => $genres,
         ]);
     }
@@ -74,7 +74,7 @@ class GenreController extends Controller
         $genre = Genre::findOrFail($id);
         $books = $genre->books()->paginate(3);
 
-        return view('genres.show')->with([
+        return view('genres.show', [
             'genre' => $genre,
             'books' => $books,
         ]);
@@ -96,7 +96,7 @@ class GenreController extends Controller
 
         $items = json_encode($items);
 
-        return view('genres.edit')->with([
+        return view('genres.edit', [
             'genre' => $genre,
             'items' => $items,
         ]);

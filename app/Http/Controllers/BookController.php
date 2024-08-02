@@ -44,7 +44,7 @@ class BookController extends Controller
         $genres = Genre::all(['id', 'name']);
         $authors = Author::all(['id', 'name']);
 
-        return view('books.index')->with([
+        return view('books.index', [
             'books' => $books,
             'authors' => $authors,
             'genres' => $genres,
@@ -100,7 +100,7 @@ class BookController extends Controller
         $genres = $book->genres()->get();
         $authors = $book->authors()->get();
 
-        return view('books.show')->with([
+        return view('books.show', [
             'book' => $book,
             'genres' => $genres,
             'authors' => $authors,
@@ -114,7 +114,7 @@ class BookController extends Controller
     {
         $book = Book::findOrFail($id);
 
-        return view('books.edit')->with([
+        return view('books.edit', [
             'book' => $book,
         ]);
     }
@@ -181,7 +181,7 @@ class BookController extends Controller
     {
         $books = Book::paginate(3);
 
-        return view('books.select')->with([
+        return view('books.select', [
             'books' => $books,
         ]);
     }
@@ -193,7 +193,7 @@ class BookController extends Controller
     {
         $books = Book::paginate(3);
 
-        return view('books.multi-select')->with([
+        return view('books.multi-select', [
             'books' => $books,
         ]);
     }

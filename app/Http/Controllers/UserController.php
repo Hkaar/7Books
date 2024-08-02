@@ -36,7 +36,7 @@ class UserController extends Controller
 
         $roles = Role::all(['id', 'name']);
 
-        return view('users.index')->with([
+        return view('users.index', [
             'users' => $users,
             'roles' => $roles,
         ]);
@@ -92,7 +92,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
-        return view('users.show')->with([
+        return view('users.show', [
             'user' => $user,
         ]);
     }
@@ -105,7 +105,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $roles = Role::all(['id', 'name']);
 
-        return view('users.edit')->with([
+        return view('users.edit', [
             'user' => $user,
             'roles' => $roles,
         ]);

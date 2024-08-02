@@ -33,7 +33,7 @@ class AuthorController extends Controller
         $authors = $this->filterService->filter($filters);
         $authors->appends($request->query());
 
-        return view('authors.index')->with([
+        return view('authors.index', [
             'authors' => $authors,
         ]);
     }
@@ -91,7 +91,7 @@ class AuthorController extends Controller
         $author = Author::findOrFail($id);
         $books = $author->books()->get(['name']);
 
-        return view('authors.show')->with([
+        return view('authors.show', [
             'author' => $author,
             'books' => $books,
         ]);
@@ -113,7 +113,7 @@ class AuthorController extends Controller
 
         $items = json_encode($items);
 
-        return view('authors.edit')->with([
+        return view('authors.edit', [
             'author' => $author,
             'items' => $items,
         ]);
@@ -183,7 +183,7 @@ class AuthorController extends Controller
 
         $books = $author->books()->paginate(3);
 
-        return view('authors.authored')->with([
+        return view('authors.authored', [
             'books' => $books,
             'author' => $author,
         ]);

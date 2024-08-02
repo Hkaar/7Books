@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Order;
 use App\Models\Status;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -27,7 +28,7 @@ class OrderFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => fn () => \App\Models\User::factory()->create()->id,
+            'user_id' => fn () => User::factory()->create()->id,
             'token' => Str::random(8),
             'placed_date' => $this->faker->dateTime(),
             'return_date' => $this->faker->dateTime(),

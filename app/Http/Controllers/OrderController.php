@@ -36,7 +36,7 @@ class OrderController extends Controller
 
         $statuses = Status::all(['id', 'name']);
 
-        return view('orders.index')->with([
+        return view('orders.index', [
             'orders' => $orders,
             'statuses' => $statuses,
         ]);
@@ -96,7 +96,7 @@ class OrderController extends Controller
         $order = Order::findOrFail($id);
         $statuses = Status::all(['id', 'name']);
 
-        return view('orders.show')->with([
+        return view('orders.show', [
             'order' => $order,
             'statuses' => $statuses,
         ]);
@@ -121,7 +121,7 @@ class OrderController extends Controller
 
         $items = json_encode($items);
 
-        return view('orders.edit')->with([
+        return view('orders.edit', [
             'order' => $order,
             'user' => $user,
             'items' => $items,
@@ -187,7 +187,7 @@ class OrderController extends Controller
 
         $items = $order->items()->with('book')->paginate(3);
 
-        return view('orders.items')->with([
+        return view('orders.items', [
             'items' => $items,
             'order' => $order,
         ]);
