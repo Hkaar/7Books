@@ -5,14 +5,21 @@ $secondary: #088395;
 $tertiary: #37B7C3;
 $accent: #443dff;
 
+$text-light: #fff;
+$body-light: #fff;
+
+
+$primary-dark: #EBF4F6;
+$secondary-dark: #37B7C3;
+$tertiary-dark: #088395;
+
+$body-dark: #232323;
+$text-dark: #fff;
+
 $danger: #e61b37;
 $success: #267d48;
 $warning: #ffa500;
 $info: #1fa2e2;
-
-$body-text-color: #fff;
-
-$body-light: #fff;
 
 $svb-themes: (
     "primary": $primary,
@@ -22,6 +29,24 @@ $svb-themes: (
     "success": $success,
     "warning": $warning,
     "info": $info,
-    "body": $body-light,
     "accent": $accent,
+    "body": $body-light,
+    "body-text": $text-light
 );
+
+[data-bs-theme="dark"] {
+    --bs-primary: #{$primary-dark};
+    --bs-secondary: #{$secondary-dark};
+    --bs-tertiary: #{$tertiary-dark};
+    --bs-body-bg: #{$body-dark};
+    --bs-body-text: #{$text-dark};
+
+    .btn-primary {
+        background-color: #{$primary-dark};
+        color: $body-dark;
+    }
+
+    .text-primary {
+        color: $primary-dark !important;
+    }
+}

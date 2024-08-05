@@ -111,6 +111,10 @@
     width: fit-content;
 }
 
+.h-fit {
+    height: fit-content;
+}
+
 /* ===== Positioning ===== */
 .z-0 {
     z-index: 0;
@@ -153,6 +157,19 @@
     overflow: hidden;
 }
 
+/* ===== Colors ===== */
+.bg-none {
+    background-color: none !important;
+}
+
+.bg-inherit {
+    background-color: inherit;
+}
+
+.bg-transparent {
+    background-color: transparent;
+}
+
 /* ===== Animations ===== */
 .svb-transition-fast {
     transition: all 0.3s ease;
@@ -176,7 +193,7 @@
 }
 
 .hover-grow:hover {
-    transform: scale(105%);
+    transform: scale(102%);
 }
 
 .hover-text-greyed:hover {
