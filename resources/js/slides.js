@@ -29,10 +29,10 @@ const profileSlideOptions = {
     loop: true,
     breakpoints: {
         768: {
-            slidesPerView: 4.5,
+            slidesPerView: 3.5,
         },
         1024: {
-            slidesPerView: 5.5,
+            slidesPerView: 4.5,
         },
     },
 }
@@ -96,5 +96,20 @@ export function setupSlides() {
             nextEl: "#recomenddedNext",
             prevEl: "#recomenddedPrev",
         }
+    });
+
+    const homeHeroSwiper = new Swiper("#homeHeroSwiper", {
+        effect: "cards",
+        grabCursor: true,
+        centeredSlides: true,
+        loop: true,
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            type: "fraction",
+        },
     });
 }
