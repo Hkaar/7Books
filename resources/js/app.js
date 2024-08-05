@@ -5,9 +5,6 @@ import 'htmx.org';
 
 import * as bootstrap from 'bootstrap';
 
-import Swiper from "swiper/bundle";
-import 'swiper/css/bundle';
-
 import { setupSlides } from "./slides.js";
 
 import.meta.glob([
@@ -149,6 +146,29 @@ function updatePreviewImage(element) {
     }
 }
 
+/**
+ * Change the app theme
+ * 
+ * @param {string} theme 
+ */
+function changeTheme(theme) {
+    document.querySelector("html")?.setAttribute("data-bs-theme", theme);
+    localStorage.setItem("theme", theme);
+
+    return theme;
+}
+
+/**
+ * Apply locally stored theme to the app
+ */
+function loadTheme() {
+    const theme = localStorage.getItem("theme");
+
+    if (theme) {
+        document.querySelector("html")?.setAttribute("data-bs-theme", theme);
+    }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     'use strict';
 
@@ -183,52 +203,25 @@ document.addEventListener("DOMContentLoaded", () => {
         addItem(this);
     });
 
-    let homeHeroSwiper = new Swiper("#homeHeroSwiper", {
-        effect: "cards",
-        grabCursor: true,
-        centeredSlides: true,
-        loop: true,
-        autoplay: {
-            delay: 2500,
-            disableOnInteraction: false,
-        },
-        pagination: {
-            el: ".swiper-pagination",
-            type: "fraction",
-        },
-    });
-
-    let swiper = new Swiper(".bookSwiper", {
-        slidesPerView: 1.5,
-        spaceBetween: 20,
-        loop: true,
-        autoplay: {
-            delay: 2500,
-            disableOnInteraction: false,
-        },
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-
-        navigation: { 
-            nextEl: '.book-swiper-button-next', 
-            prevEl: '.book-swiper-button-prev', 
-        }, 
-
-        breakpoints: {
-            768: {
-                slidesPerView: 3.5,
-            },
-            1024: {
-                slidesPerView: 4.5,
-            },
-        },
-    });
-
     $(document).on("htmx:confirm", showConfirm);
 
     $(document).on("change", "#img", function() {
         updatePreviewImage(this);
     }); 
+
+    $(document).on("click", "#themeSwitch", () => {
+        if ($("html").attr("data-bs-theme") === "light") {
+            changeTheme("dark");
+
+            $("#themeSwitch .fa-sun").removeClass("d-none");
+            $("#themeSwitch .fa-moon").addClass("d-none");
+        } else {
+            changeTheme("light");
+
+            $("#themeSwitch .fa-sun").addClass("d-none");
+            $("#themeSwitch .fa-moon").removeClass("d-none");
+        }
+    });
+
+    loadTheme();
 });
