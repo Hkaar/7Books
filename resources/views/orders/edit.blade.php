@@ -10,10 +10,8 @@
 
   <div class="container flex-fill d-flex flex-column">
     <div class="row mt-auto flex-fill">
-      <div class="col-12 col-md-6 d-flex align-items-center justify-content-center mb-3">
-        <div class="large-thumbnail mb-3 mb-md-0 mt-3 mt-md-0">
-          <img src="{{ URL::asset('assets/imgs/logo.png') }}" alt="Image not available...">
-        </div>
+      <div class="col-12 col-md-6 d-md-flex align-items-center justify-content-center mb-3 mb-md-0 mt-3 mt-md-0 d-none">
+        <img src="{{ Vite::asset('resources/images/add-files.svg') }}" alt="Image not available..." class="img-fluid w-75 ratio-box">
       </div>
 
       <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
