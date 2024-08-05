@@ -9,7 +9,7 @@
 
     <div class="flex-fill d-flex flex-column container">
       <div class="row flex-fill">
-        <div class="col-12 col-md-6 d-flex flex-column justify-content-center">
+        <div class="col-12 col-lg-5 col-xl-6 d-flex flex-column justify-content-center">
           <article class="d-flex flex-column align-items-center align-items-md-start">
             <h1 class="text-md-start text-lg-h1 text-md-h2 text-h3 fw-bold mb-4 text-center">Welcome back
               {{ auth()->user()->name }}!</h1>
@@ -21,19 +21,51 @@
           </article>
         </div>
 
-        <div class="col-md-6 d-none d-md-flex flex-column justify-content-center">
+        <div class="col-lg-7 col-xl-6 d-none d-lg-flex flex-column justify-content-center">
           <div class="h-75 d-flex flex-column justify-content-center">
             <div id="homeHeroSwiper" class="swiper h-75 w-50 my-auto">
               <div class="swiper-wrapper">
-                <div class="swiper-slide bg-primary ratio-book-cover">Slide 1</div>
-                <div class="swiper-slide bg-secondary ratio-book-cover">Slide 2</div>
-                <div class="swiper-slide bg-primary ratio-book-cover">Slide 3</div>
-                <div class="swiper-slide bg-secondary ratio-book-cover">Slide 4</div>
-                <div class="swiper-slide bg-primary ratio-book-cover">Slide 5</div>
-                <div class="swiper-slide bg-secondary ratio-book-cover">Slide 6</div>
-                <div class="swiper-slide bg-primary ratio-book-cover">Slide 7</div>
-                <div class="swiper-slide bg-secondary ratio-book-cover">Slide 8</div>
-                <div class="swiper-slide bg-primary ratio-book-cover">Slide 9</div>
+                <div class="swiper-slide d-flex flex-column justify-content-center bg-transparent">
+                  <div class="card svb-card svb-transition-fast hover-darkened active-shrink h-100 ratio-book-cover">
+                    <img src="{{ Vite::asset('resources/images/examples/molded_cover2.jpg') }}" class="card-img-top" alt="Image not available">
+                  </div>
+                </div>
+      
+                <div class="swiper-slide d-flex flex-column justify-content-center bg-transparent">
+                  <div class="card svb-card svb-transition-fast hover-darkened active-shrink h-100 ratio-book-cover">
+                    <img src="{{ Vite::asset('resources/images/examples/hunted-004.jpg') }}" class="card-img-top" alt="Image not available">
+                  </div>
+                </div>
+      
+                <div class="swiper-slide d-flex flex-column justify-content-center bg-transparent">
+                  <div class="card svb-card svb-transition-fast hover-darkened active-shrink h-100 ratio-book-cover">
+                    <img src="{{ Vite::asset('resources/images/examples/theinvisiblenation.jpg') }}" class="card-img-top" alt="Image not available">
+                  </div>
+                </div>
+      
+                <div class="swiper-slide d-flex flex-column justify-content-center bg-transparent">
+                  <div class="card svb-card svb-transition-fast hover-darkened active-shrink h-100 ratio-book-cover">
+                    <img src="{{ Vite::asset('resources/images/examples/parasite.jpg') }}" class="card-img-top" alt="Image not available">
+                  </div>
+                </div>
+      
+                <div class="swiper-slide d-flex flex-column justify-content-center bg-transparent">
+                  <div class="card svb-card svb-transition-fast hover-darkened active-shrink h-100 ratio-book-cover">
+                    <img src="{{ Vite::asset('resources/images/examples/theuberfights.jpg') }}" class="card-img-top" alt="Image not available">
+                  </div>
+                </div>
+      
+                <div class="swiper-slide d-flex flex-column justify-content-center bg-transparent">
+                  <div class="card svb-card svb-transition-fast hover-darkened active-shrink h-100 ratio-book-cover">
+                    <img src="{{ Vite::asset('resources/images/examples/followyoudown.jpg') }}" class="card-img-top" alt="Image not available">
+                  </div>
+                </div>
+      
+                <div class="swiper-slide d-flex flex-column justify-content-center bg-transparent">
+                  <div class="card svb-card svb-transition-fast hover-darkened active-shrink h-100 ratio-book-cover">
+                    <img src="{{ Vite::asset('resources/images/examples/silentchild.jpg') }}" class="card-img-top" alt="Image not available">
+                  </div>
+                </div>
               </div>
 
               <div class="swiper-pagination text-white"></div>
@@ -72,70 +104,70 @@
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
+              <img src="{{ Vite::asset('resources/images/examples/molded_cover2.jpg') }}" class="card-img-top" alt="Image not available">
         
               <div class="title svb-transition-fast">
-                Harry potter
+                Molded
               </div>
             </div>
           </div>
 
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
+              <img src="{{ Vite::asset('resources/images/examples/hunted-004.jpg') }}" class="card-img-top" alt="Image not available">
         
               <div class="title svb-transition-fast">
-                Harry potter
+                Hunted
               </div>
             </div>
           </div>
 
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
+              <img src="{{ Vite::asset('resources/images/examples/theinvisiblenation.jpg') }}" class="card-img-top" alt="Image not available">
         
               <div class="title svb-transition-fast">
-                Harry potter
+                The Invisible Nation
               </div>
             </div>
           </div>
 
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
+              <img src="{{ Vite::asset('resources/images/examples/parasite.jpg') }}" class="card-img-top" alt="Image not available">
         
               <div class="title svb-transition-fast">
-                Harry potter
+                Parasite
               </div>
             </div>
           </div>
 
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
+              <img src="{{ Vite::asset('resources/images/examples/theuberfights.jpg') }}" class="card-img-top" alt="Image not available">
         
               <div class="title svb-transition-fast">
-                Harry potter
+                The Uber Fights
               </div>
             </div>
           </div>
 
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
+              <img src="{{ Vite::asset('resources/images/examples/followyoudown.jpg') }}" class="card-img-top" alt="Image not available">
         
               <div class="title svb-transition-fast">
-                Harry potter
+                Follow You Down
               </div>
             </div>
           </div>
 
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
+              <img src="{{ Vite::asset('resources/images/examples/silentchild.jpg') }}" class="card-img-top" alt="Image not available">
         
               <div class="title svb-transition-fast">
-                Harry potter
+                Silent Child
               </div>
             </div>
           </div>
@@ -153,7 +185,7 @@
         
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center">
           <span class="text-tertiary"> 
-            Current trends in papers
+            Rising up the index of ranks
           </span>
 
           <div class="d-md-flex align-items-center gap-1 d-none">
@@ -174,70 +206,70 @@
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
+              <img src="{{ Vite::asset('resources/images/examples/riverofbrokenglass.jpg') }}" class="card-img-top" alt="Image not available">
         
               <div class="title svb-transition-fast">
-                Harry potter
+                River of Broken Glass
               </div>
             </div>
           </div>
 
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
+              <img src="{{ Vite::asset('resources/images/examples/hunted-004.jpg') }}" class="card-img-top" alt="Image not available">
         
               <div class="title svb-transition-fast">
-                Harry potter
+                Hunted
               </div>
             </div>
           </div>
 
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
+              <img src="{{ Vite::asset('resources/images/examples/thegreensoldier.jpg') }}" class="card-img-top" alt="Image not available">
         
               <div class="title svb-transition-fast">
-                Harry potter
+                The Green Soldier
               </div>
             </div>
           </div>
 
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
+              <img src="{{ Vite::asset('resources/images/examples/parasite.jpg') }}" class="card-img-top" alt="Image not available">
         
               <div class="title svb-transition-fast">
-                Harry potter
+                Parasite
               </div>
             </div>
           </div>
 
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
+              <img src="{{ Vite::asset('resources/images/examples/theuberfights.jpg') }}" class="card-img-top" alt="Image not available">
         
               <div class="title svb-transition-fast">
-                Harry potter
+                The Uber Fights
               </div>
             </div>
           </div>
 
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
+              <img src="{{ Vite::asset('resources/images/examples/boundbyadragon.jpg') }}" class="card-img-top" alt="Image not available">
         
               <div class="title svb-transition-fast">
-                Harry potter
+                Bound by a Dragon
               </div>
             </div>
           </div>
 
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
+              <img src="{{ Vite::asset('resources/images/examples/silentchild.jpg') }}" class="card-img-top" alt="Image not available">
         
               <div class="title svb-transition-fast">
-                Harry potter
+                Silent Child
               </div>
             </div>
           </div>
@@ -276,70 +308,70 @@
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
+              <img src="{{ Vite::asset('resources/images/examples/molded_cover2.jpg') }}" class="card-img-top" alt="Image not available">
         
               <div class="title svb-transition-fast">
-                Harry potter
+                Molded
               </div>
             </div>
           </div>
 
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
+              <img src="{{ Vite::asset('resources/images/examples/hunted-004.jpg') }}" class="card-img-top" alt="Image not available">
         
               <div class="title svb-transition-fast">
-                Harry potter
+                Hunted
               </div>
             </div>
           </div>
 
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
+              <img src="{{ Vite::asset('resources/images/examples/theinvisiblenation.jpg') }}" class="card-img-top" alt="Image not available">
         
               <div class="title svb-transition-fast">
-                Harry potter
+                The Invisible Nation
               </div>
             </div>
           </div>
 
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
+              <img src="{{ Vite::asset('resources/images/examples/parasite.jpg') }}" class="card-img-top" alt="Image not available">
         
               <div class="title svb-transition-fast">
-                Harry potter
+                Parasite
               </div>
             </div>
           </div>
 
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
+              <img src="{{ Vite::asset('resources/images/examples/theuberfights.jpg') }}" class="card-img-top" alt="Image not available">
         
               <div class="title svb-transition-fast">
-                Harry potter
+                The Uber Fights
               </div>
             </div>
           </div>
 
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
+              <img src="{{ Vite::asset('resources/images/examples/followyoudown.jpg') }}" class="card-img-top" alt="Image not available">
         
               <div class="title svb-transition-fast">
-                Harry potter
+                Follow You Down
               </div>
             </div>
           </div>
 
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
+              <img src="{{ Vite::asset('resources/images/examples/silentchild.jpg') }}" class="card-img-top" alt="Image not available">
         
               <div class="title svb-transition-fast">
-                Harry potter
+                Silent Child
               </div>
             </div>
           </div>
