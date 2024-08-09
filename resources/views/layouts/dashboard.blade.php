@@ -10,9 +10,11 @@
 <div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailModal" aria-hidden="true">
   <div class="modal-dialog modal-fullscreen-lg-down modal-lg">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header d-flex align-items-center justify-content-between">
         <h1 class="modal-title fs-5" id="detailModal">Details</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">
+          <i class="fa-regular fa-x"></i>
+        </button>
       </div>
 
       <div class="modal-body" id="detailsBody">
@@ -29,9 +31,11 @@
 <div class="modal fade" id="selectItems" tabindex="-1" aria-labelledby="selectItemsLabel" aria-hidden="true">
   <div class="modal-dialog modal-fullscreen-lg-down modal-lg">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header d-flex align-items-center justify-content-between">
         <h1 class="modal-title fs-5" id="selectItemsLabel">Available Items</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">
+          <i class="fa-regular fa-x"></i>
+        </button>
       </div>
 
       <div class="modal-body">
@@ -50,9 +54,11 @@
 <div class="modal fade" id="confirmModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="confirmModalLabel" aria-hidden="true" >
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header d-flex align-items-center justify-content-between">
         <h5 class="modal-title" id="confirmModalLabel">Confirm Action</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">
+          <i class="fa-regular fa-x"></i>
+        </button>
       </div>
 
       <div class="modal-body">
