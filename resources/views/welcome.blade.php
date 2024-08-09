@@ -57,9 +57,9 @@
     <div class="container">
       <div class="d-flex flex-column gap-1 mb-3">
         <h3 class="text-h4 text-md-h3 fw-semibold">Trending Reads</h3>
-        
+
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center">
-          <span class="text-tertiary"> 
+          <span class="text-tertiary">
             Rising up the index of ranks
           </span>
 
@@ -82,7 +82,7 @@
           <div class="swiper-slide">
             <a class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink" href="{{ route('login') }}">
               <img src="{{ Vite::asset('resources/images/examples/riverofbrokenglass.jpg') }}" class="card-img-top" alt="Image not available">
-        
+
               <div class="title svb-transition-fast">
                 River of Broken Glass
               </div>
@@ -92,7 +92,7 @@
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
               <img src="{{ Vite::asset('resources/images/examples/hunted-004.jpg') }}" class="card-img-top" alt="Image not available">
-        
+
               <div class="title svb-transition-fast">
                 Hunted
               </div>
@@ -102,7 +102,7 @@
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
               <img src="{{ Vite::asset('resources/images/examples/thegreensoldier.jpg') }}" class="card-img-top" alt="Image not available">
-        
+
               <div class="title svb-transition-fast">
                 The Green Soldier
               </div>
@@ -112,7 +112,7 @@
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
               <img src="{{ Vite::asset('resources/images/examples/parasite.jpg') }}" class="card-img-top" alt="Image not available">
-        
+
               <div class="title svb-transition-fast">
                 Parasite
               </div>
@@ -122,7 +122,7 @@
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
               <img src="{{ Vite::asset('resources/images/examples/theuberfights.jpg') }}" class="card-img-top" alt="Image not available">
-        
+
               <div class="title svb-transition-fast">
                 The Uber Fights
               </div>
@@ -132,7 +132,7 @@
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
               <img src="{{ Vite::asset('resources/images/examples/boundbyadragon.jpg') }}" class="card-img-top" alt="Image not available">
-        
+
               <div class="title svb-transition-fast">
                 Bound by a Dragon
               </div>
@@ -142,7 +142,7 @@
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
               <img src="{{ Vite::asset('resources/images/examples/silentchild.jpg') }}" class="card-img-top" alt="Image not available">
-        
+
               <div class="title svb-transition-fast">
                 Silent Child
               </div>
@@ -182,22 +182,46 @@
       <div id="authorProfileSlider" class="swiper">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
-            <img src="{{ Vite::asset('resources/images/examples/darcy-coates.jpg') }}" alt="No Image available" class="img-fluid rounded-circle ratio-box svb-profile">
+            <div class="svb-profile svb-transition-fast hover-grow hover-darkened active-shrink" style="background-image: url({{ Vite::asset('resources/images/examples/darcy-coates.jpg') }})">
+              <span class="overlay svb-transition-fast">
+                Darcy Coates
+              </span>
+            </div>
           </div>
           <div class="swiper-slide rounded-circle ratio-box svb-profile">
-            <img src="{{ Vite::asset('resources/images/examples/linda-k-hopkins.jpg') }}" alt="No Image available" class="img-fluid rounded-circle ratio-box svb-profile">
+            <div class="svb-profile svb-transition-fast hover-grow hover-darkened active-shrink" style="background-image: url({{ Vite::asset('resources/images/examples/linda-k-hopkins.jpg') }})">
+              <span class="overlay svb-transition-fast">
+                Linda K. Hopkins
+              </span>
+            </div>
           </div>
           <div class="swiper-slide rounded-circle ratio-box svb-profile">
-            <img src="{{ Vite::asset('resources/images/examples/sarah-a-denzil.jpg') }}" alt="No Image available" class="img-fluid rounded-circle ratio-box svb-profile">
+            <div class="svb-profile svb-transition-fast hover-grow hover-darkened active-shrink" style="background-image: url({{ Vite::asset('resources/images/examples/sarah-a-denzil.jpg') }})">
+              <span class="overlay svb-transition-fast">
+                Sarah a Denzil
+              </span>
+            </div>
           </div>
           <div class="swiper-slide rounded-circle ratio-box svb-profile">
-            <img src="{{ Vite::asset('resources/images/examples/j-edward-gore.jpg') }}" alt="No Image available" class="img-fluid rounded-circle ratio-box svb-profile">
+            <div class="svb-profile svb-transition-fast hover-grow hover-darkened active-shrink" style="background-image: url({{ Vite::asset('resources/images/examples/j-edward-gore.jpg') }})">
+              <span class="overlay svb-transition-fast">
+                J. Edward Gore
+              </span>
+            </div>
           </div>
           <div class="swiper-slide rounded-circle ratio-box svb-profile">
-            <img src="{{ Vite::asset('resources/images/examples/j-zachary-pike.jpg') }}" alt="No Image available" class="img-fluid rounded-circle ratio-box svb-profile">
+            <div class="svb-profile svb-transition-fast hover-grow hover-darkened active-shrink" style="background-image: url({{ Vite::asset('resources/images/examples/j-zachary-pike.jpg') }})">
+              <span class="overlay svb-transition-fast">
+                J. Zachary Pike
+              </span>
+            </div>
           </div>
           <div class="swiper-slide rounded-circle ratio-box svb-profile">
-            <img src="{{ Vite::asset('resources/images/examples/david-neilson.jpg') }}" alt="No Image available" class="img-fluid rounded-circle ratio-box svb-profile">
+            <div class="svb-profile svb-transition-fast hover-grow hover-darkened active-shrink" style="background-image: url({{ Vite::asset('resources/images/examples/david-neilson.jpg') }})">
+              <span class="overlay svb-transition-fast">
+                David Neilson
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -208,9 +232,9 @@
     <div class="container">
       <div class="d-flex flex-column gap-1 mb-3">
         <h3 class="text-h4 text-md-h3 fw-semibold">New Releases</h3>
-        
+
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center">
-          <span class="text-tertiary"> 
+          <span class="text-tertiary">
             Newly released in libraries
           </span>
 
@@ -227,13 +251,13 @@
           </div>
         </div>
       </div>
-      
+
       <div id="newestBookSlider" class="swiper">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
               <img src="{{ Vite::asset('resources/images/examples/thetests.jpg') }}" class="card-img-top" alt="Image not available">
-        
+
               <div class="title svb-transition-fast">
                 The Tests
               </div>
@@ -243,7 +267,7 @@
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
               <img src="{{ Vite::asset('resources/images/examples/hunted-004.jpg') }}" class="card-img-top" alt="Image not available">
-        
+
               <div class="title svb-transition-fast">
                 Hunted
               </div>
@@ -253,7 +277,7 @@
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
               <img src="{{ Vite::asset('resources/images/examples/theinvisiblenation.jpg') }}" class="card-img-top" alt="Image not available">
-        
+
               <div class="title svb-transition-fast">
                 The Invisible Nation
               </div>
@@ -263,7 +287,7 @@
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
               <img src="{{ Vite::asset('resources/images/examples/parasite.jpg') }}" class="card-img-top" alt="Image not available">
-        
+
               <div class="title svb-transition-fast">
                 Parasite
               </div>
@@ -273,7 +297,7 @@
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
               <img src="{{ Vite::asset('resources/images/examples/thedreamshifters.jpg') }}" class="card-img-top" alt="Image not available">
-        
+
               <div class="title svb-transition-fast">
                 The Dream Shifters
               </div>
@@ -283,7 +307,7 @@
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
               <img src="{{ Vite::asset('resources/images/examples/asongofthreespirits.jpg') }}" class="card-img-top" alt="Image not available">
-        
+
               <div class="title svb-transition-fast">
                 A Song of Three Spirits
               </div>
@@ -293,7 +317,7 @@
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
               <img src="{{ Vite::asset('resources/images/examples/silentchild.jpg') }}" class="card-img-top" alt="Image not available">
-        
+
               <div class="title svb-transition-fast">
                 Silent Child
               </div>
