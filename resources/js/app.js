@@ -166,6 +166,14 @@ function loadTheme() {
 
     if (theme) {
         document.querySelector("html")?.setAttribute("data-bs-theme", theme);
+
+        if (theme === "dark") {
+            $("#themeSwitch .fa-sun").removeClass("d-none");
+            $("#themeSwitch .fa-moon").addClass("d-none");
+        } else {
+            $("#themeSwitch .fa-sun").addClass("d-none");
+            $("#themeSwitch .fa-moon").removeClass("d-none");
+        }
     }
 }
 

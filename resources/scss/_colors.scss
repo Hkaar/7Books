@@ -4,15 +4,12 @@ $primary: #071952;
 $secondary: #088395;
 $tertiary: #37B7C3;
 $accent: #443dff;
-
 $text-light: #fff;
 $body-light: #fff;
-
 
 $primary-dark: #EBF4F6;
 $secondary-dark: #37B7C3;
 $tertiary-dark: #088395;
-
 $body-dark: #232323;
 $text-dark: #fff;
 
@@ -21,7 +18,7 @@ $success: #267d48;
 $warning: #ffa500;
 $info: #1fa2e2;
 
-$svb-themes: (
+$svb-light-theme: (
     "primary": $primary,
     "secondary": $secondary,
     "tertiary": $tertiary,
@@ -34,19 +31,21 @@ $svb-themes: (
     "body-text": $text-light
 );
 
+$svb-dark-theme: (
+    "primary": $primary-dark,
+    "secondary": $secondary-dark,
+    "tertiary": $tertiary-dark,
+    "body": $body-dark,
+    "body-text": $text-dark,
+    "danger": $danger,
+    "success": $success,
+    "warning": $warning,
+    "info": $info,
+);
+
 [data-bs-theme="dark"] {
-    --bs-primary: #{$primary-dark};
-    --bs-secondary: #{$secondary-dark};
-    --bs-tertiary: #{$tertiary-dark};
-    --bs-body-bg: #{$body-dark};
-    --bs-body-text: #{$text-dark};
-
-    .btn-primary {
-        background-color: #{$primary-dark};
-        color: $body-dark;
-    }
-
-    .text-primary {
-        color: $primary-dark !important;
-    }
+    --bs-body-bg: $body-dark !important;
+    --bs-body-color: $text-dark !important;
+    --bs-primary: white !important; 
+    --bs-secondary: $secondary-dark !important;
 }

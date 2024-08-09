@@ -2,7 +2,7 @@
   <div class="container-fluid">
     @if ($logo)
       <span class="d-flex align-items-center me-auto gap-2">
-        <img src="{{ Vite::asset('resources/images/logo.svg') }}" class="img-fluid logo-lg">
+        <img src="{{ Vite::asset('resources/images/logo.svg') }}" class="img-fluid logo-md">
         @auth
           <a href="{{ route('home') }}" class="text-h6 text-none fw-semibold text-inherit">
             SEVEN BOOKS
@@ -63,7 +63,7 @@
             </li>
           @else
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('browse') }}">Our blog</a>
+              <a class="nav-link" href="">Blog</a>
             </li>
           @endif
 
@@ -84,7 +84,7 @@
             <i class="fa-regular fa-magnifying-glass"></i>
           </button>
         </div>
-        
+
         <div class="d-flex align-items-center gap-1">
           <button type="button" class="btn" id="themeSwitch">
             <i class="fa-regular fa-moon"></i>
@@ -96,7 +96,7 @@
 
         @if ($avatar)
           @auth
-            <li class="nav-item dropdown dropstart mt-lg-0 ms-2 mt-2">
+            <li class="nav-item dropdown dropstart mt-lg-0 ms-2 mt-2 d-flex align-items-center">
               <a class="d-flex align-items-center text-decoration-none gap-1 text-inherit" href="#" role="button"
                 data-bs-toggle="dropdown" aria-expanded="false">
                 @if (auth()->user()->img)

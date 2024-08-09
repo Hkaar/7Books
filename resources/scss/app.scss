@@ -13,7 +13,7 @@ $fa-font-path: "/node_modules/@fortawesome/fontawesome-free/WebFonts" !default;
 @import '/node_modules/bootstrap/scss/variables';
 @import '/node_modules/bootstrap/scss/variables-dark';
 
-$theme-colors: map-merge($map1: $theme-colors, $map2: $svb-themes);
+$theme-colors: map-merge($map1: $theme-colors, $map2: $svb-light-theme);
 
 @import '/node_modules/bootstrap/scss/maps';
 @import '/node_modules/bootstrap/scss/mixins';

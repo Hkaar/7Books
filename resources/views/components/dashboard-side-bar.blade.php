@@ -38,8 +38,8 @@
 
     <hr>
 
-    <div class="d-flex flex-column mb-3">
-      <span class="fw-medium nav-item-title mb-2">User Management</span>
+    <div class="d-flex flex-column mb-3 gap-1">
+      <span class="fw-medium nav-item-title text-h6">Users</span>
 
       @if (auth()->user()?->isPrivileged())
         <a href="{{ $selected === 'user' ? '#' : route('users.index') }}" class="nav-item p-3 rounded gap-2 {{ $selected === 'user' ? 'active' : '' }}">
@@ -52,34 +52,38 @@
         <i class="fa-solid fa-list"></i>
         <span class="nav-item-title">Orders</span>
       </a>
-
-      <a href="{{ $selected === 'articles' ? '#' : route('regions.index') }}" class="nav-item p-3 rounded gap-2 {{ $selected === 'region' ? 'active' : '' }}">
-        <i class="fa-regular fa-file-lines"></i>
-        <span class="nav-item-title">Articles</span>
-      </a>
     </div>
 
-    <div class="d-flex flex-column">
-      <span class="fw-medium nav-item-title mb-2">Books Management</span>
+    <div class="d-flex flex-column mb-3 gap-1">
+      <span class="fw-medium nav-item-title text-h6">Books</span>
 
       <a href="{{ $selected === 'book' ? '#' : route('books.index') }}" class="nav-item p-3 rounded gap-2 {{ $selected === 'book' ? 'active' : '' }}">
         <i class="fa-solid fa-book"></i>
         <span class="nav-item-title">Books</span>
       </a>
-  
+
+      <a href="{{ $selected === 'author' ? '#' : route('authors.index') }}" class="nav-item p-3 rounded gap-2 {{ $selected === 'author' ? 'active' : '' }}">
+        <i class="fa-solid fa-pen-nib"></i>
+        <span class="nav-item-title">Authors</span>
+      </a>
+
+      <a href="{{ $selected === 'genre' ? '#' : route('genres.index') }}" class="nav-item p-3 rounded gap-2 {{ $selected === 'genre' ? 'active' : '' }}">
+        <i class="fa-solid fa-tags"></i>
+        <span class="nav-item-title">Genres</span>
+      </a>
+    </div>
+
+    <div class="d-flex flex-column mb-3 gap-1">
+      <span class="fw-medium nav-item-title text-h6">Content</span>
+
+      <a href="{{ $selected === 'article' ? '#' : route('regions.index') }}" class="nav-item p-3 rounded gap-2 {{ $selected === 'article' ? 'active' : '' }}">
+        <i class="fa-regular fa-file-lines"></i>
+        <span class="nav-item-title">Articles</span>
+      </a>
+
       <a href="{{ $selected === 'library' ? '#' : route('libraries.index') }}" class="nav-item p-3 rounded gap-2 {{ $selected === 'library' ? 'active' : '' }}">
         <i class="fa-solid fa-book-open"></i>
         <span class="nav-item-title">Libraries</span>
-      </a>
-  
-      <a href="{{ $selected === 'author' ? '#' : route('authors.index') }}" class="nav-item p-3 rounded gap-2 {{ $selected === 'author' ? 'active' : '' }}">
-        <i class="fa-solid fa-pen"></i>
-        <span class="nav-item-title">Authors</span>
-      </a>
-  
-      <a href="{{ $selected === 'genre' ? '#' : route('genres.index') }}" class="nav-item p-3 rounded gap-2 {{ $selected === 'genre' ? 'active' : '' }}">
-        <i class="fa-solid fa-tag"></i>
-        <span class="nav-item-title">Genres</span>
       </a>
 
       <a href="{{ $selected === 'region' ? '#' : route('regions.index') }}" class="nav-item p-3 rounded gap-2 {{ $selected === 'region' ? 'active' : '' }}">

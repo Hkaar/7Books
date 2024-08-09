@@ -1,0 +1,66 @@
+@extends('layouts.dashboard')
+
+@section('title', "Dashboard - Regions")
+
+@section('content')
+<x-dashboard-side-bar selected="region" class="bg-primary"></x-dashboard-side-bar>
+
+<div id="dashboardLeftFrame" class="flex-fill mw-100 d-flex flex-column">
+  <x-dashboard-navigation></x-dashboard-navigation>
+
+  <div class="container flex-fill d-flex flex-column">
+    <div class="row flex-fill mt-auto">
+      <div class="col-12 col-md-6 d-md-flex align-items-center justify-content-center mb-3 mb-md-0 mt-3 mt-md-0 d-none">
+        <img src="{{ Vite::asset('resources/images/add-files.svg') }}" alt="Image not available..." class="img-fluid w-75 ratio-box">
+      </div>
+
+      <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
+        <div class="container">
+          <form method="POST" action="{{ route('regions.update', $region->id) }}" enctype="multipart/form-data" class="shadow p-3 rounded">
+            @csrf
+            @method('PUT')
+
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input class="form-control" id="name" type="text" name="name" placeholder="{{ $region->name }}">
+
+              @error('name')
+                <span>{{ $message }}</span>
+              @enderror
+            </div>
+
+            <div class="mb-3">
+              <label for="timezone" class="form-label">Timezone</label>
+
+              <select name="timezone" id="timezone" class="form-control">
+                <option selected disabled>Please select...</option>
+
+                @foreach (DateTimeZone::listIdentifiers() as $timezone)
+                  <option value="{{ $timezone }}" {{ $region->timezone === $timezone ? 'selected' : '' }}> {{ $timezone }} </option>
+                @endforeach
+              </select>
+            </div>
+
+            <div class="mb-4">
+              <label for="desc" class="form-label">Description</label>
+              <textarea class="form-control" id="desc" name="desc">{{ $region->desc }}</textarea>
+
+              @error('desc')
+                <span>{{ $message }}</span>
+              @enderror
+            </div>
+
+            <div class="d-flex align-items-md-center flex-column flex-md-row gap-1">
+              <div class="d-flex gap-1">
+                <a href="{{ route('regions.index') }}" class="btn btn-danger flex-fill">Cancel</a>
+                <button type="submit" class="btn btn-primary flex-fill">Save Changes</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+@endsection

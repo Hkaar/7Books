@@ -44,7 +44,7 @@
               @enderror
             </div>
 
-            <div>
+            <div class="mb-3">
               <label for="username" class="form-label">Username</label>
               <input class="form-control" id="username" type="text" name="username" value="{{ old('username') }}" required autofocus>
               @error('username')

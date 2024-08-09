@@ -29,8 +29,21 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link"  href="{{ route('browse') }}">Browse</a>
+          <a class="nav-link" href="{{ route('browse') }}">Browse</a>
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="">Blog</a>
+        </li>
+
+        <div class="d-flex align-items-center gap-1">
+          <button type="button" class="btn" id="themeSwitch">
+            <i class="fa-regular fa-moon"></i>
+            <i class="fa-regular fa-sun d-none"></i>
+          </button>
+
+          <span class="d-lg-none" id="themeStatus">Switch to dark theme</span>
+        </div>
       </ul>
     </div>
   </div>
