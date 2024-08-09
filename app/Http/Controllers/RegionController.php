@@ -52,6 +52,7 @@ class RegionController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255|unique:regions,name',
             'desc' => 'required|string|max:255',
+            'timezone' => 'required|timezone',
         ]);
 
         $region = new Region($validated);
@@ -92,8 +93,9 @@ class RegionController extends Controller
         $region = Region::findOrFail($id);
 
         $validated = $request->validate([
-            'name' => 'required|string|max:255|unique:regions,name',
-            'desc' => 'required|string|max:255',
+            'name' => 'nullable|string|max:255|unique:regions,name',
+            'desc' => 'nullable|string|max:255',
+            'timezone' => 'nullable|timezone',
         ]);
 
         $this->updateModel($region, $validated);
@@ -107,11 +109,11 @@ class RegionController extends Controller
      */
     public function destroy(int $id)
     {
-        $region = Region::findOrFail();
+        $region = Region::findOrFail($id);
 
         $region->libraries()->delete();
         $region->books()->detach();
-        $region->items()->delete();
+        $region->users()->detach();
 
         $region->delete();
 
