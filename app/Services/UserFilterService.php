@@ -14,7 +14,7 @@ class UserFilterService
      */
     public function filter(array $filters)
     {
-        $users = User::query();
+        $users = User::with('role');
         $filterKeys = array_keys($filters);
 
         $this->genericFilter($users, $filters);
