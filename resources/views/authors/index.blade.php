@@ -1,88 +1,83 @@
-@extends('layouts.dashboard')
+@extends('layouts.app')
 
-@section('title', "Dashboard - Authors")
+@section('title', 'Dashboard - Authors')
 
-@section('content')
-<x-dashboard-side-bar selected="author" class="bg-primary"></x-dashboard-side-bar>
+@section('main')
+  <x-dashboard-layout active="author">
+    <div class="d-flex flex-column rounded border shadow-sm">
+      <div class="d-flex align-items-center justify-content-between flex-column flex-lg-row gap-2 border-b border-body-tertiary px-3 py-4">
+        <a class="btn btn-success w-100 w-lg-fit" href="{{ route('authors.create') }}">Add a new author</a>
 
-<div id="dashboardLeftFrame" class="flex-fill mw-100">
-  <x-dashboard-navigation selected="authors"></x-dashboard-navigation>
+        <x-query-accordion>
+          <form action="{{ route('authors.index') }}" method="get"
+            class="d-flex flex-column flex-lg-row gap-lg-1 py-lg-0 gap-2 py-3">
+            <input name="search" class="form-control" type="search" placeholder="Search"
+              value="{{ request()->query('search', '') }}" aria-label="Search">
 
-  <div class="container my-4">
-    <div class="mb-3 d-flex align-items-center justify-content-between flex-column flex-lg-row gap-2">
-      <a class="btn btn-success w-100 w-lg-fit" href="{{ route('authors.create') }}">Add a new author</a>
+            <select name="o" class="form-select">
+              <option selected disabled>Order by</option>
 
-      <x-query-accordion>
-        <form action="{{ route('authors.index') }}" method="get" class="d-flex gap-2 flex-column flex-lg-row gap-lg-1 py-3 py-lg-0">
-          <input name="search" class="form-control" type="search" placeholder="Search" value="{{ request()->query('search', '') }}" aria-label="Search">
+              @if (request()->query('o') === 'oldest')
+                <option selected value="oldest">Oldest</option>
+              @else
+                <option value="oldest">Oldest</option>
+              @endif
 
-          <select name="o" class="form-select">
-            <option selected disabled>Order by</option>
+              @if (request()->query('o') === 'latest')
+                <option selected value="latest">Latest</option>
+              @else
+                <option value="latest">Latest</option>
+              @endif
+            </select>
 
-            @if (request()->query('o') === "oldest")
-              <option selected value="oldest">Oldest</option>
-            @else
-              <option value="oldest">Oldest</option>
-            @endif
+            <button class="btn btn-outline-primary" type="submit">Apply</button>
+          </form>
+        </x-query-accordion>
+      </div>
 
-            @if (request()->query('o') === "latest")
-              <option selected value="latest">Latest</option>
-            @else
-              <option value="latest">Latest</option>
-            @endif
-          </select>
+      <div class="table-responsive px-3">
+        <table class="table-striped table-bordered table-hover table">
+          <thead>
+            <th scope="col" width="5%">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Address</th>
+            <th scope="col" width="15%">Phone</th>
+            <th scope="col" width="15%">Actions</th>
+          </thead>
 
-          <button class="btn btn-outline-primary" type="submit">Apply</button>
-        </form>
-      </x-query-accordion>
+          <tbody>
+            @foreach ($authors as $i => $author)
+              <tr>
+                <td>{{ ($authors->currentPage() - 1) * $authors->perPage() + $i+1 }}</td>
+                <td>{{ $author->name }}</td>
+                <td>{{ $author->address }}</td>
+                <td>{{ $author->phone }}</td>
+
+                <td class="d-flex gap-1">
+                  <button type="button" class="btn btn-info" data-bs-target="#detailsModal" data-bs-toggle="modal"
+                    hx-get="{{ route('authors.show', $author->id) }}" hx-target="#detailsBody" hx-swap="innerHTML">Show
+                  </button>
+
+                  <button type="button" class="btn btn-danger" hx-confirm="Are you sure you want to delete this author?"
+                    hx-headers='{"X-CSRF-TOKEN": "{{ csrf_token() }}"}'
+                    hx-delete="{{ route('authors.destroy', $author->id) }}" hx-target="closest tr"
+                    hx-swap="outerHTML">Delete
+                  </button>
+
+                  <a class="btn btn-warning" href="{{ route('authors.edit', $author->id) }}">Edit
+                  </a>
+                </td>
+              </tr>
+            @endforeach
+          </tbody>
+        </table>
+      </div>
+
+      <div class="d-flex align-items-center justify-content-between px-3 pt-2 pb-3">
+        <x-paginate-links :links="$authors" :useHtmx=false></x-paginate-links>
+
+        <x-paginate-counter :items="$authors"></x-paginate-counter>
+      </div>
     </div>
-
-    <div class="table-responsive">
-      <table class="table table-striped table-bordered table-hover">
-        <thead>
-          <th scope="col" width="5%">ID</th>
-          <th scope="col">Name</th>
-          <th scope="col">Address</th>
-          <th scope="col" width="15%">Phone</th>
-          <th scope="col" width="15%">Actions</th>
-        </thead>
-
-        <tbody>
-          @foreach ($authors as $author)
-            <tr>
-              <td>{{ $author->id }}</td>
-              <td>{{ $author->name }}</td>
-              <td>{{ $author->address }}</td>
-              <td>{{ $author->phone }}</td>
-
-              <td class="d-flex gap-1">
-                <button type="button" class="btn btn-info"
-                  data-bs-target="#detailsModal"
-                  data-bs-toggle="modal"
-                  hx-get="{{ route('authors.show', $author->id) }}"
-                  hx-target="#detailsBody"
-                  hx-swap="innerHTML">Show
-                </button>
-
-                <button type="button" class="btn btn-danger"
-                  hx-confirm="Are you sure you want to delete this author?"
-                  hx-headers='{"X-CSRF-TOKEN": "{{ csrf_token() }}"}'
-                  hx-delete="{{ route('authors.destroy', $author->id) }}"
-                  hx-target="closest tr"
-                  hx-swap="outerHTML">Delete
-                </button>
-
-                <a class="btn btn-warning"
-                  href="{{ route('authors.edit', $author->id) }}">Edit
-                </a>
-              </td>
-            </tr>
-          @endforeach
-        </tbody>
-      </table>
-    </div>
-
-    <x-paginate-links :links="$authors" :useHtmx=false></x-paginate-links>
-  </div>
-</div>
+  </x-dashboard-layout>
 @endsection
