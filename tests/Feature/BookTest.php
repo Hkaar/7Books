@@ -5,10 +5,13 @@ namespace Tests\Feature;
 use App\Models\Book;
 use App\Models\Role;
 use App\Models\User;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Tests\TestCase;
 
 class BookTest extends TestCase
 {
+    use WithoutMiddleware;
+    
     /**
      * Test whether the index dashboard route is working
      *
@@ -121,7 +124,9 @@ class BookTest extends TestCase
 
         $book = Book::factory()->create();
 
-        $response = $this->post("/books/{$book->id}/rate?rating=4");
+        $response = $this->post("/books/{$book->id}/rate", [
+            "rating" => 4,
+        ]);
         $response->assertStatus(200);
     }
 
