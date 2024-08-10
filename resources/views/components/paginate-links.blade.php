@@ -1,4 +1,4 @@
-<div {{ $attributes->merge(["class" => "overflow-auto py-3"]) }}>
+<div {{ $attributes->merge(["class" => "overflow-auto"]) }}>
   <ul class="pagination" style="margin: 0">
   @if ($links->onFirstPage())
     <li class="page-item disabled">
