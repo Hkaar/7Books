@@ -51,9 +51,9 @@
                 <td>{{ $genre->name }}</td>
 
                 <td class="d-flex gap-1">
-                  <button type="button" class="btn btn-info" data-bs-target="#detailsModal" data-bs-toggle="modal"
-                    hx-get="{{ route('genres.show', $genre->id) }}" hx-target="#detailsBody" hx-swap="innerHTML">Show
-                  </button>
+                  <a href="{{ route('genres.show', $genre->id) }}" class="btn btn-info">
+                    Show
+                  </a>
 
                   <button type="button" class="btn btn-danger" hx-confirm="Are you sure you want to delete this genre?"
                     hx-headers='{"X-CSRF-TOKEN": "{{ csrf_token() }}"}'
