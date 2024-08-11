@@ -17,7 +17,7 @@ trait Uploader
 
         [$width, $height] = $options['size'] ?? [null, null];
 
-        $name = $options['name'] ?? time() . '_' . $file->getClientOriginalName();
+        $name = $options['name'] ?? time() . '_' . $file->hashName() . $file->extension();
         $path = $file->storeAs($folder, $name, $disk);
 
         if ($width && $height) {

@@ -25,6 +25,13 @@ class Book extends Model
     ];
 
     /**
+     * The relationships that should always be loaded.
+     *
+     * @var array
+     */
+    protected $with = ['genres', 'authors'];
+
+    /**
      * Define the relationship with genres
      */
     public function genres()
@@ -98,5 +105,26 @@ class Book extends Model
     public function scopeOnlyBorrowed(Builder $query)
     {
         return $query->where('borrowed', '>', 0);
+    }
+
+    /**
+     * Get the book rating
+     */
+    public function rating()
+    {
+        $totalScore = 0;
+
+        $totalUsers = count($this->ratings);
+        $maxScore = $totalUsers * 5;
+
+        foreach ($this->ratings as $rating) {
+            $totalScore += $rating->rating;
+        }
+
+        if ($maxScore > 0) {
+            return ($totalScore / $maxScore) * 5;
+        }
+
+        return 0;
     }
 }

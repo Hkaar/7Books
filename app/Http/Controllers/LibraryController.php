@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Library;
+use App\Models\Region;
 use Illuminate\Http\Request;
 
 class LibraryController extends Controller
@@ -24,7 +25,11 @@ class LibraryController extends Controller
      */
     public function create()
     {
-        return view('library.create');
+        $regions = Region::all(['id', 'name']);
+
+        return view('library.create', [
+            'regions' => $regions,
+        ]);
     }
 
     /**
@@ -41,7 +46,7 @@ class LibraryController extends Controller
         $library = new Library;
         $library->fill($validated)->save();
 
-        return redirect()->route('library.index');
+        return redirect()->route('libraries.index');
     }
 
     /**
@@ -62,9 +67,11 @@ class LibraryController extends Controller
     public function edit(int $id)
     {
         $library = Library::findOrFail($id);
+        $regions = Region::all(['id', 'name']);
 
         return view('library.edit', [
             'library' => $library,
+            'regions' => $regions,
         ]);
     }
 
@@ -82,7 +89,7 @@ class LibraryController extends Controller
         $library = new Library;
         $library->fill($validated)->save();
 
-        return redirect()->route('library.index');
+        return redirect()->route('libraries.index');
     }
 
     /**

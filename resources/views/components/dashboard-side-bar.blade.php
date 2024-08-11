@@ -38,42 +38,59 @@
 
     <hr>
 
-    @if (auth()->user()?->isPrivileged())
-      <a href="{{ $selected === 'user' ? '#' : route('users.index') }}" class="nav-item p-3 rounded gap-2 {{ $selected === 'user' ? 'active' : '' }}">
-        <i class="fa-solid fa-user"></i>
-        <span class="nav-item-title">Users</span>
+    <div class="d-flex flex-column mb-3 gap-1">
+      <span class="fw-medium nav-item-title text-h6">Users</span>
+
+      @if (auth()->user()?->isPrivileged())
+        <a href="{{ $selected === 'user' ? '#' : route('users.index') }}" class="nav-item p-3 rounded gap-2 {{ $selected === 'user' ? 'active' : '' }}">
+          <i class="fa-solid fa-user"></i>
+          <span class="nav-item-title">Users</span>
+        </a>
+      @endif
+
+      <a href="{{ $selected === 'order' ? '#' : route('orders.index') }}" class="nav-item p-3 rounded gap-2 {{ $selected === 'order' ? 'active' : '' }}">
+        <i class="fa-solid fa-list"></i>
+        <span class="nav-item-title">Orders</span>
       </a>
-    @endif
+    </div>
 
-    <a href="{{ $selected === 'order' ? '#' : route('orders.index') }}" class="nav-item p-3 rounded gap-2 {{ $selected === 'order' ? 'active' : '' }}">
-      <i class="fa-solid fa-list"></i>
-      <span class="nav-item-title">Orders</span>
-    </a>
+    <div class="d-flex flex-column mb-3 gap-1">
+      <span class="fw-medium nav-item-title text-h6">Books</span>
 
-    <a href="{{ $selected === 'book' ? '#' : route('books.index') }}" class="nav-item p-3 rounded gap-2 {{ $selected === 'book' ? 'active' : '' }}">
-      <i class="fa-solid fa-book"></i>
-      <span class="nav-item-title">Books</span>
-    </a>
+      <a href="{{ $selected === 'book' ? '#' : route('books.index') }}" class="nav-item p-3 rounded gap-2 {{ $selected === 'book' ? 'active' : '' }}">
+        <i class="fa-solid fa-book"></i>
+        <span class="nav-item-title">Books</span>
+      </a>
 
-    <a href="{{ $selected === 'library' ? '#' : route('libraries.index') }}" class="nav-item p-3 rounded gap-2 {{ $selected === 'library' ? 'active' : '' }}">
-      <i class="fa-solid fa-book-open"></i>
-      <span class="nav-item-title">Libraries</span>
-    </a>
+      <a href="{{ $selected === 'author' ? '#' : route('authors.index') }}" class="nav-item p-3 rounded gap-2 {{ $selected === 'author' ? 'active' : '' }}">
+        <i class="fa-solid fa-pen-nib"></i>
+        <span class="nav-item-title">Authors</span>
+      </a>
 
-    <a href="{{ $selected === 'author' ? '#' : route('authors.index') }}" class="nav-item p-3 rounded gap-2 {{ $selected === 'author' ? 'active' : '' }}">
-      <i class="fa-solid fa-pen"></i>
-      <span class="nav-item-title">Authors</span>
-    </a>
+      <a href="{{ $selected === 'genre' ? '#' : route('genres.index') }}" class="nav-item p-3 rounded gap-2 {{ $selected === 'genre' ? 'active' : '' }}">
+        <i class="fa-solid fa-tags"></i>
+        <span class="nav-item-title">Genres</span>
+      </a>
+    </div>
 
-    <a href="{{ $selected === 'genre' ? '#' : route('genres.index') }}" class="nav-item p-3 rounded gap-2 {{ $selected === 'genre' ? 'active' : '' }}">
-      <i class="fa-solid fa-tag"></i>
-      <span class="nav-item-title">Genres</span>
-    </a>
+    <div class="d-flex flex-column mb-3 gap-1">
+      <span class="fw-medium nav-item-title text-h6">Content</span>
 
-    <a href="{{ $selected === 'region' ? '#' : route('regions.index') }}" class="nav-item p-3 rounded gap-2 {{ $selected === 'region' ? 'active' : '' }}">
-      <i class="fa-solid fa-earth-americas"></i>
-      <span class="nav-item-title">Regions</span>
-    </a>
+      <a href="{{ $selected === 'article' ? '#' : route('regions.index') }}" class="nav-item p-3 rounded gap-2 {{ $selected === 'article' ? 'active' : '' }}">
+        <i class="fa-regular fa-file-lines"></i>
+        <span class="nav-item-title">Articles</span>
+      </a>
+
+      <a href="{{ $selected === 'library' ? '#' : route('libraries.index') }}" class="nav-item p-3 rounded gap-2 {{ $selected === 'library' ? 'active' : '' }}">
+        <i class="fa-solid fa-book-open"></i>
+        <span class="nav-item-title">Libraries</span>
+      </a>
+
+      <a href="{{ $selected === 'region' ? '#' : route('regions.index') }}" class="nav-item p-3 rounded gap-2 {{ $selected === 'region' ? 'active' : '' }}">
+        <i class="fa-solid fa-earth-americas"></i>
+        <span class="nav-item-title">Regions</span>
+      </a>
+    </div>
 
     <a href="#" class="nav-item p-3 rounded gap-2 mt-auto">
       <i class="fa-solid fa-gear"></i>

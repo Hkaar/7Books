@@ -14,7 +14,7 @@ class OrderFilterService
      */
     public function filter(array $filters)
     {
-        $orders = Order::query();
+        $orders = Order::with('status', 'user');
         $filterKeys = array_keys($filters);
 
         $this->genericFilter($orders, $filters);

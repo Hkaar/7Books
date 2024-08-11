@@ -60,7 +60,7 @@
 
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center">
           <span class="text-tertiary">
-            Current trends in papers
+            Rising up the index of ranks
           </span>
 
           <div class="d-md-flex align-items-center gap-1 d-none">
@@ -80,71 +80,71 @@
       <div id="trendingBookSlider" class="swiper">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
-            <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
+            <a class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink" href="{{ route('login') }}">
+              <img src="{{ Vite::asset('resources/images/examples/riverofbrokenglass.jpg') }}" class="card-img-top" alt="Image not available">
 
               <div class="title svb-transition-fast">
-                Harry potter
+                River of Broken Glass
+              </div>
+            </a>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
+              <img src="{{ Vite::asset('resources/images/examples/hunted-004.jpg') }}" class="card-img-top" alt="Image not available">
+
+              <div class="title svb-transition-fast">
+                Hunted
               </div>
             </div>
           </div>
 
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
+              <img src="{{ Vite::asset('resources/images/examples/thegreensoldier.jpg') }}" class="card-img-top" alt="Image not available">
 
               <div class="title svb-transition-fast">
-                Harry potter
+                The Green Soldier
               </div>
             </div>
           </div>
 
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
+              <img src="{{ Vite::asset('resources/images/examples/parasite.jpg') }}" class="card-img-top" alt="Image not available">
 
               <div class="title svb-transition-fast">
-                Harry potter
+                Parasite
               </div>
             </div>
           </div>
 
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
+              <img src="{{ Vite::asset('resources/images/examples/theuberfights.jpg') }}" class="card-img-top" alt="Image not available">
 
               <div class="title svb-transition-fast">
-                Harry potter
+                The Uber Fights
               </div>
             </div>
           </div>
 
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
+              <img src="{{ Vite::asset('resources/images/examples/boundbyadragon.jpg') }}" class="card-img-top" alt="Image not available">
 
               <div class="title svb-transition-fast">
-                Harry potter
+                Bound by a Dragon
               </div>
             </div>
           </div>
 
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
+              <img src="{{ Vite::asset('resources/images/examples/silentchild.jpg') }}" class="card-img-top" alt="Image not available">
 
               <div class="title svb-transition-fast">
-                Harry potter
-              </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
-
-              <div class="title svb-transition-fast">
-                Harry potter
+                Silent Child
               </div>
             </div>
           </div>
@@ -181,15 +181,48 @@
 
       <div id="authorProfileSlider" class="swiper">
         <div class="swiper-wrapper">
-          <div class="swiper-slide bg-primary rounded-circle ratio-box" style="height: 200px">Slide 1</div>
-          <div class="swiper-slide bg-secondary rounded-circle ratio-box" style="height: 200px">Slide 2</div>
-          <div class="swiper-slide bg-primary rounded-circle ratio-box" style="height: 200px">Slide 3</div>
-          <div class="swiper-slide bg-secondary rounded-circle ratio-box" style="height: 200px">Slide 4</div>
-          <div class="swiper-slide bg-primary rounded-circle ratio-box" style="height: 200px">Slide 5</div>
-          <div class="swiper-slide bg-secondary rounded-circle ratio-box" style="height: 200px">Slide 6</div>
-          <div class="swiper-slide bg-primary rounded-circle ratio-box" style="height: 200px">Slide 7</div>
-          <div class="swiper-slide bg-secondary rounded-circle ratio-box" style="height: 200px">Slide 8</div>
-          <div class="swiper-slide bg-primary rounded-circle ratio-box" style="height: 200px">Slide 9</div>
+          <div class="swiper-slide">
+            <div class="svb-profile svb-transition-fast hover-grow hover-darkened active-shrink" style="background-image: url({{ Vite::asset('resources/images/examples/darcy-coates.jpg') }})">
+              <span class="overlay svb-transition-fast">
+                Darcy Coates
+              </span>
+            </div>
+          </div>
+          <div class="swiper-slide rounded-circle ratio-box svb-profile">
+            <div class="svb-profile svb-transition-fast hover-grow hover-darkened active-shrink" style="background-image: url({{ Vite::asset('resources/images/examples/linda-k-hopkins.jpg') }})">
+              <span class="overlay svb-transition-fast">
+                Linda K. Hopkins
+              </span>
+            </div>
+          </div>
+          <div class="swiper-slide rounded-circle ratio-box svb-profile">
+            <div class="svb-profile svb-transition-fast hover-grow hover-darkened active-shrink" style="background-image: url({{ Vite::asset('resources/images/examples/sarah-a-denzil.jpg') }})">
+              <span class="overlay svb-transition-fast">
+                Sarah a Denzil
+              </span>
+            </div>
+          </div>
+          <div class="swiper-slide rounded-circle ratio-box svb-profile">
+            <div class="svb-profile svb-transition-fast hover-grow hover-darkened active-shrink" style="background-image: url({{ Vite::asset('resources/images/examples/j-edward-gore.jpg') }})">
+              <span class="overlay svb-transition-fast">
+                J. Edward Gore
+              </span>
+            </div>
+          </div>
+          <div class="swiper-slide rounded-circle ratio-box svb-profile">
+            <div class="svb-profile svb-transition-fast hover-grow hover-darkened active-shrink" style="background-image: url({{ Vite::asset('resources/images/examples/j-zachary-pike.jpg') }})">
+              <span class="overlay svb-transition-fast">
+                J. Zachary Pike
+              </span>
+            </div>
+          </div>
+          <div class="swiper-slide rounded-circle ratio-box svb-profile">
+            <div class="svb-profile svb-transition-fast hover-grow hover-darkened active-shrink" style="background-image: url({{ Vite::asset('resources/images/examples/david-neilson.jpg') }})">
+              <span class="overlay svb-transition-fast">
+                David Neilson
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -223,70 +256,70 @@
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
+              <img src="{{ Vite::asset('resources/images/examples/thetests.jpg') }}" class="card-img-top" alt="Image not available">
 
               <div class="title svb-transition-fast">
-                Harry potter
+                The Tests
               </div>
             </div>
           </div>
 
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
+              <img src="{{ Vite::asset('resources/images/examples/hunted-004.jpg') }}" class="card-img-top" alt="Image not available">
 
               <div class="title svb-transition-fast">
-                Harry potter
+                Hunted
               </div>
             </div>
           </div>
 
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
+              <img src="{{ Vite::asset('resources/images/examples/theinvisiblenation.jpg') }}" class="card-img-top" alt="Image not available">
 
               <div class="title svb-transition-fast">
-                Harry potter
+                The Invisible Nation
               </div>
             </div>
           </div>
 
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
+              <img src="{{ Vite::asset('resources/images/examples/parasite.jpg') }}" class="card-img-top" alt="Image not available">
 
               <div class="title svb-transition-fast">
-                Harry potter
+                Parasite
               </div>
             </div>
           </div>
 
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
+              <img src="{{ Vite::asset('resources/images/examples/thedreamshifters.jpg') }}" class="card-img-top" alt="Image not available">
 
               <div class="title svb-transition-fast">
-                Harry potter
+                The Dream Shifters
               </div>
             </div>
           </div>
 
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
+              <img src="{{ Vite::asset('resources/images/examples/asongofthreespirits.jpg') }}" class="card-img-top" alt="Image not available">
 
               <div class="title svb-transition-fast">
-                Harry potter
+                A Song of Three Spirits
               </div>
             </div>
           </div>
 
           <div class="swiper-slide">
             <div class="card svb-card svb-transition-fast hover-darkened hover-grow active-shrink">
-              <img src="{{ URL::asset('assets/imgs/book.jpg') }}" class="card-img-top" alt="Image not available">
+              <img src="{{ Vite::asset('resources/images/examples/silentchild.jpg') }}" class="card-img-top" alt="Image not available">
 
               <div class="title svb-transition-fast">
-                Harry potter
+                Silent Child
               </div>
             </div>
           </div>
@@ -323,15 +356,15 @@
 
       <div id="genreSlider" class="swiper">
         <div class="swiper-wrapper">
-          <div class="swiper-slide bg-primary rounded-circle ratio-box" style="height: 200px">Slide 1</div>
-          <div class="swiper-slide bg-secondary rounded-circle ratio-box" style="height: 200px">Slide 2</div>
-          <div class="swiper-slide bg-primary rounded-circle ratio-box" style="height: 200px">Slide 3</div>
-          <div class="swiper-slide bg-secondary rounded-circle ratio-box" style="height: 200px">Slide 4</div>
-          <div class="swiper-slide bg-primary rounded-circle ratio-box" style="height: 200px">Slide 5</div>
-          <div class="swiper-slide bg-secondary rounded-circle ratio-box" style="height: 200px">Slide 6</div>
-          <div class="swiper-slide bg-primary rounded-circle ratio-box" style="height: 200px">Slide 7</div>
-          <div class="swiper-slide bg-secondary rounded-circle ratio-box" style="height: 200px">Slide 8</div>
-          <div class="swiper-slide bg-primary rounded-circle ratio-box" style="height: 200px">Slide 9</div>
+          <div class="swiper-slide bg-primary rounded-circle ratio-box svb-profile d-flex flex-column justify-content-center text-h5 fw-semibold px-3 text-white shadow">Fantasy</div>
+          <div class="swiper-slide bg-danger rounded-circle ratio-box svb-profile d-flex flex-column justify-content-center text-h5 fw-semibold px-3 text-white shadow">Horror</div>
+          <div class="swiper-slide bg-warning rounded-circle ratio-box svb-profile d-flex flex-column justify-content-center text-h5 fw-semibold px-3 text-white shadow">Thriller</div>
+          <div class="swiper-slide bg-danger rounded-circle ratio-box svb-profile d-flex flex-column justify-content-center text-h5 fw-semibold px-3 text-white shadow">Romance</div>
+          <div class="swiper-slide bg-secondary rounded-circle ratio-box svb-profile d-flex flex-column justify-content-center text-h5 fw-semibold px-3 text-white shadow">Sci-fi</div>
+          <div class="swiper-slide bg-warning rounded-circle ratio-box svb-profile d-flex flex-column justify-content-center text-h5 fw-semibold px-3 text-white shadow">Action</div>
+          <div class="swiper-slide bg-tertiary rounded-circle ratio-box svb-profile d-flex flex-column justify-content-center text-h5 fw-semibold px-3 text-white shadow">Non-fiction</div>
+          <div class="swiper-slide bg-info rounded-circle ratio-box svb-profile d-flex flex-column justify-content-center text-h5 fw-semibold px-3 text-white shadow">Illustration</div>
+          <div class="swiper-slide bg-warning rounded-circle ratio-box svb-profile d-flex flex-column justify-content-center text-h5 fw-semibold px-3 text-white shadow">Comedy</div>
         </div>
       </div>
     </div>
@@ -340,12 +373,12 @@
   <section id="faq" class="d-flex py-5">
     <div class="container flex-fill">
       <div class="row h-100">
-        <div class="col-12 col-lg-6 d-flex flex-column justify-content-center">
+        <div class="col-12 col-lg-6 d-flex flex-column align-items-center align-items-lg-start text-center text-lg-start justify-content-center mb-3 mb-lg-0">
           <h3 class="text-h3 fw-semibold mb-3 w-75">
             Commonly asked questions
           </h3>
 
-          <p class="w-75">
+          <p class="w-75 d-none d-md-block">
             Confused about something? See our most commonly
             asked questions for a quick answer
           </p>

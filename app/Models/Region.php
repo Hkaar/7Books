@@ -24,6 +24,7 @@ class Region extends Model
     protected $fillable = [
         'name',
         'desc',
+        'timezone',
     ];
 
     /**
@@ -43,10 +44,10 @@ class Region extends Model
     }
 
     /**
-     * Define relationship with order items
+     * Define the relationship with users
      */
-    public function items()
+    public function users()
     {
-        return $this->hasMany(OrderItem::class, 'region_id', 'id');
+        return $this->belongsToMany(User::class, 'user_regions');
     }
 }
