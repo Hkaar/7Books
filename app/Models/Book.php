@@ -120,6 +120,10 @@ class Book extends Model
             $totalScore += $rating->rating;
         }
 
-        return ($totalScore/$maxScore) * 5;
+        if ($maxScore > 0) {
+            return ($totalScore/$maxScore) * 5;
+        }
+
+        return 0;
     }
 }
