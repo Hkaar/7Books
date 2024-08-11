@@ -110,18 +110,19 @@ class Book extends Model
     /**
      * Get the book rating
      */
-    public function rating() {
+    public function rating()
+    {
         $totalScore = 0;
 
         $totalUsers = count($this->ratings);
-        $maxScore = $totalUsers*5;
+        $maxScore = $totalUsers * 5;
 
         foreach ($this->ratings as $rating) {
             $totalScore += $rating->rating;
         }
 
         if ($maxScore > 0) {
-            return ($totalScore/$maxScore) * 5;
+            return ($totalScore / $maxScore) * 5;
         }
 
         return 0;

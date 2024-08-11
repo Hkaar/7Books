@@ -22,11 +22,11 @@
             <i class="fa-regular fa-x"></i>
           </button>
         </div>
-  
+
         <div class="modal-body">
           <p id="confirmText" class="py-3"></p>
         </div>
-  
+
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" id="cancelButton" data-bs-dismiss="modal">Cancel</button>
           <button type="button" class="btn btn-danger" id="confirmButton">Proceed Anyway</button>
