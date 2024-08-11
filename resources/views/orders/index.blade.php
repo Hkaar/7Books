@@ -84,9 +84,9 @@
                 <td>{{ ucfirst(str_replace('_', ' ', $order->status->name)) }}</td>
   
                 <td class="d-flex gap-1">
-                  <button type="button" class="btn btn-info" data-bs-target="#detailsModal" data-bs-toggle="modal"
-                    hx-get="{{ route('orders.show', $order->id) }}" hx-target="#detailsBody" hx-swap="innerHTML">Show
-                  </button>
+                  <a href="{{ route('orders.show', $order->id) }}" class="btn btn-info">
+                    Show
+                  </a>
   
                   <button type="button" class="btn btn-danger" hx-confirm="Are you sure you want to delete this order?"
                     hx-headers='{"X-CSRF-TOKEN": "{{ csrf_token() }}"}'
