@@ -42,7 +42,7 @@
             <i class="fa-regular fa-sun d-none"></i>
           </button>
 
-          <span class="d-lg-none" id="themeStatus">Switch to dark theme</span>
+          <span class="d-md-none" id="themeStatus">Switch to dark theme</span>
         </div>
       </ul>
     </div>
