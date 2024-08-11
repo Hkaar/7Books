@@ -48,11 +48,17 @@ jobs:
       - name: Run storage link
         run: php artisan storage:link
 
-      - name: Generate key
-        run: php artisan key:generate --env=testing
-
       - name: Clear view cache
         run: php artisan view:clear
+      
+      - name: Clear config cache
+        run: php artisan config:clear
+
+      - name: Clear app cache
+        run: php artisan cache:clear
+
+      - name: Generate key
+        run: php artisan key:generate --env=testing
 
       - name: Run tests
         run: php artisan test
