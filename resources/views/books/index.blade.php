@@ -81,9 +81,9 @@
                 <td>{{ $book->price }}</td>
   
                 <td class="d-flex gap-1">
-                  <button type="button" class="btn btn-info" data-bs-target="#detailsModal" data-bs-toggle="modal"
-                    hx-get="{{ URL::to('manage/books/' . $book->id) }}" hx-target="#detailsBody" hx-swap="innerHTML">Show
-                  </button>
+                  <a href="{{ route('books.show', $book->id) }}" class="btn btn-info">
+                    Show
+                  </a>
   
                   <button type="button" class="btn btn-danger" hx-confirm="Are you sure you want to delete this book?"
                     hx-headers='{"X-CSRF-TOKEN": "{{ csrf_token() }}"}'

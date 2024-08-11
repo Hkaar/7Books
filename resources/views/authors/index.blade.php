@@ -54,9 +54,9 @@
                 <td>{{ $author->phone }}</td>
 
                 <td class="d-flex gap-1">
-                  <button type="button" class="btn btn-info" data-bs-target="#detailsModal" data-bs-toggle="modal"
-                    hx-get="{{ route('authors.show', $author->id) }}" hx-target="#detailsBody" hx-swap="innerHTML">Show
-                  </button>
+                  <a href="{{ route('authors.show', $author->id) }}" class="btn btn-info">
+                    Show
+                  </a>
 
                   <button type="button" class="btn btn-danger" hx-confirm="Are you sure you want to delete this author?"
                     hx-headers='{"X-CSRF-TOKEN": "{{ csrf_token() }}"}'
