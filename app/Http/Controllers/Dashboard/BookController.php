@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
+use App\Http\Controllers\Controller;
 
 use App\Models\Author;
 use App\Models\Book;
@@ -44,7 +45,7 @@ class BookController extends Controller
         $genres = Genre::all(['id', 'name']);
         $authors = Author::all(['id', 'name']);
 
-        return view('books.index', [
+        return view('dashboard.books.index', [
             'books' => $books,
             'authors' => $authors,
             'genres' => $genres,
@@ -56,7 +57,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        return view('books.create');
+        return view('dashboard.books.create');
     }
 
     /**
@@ -100,7 +101,7 @@ class BookController extends Controller
         $genres = $book->genres()->get();
         $authors = $book->authors()->get();
 
-        return view('books.show', [
+        return view('dashboard.books.show', [
             'book' => $book,
             'genres' => $genres,
             'authors' => $authors,
@@ -114,7 +115,7 @@ class BookController extends Controller
     {
         $book = Book::findOrFail($id);
 
-        return view('books.edit', [
+        return view('dashboard.books.edit', [
             'book' => $book,
         ]);
     }
@@ -181,7 +182,7 @@ class BookController extends Controller
     {
         $books = Book::paginate(3);
 
-        return view('books.select', [
+        return view('dashboard.books.select', [
             'books' => $books,
         ]);
     }
@@ -193,7 +194,7 @@ class BookController extends Controller
     {
         $books = Book::paginate(3);
 
-        return view('books.multi-select', [
+        return view('dashboard.books.multi-select', [
             'books' => $books,
         ]);
     }
@@ -231,7 +232,7 @@ class BookController extends Controller
     {
         $book = Book::findOrFail($id);
 
-        return view('books.display', [
+        return view('dashboard.books.display', [
             'book' => $book,
         ]);
     }

@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
+use App\Http\Controllers\Controller;
 
 use App\Models\Library;
 use App\Models\Region;
@@ -15,7 +16,7 @@ class LibraryController extends Controller
     {
         $libraries = Library::paginate(20);
 
-        return view('library.index', [
+        return view('dashboard.library.index', [
             'libraries' => $libraries,
         ]);
     }
@@ -27,7 +28,7 @@ class LibraryController extends Controller
     {
         $regions = Region::all(['id', 'name']);
 
-        return view('library.create', [
+        return view('dashboard.library.create', [
             'regions' => $regions,
         ]);
     }
@@ -56,7 +57,7 @@ class LibraryController extends Controller
     {
         $library = Library::findOrFail($id);
 
-        return view('library.show', [
+        return view('dashboard.library.show', [
             'library' => $library,
         ]);
     }
@@ -69,7 +70,7 @@ class LibraryController extends Controller
         $library = Library::findOrFail($id);
         $regions = Region::all(['id', 'name']);
 
-        return view('library.edit', [
+        return view('dashboard.library.edit', [
             'library' => $library,
             'regions' => $regions,
         ]);

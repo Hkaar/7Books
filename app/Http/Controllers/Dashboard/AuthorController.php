@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
+use App\Http\Controllers\Controller;
 
 use App\Models\Author;
 use App\Services\AuthorFilterService;
@@ -33,7 +34,7 @@ class AuthorController extends Controller
         $authors = $this->filterService->filter($filters);
         $authors->appends($request->query());
 
-        return view('authors.index', [
+        return view('dashboard.authors.index', [
             'authors' => $authors,
         ]);
     }
@@ -43,7 +44,7 @@ class AuthorController extends Controller
      */
     public function create()
     {
-        return view('authors.create');
+        return view('dashboard.authors.create');
     }
 
     /**
@@ -91,7 +92,7 @@ class AuthorController extends Controller
         $author = Author::findOrFail($id);
         $books = $author->books()->get(['name']);
 
-        return view('authors.show', [
+        return view('dashboard.authors.show', [
             'author' => $author,
             'books' => $books,
         ]);
@@ -113,7 +114,7 @@ class AuthorController extends Controller
 
         $items = json_encode($items);
 
-        return view('authors.edit', [
+        return view('dashboard.authors.edit', [
             'author' => $author,
             'items' => $items,
         ]);
@@ -183,7 +184,7 @@ class AuthorController extends Controller
 
         $books = $author->books()->paginate(3);
 
-        return view('authors.authored', [
+        return view('dashboard.authors.authored', [
             'books' => $books,
             'author' => $author,
         ]);

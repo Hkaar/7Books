@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
+use App\Http\Controllers\Controller;
 
 use App\Models\Role;
 use App\Models\User;
@@ -36,7 +37,7 @@ class UserController extends Controller
 
         $roles = Role::all(['id', 'name']);
 
-        return view('users.index', [
+        return view('dashboard.users.index', [
             'users' => $users,
             'roles' => $roles,
         ]);
@@ -49,7 +50,7 @@ class UserController extends Controller
     {
         $roles = Role::all(['id', 'name']);
 
-        return view('users.create', [
+        return view('dashboard.users.create', [
             'roles' => $roles,
         ]);
     }
@@ -92,7 +93,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
-        return view('users.show', [
+        return view('dashboard.users.show', [
             'user' => $user,
         ]);
     }
@@ -105,7 +106,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $roles = Role::all(['id', 'name']);
 
-        return view('users.edit', [
+        return view('dashboard.users.edit', [
             'user' => $user,
             'roles' => $roles,
         ]);

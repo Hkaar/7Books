@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
+use App\Http\Controllers\Controller;
 
 use App\Models\Genre;
 use App\Services\GenreFilterService;
@@ -29,7 +30,7 @@ class GenreController extends Controller
         $genres = $this->filterService->filter($filters);
         $genres->appends($request->query());
 
-        return view('genres.index', [
+        return view('dashboard.genres.index', [
             'genres' => $genres,
         ]);
     }
@@ -39,7 +40,7 @@ class GenreController extends Controller
      */
     public function create()
     {
-        return view('genres.create');
+        return view('dashboard.genres.create');
     }
 
     /**
@@ -74,7 +75,7 @@ class GenreController extends Controller
         $genre = Genre::findOrFail($id);
         $books = $genre->books()->paginate(3);
 
-        return view('genres.show', [
+        return view('dashboard.genres.show', [
             'genre' => $genre,
             'books' => $books,
         ]);
@@ -96,7 +97,7 @@ class GenreController extends Controller
 
         $items = json_encode($items);
 
-        return view('genres.edit', [
+        return view('dashboard.genres.edit', [
             'genre' => $genre,
             'items' => $items,
         ]);

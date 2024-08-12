@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
+use App\Http\Controllers\Controller;
 
 use App\Models\Region;
 use App\Services\GenericFilterService;
@@ -31,7 +32,7 @@ class RegionController extends Controller
         ]);
         $regions->appends($request->query());
 
-        return view('regions.index', [
+        return view('dashboard.regions.index', [
             'regions' => $regions,
         ]);
     }
@@ -41,7 +42,7 @@ class RegionController extends Controller
      */
     public function create()
     {
-        return view('regions.create');
+        return view('dashboard.regions.create');
     }
 
     /**
@@ -68,7 +69,7 @@ class RegionController extends Controller
     {
         $region = Region::findOrFail($id);
 
-        return view('regions.show', [
+        return view('dashboard.regions.show', [
             'region' => $region,
         ]);
     }
@@ -80,7 +81,7 @@ class RegionController extends Controller
     {
         $region = Region::findOrFail($id);
 
-        return view('regions.edit', [
+        return view('dashboard.regions.edit', [
             'region' => $region,
         ]);
     }
