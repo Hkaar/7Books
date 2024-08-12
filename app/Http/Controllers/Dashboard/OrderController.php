@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
+use App\Http\Controllers\Controller;
 
 use App\Http\Requests\OrderCreateRequest;
 use App\Http\Requests\OrderUpdateRequest;
@@ -36,7 +37,7 @@ class OrderController extends Controller
 
         $statuses = Status::all(['id', 'name']);
 
-        return view('orders.index', [
+        return view('dashboard.orders.index', [
             'orders' => $orders,
             'statuses' => $statuses,
         ]);
@@ -49,7 +50,7 @@ class OrderController extends Controller
     {
         $statuses = Status::all(['id', 'name']);
 
-        return view('orders.create', [
+        return view('dashboard.orders.create', [
             'statuses' => $statuses,
         ]);
     }
@@ -96,7 +97,7 @@ class OrderController extends Controller
         $order = Order::findOrFail($id);
         $statuses = Status::all(['id', 'name']);
 
-        return view('orders.show', [
+        return view('dashboard.orders.show', [
             'order' => $order,
             'statuses' => $statuses,
         ]);
@@ -121,7 +122,7 @@ class OrderController extends Controller
 
         $items = json_encode($items);
 
-        return view('orders.edit', [
+        return view('dashboard.orders.edit', [
             'order' => $order,
             'user' => $user,
             'items' => $items,
@@ -187,7 +188,7 @@ class OrderController extends Controller
 
         $items = $order->items()->with('book')->paginate(3);
 
-        return view('orders.items', [
+        return view('dashboard.orders.items', [
             'items' => $items,
             'order' => $order,
         ]);
