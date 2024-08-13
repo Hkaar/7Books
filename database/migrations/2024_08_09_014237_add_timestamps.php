@@ -15,6 +15,10 @@ return new class extends Migration
         Schema::table('libraries', function (Blueprint $table) {
             $table->timestamps();
         });
+
+        Schema::table('content_types', function(Blueprint $table) {
+            $table->timestamps();
+        });
     }
 
     public function down(): void
