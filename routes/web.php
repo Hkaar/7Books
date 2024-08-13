@@ -18,6 +18,9 @@ Route::group(['namespace' => "App\Http\Controllers"], function () {
     Route::get('browse', 'HomeController@browse')->name('browse');
     Route::get('denied', 'HomeController@denied')->name('denied');
 
+    Route::get('blog', "ArticleController@index")->name('blog');
+    Route::get('blog/{slug}', "ArticleController@show")->name('blog.show');
+
     Route::group(['middleware' => ['auth']], function () {
         Route::get('logout', 'LogoutController@perform')->name('logout');
 
@@ -54,7 +57,7 @@ Route::group(["namespace" => "App\Http\Controllers\Dashboard"], function() {
         Route::resource('genres', 'GenreController')->names('genres');
         Route::resource('library', 'LibraryController')->names('libraries');
         Route::resource('region', 'RegionController')->names('regions');
-        Route::resource('articles', 'ArticleController')->names('article');
+        Route::resource('articles', 'ArticleController')->names('articles');
 
         Route::middleware('verify.admin')->group(function () {
             Route::resource('users', 'UserController')->names('users');
@@ -63,3 +66,13 @@ Route::group(["namespace" => "App\Http\Controllers\Dashboard"], function() {
 });
 
 Route::redirect('manage', '/manage/orders');
+
+
+// TODO! REMOVE THESE AFTER A WEEK
+Route::get('articles/kemerdekaan-sebangsa-putih-merah', function() {
+    return view('articles.demo');
+})->name('articles.demo');
+
+Route::get('articles/keanekaragaman-bangsa-besar', function() {
+    return view('articles.demo2');
+})->name('articles.demo2');
