@@ -9,19 +9,19 @@
 
         <div class="d-flex gap-3 items-center">
           <a href="#">
-            <img src="{{ Vite::asset('resources/images/instagram.svg') }}" alt="Instagram" class="logo-xs">
+            <img src="{{ Vite::asset('resources/images/instagram.svg') }}" alt="Instagram" class="logo-sm">
           </a>
 
           <a href="#">
-            <img src="{{ Vite::asset('resources/images/x.svg') }}" alt="X" class="logo-xs">
+            <img src="{{ Vite::asset('resources/images/x.svg') }}" alt="X" class="logo-sm">
           </a>
 
           <a href="#">
-            <img src="{{ Vite::asset('resources/images/github.svg') }}" alt="Github" class="logo-xs">
+            <img src="{{ Vite::asset('resources/images/github.svg') }}" alt="Github" class="logo-sm">
           </a>
 
           <a href="#">
-            <img src="{{ Vite::asset('resources/images/youtube.svg') }}" alt="Youtube" class="logo-xs">
+            <img src="{{ Vite::asset('resources/images/youtube.svg') }}" alt="Youtube" class="logo-sm">
           </a>
         </div>
       </div>
