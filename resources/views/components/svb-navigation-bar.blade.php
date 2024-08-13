@@ -59,21 +59,13 @@
 
           @if ($active === 'blog')
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{{ route('browse') }}">Our blog</a>
+              <a class="nav-link active" aria-current="page" href="">Our blog</a>
             </li>
           @else
             <li class="nav-item">
-              <a class="nav-link" href="">Blog</a>
+              <a class="nav-link" href="{{ route('blog') }}">Our blog</a>
             </li>
           @endif
-
-          @auth
-            @if (auth()->user()->isPrivileged())
-              <li class="nav-item">
-                <a class="nav-link" href="{{ route('orders.index') }}">Dashboard</a>
-              </li>
-            @endif
-          @endauth
         @endif
 
         <div class="d-flex align-items-center b-primary">
@@ -114,7 +106,14 @@
                 </span>
               </a>
               <ul class="dropdown-menu mt-lg-0 mt-2">
-                <li><a class="dropdown-item" href="{{ route('users.me') }}">View account</a></li>
+                <li>
+                  <a class="dropdown-item" href="{{ route('users.me') }}">View account</a>
+                </li>
+                @if (auth()->user()->isPrivileged())
+                  <li>
+                    <a class="dropdown-item" href="{{ route('orders.index') }}">Go to Dashboard</a>
+                  </li>
+                @endif
                 <li>
                   <hr class="dropdown-divider">
                 </li>
