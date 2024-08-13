@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -35,5 +36,13 @@ class Article extends Model
     public function articleContents()
     {
         return $this->hasMany(ArticleContent::class, "article_id", "id");
+    }
+
+    /**
+     * Scope a query by a user's id
+     */
+    public function scopeByUser(Builder $query, int $userId)
+    {
+        return $query->where("user_id", "=", $userId);
     }
 }
