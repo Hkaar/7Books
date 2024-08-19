@@ -27,7 +27,7 @@ class Article extends Model
      */
     public function user()
     {
-        return $this->belongsTo(User::class, "user_id", "id");
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     /**
@@ -35,7 +35,7 @@ class Article extends Model
      */
     public function articleContents()
     {
-        return $this->hasMany(ArticleContent::class, "article_id", "id");
+        return $this->hasMany(ArticleContent::class, 'article_id', 'id');
     }
 
     /**
@@ -43,6 +43,6 @@ class Article extends Model
      */
     public function scopeByUser(Builder $query, int $userId)
     {
-        return $query->where("user_id", "=", $userId);
+        return $query->where('user_id', '=', $userId);
     }
 }

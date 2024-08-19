@@ -3,8 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\ContentType;
-
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class ContentTypeSeeder extends Seeder

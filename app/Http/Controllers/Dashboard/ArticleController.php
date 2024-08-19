@@ -1,15 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Dashboard;
+
 use App\Http\Controllers\Controller;
-
 use App\Models\Article;
-use App\Models\ArticleContent;
-use App\Models\ContentType;
-
-use App\Traits\Uploader;
 use App\Services\GenericFilterService;
-
+use App\Traits\Uploader;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -25,7 +21,7 @@ class ArticleController extends Controller
     {
         $articles = Article::ByUser(auth()->user()->id)->paginate(20);
 
-        return view("dashboard.articles.index", [
+        return view('dashboard.articles.index', [
             'articles' => $articles,
         ]);
     }
@@ -35,7 +31,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view("dashboard.articles.create");
+        return view('dashboard.articles.create');
     }
 
     /**

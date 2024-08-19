@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class ArticleController extends Controller
 {
     /**
@@ -11,7 +9,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return view("articles.index");
+        return view('articles.index');
     }
 
     /**
@@ -19,6 +17,6 @@ class ArticleController extends Controller
      */
     public function show(string $slug)
     {
-        return view("articles.show");
+        return view('articles.show');
     }
 }
