@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::table('content_types', function(Blueprint $table) {
+        Schema::table('content_types', function (Blueprint $table) {
             $table->timestamps();
         });
     }

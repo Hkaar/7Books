@@ -26,7 +26,7 @@ class ArticleContent extends Model
      */
     public function article()
     {
-        return $this->belongsTo(Article::class, "article_id", "id");
+        return $this->belongsTo(Article::class, 'article_id', 'id');
     }
 
     /**
@@ -34,6 +34,6 @@ class ArticleContent extends Model
      */
     public function contentType()
     {
-        return $this->belongsTo(ContentType::class, "content_type_id", "id");
+        return $this->belongsTo(ContentType::class, 'content_type_id', 'id');
     }
 }

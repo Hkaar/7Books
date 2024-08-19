@@ -24,7 +24,7 @@ class ContentType extends Model
      */
     public function articleContents()
     {
-        return $this->hasMany(ArticleContent::class, "content_type_id", "id");
+        return $this->hasMany(ArticleContent::class, 'content_type_id', 'id');
     }
 
     /**
@@ -32,6 +32,6 @@ class ContentType extends Model
      */
     public function scopeByName(Builder $query, string $name)
     {
-        return $query->where("name", "=", $name);
+        return $query->where('name', '=', $name);
     }
 }

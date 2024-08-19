@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Dashboard;
-use App\Http\Controllers\Controller;
 
+use App\Http\Controllers\Controller;
 use App\Models\Region;
 use App\Services\GenericFilterService;
 use Illuminate\Http\Request;

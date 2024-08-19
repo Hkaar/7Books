@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Dashboard;
-use App\Http\Controllers\Controller;
 
+use App\Http\Controllers\Controller;
 use App\Models\Role;
 use App\Models\User;
 use App\Services\UserFilterService;
