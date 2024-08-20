@@ -157,6 +157,12 @@ Run the migrations
 php artisan migrate
 ```
 
+Seed the database
+
+```bash
+php artisan db:seed
+```
+
 Make sure it's working by serving it
 
 ```bash
