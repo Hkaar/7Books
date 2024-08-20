@@ -6,6 +6,8 @@ import 'htmx.org';
 import * as bootstrap from 'bootstrap';
 
 import { setupSlides } from "./slides.js";
+import { setTheme, loadTheme, updateThemeSwitch } from "./themes.js";
+import { Editor } from "./editor.js";
 
 import.meta.glob([
     "../images/**/*",
@@ -80,7 +82,6 @@ function showConfirm(e) {
     const confirmBtn = document.getElementById('confirmButton');
     const cancelButton = document.getElementById('cancelButton');
 
-    // @ts-ignore
     const modal = new bootstrap.Modal("#confirmModal", {
         keyboard: false
     });
@@ -147,34 +148,29 @@ function updatePreviewImage(element) {
 }
 
 /**
- * Change the app theme
- * 
- * @param {string} theme 
+ * Sets up the editor
  */
-function changeTheme(theme) {
-    document.querySelector("html")?.setAttribute("data-bs-theme", theme);
-    localStorage.setItem("theme", theme);
+function setupEditor() {
+    if (!document.querySelector("#editor")) {return;}
 
-    return theme;
-}
+    const editor = new Editor({
+        holder: "#editor",
+    });
 
-/**
- * Apply locally stored theme to the app
- */
-function loadTheme() {
-    const theme = localStorage.getItem("theme");
+    document.querySelector("#textAdd")?.addEventListener("click", () => {
+        editor.addBlock({
+            type: "text",
+            content: "Some placeholder text for the block",
+        })
+    });
 
-    if (theme) {
-        document.querySelector("html")?.setAttribute("data-bs-theme", theme);
-
-        if (theme === "dark") {
-            $("#themeSwitch .fa-sun").removeClass("d-none");
-            $("#themeSwitch .fa-moon").addClass("d-none");
-        } else {
-            $("#themeSwitch .fa-sun").addClass("d-none");
-            $("#themeSwitch .fa-moon").removeClass("d-none");
-        }
-    }
+    document.querySelector("#headingAdd")?.addEventListener("click", () => {
+        editor.addBlock({
+            type: "heading",
+            level: 3,
+            content: "Some placeholder text for the block",
+        })
+    })
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -188,16 +184,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     setupSlides();
+    setupEditor();
+    
+    loadTheme();
 
     if (sideNav) {
-        $(document).on("click", ".side-nav-close", (_) => {
-            toggleSideNav(sideNav, true);
-        })
-    
-        $(document).on("click", ".side-nav-open", (_) => {
-            toggleSideNav(sideNav, false);
-        })
-
         $(document).on("click", ".side-nav-toggle", (_) => {
             if (sideNav.getAttribute("data-collapsed") === "true") {
                 toggleSideNav(sideNav, false);
@@ -219,17 +210,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     $(document).on("click", "#themeSwitch", () => {
         if ($("html").attr("data-bs-theme") === "light") {
-            changeTheme("dark");
-
-            $("#themeSwitch .fa-sun").removeClass("d-none");
-            $("#themeSwitch .fa-moon").addClass("d-none");
+            setTheme("dark");
         } else {
-            changeTheme("light");
-
-            $("#themeSwitch .fa-sun").addClass("d-none");
-            $("#themeSwitch .fa-moon").removeClass("d-none");
+            setTheme("light");
         }
-    });
 
-    loadTheme();
+        updateThemeSwitch();
+    });
 });
