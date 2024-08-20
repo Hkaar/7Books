@@ -1,8 +1,9 @@
 # Seven Books
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
 ![Workflow Status](https://github.com/Hkaar/7Books/workflows/CI/badge.svg)
+![GitHub deployments](https://img.shields.io/github/deployments/Hkaar/7Books/production)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
 
 A website project to borrow physical books from a library through the internet.
 
@@ -64,6 +65,12 @@ Run the migrations
 
 ```bash
 php artisan migrate
+```
+
+Seed the database
+
+```bash
+php artisan db:seed
 ```
 
 And then serve it!
