@@ -207,7 +207,7 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     }
 
-    $(document).on("click", ".svb-card", function() {
+    $(document).on("click", ".svb-card[item-card]", function() {
         addItem(this);
     });
 
