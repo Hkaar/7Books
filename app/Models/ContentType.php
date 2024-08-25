@@ -21,6 +21,8 @@ class ContentType extends Model
 
     /**
      * Define relationship with article contents
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<ArticleContent>
      */
     public function articleContents()
     {
@@ -29,6 +31,9 @@ class ContentType extends Model
 
     /**
      * Scope a query by a name
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder<ContentType>  $query
+     * @return \Illuminate\Database\Eloquent\Builder<ContentType>
      */
     public function scopeByName(Builder $query, string $name)
     {

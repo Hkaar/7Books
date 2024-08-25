@@ -49,6 +49,8 @@ class User extends Authenticatable
 
     /**
      * Define the relationship with orders
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<Order>
      */
     public function orders()
     {
@@ -57,6 +59,8 @@ class User extends Authenticatable
 
     /**
      * Define the relationship with book ratings
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<BookRating>
      */
     public function ratings()
     {
@@ -65,6 +69,8 @@ class User extends Authenticatable
 
     /**
      * Define the relationship with roles
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<Role, User>
      */
     public function role()
     {
@@ -85,6 +91,9 @@ class User extends Authenticatable
 
     /**
      * Scope a query to only include a specific permission level
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder<User>  $query
+     * @return \Illuminate\Database\Eloquent\Builder<User>
      */
     public function scopeByPermission(Builder $query, string $permission)
     {

@@ -22,6 +22,8 @@ class Status extends Model
 
     /**
      * Define the relationship with orders
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<Order>
      */
     public function orders()
     {
@@ -30,6 +32,9 @@ class Status extends Model
 
     /**
      * Scope a query by name
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder<Status>  $query
+     * @return \Illuminate\Database\Eloquent\Builder<Status>
      */
     public function scopeByName(Builder $query, string $name)
     {

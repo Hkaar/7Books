@@ -18,6 +18,8 @@ class UserController extends Controller
 
     /**
      * Display a listing of the resource.
+     *
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function index(Request $request)
     {
@@ -29,6 +31,7 @@ class UserController extends Controller
             match ($orderQuery) {
                 'latest' => array_push($filters, 'latest'),
                 'oldest' => array_push($filters, 'oldest'),
+                default => array_push($filters, 'oldest'),
             };
         }
 
@@ -45,6 +48,8 @@ class UserController extends Controller
 
     /**
      * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function create()
     {
@@ -57,6 +62,8 @@ class UserController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     *
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
@@ -88,6 +95,8 @@ class UserController extends Controller
 
     /**
      * Display the specified resource.
+     *
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function show(int $id)
     {
@@ -100,6 +109,8 @@ class UserController extends Controller
 
     /**
      * Show the form for editing the specified resource.
+     *
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function edit(int $id)
     {
@@ -114,6 +125,8 @@ class UserController extends Controller
 
     /**
      * Update the specified resource in storage.
+     *
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, int $id)
     {
@@ -151,6 +164,8 @@ class UserController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     *
+     * @return \Illuminate\Http\Response|\Illuminate\Contracts\Routing\ResponseFactory
      */
     public function destroy(int $id)
     {

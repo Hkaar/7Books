@@ -22,6 +22,8 @@ class LoginRequest extends FormRequest
 
     /**
      * Get the needed authorization credentials from the request.
+     *
+     * @return array<string, string>
      */
     public function getCredentials(): array
     {
@@ -40,7 +42,7 @@ class LoginRequest extends FormRequest
     /**
      * Validate if provided parameter is valid email.
      */
-    public function isEmail($param): bool
+    public function isEmail(string $param): bool
     {
         $factory = $this->container->make(ValidationFactory::class);
 

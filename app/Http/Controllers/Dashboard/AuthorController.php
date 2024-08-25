@@ -17,6 +17,8 @@ class AuthorController extends Controller
 
     /**
      * Display a listing of the resource.
+     *
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function index(Request $request)
     {
@@ -28,6 +30,7 @@ class AuthorController extends Controller
             match ($orderQuery) {
                 'latest' => array_push($filters, 'latest'),
                 'oldest' => array_push($filters, 'oldest'),
+                default => array_push($filters, 'oldest'),
             };
         }
 
@@ -41,6 +44,8 @@ class AuthorController extends Controller
 
     /**
      * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function create()
     {
@@ -49,6 +54,8 @@ class AuthorController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     *
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
@@ -86,6 +93,8 @@ class AuthorController extends Controller
 
     /**
      * Display the specified resource.
+     *
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function show(int $id)
     {
@@ -100,6 +109,8 @@ class AuthorController extends Controller
 
     /**
      * Show the form for editing the specified resource.
+     *
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function edit(int $id)
     {
@@ -122,6 +133,8 @@ class AuthorController extends Controller
 
     /**
      * Update the specified resource in storage.
+     *
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, int $id)
     {
@@ -136,6 +149,8 @@ class AuthorController extends Controller
         ]);
 
         if ($request->hasFile('img')) {
+            $file = $request->file('img');
+
             if ($author->img) {
                 Storage::disk('public')->delete($author->img);
             }
@@ -152,7 +167,7 @@ class AuthorController extends Controller
 
         if ($validated['items']) {
             $items = json_decode($validated['items'], true);
-            $author->books()->sync(array_keys($items) ?? []);
+            $author->books()->sync(array_keys($items) ? array_keys($items) : []);
         }
 
         return redirect()->route('authors.index');
@@ -160,6 +175,8 @@ class AuthorController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     *
+     * @return \Illuminate\Http\Response|\Illuminate\Contracts\Routing\ResponseFactory
      */
     public function destroy(int $id)
     {
@@ -177,6 +194,8 @@ class AuthorController extends Controller
 
     /**
      * Display all the authored books
+     *
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function authored(int $id)
     {

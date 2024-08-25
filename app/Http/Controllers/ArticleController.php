@@ -6,6 +6,8 @@ class ArticleController extends Controller
 {
     /**
      * Display an index of the resource
+     *
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function index()
     {
@@ -14,6 +16,8 @@ class ArticleController extends Controller
 
     /**
      * Display the resource
+     *
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function show(string $slug)
     {

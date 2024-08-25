@@ -24,6 +24,8 @@ class Article extends Model
 
     /**
      * Define relationship with users
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<User, Article>
      */
     public function user()
     {
@@ -32,6 +34,8 @@ class Article extends Model
 
     /**
      * Define relationship with article contents
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<ArticleContent>
      */
     public function articleContents()
     {
@@ -40,6 +44,9 @@ class Article extends Model
 
     /**
      * Scope a query by a user's id
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder<Article>  $query
+     * @return \Illuminate\Database\Eloquent\Builder<Article>
      */
     public function scopeByUser(Builder $query, int $userId)
     {

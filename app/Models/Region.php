@@ -29,6 +29,8 @@ class Region extends Model
 
     /**
      * Define the relationship with libraries
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<Library>
      */
     public function libraries()
     {
@@ -37,6 +39,8 @@ class Region extends Model
 
     /**
      * Define the relationship with books
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<Book>
      */
     public function books()
     {
@@ -45,6 +49,8 @@ class Region extends Model
 
     /**
      * Define the relationship with users
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<User>
      */
     public function users()
     {

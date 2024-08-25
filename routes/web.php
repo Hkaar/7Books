@@ -13,6 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::group(['namespace' => 'App\Http\Controllers\Auth'], function () {
+    Route::group(['middleware' => ['auth']], function () {
+        Route::get('logout', 'LogoutController@perform')->name('logout');
+    });
+
+    Route::group(['middleware' => ['guest']], function () {
+        Route::get('register', 'RegisterController@show')->name('register.show');
+        Route::post('register', 'RegisterController@register')->name('register');
+
+        Route::get('login', 'LoginController@show')->name('login.show');
+        Route::post('login', 'LoginController@login')->name('login');
+    });
+});
+
 Route::group(['namespace' => "App\Http\Controllers"], function () {
     Route::get('/', 'HomeController@welcome')->name('/');
     Route::get('browse', 'HomeController@browse')->name('browse');
@@ -22,18 +36,8 @@ Route::group(['namespace' => "App\Http\Controllers"], function () {
     Route::get('blog/{slug}', 'ArticleController@show')->name('blog.show');
 
     Route::group(['middleware' => ['auth']], function () {
-        Route::get('logout', 'LogoutController@perform')->name('logout');
-
         Route::get('home', 'HomeController@home')->name('home');
         Route::get('me', 'HomeController@me')->name('users.me');
-    });
-
-    Route::group(['middleware' => ['guest']], function () {
-        Route::get('register', 'RegisterController@show')->name('register.show');
-        Route::post('register', 'RegisterController@register')->name('register');
-
-        Route::get('login', 'LoginController@show')->name('login.show');
-        Route::post('login', 'LoginController@login')->name('login');
     });
 });
 
