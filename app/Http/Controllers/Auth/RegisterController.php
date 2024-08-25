@@ -10,7 +10,7 @@ class RegisterController extends Controller
 {
     /**
      * Show the register page
-     * 
+     *
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function show()
@@ -20,7 +20,7 @@ class RegisterController extends Controller
 
     /**
      * Handle account register request
-     * 
+     *
      * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
      */
     public function register(RegisterRequest $request)

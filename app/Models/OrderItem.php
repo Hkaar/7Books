@@ -30,7 +30,7 @@ class OrderItem extends Model
 
     /**
      * Define the relationship with orders
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<Order, OrderItem>
      */
     public function order()
@@ -40,7 +40,7 @@ class OrderItem extends Model
 
     /**
      * Define the relationship with books
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<Book, OrderItem>
      */
     public function book()
@@ -50,7 +50,7 @@ class OrderItem extends Model
 
     /**
      * Define relationship with libraries
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<Library, OrderItem>
      */
     public function library()

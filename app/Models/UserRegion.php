@@ -21,7 +21,7 @@ class UserRegion extends Model
 
     /**
      * Define relationship with users
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<User, UserRegion>
      */
     public function user()
@@ -31,7 +31,7 @@ class UserRegion extends Model
 
     /**
      * Define relationship with regions
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<Region, UserRegion>
      */
     public function region()

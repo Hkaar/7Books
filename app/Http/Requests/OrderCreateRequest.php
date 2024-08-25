@@ -26,7 +26,7 @@ class OrderCreateRequest extends FormRequest
 
     /**
      * Get the needed data for making an order
-     * 
+     *
      * @return array<string, string>
      */
     public function getOrderData(): array

@@ -11,11 +11,11 @@ trait GenericFilter
 {
     /**
      * Apply a generic set of filters for a query
-     * 
+     *
      * @template TModel of Model
-     * @param Builder<TModel> $query
-     * @param array<int|string, string> $filters 
-     * @return void
+     *
+     * @param  Builder<TModel>  $query
+     * @param  array<int|string, string>  $filters
      */
     public function genericFilter(Builder $query, array $filters): void
     {
@@ -30,11 +30,11 @@ trait GenericFilter
 
     /**
      * Apply a search filter for a query
-     * 
+     *
      * @template TModel of Model
-     * @param Builder<TModel> $query
-     * @param string $searchQuery
-     * @param string|array<string> $columns
+     *
+     * @param  Builder<TModel>  $query
+     * @param  string|array<string>  $columns
      * @return \Illuminate\Database\Eloquent\Builder<TModel>
      */
     public function search(Builder $query, string $searchQuery, string|array $columns)
@@ -58,10 +58,10 @@ trait GenericFilter
 
     /**
      * Search though a nested column
-     * 
+     *
      * @template TModel of Model
-     * @param Builder<TModel> $query
-     * @return void
+     *
+     * @param  Builder<TModel>  $query
      */
     private function nestedSearch(Builder $query, string $searchQuery, string $column): void
     {

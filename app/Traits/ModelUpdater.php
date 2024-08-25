@@ -8,10 +8,9 @@ trait ModelUpdater
 {
     /**
      * Updates the model based on if the data exists
-     * 
-     * @param array<string, mixed> $data
-     * @param array<string> $except
-     * @return void
+     *
+     * @param  array<string, mixed>  $data
+     * @param  array<string>  $except
      */
     public function updateModel(Model $model, array $data, array $except = []): void
     {
