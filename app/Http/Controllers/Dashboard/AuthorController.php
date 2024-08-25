@@ -17,7 +17,7 @@ class AuthorController extends Controller
 
     /**
      * Display a listing of the resource.
-     * 
+     *
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function index(Request $request)
@@ -44,7 +44,7 @@ class AuthorController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     * 
+     *
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function create()
@@ -54,7 +54,7 @@ class AuthorController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     * 
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
@@ -93,7 +93,7 @@ class AuthorController extends Controller
 
     /**
      * Display the specified resource.
-     * 
+     *
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function show(int $id)
@@ -109,7 +109,7 @@ class AuthorController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     * 
+     *
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function edit(int $id)
@@ -133,7 +133,7 @@ class AuthorController extends Controller
 
     /**
      * Update the specified resource in storage.
-     * 
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, int $id)
@@ -175,7 +175,7 @@ class AuthorController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     * 
+     *
      * @return \Illuminate\Http\Response|\Illuminate\Contracts\Routing\ResponseFactory
      */
     public function destroy(int $id)
@@ -194,7 +194,7 @@ class AuthorController extends Controller
 
     /**
      * Display all the authored books
-     * 
+     *
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function authored(int $id)

@@ -26,7 +26,7 @@ class Order extends Model
 
     /**
      * Define the relationship with order items
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany<OrderItem>
      */
     public function items()
@@ -36,7 +36,7 @@ class Order extends Model
 
     /**
      * Define the relationship with users
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<User, Order>
      */
     public function user()
@@ -46,7 +46,7 @@ class Order extends Model
 
     /**
      * Define relationship with statuses
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<Status, Order>
      */
     public function status()
@@ -56,8 +56,8 @@ class Order extends Model
 
     /**
      * Scope a query to only include a specific order status
-     * 
-     * @param \Illuminate\Database\Eloquent\Builder<Order> $query
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder<Order>  $query
      * @return \Illuminate\Database\Eloquent\Builder<Order>
      */
     public function scopeByStatus(Builder $query, string $status)
@@ -69,8 +69,8 @@ class Order extends Model
 
     /**
      * Scope a query to only include orders that have been overdue
-     * 
-     * @param \Illuminate\Database\Eloquent\Builder<Order> $query
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder<Order>  $query
      * @return \Illuminate\Database\Eloquent\Builder<Order>
      */
     public function scopeByOverdue(Builder $query)
@@ -80,8 +80,8 @@ class Order extends Model
 
     /**
      * Scope a query ton only include orders that are due
-     * 
-     * @param \Illuminate\Database\Eloquent\Builder<Order> $query
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder<Order>  $query
      * @return \Illuminate\Database\Eloquent\Builder<Order>
      */
     public function scopeByDue(Builder $query)
@@ -91,8 +91,8 @@ class Order extends Model
 
     /**
      * Scope a query to only include a certain user
-     * 
-     * @param \Illuminate\Database\Eloquent\Builder<Order> $query
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder<Order>  $query
      * @return \Illuminate\Database\Eloquent\Builder<Order>
      */
     public function scopeByUser(Builder $query, string $username)

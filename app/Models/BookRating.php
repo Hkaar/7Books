@@ -29,7 +29,7 @@ class BookRating extends Model
 
     /**
      * Define the relationship with the user
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<User, BookRating>
      */
     public function user()
@@ -39,7 +39,7 @@ class BookRating extends Model
 
     /**
      * Define the relationship with the book
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<Book, BookRating>
      */
     public function book()

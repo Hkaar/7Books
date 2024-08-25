@@ -18,7 +18,7 @@ class OrderController extends Controller
 
     /**
      * Display a listing of the resource.
-     * 
+     *
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function index(Request $request)
@@ -48,7 +48,7 @@ class OrderController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     * 
+     *
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function create()
@@ -109,7 +109,7 @@ class OrderController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     * 
+     *
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function edit(int $id)
@@ -186,7 +186,7 @@ class OrderController extends Controller
 
     /**
      * Show all the books that a order has
-     * 
+     *
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function items(int $id)

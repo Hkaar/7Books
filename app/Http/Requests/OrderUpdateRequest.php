@@ -27,7 +27,7 @@ class OrderUpdateRequest extends FormRequest
 
     /**
      * Get the needed data for updating an order
-     * 
+     *
      * @return array<string, string>
      */
     public function getOrderData(): array

@@ -10,16 +10,16 @@ trait Uploader
 {
     /**
      * Uploads an image to the disk
-     * 
-     * @param UploadedFile|array<mixed>|null $file
-     * @param array<string, mixed> $options
-     * 
+     *
+     * @param  UploadedFile|array<mixed>|null  $file
+     * @param  array<string, mixed>  $options
      * @return string|null
      */
     public function uploadImage($file, array $options = [])
-    {        
-        if (!$file instanceof UploadedFile) {
-            Log::error("Cannot upload multiple files at once!");
+    {
+        if (! $file instanceof UploadedFile) {
+            Log::error('Cannot upload multiple files at once!');
+
             return null;
         }
 
@@ -31,7 +31,7 @@ trait Uploader
         $name = $options['name'] ?? time() . '_' . $file->hashName() . $file->extension();
         $path = $file->storeAs($folder, $name, $disk);
 
-        if (!$path) {
+        if (! $path) {
             return null;
         }
 

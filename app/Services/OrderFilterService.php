@@ -11,8 +11,8 @@ class OrderFilterService
 
     /**
      * Applies filters to query the order model
-     * 
-     * @param array<string, string> $filters
+     *
+     * @param  array<string, string>  $filters
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator<Order>
      */
     public function filter(array $filters)
@@ -36,7 +36,7 @@ class OrderFilterService
             match ($filterQuery) {
                 'overdue' => $orders->byOverdue(),
                 'due' => $orders->byDue(),
-                default => Null,
+                default => null,
             };
         }
 

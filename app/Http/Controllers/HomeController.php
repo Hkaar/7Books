@@ -6,7 +6,7 @@ class HomeController extends Controller
 {
     /**
      * Display the home page
-     * 
+     *
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function home()
@@ -16,7 +16,7 @@ class HomeController extends Controller
 
     /**
      * Display the welcome page
-     * 
+     *
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function welcome()
@@ -26,7 +26,7 @@ class HomeController extends Controller
 
     /**
      * Display the current logged in user account page
-     * 
+     *
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function me()
@@ -36,7 +36,7 @@ class HomeController extends Controller
 
     /**
      * Display the browse page
-     * 
+     *
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function browse()
@@ -46,7 +46,7 @@ class HomeController extends Controller
 
     /**
      * Display the supported regions page
-     * 
+     *
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function regions()
@@ -56,7 +56,7 @@ class HomeController extends Controller
 
     /**
      * Show the access denied page
-     * 
+     *
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function denied()

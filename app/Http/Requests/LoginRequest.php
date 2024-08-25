@@ -22,7 +22,7 @@ class LoginRequest extends FormRequest
 
     /**
      * Get the needed authorization credentials from the request.
-     * 
+     *
      * @return array<string, string>
      */
     public function getCredentials(): array

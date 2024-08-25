@@ -11,7 +11,7 @@ class LibraryController extends Controller
 {
     /**
      * Display a listing of the resource.
-     * 
+     *
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function index()
@@ -25,7 +25,7 @@ class LibraryController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     * 
+     *
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function create()
@@ -39,7 +39,7 @@ class LibraryController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     * 
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
@@ -58,7 +58,7 @@ class LibraryController extends Controller
 
     /**
      * Display the specified resource.
-     * 
+     *
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function show(int $id)
@@ -72,7 +72,7 @@ class LibraryController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     * 
+     *
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function edit(int $id)
@@ -88,7 +88,7 @@ class LibraryController extends Controller
 
     /**
      * Update the specified resource in storage.
-     * 
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, int $id)
@@ -109,7 +109,7 @@ class LibraryController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     * 
+     *
      * @return \Illuminate\Http\Response|\Illuminate\Contracts\Routing\ResponseFactory
      */
     public function destroy(int $id)

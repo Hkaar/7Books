@@ -11,8 +11,8 @@ class BookFilterService
 
     /**
      * Applies filters to query the book model
-     * 
-     * @param array<string, string> $filters
+     *
+     * @param  array<string, string>  $filters
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator<Book>
      */
     public function filter(array $filters)
