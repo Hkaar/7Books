@@ -22,6 +22,8 @@ class LibraryBook extends Model
 
     /**
      * Define the relationship with libraries
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<Library, LibraryBook>
      */
     public function library()
     {
@@ -30,6 +32,8 @@ class LibraryBook extends Model
 
     /**
      * Define relationship with books
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<Book, LibraryBook>
      */
     public function book()
     {

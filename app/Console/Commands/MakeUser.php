@@ -26,7 +26,7 @@ class MakeUser extends Command
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle(): int
     {
         if (Role::count() === 0) {
             $this->error("\nRole table is empty, please seed the database first!");
@@ -75,5 +75,7 @@ class MakeUser extends Command
             "password\t: " . $this->argument('password') . "\n" .
             "role\t\t: " . $this->argument('role')
         );
+
+        return 0;
     }
 }

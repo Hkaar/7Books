@@ -11,6 +11,9 @@ class UserFilterService
 
     /**
      * Applies filter to a query the user model
+     * 
+     * @param array<string, string> $filters
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator<User>
      */
     public function filter(array $filters)
     {

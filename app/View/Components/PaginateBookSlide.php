@@ -6,14 +6,14 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class PaginateLinks extends Component
+class PaginateBookSlide extends Component
 {
     /**
      * Create a new component instance.
      */
     public function __construct(
-        public mixed $links,
-        public bool $useHtmx = false
+        public mixed $models,
+        public string $title,
     ) {}
 
     /**
@@ -21,9 +21,9 @@ class PaginateLinks extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.paginate-links')->with([
-            'links' => $this->links,
-            'useHtmx' => $this->useHtmx,
+        return view('components.paginate-book-slide', [
+            'models' => $this->models,
+            'title' => $this->title,
         ]);
     }
 }

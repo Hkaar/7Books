@@ -23,6 +23,8 @@ class Author extends Model
 
     /**
      * Define the relationship with books
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<Book>
      */
     public function books()
     {

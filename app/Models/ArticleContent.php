@@ -23,6 +23,8 @@ class ArticleContent extends Model
 
     /**
      * Define relationship with articles
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<Article, ArticleContent>
      */
     public function article()
     {
@@ -31,6 +33,8 @@ class ArticleContent extends Model
 
     /**
      * Define relationship with content types
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<ContentType, ArticleContent>
      */
     public function contentType()
     {

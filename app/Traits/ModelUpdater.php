@@ -8,8 +8,12 @@ trait ModelUpdater
 {
     /**
      * Updates the model based on if the data exists
+     * 
+     * @param array<string, mixed> $data
+     * @param array<string> $except
+     * @return void
      */
-    public function updateModel(Model $model, array $data, array $except = [])
+    public function updateModel(Model $model, array $data, array $except = []): void
     {
         $attributes = array_keys($model->getAttributes());
 

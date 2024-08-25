@@ -13,6 +13,8 @@ class GenreController extends Controller
 
     /**
      * Display a listing of the resource.
+     * 
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function index(Request $request)
     {
@@ -24,6 +26,7 @@ class GenreController extends Controller
             match ($orderQuery) {
                 'latest' => array_push($filters, 'latest'),
                 'oldest' => array_push($filters, 'oldest'),
+                default => array_push($filters, 'oldest'),
             };
         }
 
@@ -37,6 +40,8 @@ class GenreController extends Controller
 
     /**
      * Show the form for creating a new resource.
+     * 
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function create()
     {
@@ -45,6 +50,8 @@ class GenreController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     * 
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
@@ -69,6 +76,8 @@ class GenreController extends Controller
 
     /**
      * Display the specified resource.
+     * 
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function show(int $id)
     {
@@ -83,6 +92,8 @@ class GenreController extends Controller
 
     /**
      * Show the form for editing the specified resource.
+     * 
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function edit(int $id)
     {
@@ -92,7 +103,7 @@ class GenreController extends Controller
         $items = [];
 
         foreach ($books as $key => $value) {
-            $items[$value->book_id] = 1;
+            $items[$value->id] = 1;
         }
 
         $items = json_encode($items);
@@ -105,6 +116,8 @@ class GenreController extends Controller
 
     /**
      * Update the specified resource in storage.
+     * 
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, int $id)
     {
@@ -120,7 +133,7 @@ class GenreController extends Controller
 
         if ($validated['items']) {
             $items = json_decode($validated['items'], true);
-            $genre->books()->sync(array_keys($items) ?? []);
+            $genre->books()->sync(array_keys($items) ? array_keys($items) : []);
         }
 
         return redirect()->route('genres.index');
@@ -128,6 +141,8 @@ class GenreController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     * 
+     * @return \Illuminate\Http\Response|\Illuminate\Contracts\Routing\ResponseFactory
      */
     public function destroy(int $id)
     {
