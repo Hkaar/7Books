@@ -22,6 +22,8 @@ class RegionBook extends Model
 
     /**
      * Define relationship with regions
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<Region, RegionBook>
      */
     public function region()
     {
@@ -30,6 +32,8 @@ class RegionBook extends Model
 
     /**
      * Define relationship with books
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<Book, RegionBook>
      */
     public function book()
     {

@@ -12,7 +12,7 @@ class PaginateLinks extends Component
      * Create a new component instance.
      */
     public function __construct(
-        public $links,
+        public mixed $links,
         public bool $useHtmx = false
     ) {}
 

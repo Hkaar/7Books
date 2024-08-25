@@ -10,6 +10,8 @@ class LoginController extends Controller
 {
     /**
      * Show the login page
+     * 
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function show()
     {
@@ -18,6 +20,8 @@ class LoginController extends Controller
 
     /**
      * Handle the login attempt
+     * 
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function login(LoginRequest $request)
     {

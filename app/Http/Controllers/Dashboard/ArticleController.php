@@ -16,6 +16,8 @@ class ArticleController extends Controller
 
     /**
      * Display a listing of the resource.
+     * 
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function index()
     {
@@ -28,6 +30,8 @@ class ArticleController extends Controller
 
     /**
      * Show the form for creating a new resource.
+     * 
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function create()
     {
@@ -36,6 +40,8 @@ class ArticleController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     * 
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
@@ -59,6 +65,8 @@ class ArticleController extends Controller
 
     /**
      * Display the specified resource.
+     * 
+     * @return void
      */
     public function show(int $id)
     {
@@ -67,6 +75,8 @@ class ArticleController extends Controller
 
     /**
      * Show the form for editing the specified resource.
+     * 
+     * @return void
      */
     public function edit(int $id)
     {
@@ -75,6 +85,8 @@ class ArticleController extends Controller
 
     /**
      * Update the specified resource in storage.
+     * 
+     * @return void
      */
     public function update(Request $request, int $id)
     {
@@ -83,6 +95,8 @@ class ArticleController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     * 
+     * @return void
      */
     public function destroy(int $id)
     {

@@ -10,6 +10,8 @@ class LogoutController extends Controller
 {
     /**
      * Log out the current user
+     * 
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
      */
     public function perform()
     {

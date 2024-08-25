@@ -18,6 +18,8 @@ class OrderController extends Controller
 
     /**
      * Display a listing of the resource.
+     * 
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function index(Request $request)
     {
@@ -29,6 +31,7 @@ class OrderController extends Controller
             match ($orderQuery) {
                 'latest' => array_push($filters, 'latest'),
                 'oldest' => array_push($filters, 'oldest'),
+                default => array_push($filters, 'oldest'),
             };
         }
 
@@ -45,6 +48,8 @@ class OrderController extends Controller
 
     /**
      * Show the form for creating a new resource.
+     * 
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function create()
     {
@@ -58,8 +63,7 @@ class OrderController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Illuminate\Http\Request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(OrderCreateRequest $request)
     {
@@ -90,7 +94,7 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function show(int $id)
     {
@@ -105,6 +109,8 @@ class OrderController extends Controller
 
     /**
      * Show the form for editing the specified resource.
+     * 
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function edit(int $id)
     {
@@ -133,8 +139,7 @@ class OrderController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(OrderUpdateRequest $request, int $id)
     {
@@ -168,7 +173,7 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response|\Illuminate\Contracts\Routing\ResponseFactory
      */
     public function destroy(int $id)
     {
@@ -181,6 +186,8 @@ class OrderController extends Controller
 
     /**
      * Show all the books that a order has
+     * 
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function items(int $id)
     {

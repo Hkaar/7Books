@@ -27,6 +27,8 @@ class OrderUpdateRequest extends FormRequest
 
     /**
      * Get the needed data for updating an order
+     * 
+     * @return array<string, string>
      */
     public function getOrderData(): array
     {
@@ -54,7 +56,7 @@ class OrderUpdateRequest extends FormRequest
     /**
      * Validate if provided parameter is valid email.
      */
-    public function isEmail($param): bool
+    public function isEmail(string $param): bool
     {
         $factory = $this->container->make(ValidationFactory::class);
 

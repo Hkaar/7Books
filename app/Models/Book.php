@@ -27,12 +27,14 @@ class Book extends Model
     /**
      * The relationships that should always be loaded.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $with = ['genres', 'authors'];
 
     /**
      * Define the relationship with genres
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<Genre>
      */
     public function genres()
     {
@@ -41,6 +43,8 @@ class Book extends Model
 
     /**
      * Define the relationship with ratings
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<BookRating>
      */
     public function ratings()
     {
@@ -49,6 +53,8 @@ class Book extends Model
 
     /**
      * Define the relationship with authors
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<Author>
      */
     public function authors()
     {
@@ -57,6 +63,8 @@ class Book extends Model
 
     /**
      * Define the relationship with order items
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<OrderItem>
      */
     public function items()
     {
@@ -65,6 +73,8 @@ class Book extends Model
 
     /**
      * Define the relationship with libraries
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<Library>
      */
     public function libraries()
     {
@@ -73,6 +83,8 @@ class Book extends Model
 
     /**
      * Define the relationship with regions
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<Region>
      */
     public function regions()
     {
@@ -81,6 +93,9 @@ class Book extends Model
 
     /**
      * Scope a query to only include a specific genre
+     * 
+     * @param \Illuminate\Database\Eloquent\Builder<Book> $query
+     * @return \Illuminate\Database\Eloquent\Builder<Book>
      */
     public function scopeByGenre(Builder $query, string $genre)
     {
@@ -91,6 +106,9 @@ class Book extends Model
 
     /**
      * Scope a query to only include a specific author
+     * 
+     * @param \Illuminate\Database\Eloquent\Builder<Book> $query
+     * @return \Illuminate\Database\Eloquent\Builder<Book>
      */
     public function scopeByAuthor(Builder $query, string $author)
     {
@@ -101,6 +119,9 @@ class Book extends Model
 
     /**
      * Scope a query to only include books that have been borrowed
+     * 
+     * @param \Illuminate\Database\Eloquent\Builder<Book> $query
+     * @return \Illuminate\Database\Eloquent\Builder<Book>
      */
     public function scopeOnlyBorrowed(Builder $query)
     {
@@ -110,7 +131,7 @@ class Book extends Model
     /**
      * Get the book rating
      */
-    public function rating()
+    public function rating(): int|float
     {
         $totalScore = 0;
 
