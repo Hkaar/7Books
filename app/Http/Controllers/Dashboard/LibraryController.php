@@ -18,7 +18,7 @@ class LibraryController extends Controller
     {
         $libraries = Library::paginate(20);
 
-        return view('dashboard.library.index', [
+        return view('dashboard.libraries.index', [
             'libraries' => $libraries,
         ]);
     }
@@ -32,7 +32,7 @@ class LibraryController extends Controller
     {
         $regions = Region::all(['id', 'name']);
 
-        return view('dashboard.library.create', [
+        return view('dashboard.libraries.create', [
             'regions' => $regions,
         ]);
     }
@@ -46,7 +46,7 @@ class LibraryController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'desc' => 'required|string|max:255',
+            'desc' => 'required|string',
             'region_id' => 'required|numeric|exists:regions,id',
         ]);
 
@@ -65,7 +65,7 @@ class LibraryController extends Controller
     {
         $library = Library::findOrFail($id);
 
-        return view('dashboard.library.show', [
+        return view('dashboard.libraries.show', [
             'library' => $library,
         ]);
     }
@@ -80,7 +80,7 @@ class LibraryController extends Controller
         $library = Library::findOrFail($id);
         $regions = Region::all(['id', 'name']);
 
-        return view('dashboard.library.edit', [
+        return view('dashboard.libraries.edit', [
             'library' => $library,
             'regions' => $regions,
         ]);
@@ -97,7 +97,7 @@ class LibraryController extends Controller
 
         $validated = $request->validate([
             'name' => 'nullable|string|max:255',
-            'desc' => 'nullable|string|max:255',
+            'desc' => 'nullable|string',
             'region_id' => 'nullable|numeric|exists:regions,id',
         ]);
 
