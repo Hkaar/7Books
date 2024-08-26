@@ -27,7 +27,7 @@ class GenericFilterService
         $searchQuery = $filters['search'] ?? null;
         $searchColumns = $options['searchColumns'] ?? null;
 
-        $amount = $filters['amount'] ? (int) $filters['amount'] : 20;
+        $amount = in_array('amount', $filters) ? (int) $filters['amount'] : 20;
 
         $this->genericFilter($query, $filters);
 
