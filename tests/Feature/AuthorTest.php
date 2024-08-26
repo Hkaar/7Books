@@ -5,17 +5,24 @@ namespace Tests\Feature;
 use App\Models\Author;
 use App\Models\Role;
 use App\Models\User;
+use Database\Seeders\BookSeeder;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class AuthorTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * Test whether the index route is working
      *
      * @test
      */
-    public function index(): void
+    public function test_dashboard_index(): void
     {
+        $this->seed();
+        $this->seed(BookSeeder::class);
+
         $user = User::factory()->create([
             'role_id' => Role::ByName('admin')->first()->id,
         ]);
@@ -30,8 +37,10 @@ class AuthorTest extends TestCase
      *
      * @test
      */
-    public function create(): void
+    public function test_dashboard_create(): void
     {
+        $this->seed();
+        
         $user = User::factory()->create([
             'role_id' => Role::ByName('admin')->first()->id,
         ]);
@@ -46,8 +55,10 @@ class AuthorTest extends TestCase
      *
      * @test
      */
-    public function edit(): void
+    public function test_dashboard_edit(): void
     {
+        $this->seed();
+
         $user = User::factory()->create([
             'role_id' => Role::ByName('admin')->first()->id,
         ]);
@@ -60,10 +71,14 @@ class AuthorTest extends TestCase
     }
 
     /**
+     * Test the author show details page
+     * 
      * @test
      */
-    public function show(): void
+    public function test_dashboard_show(): void
     {
+        $this->seed();
+
         $user = User::factory()->create([
             'role_id' => Role::ByName('admin')->first()->id,
         ]);
