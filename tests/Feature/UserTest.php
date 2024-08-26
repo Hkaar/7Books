@@ -75,7 +75,7 @@ class UserTest extends TestCase
     public function test_dashboard_show(): void
     {
         $this->seed();
-    
+
         $user = User::factory()->create([
             'role_id' => Role::ByName('admin')->first()->id,
         ]);

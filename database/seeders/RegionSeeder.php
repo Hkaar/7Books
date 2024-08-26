@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Library;
 use App\Models\Region;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class RegionSeeder extends Seeder

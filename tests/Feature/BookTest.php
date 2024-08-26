@@ -110,7 +110,7 @@ class BookTest extends TestCase
 
     /**
      * Test whether the show route is working
-     * 
+     *
      * @test
      */
     public function test_dashboard_show(): void
@@ -158,7 +158,7 @@ class BookTest extends TestCase
     public function book_display(): void
     {
         $this->seed();
-        
+
         $book = Book::factory()->create();
 
         $response = $this->get('/books/' . $book->id);

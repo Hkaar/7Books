@@ -40,7 +40,7 @@ class AuthorTest extends TestCase
     public function test_dashboard_create(): void
     {
         $this->seed();
-        
+
         $user = User::factory()->create([
             'role_id' => Role::ByName('admin')->first()->id,
         ]);
@@ -72,7 +72,7 @@ class AuthorTest extends TestCase
 
     /**
      * Test the author show details page
-     * 
+     *
      * @test
      */
     public function test_dashboard_show(): void

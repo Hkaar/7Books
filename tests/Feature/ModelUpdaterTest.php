@@ -20,7 +20,7 @@ class ModelUpdaterTest extends TestCase
     public function update_model(): void
     {
         $this->seed(TestSeeder::class);
-        
+
         $user = User::factory()->create();
 
         $newUsername = 'Fred';

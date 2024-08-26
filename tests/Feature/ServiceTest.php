@@ -61,7 +61,7 @@ class ServiceTest extends TestCase
     public function book_filter_service(): void
     {
         $this->seed(TestSeeder::class);
-        
+
         $filters = [
             'latest',
         ];
@@ -99,7 +99,7 @@ class ServiceTest extends TestCase
     public function genre_filter_service(): void
     {
         $this->seed(TestSeeder::class);
-        
+
         $filters = [
             'latest',
         ];

@@ -40,7 +40,7 @@ class Role extends Model
     /**
      * Scope a query by role name
      *
-     * @param \Illuminate\Database\Eloquent\Builder<Role> $query
+     * @param  \Illuminate\Database\Eloquent\Builder<Role>  $query
      * @return \Illuminate\Database\Eloquent\Builder<Role>
      */
     public function scopeByName(Builder $query, string $name)

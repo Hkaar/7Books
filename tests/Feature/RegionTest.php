@@ -2,11 +2,10 @@
 
 namespace Tests\Feature;
 
-use App\Models\User;
-use App\Models\Role;
 use App\Models\Region;
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class RegionTest extends TestCase
@@ -15,8 +14,10 @@ class RegionTest extends TestCase
 
     /**
      * Test whether the dashboard index route is working
+     *
+     * @test
      */
-    public function test_dashboard_index(): void
+    public function dashboard_index(): void
     {
         $this->seed();
 
@@ -31,8 +32,10 @@ class RegionTest extends TestCase
 
     /**
      * Test whether the dashboard create route is working
+     *
+     * @test
      */
-    public function test_dashboard_create(): void
+    public function dashboard_create(): void
     {
         $this->seed();
 
@@ -47,8 +50,10 @@ class RegionTest extends TestCase
 
     /**
      * Test whether the dashboard edit route is working
+     *
+     * @test
      */
-    public function test_dashboard_edit(): void
+    public function dashboard_edit(): void
     {
         $this->seed();
 
@@ -65,8 +70,10 @@ class RegionTest extends TestCase
 
     /**
      * Test whether the dashboard show route is working
+     *
+     * @test
      */
-    public function test_dashboard_show(): void
+    public function dashboard_show(): void
     {
         $this->seed();
 

@@ -19,13 +19,13 @@ class RegionFactory extends Factory
     {
         $timezones = DateTimeZone::listIdentifiers();
         shuffle($timezones);
-        
+
         $timezone = array_pop($timezones);
 
         return [
-            'name' => $timezone.$this->faker->randomLetter(),
+            'name' => $timezone . $this->faker->randomLetter(),
             'desc' => $this->faker->paragraph(),
-            'timezone' => $timezone
+            'timezone' => $timezone,
         ];
     }
 }

@@ -5,7 +5,6 @@ namespace Tests\Feature;
 use App\Models\User;
 use Database\Seeders\TestSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class CommandsTest extends TestCase
@@ -14,8 +13,10 @@ class CommandsTest extends TestCase
 
     /**
      * Test whether the make user command works
+     *
+     * @test
      */
-    public function test_make_user(): void
+    public function make_user(): void
     {
         $this->seed(TestSeeder::class);
 
