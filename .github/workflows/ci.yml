@@ -89,9 +89,6 @@ jobs:
       - name: Run migrations
         run: php artisan migrate --env=testing
 
-      - name: Seed the database
-        run: php artisan db:seed --class=TestSeeder --env=testing --force
-
       - name: Run storage link
         run: php artisan storage:link
 
