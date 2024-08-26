@@ -3,10 +3,14 @@
 namespace Tests\Feature;
 
 use App\Models\User;
+use Database\Seeders\TestSeeder;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class GeneralTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * Test whether the landing page route is working
      *
@@ -36,6 +40,8 @@ class GeneralTest extends TestCase
      */
     public function profile(): void
     {
+        $this->seed(TestSeeder::class);
+
         $user = User::factory()->create();
         $this->actingAs($user);
 
@@ -50,6 +56,8 @@ class GeneralTest extends TestCase
      */
     public function home()
     {
+        $this->seed(TestSeeder::class);
+
         $user = User::factory()->create();
         $this->actingAs($user);
 

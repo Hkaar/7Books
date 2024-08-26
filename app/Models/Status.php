@@ -12,6 +12,13 @@ class Status extends Model
     use HasFactory, SoftDeletes;
 
     /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'statuses';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>

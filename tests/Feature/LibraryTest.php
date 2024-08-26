@@ -2,42 +2,40 @@
 
 namespace Tests\Feature;
 
-use App\Models\Author;
+use App\Models\Library;
 use App\Models\Role;
 use App\Models\User;
-use Database\Seeders\BookSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class AuthorTest extends TestCase
+class LibraryTest extends TestCase
 {
     use RefreshDatabase;
 
     /**
-     * Test whether the index route is working
+     * Test whether the dashboard index route is working
      *
      * @test
      */
-    public function test_dashboard_index(): void
+    public function dashboard_index(): void
     {
         $this->seed();
-        $this->seed(BookSeeder::class);
 
         $user = User::factory()->create([
             'role_id' => Role::ByName('admin')->first()->id,
         ]);
         $this->actingAs($user);
 
-        $response = $this->get('/manage/authors');
-        $response->assertStatus(200);
+        $this->get('/manage/libraries')
+            ->assertStatus(200);
     }
 
     /**
-     * Test whether the create route is working
+     * Test whether the dashboard create route is working
      *
      * @test
      */
-    public function test_dashboard_create(): void
+    public function dashboard_create(): void
     {
         $this->seed();
 
@@ -46,16 +44,16 @@ class AuthorTest extends TestCase
         ]);
         $this->actingAs($user);
 
-        $response = $this->get('/manage/authors/create');
-        $response->assertStatus(200);
+        $this->get('/manage/libraries/create')
+            ->assertStatus(200);
     }
 
     /**
-     * Test whether the edit route is working
+     * Test whether the dashboard edit route is working
      *
      * @test
      */
-    public function test_dashboard_edit(): void
+    public function dashboard_edit(): void
     {
         $this->seed();
 
@@ -64,18 +62,18 @@ class AuthorTest extends TestCase
         ]);
         $this->actingAs($user);
 
-        $author = Author::factory()->create();
+        $library = Library::factory()->create();
 
-        $response = $this->get("/manage/authors/{$author->id}/edit");
-        $response->assertStatus(200);
+        $this->get("/manage/libraries/{$library->id}/edit")
+            ->assertStatus(200);
     }
 
     /**
-     * Test the author show details page
+     * Test whether the dashboard show route is working
      *
      * @test
      */
-    public function test_dashboard_show(): void
+    public function dashboard_show(): void
     {
         $this->seed();
 
@@ -84,9 +82,9 @@ class AuthorTest extends TestCase
         ]);
         $this->actingAs($user);
 
-        $author = Author::factory()->create();
+        $library = Library::factory()->create();
 
-        $response = $this->get("/manage/authors/{$author->id}");
-        $response->assertStatus(200);
+        $this->get("/manage/libraries/{$library->id}")
+            ->assertStatus(200);
     }
 }

@@ -29,6 +29,5 @@ class FileUploadTest extends TestCase
 
         $this->assertTrue(Storage::disk('test')->exists($path));
         Storage::disk('test')->delete($path);
-
     }
 }

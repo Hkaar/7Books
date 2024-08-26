@@ -59,7 +59,7 @@ class RegionController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255|unique:regions,name',
-            'desc' => 'required|string|max:255',
+            'desc' => 'required|string',
             'timezone' => 'required|timezone',
         ]);
 
@@ -108,7 +108,7 @@ class RegionController extends Controller
 
         $validated = $request->validate([
             'name' => 'nullable|string|max:255|unique:regions,name',
-            'desc' => 'nullable|string|max:255',
+            'desc' => 'nullable|string',
             'timezone' => 'nullable|timezone',
         ]);
 
