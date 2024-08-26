@@ -16,6 +16,7 @@ class TestSeeder extends Seeder
             RoleSeeder::class,
             UserSeeder::class,
             BookSeeder::class,
+            RegionSeeder::class,
         ]);
     }
 }
