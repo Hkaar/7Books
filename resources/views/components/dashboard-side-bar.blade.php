@@ -8,7 +8,7 @@
               @if (auth()->user()->img)
                 <img src="{{ Storage::url(auth()->user()->img) }}" alt="Image not available" class="img-fluid rounded-circle ratio-box">
               @else
-                <img src="{{ URL::asset('assets/imgs/default-avatar.png') }}" alt="Image not available" class="img-fluid rounded-circle ratio-box">
+                <img src="{{ Vite::asset('resources/images/default-avatar.png') }}" alt="Image not available" class="img-fluid rounded-circle ratio-box">
               @endif
 
               <span class="nav-item-title overflow-hidden">{{ auth()->user()->username }}</span>
