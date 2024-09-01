@@ -1,11 +1,12 @@
 import './bootstrap';
 
-import $ from 'jquery';
-import 'htmx.org';
-
+import htmx from 'htmx.org';
 import * as bootstrap from 'bootstrap';
+import Swal from "sweetalert2";
 
 import { setupSlides } from "./slides.js";
+import { setupSearch, setupStoredSearchableLoaders } from "./search.js";
+import { setupThemes } from "./themes.js";
 
 import.meta.glob([
     "../images/**/*",
@@ -66,38 +67,45 @@ function updateItemCards() {
 }
 
 /**
- * Shows the confirmation modal upon a event being triggered
+ * Shows a modal upon an event being triggered
  * 
- * @param {CustomEvent|JQuery.TriggeredEvent} e 
+ * @param {CustomEvent<any>} event 
  */
-function showConfirm(e) {
-    if (!$(e.target).attr("hx-confirm")) {
+function triggerModal(event) {
+    if (!(event.target instanceof Element)) {
+        console.error(`Issued event target ${event} was not an element!`);
         return;
     }
 
-    e.preventDefault();
+    if (event.target.matches('[delete-confirmation]')) {
+        event.preventDefault();
 
-    const confirmBtn = document.getElementById('confirmButton');
-    const cancelButton = document.getElementById('cancelButton');
+        Swal.fire({
+            title: "Confirmation",
+            text: `Are you sure, you want to delete this ${event.detail.question}?`,
+            icon: "question",
+            showCancelButton: true,
+            showConfirmButton: true,
+            timer: 5000,
+            timerProgressBar: true,
+            backdrop: true,
+            allowOutsideClick: false,
+        }).then(response => {
+            if (response.isConfirmed) {
+                event.detail.issueRequest(true);
 
-    // @ts-ignore
-    const modal = new bootstrap.Modal("#confirmModal", {
-        keyboard: false
-    });
+                Swal.fire({
+                    title: "Successfull!",
+                    text: `Successfully deleted a ${event.detail.question}`,
+                    icon: "success",
+                    timer: 5000,
+                    timerProgressBar: true,
+                });
+            }
+        })
 
-    $("#confirmText").text(e.detail.question);
-    modal.show();
-
-    confirmBtn?.addEventListener('click', () => {
-        e.detail?.issueRequest(true);
-        modal.hide();
-    });
-
-    cancelButton?.addEventListener('click', () => {
-        modal.hide();
-        // @ts-ignore
-        e.detail = null;
-    })
+        return;
+    }
 }
 
 /**
@@ -126,7 +134,7 @@ function toggleSideNav(sideNav, collapsed) {
  */
 function updatePreviewImage(element) {
     let file = element.files ? element.files[0] : null;
-    let preview = $("#preview");
+    let preview = document.getElementById("preview");
 
     if (file && preview) {
         let reader = new FileReader();
@@ -135,10 +143,17 @@ function updatePreviewImage(element) {
             let result = e.target?.result;
 
             if (result && file.type.startsWith("image") && typeof result === "string") {
-                let img = $("<img>").attr("src", result).addClass("img-thumbnail");
-                preview.empty().append(img);
+                let img = document.createElement("img");
+                img.setAttribute("src", result);
+                img.classList.add("md:size-1/2", "block");
+            
+                while (preview.firstChild) {
+                    preview.removeChild(preview.firstChild);
+                }
+            
+                preview.appendChild(img);
             } else {
-                preview.html("Image not available");
+                preview.textContent = "Gambar tidak tersedia";
             }
         }
 
@@ -146,90 +161,60 @@ function updatePreviewImage(element) {
     }
 }
 
-/**
- * Change the app theme
- * 
- * @param {string} theme 
- */
-function changeTheme(theme) {
-    document.querySelector("html")?.setAttribute("data-bs-theme", theme);
-    localStorage.setItem("theme", theme);
-
-    return theme;
-}
-
-/**
- * Apply locally stored theme to the app
- */
-function loadTheme() {
-    const theme = localStorage.getItem("theme");
-
-    if (theme) {
-        document.querySelector("html")?.setAttribute("data-bs-theme", theme);
-
-        if (theme === "dark") {
-            $("#themeSwitch .fa-sun").removeClass("d-none");
-            $("#themeSwitch .fa-moon").addClass("d-none");
-        } else {
-            $("#themeSwitch .fa-sun").addClass("d-none");
-            $("#themeSwitch .fa-moon").removeClass("d-none");
-        }
-    }
-}
-
 document.addEventListener("DOMContentLoaded", () => {
     'use strict';
 
     const itemsField = document.getElementById("items");
-    const sideNav = document.querySelector("#side-nav");
 
     if (itemsField instanceof HTMLInputElement && !invalidLiterals.includes(itemsField.value)) {
         items = JSON.parse(itemsField.value);
     }
 
     setupSlides();
+    setupThemes();
+
+    setupSearch();
+    setupStoredSearchableLoaders();
+
+    const sideNav = document.querySelector("#side-nav");
 
     if (sideNav) {
-        $(document).on("click", ".side-nav-close", (_) => {
-            toggleSideNav(sideNav, true);
-        })
-    
-        $(document).on("click", ".side-nav-open", (_) => {
-            toggleSideNav(sideNav, false);
-        })
-
-        $(document).on("click", ".side-nav-toggle", (_) => {
-            if (sideNav.getAttribute("data-collapsed") === "true") {
-                toggleSideNav(sideNav, false);
-            } else {
-                toggleSideNav(sideNav, true);
-            }
-        })
+        document.querySelectorAll(".side-nav-toggle").forEach((element) => {
+            element.addEventListener("click", () => {
+                if (sideNav.getAttribute("data-collapsed") === "true") {
+                    toggleSideNav(sideNav, false);
+                } else {
+                    toggleSideNav(sideNav, true);
+                }
+            });
+        });
     }
 
-    $(document).on("click", ".svb-card[item-card]", function() {
-        addItem(this);
-    });
+    document.addEventListener("click", (event) => {
+        if (!(event.target instanceof Element)) {
+            console.error(`Event target ${event} was not an element!`);
+            return;
+        }
 
-    $(document).on("htmx:confirm", showConfirm);
-
-    $(document).on("change", "#img", function() {
-        updatePreviewImage(this);
-    }); 
-
-    $(document).on("click", "#themeSwitch", () => {
-        if ($("html").attr("data-bs-theme") === "light") {
-            changeTheme("dark");
-
-            $("#themeSwitch .fa-sun").removeClass("d-none");
-            $("#themeSwitch .fa-moon").addClass("d-none");
-        } else {
-            changeTheme("light");
-
-            $("#themeSwitch .fa-sun").addClass("d-none");
-            $("#themeSwitch .fa-moon").removeClass("d-none");
+        if (event.target.matches(".svb-card[item-card]")) {
+            addItem(event.target);
         }
     });
 
-    loadTheme();
+    document.addEventListener("change", (event) => {
+        if (!(event.target instanceof HTMLInputElement)) {
+            console.error(`Event target ${event} was not an element!`);
+            return;
+        }
+
+        if (event.target.matches("#img")) {
+            updatePreviewImage(event.target);
+        }
+    });
+
+    document.addEventListener("htmx:confirm", function(e) {
+        const event = /** @type {CustomEvent<any>} */ (e);
+
+        triggerModal(event);
+    });
 });
