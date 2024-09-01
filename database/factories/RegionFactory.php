@@ -23,7 +23,7 @@ class RegionFactory extends Factory
         $timezone = array_pop($timezones);
 
         return [
-            'name' => $timezone . $this->faker->randomLetter(),
+            'name' => $timezone . $this->faker->randomDigit() . $this->faker->sentence(),
             'desc' => $this->faker->paragraph(),
             'timezone' => $timezone,
         ];
