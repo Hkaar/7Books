@@ -23,7 +23,8 @@ class Book extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'isbn',
+        'isbn10',
+        'isbn13',
         'name',
         'desc',
         'price',
@@ -130,9 +131,11 @@ class Book extends Model
      * @param  \Illuminate\Database\Eloquent\Builder<Book>  $query
      * @return \Illuminate\Database\Eloquent\Builder<Book>
      */
-    public function scopeOnlyBorrowed(Builder $query)
+    public function scopeOnlyBorrowed(Builder $query, int $bookId)
     {
-        return $query->where('borrowed', '>', 0);
+        return $query->whereHas('items', function (Builder $query) use ($bookId) {
+            $query->where('book_id', '=', $bookId);
+        });
     }
 
     /**
