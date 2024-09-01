@@ -56,10 +56,11 @@
                     hx-get="{{ route('regions.show', $region->id) }}" hx-target="#detailsBody" hx-swap="innerHTML">Show
                   </button>
 
-                  <button type="button" class="btn btn-danger" hx-confirm="Are you sure you want to delete this region?"
+                  <button type="button" class="btn btn-danger" hx-confirm="region"
                     hx-headers='{"X-CSRF-TOKEN": "{{ csrf_token() }}"}'
                     hx-delete="{{ route('regions.destroy', $region->id) }}" hx-target="closest tr"
-                    hx-swap="outerHTML">Delete
+                    hx-swap="outerHTML"
+                    delete-confirmation>Delete
                   </button>
 
                   <a class="btn btn-warning" href="{{ route('regions.edit', $region->id) }}">Edit
