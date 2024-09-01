@@ -15,7 +15,7 @@
 
       <div>
         <label for="username" class="form-label">Username</label>
-        <input class="form-control" id="username" type="text" name="username" value="{{ old('username') }}" required autofocus>
+        <input class="form-control" id="username" type="text" name="username" placeholder="Enter a name" required autofocus>
 
         @error('username')
           <span class="text-danger">{{ $message }}</span>
@@ -24,7 +24,7 @@
 
       <div>
         <label for="email" class="form-label">Email</label>
-        <input class="form-control" id="email" type="email" name="email" value="{{ old('email') }}" required>
+        <input class="form-control" id="email" type="email" name="email" placeholder="Enter your email" required>
 
         @error('email')
           <span class="text-danger">{{ $message }}</span>
@@ -33,7 +33,7 @@
 
       <div>
         <label for="password" class="form-label">Password</label>
-        <input class="form-control" id="password" type="password" name="password" required>
+        <input class="form-control" id="password" type="password" name="password" placeholder="Enter a password" required>
 
         @error('password')
           <span class="text-danger">{{ $message }}</span>
@@ -42,7 +42,7 @@
 
       <div class="mb-3">
         <label for="password_confirmation" class="form-label">Confirm Password</label>
-        <input class="form-control" id="password_confirmation" type="password" name="password_confirmation" required>
+        <input class="form-control" id="password_confirmation" type="password" name="password_confirmation" placeholder="Confirm your new password" required>
       </div>
 
       <div class="d-flex gap-1">
