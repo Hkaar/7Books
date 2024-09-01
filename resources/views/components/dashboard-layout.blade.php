@@ -7,5 +7,7 @@
     <div {{ $attributes->merge(["class" => "container my-4 flex-fill d-flex flex-column"]) }}>
       {{ $slot }}
     </div>
+
+    <x-svb-simple-footer></x-svb-simple-footer>
   </div>
 </section>
