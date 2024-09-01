@@ -95,7 +95,7 @@
                   <img src="{{ Storage::url(auth()->user()->img) }}" alt="Image not available"
                     class="img-fluid rounded-circle logo-md">
                 @else
-                  <img src="{{ URL::asset('assets/imgs/default-avatar.png') }}" alt="Image not available"
+                  <img src="{{ Vite::asset('resources/images/default-avatar.png') }}" alt="Image not available"
                     class="img-fluid rounded-circle logo-md">
                 @endif
 

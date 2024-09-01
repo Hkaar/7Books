@@ -55,10 +55,11 @@
                     hx-swap="innerHTML">Show
                   </button>
 
-                  <button type="button" class="btn btn-danger" hx-confirm="Are you sure you want to delete this user?"
+                  <button type="button" class="btn btn-danger" hx-confirm="library"
                     hx-headers='{"X-CSRF-TOKEN": "{{ csrf_token() }}"}'
                     hx-delete="{{ route('libraries.destroy', $library->id) }}" hx-target="closest tr"
-                    hx-swap="outerHTML">Delete
+                    hx-swap="outerHTML"
+                    delete-confirmation>Delete
                   </button>
 
                   <a class="btn btn-small btn-warning" href="{{ route('libraries.edit', $library->id) }}">Edit

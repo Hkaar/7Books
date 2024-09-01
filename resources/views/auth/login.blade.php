@@ -15,7 +15,7 @@
 
       <div>
         <label for="username" class="form-label">Username or Email</label>
-        <input class="form-control" id="username" type="text" name="username" value="{{ old('username') }}" required autofocus>
+        <input class="form-control" id="username" type="text" name="username" placeholder="Enter your username or email" required autofocus>
 
         @error('username')
           <span class="text-danger">{{ $message }}</span>
@@ -24,7 +24,7 @@
 
       <div>
         <label for="password" class="form-label">Password</label>
-        <input class="form-control" id="password" type="password" name="password" required>
+        <input class="form-control" id="password" type="password" name="password" placeholder="Enter your password" required>
 
         @error('password')
           <span class="text-danger">{{ $message }}</span>
