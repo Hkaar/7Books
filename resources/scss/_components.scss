@@ -83,6 +83,16 @@
     height: 25%;
 }
 
+/* ===== SVB Search Box ===== */
+.svb-search-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    height: 320px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
 /* ===== Preview ===== */
 #preview img {
     object-fit: cover;

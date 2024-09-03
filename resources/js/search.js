@@ -1,6 +1,7 @@
 import axios from "axios";
 import htmx from "htmx.org";
 
+import { searchResultBox } from "./components/searchResultBox.js";
 import { clearElement } from "./utils.js";
 
 /**
@@ -72,55 +73,6 @@ function loadStoredSearchables(container, target) {
 }
 
 /**
- * Create a search result box component
- *
- * @param {string} title - The title of the box
- * @param {number} id - The item id of the box
- * @param {Element} container - The parent container where the box is placed at
- * @param {HTMLInputElement} target - The input element where the box is stored as state
- */
-function searchResultBox(title, id, container, target) {
-    const root = document.createElement("div");
-    root.classList.add(
-        "d-flex",
-        "align-items-center",
-        "justify-content-between",
-        "p-3",
-        "rounded",
-        "bg-body-tertiary"
-    );
-
-    const titleElement = document.createElement("span");
-    titleElement.classList.add(
-        "d-flex",
-        "align-items-center",
-        "justify-content-center"
-    );
-    titleElement.textContent = title;
-
-    const deleteButton = document.createElement("button");
-    deleteButton.classList.add("btn", "btn-danger");
-
-    const deleteIcon = document.createElement("i");
-    deleteIcon.className = "fa-regular fa-trash";
-    deleteButton.appendChild(deleteIcon);
-
-    root.appendChild(titleElement);
-    root.appendChild(deleteButton);
-
-    deleteButton.addEventListener("click", () => {
-        container.removeChild(root);
-
-        const decoded = JSON.parse(target.value);
-        delete decoded[id];
-
-        target.value = JSON.stringify(decoded);
-    });
-
-    return root;
-}
-
-/**
  * Sets up stored searche loading by elements with the svb-search-load attribute
  */
 export function setupStoredSearchableLoaders() {
@@ -169,6 +121,56 @@ export async function setupSearch() {
             return;
         }
 
+        const target = element.getAttribute("svb-target");
+
+        if (target === null) {
+            console.error("Element needs a svb-target attribute to work!");
+            return;
+        }
+
+        const targetElement = document.querySelector(target);
+
+        if (!(targetElement instanceof HTMLInputElement)) {
+            console.error("Target element must be an input element!");
+            return;
+        }
+
+        containerElement.addEventListener("click", (event) => {
+            const clicked = event.target;
+
+            if (!(clicked instanceof Element)) {
+                console.debug("No target was found!")
+                return;
+            }
+
+            const dataElement = clicked.closest("[data-item-id]");
+    
+            if (dataElement === null) {
+                console.error("data element not found!");
+                return; 
+            }
+    
+            const itemId = dataElement.getAttribute("data-item-id");
+            const itemTitle = dataElement.getAttribute("data-item-title");
+    
+            if (!itemId) {
+                console.error(`${dataElement} doesn't have a data-item-id attribute!`);
+                return;
+            }
+            
+            const decoded = JSON.parse(targetElement.value || '{}');
+
+            if (!dataElement.classList.contains("active")) {
+                decoded[parseInt(itemId)] = itemTitle;
+                dataElement.classList.add("active");
+            } else {
+                delete decoded[parseInt(itemId)];
+                dataElement.classList.remove("active");
+            }
+    
+            targetElement.value = JSON.stringify(decoded);
+        });
+
         element.addEventListener("change", async () => {
             const url = element.getAttribute("svb-search");
             const query = element.value;
@@ -185,59 +187,19 @@ export async function setupSearch() {
 
             // @ts-ignore
             htmx.process(containerElement);
-
+        
             containerElement.querySelectorAll("[data-item-id]").forEach(dataElement => {
-                const target = element.getAttribute("svb-target");
-
-                if (target === null) {
-                    console.error(
-                        "Element needs a svb-target attribute to work!"
-                    );
-                    return;
-                }
-
-                const targetElement = document.querySelector(target);
-
-                if (!(targetElement instanceof HTMLInputElement)) {
-                    console.error(
-                        "Parent element must be an input element!"
-                    );
-                    return;
-                }
-
                 const itemId = dataElement.getAttribute("data-item-id");
-                const itemTitle = dataElement.getAttribute("data-item-title");
-
-                if (itemId === null) {
-                    console.error(
-                        `${dataElement} doesn't have a data-item-id attribute!`
-                    );
+        
+                if (!itemId) {
+                    console.error(`${dataElement} doesn't have a data-item-id attribute!`);
                     return;
                 }
-
-                const decoded = JSON.parse(targetElement.value);
-
+        
+                const decoded = JSON.parse(targetElement.value || '{}');
                 if (itemId in decoded) {
                     dataElement.classList.add("active");
                 }
-
-                dataElement.addEventListener("click", () => {
-                    console.log(dataElement)
-                    const decoded = JSON.parse(targetElement.value);
-
-                    if (!dataElement.classList.contains("active")) {
-                        decoded[parseInt(itemId)] = itemTitle;
-
-                        targetElement.value = JSON.stringify(decoded);
-                        dataElement.classList.add("active");
-                        return;
-                    }
-
-                    delete decoded[parseInt(itemId)];
-
-                    targetElement.value = JSON.stringify(decoded);
-                    dataElement.classList.remove("active");
-                });
             });
         });
     });
