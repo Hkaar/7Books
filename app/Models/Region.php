@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -55,5 +56,16 @@ class Region extends Model
     public function users()
     {
         return $this->belongsToMany(User::class, 'user_regions');
+    }
+
+    /**
+     * Scope a query by the region name
+     * 
+     * @param \Illuminate\Database\Eloquent\Builder<Region> $query
+     * @return \Illuminate\Database\Eloquent\Builder<Region>
+     */
+    public function scopeByName(Builder $query, string $name)
+    {
+        return $query->where('name', 'like', "%{$name}%");
     }
 }
