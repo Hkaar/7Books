@@ -146,7 +146,7 @@ export async function setupSearch() {
             const dataElement = clicked.closest("[data-item-id]");
     
             if (dataElement === null) {
-                console.error("data element not found!");
+                console.error(`Didn't find a close data-element in [${container}]!`);
                 return; 
             }
     
