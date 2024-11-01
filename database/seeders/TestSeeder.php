@@ -12,11 +12,9 @@ class TestSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            StatusSeeder::class,
-            RoleSeeder::class,
+            DatabaseSeeder::class,
             UserSeeder::class,
             BookSeeder::class,
-            RegionSeeder::class,
         ]);
     }
 }

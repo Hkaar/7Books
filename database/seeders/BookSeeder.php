@@ -23,7 +23,6 @@ class BookSeeder extends Seeder
             ->has(Author::factory()->count(2), 'authors')
             ->has(BookRating::factory()->count(2), 'ratings')
             ->has(Library::factory()->count(1), 'libraries')
-            ->has(Region::factory()->count(1), 'regions')
             ->create();
     }
 }
