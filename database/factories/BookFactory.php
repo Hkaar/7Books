@@ -22,9 +22,10 @@ class BookFactory extends Factory
     public function definition()
     {
         return [
-            'isbn' => $this->faker->isbn10,
-            'name' => $this->faker->sentence,
-            'desc' => $this->faker->paragraph,
+            'isbn10' => $this->faker->isbn10(),
+            'isbn13' => $this->faker->isbn13(),
+            'name' => $this->faker->sentence(),
+            'desc' => $this->faker->paragraph(),
             'price' => $this->faker->randomFloat(2, 10, 100),
             'rate' => $this->faker->randomFloat(2, 1, 5),
             'img' => $this->faker->imageUrl(),

@@ -11,12 +11,20 @@ class Book extends Model
     use HasFactory;
 
     /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'books';
+
+    /**
      * The attributes that are mass assignable
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'isbn',
+        'isbn10',
+        'isbn13',
         'name',
         'desc',
         'price',
@@ -123,9 +131,11 @@ class Book extends Model
      * @param  \Illuminate\Database\Eloquent\Builder<Book>  $query
      * @return \Illuminate\Database\Eloquent\Builder<Book>
      */
-    public function scopeOnlyBorrowed(Builder $query)
+    public function scopeOnlyBorrowed(Builder $query, int $bookId)
     {
-        return $query->where('borrowed', '>', 0);
+        return $query->whereHas('items', function (Builder $query) use ($bookId) {
+            $query->where('book_id', '=', $bookId);
+        });
     }
 
     /**

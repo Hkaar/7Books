@@ -10,6 +10,13 @@ class UserRegion extends Model
     use HasFactory;
 
     /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'user_regions';
+
+    /**
      * The attributes that are mass assignable
      *
      * @var array<int, string>

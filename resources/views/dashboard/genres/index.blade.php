@@ -55,10 +55,11 @@
                     Show
                   </a>
 
-                  <button type="button" class="btn btn-danger" hx-confirm="Are you sure you want to delete this genre?"
+                  <button type="button" class="btn btn-danger" hx-confirm="genre"
                     hx-headers='{"X-CSRF-TOKEN": "{{ csrf_token() }}"}'
                     hx-delete="{{ route('genres.destroy', $genre->id) }}" hx-target="closest tr"
-                    hx-swap="outerHTML">Delete
+                    hx-swap="outerHTML"
+                    delete-confirmation>Delete
                   </button>
 
                   <a class="btn btn-small btn-warning" href="{{ route('genres.edit', $genre->id) }}">Edit

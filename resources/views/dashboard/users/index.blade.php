@@ -70,9 +70,10 @@
                     Show
                   </a>
 
-                  <button type="button" class="btn btn-danger" hx-confirm="Are you sure you want to delete this user?"
+                  <button type="button" class="btn btn-danger" hx-confirm="user"
                     hx-headers='{"X-CSRF-TOKEN": "{{ csrf_token() }}"}'
-                    hx-delete="{{ route('users.destroy', $user->id) }}" hx-target="closest tr" hx-swap="outerHTML">Delete
+                    hx-delete="{{ route('users.destroy', $user->id) }}" hx-target="closest tr" hx-swap="outerHTML"
+                    delete-confirmation>Delete
                   </button>
 
                   <a class="btn btn-small btn-warning" href="{{ route('users.edit', $user->id) }}">Edit

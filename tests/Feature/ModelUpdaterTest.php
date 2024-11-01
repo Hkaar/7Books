@@ -4,11 +4,13 @@ namespace Tests\Feature;
 
 use App\Models\User;
 use App\Traits\ModelUpdater;
+use Database\Seeders\TestSeeder;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class ModelUpdaterTest extends TestCase
 {
-    use ModelUpdater;
+    use ModelUpdater, RefreshDatabase;
 
     /**
      * Test whether the model update method works
@@ -17,6 +19,8 @@ class ModelUpdaterTest extends TestCase
      */
     public function update_model(): void
     {
+        $this->seed(TestSeeder::class);
+
         $user = User::factory()->create();
 
         $newUsername = 'Fred';

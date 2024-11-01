@@ -59,8 +59,8 @@ Route::group(['namespace' => "App\Http\Controllers\Dashboard"], function () {
         Route::resource('orders', 'OrderController')->names('orders');
         Route::resource('authors', 'AuthorController')->names('authors');
         Route::resource('genres', 'GenreController')->names('genres');
-        Route::resource('library', 'LibraryController')->names('libraries');
-        Route::resource('region', 'RegionController')->names('regions');
+        Route::resource('libraries', 'LibraryController')->names('libraries');
+        Route::resource('regions', 'RegionController')->names('regions');
         Route::resource('articles', 'ArticleController')->names('articles');
 
         Route::middleware('verify.admin')->group(function () {

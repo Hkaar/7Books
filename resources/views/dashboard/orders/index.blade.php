@@ -88,9 +88,10 @@
                     Show
                   </a>
 
-                  <button type="button" class="btn btn-danger" hx-confirm="Are you sure you want to delete this order?"
+                  <button type="button" class="btn btn-danger" hx-confirm="order"
                     hx-headers='{"X-CSRF-TOKEN": "{{ csrf_token() }}"}'
-                    hx-delete="{{ route('orders.destroy', $order->id) }}" hx-target="closest tr" hx-swap="outerHTML">Delete
+                    hx-delete="{{ route('orders.destroy', $order->id) }}" hx-target="closest tr" hx-swap="outerHTML"
+                    delete-confirmation>Delete
                   </button>
 
                   <a class="btn btn-warning" href="{{ route('orders.edit', $order->id) }}">Edit
