@@ -17,9 +17,14 @@ class BookController extends Controller
     use Uploader;
 
     /**
-     * ISBN regex to check valid isbn-13 and isbn-10 numbers
+     * Regex to check valid ISBN-10 numbers
      */
-    private string $isbnRegex = "^(?:(?:978-?)?\d{1,5}-?\d{1,7}-?\d{1,9}-?\d|(?:(?:978)?\d{9}[0-9X]))$";
+    private string $isbn10Regex = "^(?:\d{1,5}-\d{1,7}-\d{1,7}-[\dX]|\d{9}[\dX])$";
+
+    /**
+     * Regex to check valid ISBN-13 numbers
+     */
+    private string $isbn13Regex = "^(?:\d{13}|\d{3}-\d{1,5}-\d{1,7}-\d{1,7}-\d{1})$";
 
     public function __construct(public BookFilterService $filterService) {}
 
@@ -73,8 +78,9 @@ class BookController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:500',
-            'isbn' => ['required', 'string', "regex:/{$this->isbnRegex}/"],
+            'name' => 'required|string|max:255',
+            'isbn10' => ['nullable', 'string', "regex:/{$this->isbn10Regex}/"],
+            'isbn13' => ['nullable', 'string', "regex:/{$this->isbn13Regex}/"],
             'desc' => 'nullable|string|max:1000',
             'price' => 'required|numeric',
             'rate' => 'required|numeric|max:10',
@@ -94,6 +100,46 @@ class BookController extends Controller
         }
 
         $book->save();
+
+        if ($request->has('genres')) {
+            $items = json_decode($request->get('genres'), true);
+
+            foreach ($items as $key => $value) {
+                $book->genres()->attach($key);
+            }
+        }
+
+        if ($request->has('authors')) {
+            $items = json_decode($request->get('authors'), true);
+
+            foreach ($items as $key => $value) {
+                $book->authors()->attach($key);
+            }
+        }
+
+        if ($request->has('libraries')) {
+            $libraries = json_decode($request->get('libraries'), true);
+
+            foreach ($libraries as $library => $stock) {
+                $book->libraries()->create([
+                    'library_id' => $library,
+                    'book_id' => $book->id,
+                    'stock' => $stock,
+                ]);
+            }
+        }
+
+        if ($request->has('regions')) {
+            $regions = json_decode($request->get('regions'), true);
+
+            foreach ($regions as $region => $stock) {
+                $book->regions()->create([
+                    'region_id' => $region,
+                    'book_id' => $book->id,
+                    'stock' => $stock,
+                ]);
+            }
+        }
 
         return redirect()->route('books.index');
     }
@@ -126,8 +172,19 @@ class BookController extends Controller
     {
         $book = Book::findOrFail($id);
 
+        $genres = $book->genres()->get()->toJSON();
+        $authors = $book->authors()->get()->toJSON();
+        $libraries = $book->libraries()->get()->toJSON();
+        $regions = $book->regions()->get()->toJSON();
+
+        dd($genres);
+
         return view('dashboard.books.edit', [
             'book' => $book,
+            'genres' => $genres,
+            'authors' => $authors,
+            'libraries' => $libraries,
+            'regions' => $regions,
         ]);
     }
 
@@ -141,8 +198,9 @@ class BookController extends Controller
         $book = Book::findOrFail($id);
 
         $validated = $request->validate([
-            'isbn' => ['nullable', 'string', "regex:/{$this->isbnRegex}/"],
-            'name' => 'nullable|string|max:500',
+            'name' => 'nullable|string|max:255',
+            'isbn10' => ['nullable', 'string', "regex:/{$this->isbn10Regex}/"],
+            'isbn13' => ['nullable', 'string', "regex:/{$this->isbn13Regex}"],
             'desc' => 'nullable|string|max:1000',
             'price' => 'nullable|numeric',
             'rate' => 'nullable|numeric|max:10',
@@ -227,10 +285,6 @@ class BookController extends Controller
     {
         $userId = Auth::id();
         $rating = $request->input('rating');
-
-        if (! $userId) {
-            abort(401, 'Unauthorized Access Was Denied...');
-        }
 
         if ($rating > 5 || $rating < 0) {
             abort(400, 'Invalid rating value...');
