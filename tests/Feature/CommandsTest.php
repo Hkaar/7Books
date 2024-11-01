@@ -18,7 +18,7 @@ class CommandsTest extends TestCase
      */
     public function make_user(): void
     {
-        $this->seed(TestSeeder::class);
+        $this->seed();
 
         $name = fake()->name();
         $email = fake()->email();
