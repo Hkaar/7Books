@@ -52,6 +52,11 @@ Route::group(['namespace' => "App\Http\Controllers\Dashboard"], function () {
         Route::get('books/select', 'BookController@select')->name('books.select');
         Route::get('books/multi-select', 'BookController@multiSelect')->name('books.multi-select');
 
+        Route::get('authors/search/{query}', 'AuthorController@search')->name('authors.search');
+        Route::get('genres/search/{query}', 'GenreController@search')->name('genres.search');
+        Route::get('libraries/search/{query}', 'LibraryController@search')->name('libraries.search');
+        Route::get('regions/search/{query}', 'RegionController@search')->name('regions.search');
+
         Route::get('authors/authored/{id}', 'AuthorController@authored')->name('authors.authored');
         Route::get('orders/items/{id}', 'OrderController@items')->name('orders.items');
 
@@ -70,12 +75,3 @@ Route::group(['namespace' => "App\Http\Controllers\Dashboard"], function () {
 });
 
 Route::redirect('manage', '/manage/orders');
-
-// TODO! REMOVE THESE AFTER A WEEK
-Route::get('articles/kemerdekaan-sebangsa-putih-merah', function () {
-    return view('articles.demo');
-})->name('articles.demo');
-
-Route::get('articles/keanekaragaman-bangsa-besar', function () {
-    return view('articles.demo2');
-})->name('articles.demo2');

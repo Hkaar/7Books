@@ -208,4 +208,19 @@ class AuthorController extends Controller
             'author' => $author,
         ]);
     }
+
+    /**
+     * Search for authors based on a query
+     *
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
+     */
+    public function search(string $query)
+    {
+        $authors = Author::ByName($query)->paginate(5);
+
+        return view('partials.search', [
+            'items' => $authors,
+            'display' => 'name',
+        ]);
+    }
 }
