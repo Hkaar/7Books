@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Library;
 use App\Models\Region;
 use DateTimeZone;
 use Illuminate\Database\Seeder;
@@ -27,9 +26,9 @@ class RegionSeeder extends Seeder
 
             if (! Region::ByName($name)->first()) {
                 Region::create([
-                    "name" => $name,
-                    "desc" => "Generated region",
-                    "timezone" => $timezone,
+                    'name' => $name,
+                    'desc' => 'Generated region',
+                    'timezone' => $timezone,
                 ]);
             }
         }

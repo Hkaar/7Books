@@ -60,8 +60,8 @@ class Region extends Model
 
     /**
      * Scope a query by the region name
-     * 
-     * @param \Illuminate\Database\Eloquent\Builder<Region> $query
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder<Region>  $query
      * @return \Illuminate\Database\Eloquent\Builder<Region>
      */
     public function scopeByName(Builder $query, string $name)

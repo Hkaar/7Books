@@ -7,7 +7,6 @@ use App\Models\Book;
 use App\Models\BookRating;
 use App\Models\Genre;
 use App\Models\Library;
-use App\Models\Region;
 use Illuminate\Database\Seeder;
 
 class BookSeeder extends Seeder

@@ -98,7 +98,7 @@
           <x-detail-badge title="Return Date">
             {{ $order->return_date }}
           </x-detail-badge>
-          
+
           <x-detail-badge title="Status">
             {{ $order->status->name }}
           </x-detail-badge>

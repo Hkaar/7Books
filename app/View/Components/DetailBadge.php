@@ -21,7 +21,7 @@ class DetailBadge extends Component
     public function render(): View|Closure|string
     {
         return view('components.detail-badge', [
-            'title' => $this->title
+            'title' => $this->title,
         ]);
     }
 }
