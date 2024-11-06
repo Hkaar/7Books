@@ -172,19 +172,18 @@ class BookController extends Controller
     {
         $book = Book::findOrFail($id);
 
-        $genres = $book->genres()->get()->toJSON();
-        $authors = $book->authors()->get()->toJSON();
-        $libraries = $book->libraries()->get()->toJSON();
-        $regions = $book->regions()->get()->toJSON();
-
-        dd($genres);
+        // Reserved for future use
+        // $genres = $book->genres()->get()->toJSON();
+        // $authors = $book->authors()->get()->toJSON();
+        // $libraries = $book->libraries()->get()->toJSON();
+        // $regions = $book->regions()->get()->toJSON();
 
         return view('dashboard.books.edit', [
             'book' => $book,
-            'genres' => $genres,
-            'authors' => $authors,
-            'libraries' => $libraries,
-            'regions' => $regions,
+            // 'genres' => $genres,
+            // 'authors' => $authors,
+            // 'libraries' => $libraries,
+            // 'regions' => $regions,
         ]);
     }
 
