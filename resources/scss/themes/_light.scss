@@ -1,0 +1,21 @@
+@include color-mode(light) {
+    .btn-primary {
+        background-color: $primary-light;
+        color: $body-light;
+    }
+
+    .btn-secondary {
+        background-color: $secondary-light;
+        color: $text-light;
+    }
+
+    .btn-tertiary {
+        background-color: $tertiary-light;
+        color: $body-light;
+    }
+
+    .btn-accent {
+        background-color: $accent-light;
+        color: $text-light;
+    }
+}
