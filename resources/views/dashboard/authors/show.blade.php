@@ -63,68 +63,28 @@
 
     <div class="row">
       <div class="col-12 col-md-7 d-flex align-items-center">
-        <div class="shadow-sm rounded p-3 flex-fill">
-          <div class="row mb-3">
-            <div class="col-6">
-              <span class="fw-medium">
-                Name
-              </span>
-            </div>
+        <div class="shadow-sm rounded px-4 py-3 flex-fill d-flex flex-column gap-2">
+          <x-detail-badge title="Name">
+            {{ $author->name }}
+          </x-detail-badge>
 
-            <div class="col-6">
-              <span>
-                {{ $author->name }}
-              </span>
-            </div>
-          </div>
+          <x-detail-badge title="Address">
+            {{ $author->address }}
+          </x-detail-badge>
 
-          <div class="row mb-3">
-            <div class="col-6">
-              <span class="fw-medium">
-                Address
-              </span>
-            </div>
+          <x-detail-badge title="Phone">
+            {{ $author->phone }}
+          </x-detail-badge>
 
-            <div class="col-6">
-              <span>
-                {{ $author->address }}
-              </span>
-            </div>
-          </div>
-
-          <div class="row mb-3">
-            <div class="col-6">
-              <span class="fw-medium">
-                Phone
-              </span>
-            </div>
-
-            <div class="col-6">
-              <span>
-                {{ $author->phone }}
-              </span>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-6">
-              <span class="fw-medium">
-                Total authored books
-              </span>
-            </div>
-
-            <div class="col-6">
-              <span>
-                {{ count($author->books) }} book(s)
-              </span>
-            </div>
-          </div>
+          <x-detail-badge title="Total authored books">
+            {{ count($author->books) }} book(s)
+          </x-detail-badge>
         </div>
       </div>
 
       <div class="col-12 col-md-5 d-flex align-items-center order-first order-md-last mb-3 mb-md-0">
         <div class="d-flex align-items-center justify-content-center flex-fill">
-          <img src="{{ Storage::url($author->img) }}" alt="Profile picture not available" class="img-fluid size-1/2 ratio-box rounded">
+          <img src="{{ $author->img ? Storage::url($author->img) : Vite::asset('resources/images/default-avatar.png') }}" alt="Profile picture not available" class="img-fluid size-1/2 ratio-box rounded">
         </div>
       </div>
     </div>

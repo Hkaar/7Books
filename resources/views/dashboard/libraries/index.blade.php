@@ -50,10 +50,8 @@
                 <td>{{ $library->name }}</td>
 
                 <td class="d-flex gap-1">
-                  <button type="button" class="btn btn-info" data-bs-target="#detailsModal" data-bs-toggle="modal"
-                    hx-get="{{ route('libraries.show', $library->id) }}" hx-target="#detailsBody"
-                    hx-swap="innerHTML">Show
-                  </button>
+                  <a class="btn btn-small btn-info" href="{{ route('libraries.show', $library->id) }}">Show
+                  </a>
 
                   <button type="button" class="btn btn-danger" hx-confirm="library"
                     hx-headers='{"X-CSRF-TOKEN": "{{ csrf_token() }}"}'
