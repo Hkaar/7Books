@@ -135,4 +135,19 @@ class RegionController extends Controller
 
         return response(null);
     }
+
+    /**
+     * Search for regions based on a query
+     *
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
+     */
+    public function search(string $query)
+    {
+        $regions = Region::ByName($query)->paginate(5);
+
+        return view('partials.search', [
+            'items' => $regions,
+            'display' => 'name',
+        ]);
+    }
 }

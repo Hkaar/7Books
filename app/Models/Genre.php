@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -33,5 +34,16 @@ class Genre extends Model
     public function books()
     {
         return $this->belongsToMany(Book::class, 'book_genres');
+    }
+
+    /**
+     * Scope a query by an genre's name
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder<Genre>  $query
+     * @return \Illuminate\Database\Eloquent\Builder<Genre>
+     */
+    public function scopeByName(Builder $query, string $name)
+    {
+        return $query->where('name', 'like', "%{$name}%");
     }
 }

@@ -153,4 +153,19 @@ class GenreController extends Controller
 
         return response(null);
     }
+
+    /**
+     * Search for genres based on a query
+     *
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
+     */
+    public function search(string $query)
+    {
+        $genres = Genre::ByName($query)->paginate(5);
+
+        return view('partials.search', [
+            'items' => $genres,
+            'display' => 'name',
+        ]);
+    }
 }

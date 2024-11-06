@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use App\Models\User;
-use Database\Seeders\TestSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -18,7 +17,7 @@ class CommandsTest extends TestCase
      */
     public function make_user(): void
     {
-        $this->seed(TestSeeder::class);
+        $this->seed();
 
         $name = fake()->name();
         $email = fake()->email();

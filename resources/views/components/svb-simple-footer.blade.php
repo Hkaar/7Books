@@ -1,4 +1,4 @@
-<footer {{ $attributes->merge(["class" => "p-3 shadow border-top"]) }}>
+<footer {{ $attributes->merge(["class" => "p-3 bg-light shadow border-top"]) }}>
   <div class="row">
     <div class="col-12 col-md-6 mb-3 mb-md-0">
       <div class="d-flex align-items-center justify-content-start">

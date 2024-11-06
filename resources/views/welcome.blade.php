@@ -21,7 +21,7 @@
                 </p>
               </span>
 
-              <a href="#" class="btn btn-primary w-fit">
+              <a href="#" class="btn btn-primary">
                 Get started
               </a>
             </div>

@@ -45,37 +45,18 @@
 
       <div class="row">
         <div class="col-12 col-md-7 d-flex align-items-center">
-          <div class="shadow-sm rounded p-3 flex-fill">
-            <div class="row mb-3">
-              <div class="col-6">
-                <span class="fw-medium">
-                  Name
-                </span>
-              </div>
-              <div class="col-6">
-                <span>
-                  {{ $genre->name }}
-                </span>
-              </div>
-            </div>
+          <div class="shadow-sm rounded px-4 py-3 flex-fill d-flex flex-column gap-2">
+            <x-detail-badge title="Name">
+              {{ $genre->name }}
+            </x-detail-badge>
 
-            <div class="row mb-3">
-              <div class="col-6">
-                <span class="fw-medium">
-                  Featured in
-                </span>
-              </div>
-              <div class="col-6">
-                <span>
-                  {{ count($genre->books) }} book(s)
-                </span>
-              </div>
-            </div>
+            <x-detail-badge title="Feautured in">
+              {{ count($genre->books) }} book(s)
+            </x-detail-badge>
           </div>
         </div>
 
         <div class="col-12 col-md-5">
-
         </div>
       </div>
     </x-detail-layout>

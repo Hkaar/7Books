@@ -1,0 +1,31 @@
+@import './mixins';
+
+@include color-mode(dark) {
+    @include component-variant-styles(btn, primary, $primary-dark, $text-light);
+    @include component-variant-styles(btn, secondary, $secondary-dark, $text-dark);
+    @include component-variant-styles(btn, tertiary, $tertiary-dark, $text-light);
+
+    @include component-variant-styles(alert, primary, $primary-dark, $text-light);
+    @include component-variant-styles(alert, secondary, $secondary-dark, $text-dark);
+
+    .accordion-button {
+        background-color: $primary-dark;
+        color: $text-light;
+    }
+
+    .card {
+        @include card-styles($body-dark, $text-light);
+    }
+
+    .navbar {
+        @include navbar-styles($body-dark, $text-light);
+    }
+
+    .form-control {
+        @include input-styles(darken($body-dark, 5%), $text-light);
+    }
+
+    table {
+        @include table-styles($body-dark, $text-light);
+    }
+}

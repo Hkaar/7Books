@@ -83,6 +83,51 @@
     height: 25%;
 }
 
+/* ===== SVB Search Box ===== */
+.svb-search-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* ===== SVB Tabs ===== */
+.svb-tabs {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.svb-tabs:first-child(.svb-tab) {
+    border-radius: 8px 0 0 0;
+}
+
+.svb-tabs:last-child(.svb-tab) {
+    border-radius: 0 8px 0 0;
+}
+
+.svb-tab {
+    display: grid;
+    place-items: center;
+    flex: 1;
+    padding: 0.5rem;
+    outline: none;
+    border: transparent;   
+}
+
+.svb-tab:not(.active):hover {
+    scale: 105%;
+}
+
+.svb-tab:not(.active):active {
+    scale: 95%;
+}
+
+.svb-tab.active {
+    background-color: rgba($color: #fff, $alpha: 1.0);
+}
+
 /* ===== Preview ===== */
 #preview img {
     object-fit: cover;

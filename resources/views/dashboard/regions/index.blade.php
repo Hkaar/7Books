@@ -5,7 +5,8 @@
 @section('main')
   <x-dashboard-layout active="region">
     <div class="d-flex flex-column rounded border shadow-sm">
-      <div class="d-flex align-items-center justify-content-between flex-column flex-lg-row gap-2 border-b border-body-tertiary px-3 py-4">
+      <div
+        class="d-flex align-items-center justify-content-between flex-column flex-lg-row border-body-tertiary gap-2 border-b px-3 py-4">
         <a class="btn btn-success w-100 w-lg-fit" href="{{ route('regions.create') }}">Add a new region</a>
 
         <x-query-accordion>
@@ -47,19 +48,17 @@
           <tbody>
             @foreach ($regions as $i => $region)
               <tr>
-                <td>{{ ($regions->currentPage() - 1) * $regions->perPage() + $i+1 }}</td>
+                <td>{{ ($regions->currentPage() - 1) * $regions->perPage() + $i + 1 }}</td>
                 <td>{{ $region->name }}</td>
                 <td>{{ $region->timezone }}</td>
 
                 <td class="d-flex gap-1">
-                  <button type="button" class="btn btn-info" data-bs-target="#detailsModal" data-bs-toggle="modal"
-                    hx-get="{{ route('regions.show', $region->id) }}" hx-target="#detailsBody" hx-swap="innerHTML">Show
-                  </button>
+                  <a class="btn btn-info" href="{{ route('regions.show', $region->id) }}">Show
+                  </a>
 
                   <button type="button" class="btn btn-danger" hx-confirm="region"
                     hx-headers='{"X-CSRF-TOKEN": "{{ csrf_token() }}"}'
-                    hx-delete="{{ route('regions.destroy', $region->id) }}" hx-target="closest tr"
-                    hx-swap="outerHTML"
+                    hx-delete="{{ route('regions.destroy', $region->id) }}" hx-target="closest tr" hx-swap="outerHTML"
                     delete-confirmation>Delete
                   </button>
 
@@ -72,7 +71,7 @@
         </table>
       </div>
 
-      <div class="d-flex align-items-center justify-content-between px-3 pt-2 pb-3">
+      <div class="d-flex align-items-center justify-content-between px-3 pb-3 pt-2">
         <x-paginate-links :links="$regions" :useHtmx=false></x-paginate-links>
 
         <x-paginate-counter :items="$regions"></x-paginate-counter>
