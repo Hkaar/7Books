@@ -82,84 +82,30 @@
       </div>
 
       <div class="row px-2.5">
-        <div class="col-12 col-md-7 p-3 shadow-sm rounded">
-          <div class="row mb-3">
-            <div class="col-6">
-              <span class="fw-medium">
-                Placed by
-              </span>
-            </div>
-            <div class="col-6">
-              <span>
-                {{ $order->user->name }}
-              </span>
-            </div>
-          </div>
+        <div class="col-12 col-md-7 px-4 py-3 shadow-sm rounded d-flex flex-column gap-2">
+          <x-detail-badge title="Placed by">
+            {{ $order->user->name }}
+          </x-detail-badge>
 
-          <div class="row mb-3">
-            <div class="col-6">
-              <span class="fw-medium">
-                Token
-              </span>
-            </div>
-            <div class="col-6">
-              <span>
-                {{ $order->token }}
-              </span>
-            </div>
-          </div>
+          <x-detail-badge title="Token">
+            {{ $order->token }}
+          </x-detail-badge>
 
-          <div class="row mb-3">
-            <div class="col-6">
-              <span class="fw-medium">
-                Placed date
-              </span>
-            </div>
-            <div class="col-6">
-              <span>
-                {{ $order->placed_date }}
-              </span>
-            </div>
-          </div>
+          <x-detail-badge title="Placed date">
+            {{ $order->placed_date }}
+          </x-detail-badge>
 
-          <div class="row mb-3">
-            <div class="col-6">
-              <span class="fw-medium">
-                Return date
-              </span>
-            </div>
-            <div class="col-6">
-              <span>
-                {{ $order->return_date }}
-              </span>
-            </div>
-          </div>
+          <x-detail-badge title="Return Date">
+            {{ $order->return_date }}
+          </x-detail-badge>
 
-          <div class="row mb-3">
-            <div class="col-6">
-              <span class="fw-medium">
-                Status
-              </span>
-            </div>
-            <div class="col-6">
-              <span>
-                {{ $order->status->name }}
-              </span>
-            </div>
-          </div>
+          <x-detail-badge title="Status">
+            {{ $order->status->name }}
+          </x-detail-badge>
 
-          <div class="row">
-            <div class="col-6">
-              <span class="fw-medium">
-                Total items
-              </span>
-            </div>
-            <div class="col-6">
-              <span>
-                {{ count($order->items) }}
-              </span>
-            </div>
-          </div>
+          <x-detail-badge title="Total Items">
+            {{ count($order->items) }}
+          </x-detail-badge>
         </div>
 
         <div class="col-12 col-md-5">

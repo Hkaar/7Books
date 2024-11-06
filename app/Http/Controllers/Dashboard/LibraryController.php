@@ -121,4 +121,19 @@ class LibraryController extends Controller
 
         return response(null);
     }
+
+    /**
+     * Search for libraries based on a query
+     *
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
+     */
+    public function search(string $query)
+    {
+        $libraries = Library::ByName($query)->paginate(5);
+
+        return view('partials.search', [
+            'items' => $libraries,
+            'display' => 'name',
+        ]);
+    }
 }

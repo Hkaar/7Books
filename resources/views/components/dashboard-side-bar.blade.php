@@ -1,4 +1,4 @@
-<aside id="side-nav" {{ $attributes->merge(["class" => "z-10 absolute over-left lg-z-0 inset-0 lg-over-none min-vh-100 lg-relative shadow-sm d-flex flex-column"]) }} data-collapsed="true">
+<aside id="side-nav" {{ $attributes->merge(["class" => "z-10 text-white absolute over-left lg-z-0 inset-0 lg-over-none min-vh-100 lg-relative shadow-sm d-flex flex-column"]) }} data-collapsed="true">
   <div class="d-flex flex-column gap-1 flex-fill">
     <span class="d-flex align-items-center gap-2 justify-content-between">
       <div class="dropdown">

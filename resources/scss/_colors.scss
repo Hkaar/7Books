@@ -1,17 +1,35 @@
-// Color themes for Seven Books
+$themes: (
+  light: (
+    text: #0f111a,
+    background: #f5f6fa,
+    primary: #071850,
+    secondary: #98a9e7,
+    tertiary: #37B7C3,
+    accent: #8191c5,
+  ),
+  dark: (
+    text: #e5e7f0,
+    background: #05060a,
+    primary: #afc0f8,
+    secondary: #182967,
+    tertiary: #3cbcc8,
+    accent: #3a4a7e,
+  ),
+);
 
-$primary: #071952;
-$secondary: #088395;
-$tertiary: #37B7C3;
-$accent: #443dff;
-$text-light: #fff;
-$body-light: #fff;
+$text-light: #0f111a;
+$body-light: #f5f6fa;
+$primary-light: #071850;
+$secondary-light: #98a9e7;
+$tertiary-light: #37B7C3;
+$accent-light: #8191c5;
 
-$primary-dark: #EBF4F6;
-$secondary-dark: #37B7C3;
-$tertiary-dark: #088395;
-$body-dark: #232323;
-$text-dark: #fff;
+$text-dark: #e5e7f0;
+$body-dark: #05060a;
+$primary-dark: #afc0f8;
+$secondary-dark: #182967;
+$tertiary-dark: #3cbcc8;
+$accent-dark: #3a4a7e;
 
 $danger: #e61b37;
 $success: #267d48;
@@ -19,33 +37,14 @@ $warning: #ffa500;
 $info: #1fa2e2;
 
 $svb-light-theme: (
-    "primary": $primary,
-    "secondary": $secondary,
-    "tertiary": $tertiary,
-    "danger": $danger,
-    "success": $success,
-    "warning": $warning,
-    "info": $info,
-    "accent": $accent,
-    "body": $body-light,
-    "body-text": $text-light
+  "primary": $primary-light,
+  "secondary": $secondary-light,
+  "tertiary": $tertiary-light,
+  "accent": $accent-light,
+  "danger": $danger,
+  "success": $success,
+  "warning": $warning,
+  "info": $info,
+  "body": $body-light,
+  "body-text": $text-light
 );
-
-$svb-dark-theme: (
-    "primary": $primary-dark,
-    "secondary": $secondary-dark,
-    "tertiary": $tertiary-dark,
-    "body": $body-dark,
-    "body-text": $text-dark,
-    "danger": $danger,
-    "success": $success,
-    "warning": $warning,
-    "info": $info,
-);
-
-[data-bs-theme="dark"] {
-    --bs-body-bg: $body-dark !important;
-    --bs-body-color: $text-dark !important;
-    --bs-primary: white !important; 
-    --bs-secondary: $secondary-dark !important;
-}

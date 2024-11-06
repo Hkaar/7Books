@@ -173,6 +173,38 @@
     height: fit-content;
 }
 
+.min-w-25 {
+    min-width: 25%;
+}
+
+.min-w-50 {
+    min-width: 50%;
+}
+
+.min-w-75 {
+    min-width: 75%;
+}
+
+.min-w-100 {
+    min-width: 100%;
+}
+
+.min-h-25 {
+    min-height: 25%;
+}
+
+.min-h-50 {
+    min-height: 50%;
+}
+
+.min-h-75 {
+    min-height: 75%;
+}
+
+.min-h-100 {
+    min-height: 100%;
+}
+
 /* ===== Positioning ===== */
 .z-0 {
     z-index: 0;

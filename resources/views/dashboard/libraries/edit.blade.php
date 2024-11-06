@@ -48,10 +48,14 @@
               @enderror
             </div>
 
-            <div class="d-flex align-items-md-center flex-column flex-md-row gap-1 mt-4">
+            <div class="d-flex align-items-lg-center justify-content-lg-between flex-column flex-lg-row gap-1 mt-4">
+              <button type="button" class="btn btn-secondary">
+                Select Books
+              </button>
+
               <div class="d-flex gap-1">
-                <button type="submit" class="btn btn-primary flex-fill">Save Changes</button>
                 <a href="{{ route('libraries.index') }}" class="btn btn-danger flex-fill">Cancel</a>
+                <button type="submit" class="btn btn-primary flex-fill">Save Changes</button>
               </div>
             </div>
           </form>

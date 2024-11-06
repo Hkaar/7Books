@@ -7,7 +7,6 @@ use App\Models\Book;
 use App\Models\BookRating;
 use App\Models\Genre;
 use App\Models\Library;
-use App\Models\Region;
 use Illuminate\Database\Seeder;
 
 class BookSeeder extends Seeder
@@ -23,7 +22,6 @@ class BookSeeder extends Seeder
             ->has(Author::factory()->count(2), 'authors')
             ->has(BookRating::factory()->count(2), 'ratings')
             ->has(Library::factory()->count(1), 'libraries')
-            ->has(Region::factory()->count(1), 'regions')
             ->create();
     }
 }

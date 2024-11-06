@@ -20,7 +20,7 @@ class LibraryFactory extends Factory
         return [
             'name' => $this->faker->domainName(),
             'desc' => $this->faker->paragraph(),
-            'region_id' => fn () => Region::factory()->create()->id,
+            'region_id' => fn () => Region::inRandomOrder()->first()->id,
         ];
     }
 }

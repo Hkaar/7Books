@@ -17,8 +17,8 @@ export function setTheme(theme) {
  */
 function setThemeToggles(theme) {
     const themeMap = {
-        dark: 'fa-moon',
-        light: 'fa-sun',
+        dark: '.fa-moon',
+        light: '.fa-sun',
     }
 
     const themeSwitch = document.getElementById("themeSwitch");
@@ -30,13 +30,13 @@ function setThemeToggles(theme) {
 
     switch (theme) {
         case "light":
-            themeSwitch.querySelector(themeMap.dark)?.classList.add("d-none");
-            themeSwitch.querySelector(themeMap.light)?.classList.remove("d-none");
+            themeSwitch.querySelector(themeMap.light)?.classList.add("d-none");
+            themeSwitch.querySelector(themeMap.dark)?.classList.remove("d-none");
             break;
 
         case "dark":
-            themeSwitch.querySelector(themeMap.dark)?.classList.remove("d-none");
-            themeSwitch.querySelector(themeMap.light)?.classList.add("d-none");
+            themeSwitch.querySelector(themeMap.light)?.classList.remove("d-none");
+            themeSwitch.querySelector(themeMap.dark)?.classList.add("d-none");
             break;
     
         default:

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -45,5 +46,16 @@ class Library extends Model
     public function books()
     {
         return $this->belongsToMany(Book::class, 'library_books');
+    }
+
+    /**
+     * Scope a query by an library name
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder<Library>  $query
+     * @return \Illuminate\Database\Eloquent\Builder<Library>
+     */
+    public function scopeByName(Builder $query, string $name)
+    {
+        return $query->where('name', 'like', "%{$name}%");
     }
 }

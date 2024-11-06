@@ -62,7 +62,7 @@ class RegionTest extends TestCase
         ]);
         $this->actingAs($user);
 
-        $region = Region::factory()->create();
+        $region = Region::inRandomOrder()->first();
 
         $this->get("/manage/regions/{$region->id}/edit")
             ->assertStatus(200);
@@ -82,7 +82,7 @@ class RegionTest extends TestCase
         ]);
         $this->actingAs($user);
 
-        $region = Region::factory()->create();
+        $region = Region::inRandomOrder()->first();
 
         $this->get("/manage/regions/{$region->id}")
             ->assertStatus(200);

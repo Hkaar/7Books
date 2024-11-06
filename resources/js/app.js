@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import { setupSlides } from "./slides.js";
 import { setupSearch, setupStoredSearchableLoaders } from "./search.js";
 import { setupThemes } from "./themes.js";
+import { setupTabs } from "./tabs.js";
 
 import.meta.glob([
     "../images/**/*",
@@ -174,6 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setupThemes();
 
     setupSearch();
+    setupTabs();
     setupStoredSearchableLoaders();
 
     const sideNav = document.querySelector("#side-nav");

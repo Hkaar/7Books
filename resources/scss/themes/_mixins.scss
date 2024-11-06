@@ -1,0 +1,87 @@
+@mixin component-variant-styles($name, $variant, $bg-color, $text-color) {
+    .#{$name}-#{$variant} {
+        background-color: $bg-color !important;
+        color: $text-color !important;
+    }
+
+    .#{$name}-outline-#{$variant} {
+        background-color: transparent !important;
+        color: $text-color !important;
+        border-color: $bg-color !important;
+
+        transition-property: color;
+
+        &:hover {
+            background-color: $bg-color !important;
+            color: $text-color !important;
+        }
+    }
+}
+
+@mixin card-styles($bg-color, $text-color) {
+    background-color: $bg-color;
+    color: $text-color;
+    border: 1px solid darken($bg-color, 10%);
+
+    .card-header {
+        background-color: darken($bg-color, 5%);
+        color: $text-color;
+    }
+
+    .card-body {
+        color: $text-color;
+    }
+
+    .card-footer {
+        background-color: darken($bg-color, 10%);
+        color: $text-color;
+    }
+}
+
+@mixin navbar-styles($bg-color, $text-color) {
+    background-color: $bg-color;
+    color: $text-color;
+
+    .navbar-brand {
+        color: $text-color;
+
+        &:hover {
+            color: lighten($text-color, 10%);
+        }
+    }
+
+    .navbar-nav .nav-link {
+        color: $text-color;
+
+        &:hover {
+            color: lighten($text-color, 10%);
+        }
+    }
+}
+
+@mixin input-styles($bg-color, $text-color) {
+    background-color: $bg-color;
+    color: $text-color;
+    border: 1px solid darken($bg-color, 10%);
+
+    &:focus {
+        background-color: $bg-color;
+        border-color: $primary-dark;
+        color: $text-color;
+    }
+}
+
+@mixin table-styles($bg-color, $text-color) {
+    background-color: $bg-color;
+    color: $text-color;
+
+    th {
+        background-color: darken($bg-color, 5%);
+        color: $text-color;
+    }
+
+    td {
+        background-color: $bg-color;
+        color: $text-color;
+    }
+}

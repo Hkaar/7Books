@@ -63,7 +63,7 @@
                 <td>{{ ($users->currentPage() - 1) * $users->perPage() + $i+1 }}</td>
                 <td>{{ $user->username }}</td>
                 <td>{{ $user->email }}</td>
-                <td>{{ $user->role->name }}</td>
+                <td>{{ ucfirst($user->role->name) }}</td>
 
                 <td class="d-flex gap-1">
                   <a href="{{ route('users.show', $user->id) }}" type="button" class="btn btn-info">

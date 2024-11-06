@@ -9,7 +9,7 @@
 <div class="d-flex gap-3 align-items-center justify-content-between mb-3">
   <div class="align-items-center gap-2 d-none d-lg-flex">
     <div class="d-flex align-items-center gap-2 shadow-sm rounded">
-      <span class="fw-medium bg-tertiary p-3 text-white">
+      <span class="fw-medium bg-tertiary p-3 text-white rounded-start">
         Created
       </span>
 
@@ -19,7 +19,7 @@
     </div>
 
     <div class="d-flex align-items-center gap-2 shadow-sm rounded">
-      <span class="fw-medium bg-tertiary text-white p-3">
+      <span class="fw-medium bg-tertiary text-white p-3 rounded-start">
         Updated
       </span>
 

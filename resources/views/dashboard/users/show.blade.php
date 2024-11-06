@@ -8,7 +8,7 @@
       <div class="row mb-3">
         <div class="col-12 col-md-4 mb-3">
           <div class="d-flex align-items-center gap-3 p-3 shadow-sm rounded">
-            <img src="{{ Storage::url($user->img) }}" alt="No image" class="img-fluid size-1/10 rounded">
+            <img src="{{ $user->img ? Storage::url($user->img) : Vite::asset('resources/images/default-avatar.png') }}" alt="No image" class="img-fluid size-1/10 rounded">
 
             <div class="d-flex flex-column gap-1">
               <h6 class="text-h6 fw-medium">
@@ -63,62 +63,30 @@
         </div>
       </div>
 
-      <div class="row px-2.5">
-        <div class="col-12 col-md-7 rounded p-3 shadow-sm">
-          <div class="row mb-3">
-            <div class="col-6">
-              <span class="fw-medium">
-                Display Name
-              </span>
-            </div>
-            <div class="col-6">
-              <span>
-                {{ $user->name }}
-              </span>
-            </div>
-          </div>
+      <div class="row">
+        <div class="col-12 col-md-7">
+          <div class="px-4 py-3 d-flex flex-column gap-2 rounded shadow-sm">
+            <x-detail-badge title="Display Name">
+              {{ $user->name }}
+            </x-detail-badge>
 
-          <div class="row mb-3">
-            <div class="col-6">
-              <span class="fw-medium">
-                Username
-              </span>
-            </div>
-            <div class="col-6">
-              <span>
-                {{ $user->username }}
-              </span>
-            </div>
-          </div>
+            <x-detail-badge title="Username">
+              {{ $user->username }}
+            </x-detail-badge>
 
-          <div class="row mb-3">
-            <div class="col-6">
-              <span class="fw-medium">
-                Email
-              </span>
-            </div>
-            <div class="col-6">
-              <span>
-                {{ $user->email }}
-              </span>
-            </div>
-          </div>
+            <x-detail-badge title="Email">
+              {{ $user->email }}
+            </x-detail-badge>
 
-          <div class="row">
-            <div class="col-6">
-              <span class="fw-medium">
-                Role
-              </span>
-            </div>
-            <div class="col-6">
-              <span>
-                {{ $user->role->name }}
-              </span>
-            </div>
+            <x-detail-badge title="Role">
+              {{ $user->role->name }}
+            </x-detail-badge>
           </div>
         </div>
 
-        <div class="col-12 col-md-5"></div>
+        <div class="col-12 col-md-5 d-flex align-items-center justify-content-center">
+          <img src="{{ $user->img ? Storage::url($user->img) : Vite::asset('resources/images/default-avatar.png') }}" alt="No image" class="img-fluid size-1/2 rounded">
+        </div>
       </div>
     </x-detail-layout>
   </x-dashboard-layout>
