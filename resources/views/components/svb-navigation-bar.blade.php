@@ -69,7 +69,7 @@
         @endif
 
         <div class="d-flex align-items-center gap-1">
-          <button type="button" class="btn" id="themeSwitch">
+          <button type="button" class="btn fs-6" id="themeSwitch">
             <i class="fa-regular fa-moon"></i>
             <i class="fa-regular fa-sun d-none"></i>
           </button>
@@ -84,13 +84,11 @@
                 data-bs-toggle="dropdown" aria-expanded="false">
                 @if (auth()->user()->img)
                   <img src="{{ Storage::url(auth()->user()->img) }}" alt="Image not available"
-                    class="img-fluid rounded-circle logo-md">
+                    class="img-fluid rounded-circle" style="width: 2.6rem; height: 2.6rem;">
                 @else
                   <img src="{{ Vite::asset('resources/images/default-avatar.png') }}" alt="Image not available"
-                    class="img-fluid rounded-circle logo-md">
+                    class="img-fluid rounded-circle" style="width: 2.6rem; height: 2.6rem;">
                 @endif
-
-                <i class="fa-solid fa-ellipsis-vertical d-none d-lg-block"></i>
 
                 <span class="d-lg-none d-flex align-items-center gap-1">
                   Show actions <i class="fa-solid fa-chevron-down"></i>
@@ -117,7 +115,7 @@
         @if ($login)
           @guest
             <div class="d-flex-gap-1 align-items-center ms-lg-2">
-              <a href="{{ route('login') }}" class="btn btn-outline-secondary">Login</a>
+              <a href="{{ route('login') }}" class="btn btn-secondary">Login</a>
               <a href="{{ route('register') }}" class="btn btn-primary text-light">Register</a>
             </div>
           @endguest
