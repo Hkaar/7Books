@@ -4,42 +4,44 @@
 
 @section('main')
   <x-dashboard-layout active="book">
-    <div class="row flex-fill mt-auto">
-      <div class="col-12 mb-4">
-        <div class="container">
-          <div class="d-flex align-items-center gap-3">
-            <a href="{{ url()->previous() }}" class="btn btn-primary">
-              <i class="fa-regular fa-arrow-left"></i>
-              Back
-            </a>
-            <h1 class="text-h5 text-md-h3 fw-semibold">Book Creator</h1>
-          </div>
+    <div class="d-flex flex-column flex-fill">
+      <div class="container mb-4">
+        <div class="d-flex align-items-center gap-3">
+          <a href="{{ url()->previous() }}" class="btn btn-primary">
+            <i class="fa-regular fa-arrow-left"></i>
+            Back
+          </a>
+          <h1 class="text-h5 text-md-h3 fw-semibold">Book Creator</h1>
         </div>
       </div>
 
-      <div class="col-12">
-        <div class="container">
-          <div class="row">
-            <div class="col-12 col-md-6">
-              <ul class="nav nav-tabs nav-fill">
-                <li class="nav-item">
-                  <button type="button" class="nav-link active" aria-current="page">Book Details</button>
-                </li>
-                <li class="nav-item">
-                  <button type="button" class="nav-link">Authors</button>
-                </li>
-                <li class="nav-item">
-                  <button type="button" class="nav-link">Genres</button>
-                </li>
-                <li class="nav-item">
-                  <button type="button" class="nav-link">Libraries</button>
-                </li>
-                <li class="nav-item">
-                  <button type="button" class="nav-link">Regions</button>
-                </li>
-              </ul>
+      <div class="container flex-fill">
+        <div class="row min-h-100">
+          <div class="col-12 col-md-7 col-lg-6 mb-3 d-flex flex-column">
+            <div class="bg-white shadow rounded">
+              <div class="svb-tabs bg-body-tertiary">
+                <button type="menu" class="active svb-tab svb-transition-fast" svb-tab="formTab" svb-target="#detailsTab">
+                  Book
+                </button>
+  
+                <button type="menu" class="svb-tab svb-transition-fast" svb-tab="formTab" svb-target="#authorsTab">
+                  Authors
+                </button>
+  
+                <button type="menu" class="svb-tab svb-transition-fast" svb-tab="formTab" svb-target="#genresTab">
+                  Genres
+                </button>
+  
+                <button type="menu" class="svb-tab svb-transition-fast" svb-tab="formTab" svb-target="#librariesTab">
+                  Libraries
+                </button>
+  
+                <button type="menu" class="svb-tab svb-transition-fast" svb-tab="formTab" svb-target="#regionsTab">
+                  Regions
+                </button>
+              </div>
               
-              <form method="POST" action="{{ route('books.store') }}" enctype="multipart/form-data" class="px-3 py-4 border rounded-bottom shadow-sm mb-3">
+              <form method="POST" svb-tab-container="formTab" id="detailsTab" action="{{ route('books.store') }}" enctype="multipart/form-data" class="px-3 py-4 flex-fill rounded-bottom">
                 @csrf
   
                 <input type="hidden" id="authors" name="authors" value="{}">
@@ -121,114 +123,108 @@
                   <a class="btn btn-danger" href="{{ route('books.index') }}">Cancel</a>
                 </div>
               </form>
-            </div>
   
-            <div class="col-12 col-md-6 d-flex align-items-center justify-content-center mb-md-0 mt-md-0 mb-3 mt-3">
-              <div id="preview" class="cover position-sticky">
-                Cover page will appear here
+              <div class="px-3 py-4 rounded-bottom" svb-tab-container="formTab" id="authorsTab">
+                <div class="d-flex flex-column gap-2">
+                  <div class="mb-3 d-flex align-items-center">
+                    <input type="text" class="form-control flex-fill" id="regionsSearchBox" placeholder="Search for an author"
+                      svb-search="/manage/authors/search"
+                      svb-container="#addAuthorSearchBody"
+                      svb-target="#authors">
+        
+                    <button type="button" class="btn" svb-search-load
+                      svb-container="#addAuthorSearchBody"
+                      svb-target="#authors">
+                      <i class="fa-regular fa-history"></i>
+                    </button>
+                  </div>
+        
+                  <div class="svb-search-box" id="addAuthorSearchBody">
+                    <span class="d-flex align-items-center gap-2 bg-body-tertiary rounded p-3">
+                      <i class="fa-regular fa-magnifying-glass"></i>
+                      No results were found
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="px-3 py-4 rounded-bottom" svb-tab-container="formTab" id="genresTab">
+                <div class="d-flex flex-column gap-2">
+                  <div class="mb-3 d-flex align-items-center">
+                    <input type="text" class="form-control flex-fill" id="genresSearchBox" placeholder="Search for a genre"
+                      svb-search="/manage/genres/search"
+                      svb-container="#addGenreSearchBody"
+                      svb-target="#genres">
+        
+                    <button type="button" class="btn" svb-search-load
+                      svb-container="#addGenreSearchBody"
+                      svb-target="#genres">
+                      <i class="fa-regular fa-history"></i>
+                    </button>
+                  </div>
+        
+                  <div class="svb-search-box" id="addGenreSearchBody">
+                    <span class="d-flex align-items-center gap-2 bg-body-tertiary rounded p-3">
+                      <i class="fa-regular fa-magnifying-glass"></i>
+                      No results were found
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="px-3 py-4 rounded-bottom" svb-tab-container="formTab" id="librariesTab">
+                <div class="d-flex flex-column gap-2">
+                  <div class="mb-3 d-flex align-items-center">
+                    <input type="text" class="form-control flex-fill" id="librariesSearchBox" placeholder="Search for a library"
+                      svb-search="/manage/libraries/search"
+                      svb-container="#addLibrariesSearchBody"
+                      svb-target="#libraries">
+        
+                    <button type="button" class="btn" svb-search-load
+                      svb-container="#addLibrariesSearchBody"
+                      svb-target="#libraries">
+                      <i class="fa-regular fa-history"></i>
+                    </button>
+                  </div>
+        
+                  <div class="svb-search-box" id="addLibrariesSearchBody">
+                    <span class="d-flex align-items-center gap-2 bg-body-tertiary rounded p-3">
+                      <i class="fa-regular fa-magnifying-glass"></i>
+                      No results were found
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="px-3 py-4 rounded-bottom" svb-tab-container="formTab" id="regionsTab">
+                <div class="d-flex flex-column gap-2">
+                  <div class="mb-3 d-flex align-items-center">
+                    <input type="text" class="form-control flex-fill" id="regionsSearchBox" placeholder="Search for an author"
+                      svb-search="/manage/regions/search"
+                      svb-container="#addRegionSearchBody"
+                      svb-target="#regions">
+        
+                    <button type="button" class="btn" svb-search-load
+                      svb-container="#addRegionSearchBody"
+                      svb-target="#regions">
+                      <i class="fa-regular fa-history"></i>
+                    </button>
+                  </div>
+        
+                  <div class="svb-search-box" id="addRegionSearchBody">
+                    <span class="d-flex align-items-center gap-2 bg-body-tertiary rounded p-3">
+                      <i class="fa-regular fa-magnifying-glass"></i>
+                      No results were found
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
 
-      <div class="col-12">
-        <div class="container">
-          <div class="row">
-            <div class="col-12 col-lg-6 mb-3">
-              <div class="d-flex flex-column gap-2 shadow-sm p-3 rounded">
-                <div class="mb-3 d-flex align-items-center">
-                  <input type="text" class="form-control flex-fill" id="authorsSearchBox" placeholder="Search for an author"
-                    svb-search="/manage/authors/search"
-                    svb-container="#addAuthorSearchBody"
-                    svb-target="#authors">
-      
-                  <button type="button" class="btn" svb-search-load
-                    svb-container="#addAuthorSearchBody"
-                    svb-target="#authors">
-                    <i class="fa-regular fa-history"></i>
-                  </button>
-                </div>
-      
-                <div class="svb-search-box" id="addAuthorSearchBody">
-                  <span class="d-flex align-items-center gap-2 bg-body-tertiary rounded p-3">
-                    <i class="fa-regular fa-magnifying-glass"></i>
-                    No results were found
-                  </span>
-                </div>
-              </div>
-            </div>
-  
-            <div class="col-12 col-lg-6 mb-3">
-              <div class="d-flex flex-column gap-2 shadow-sm p-3 rounded">
-                <div class="mb-3 d-flex align-items-center">
-                  <input type="text" class="form-control" placeholder="Search for a genre"
-                    svb-search="/manage/genres/search"
-                    svb-container="#addGenreSearchBody"
-                    svb-target="#genres">
-      
-                  <button type="button" class="btn" svb-search-load
-                    svb-container="#addGenreSearchBody"
-                    svb-target="#genres">
-                    <i class="fa-regular fa-history"></i>
-                  </button>
-                </div>
-      
-                <div class="svb-search-box" id="addGenreSearchBody">
-                  <span class="d-flex align-items-center gap-2 bg-body-tertiary rounded p-3">
-                    <i class="fa-regular fa-magnifying-glass"></i>
-                    No results were found
-                  </span>
-                </div>
-              </div>
-            </div>
-  
-            <div class="col-12 col-lg-6 mb-3">
-              <div class="d-flex flex-column gap-2 shadow-sm p-3 rounded">
-                <div class="mb-3 d-flex align-items-center">
-                  <input type="text" class="form-control" placeholder="Search for a library"
-                    svb-search="/manage/libraries/search"
-                    svb-container="#addLibrarySearchBody"
-                    svb-target="#libraries">
-      
-                  <button type="button" class="btn" svb-search-load
-                    svb-container="#addLibrarySearchBody"
-                    svb-target="#libraries">
-                    <i class="fa-regular fa-history"></i>
-                  </button>
-                </div>
-      
-                <div class="svb-search-box" id="addLibrarySearchBody">
-                  <span class="d-flex align-items-center gap-2 bg-body-tertiary rounded p-3">
-                    <i class="fa-regular fa-magnifying-glass"></i>
-                    No results were found
-                  </span>
-                </div>
-              </div>
-            </div>
-  
-            <div class="col-12 col-lg-6 mb-3">
-              <div class="d-flex flex-column gap-2 shadow-sm p-3 rounded">
-                <div class="mb-3 d-flex align-items-center">
-                  <input type="text" class="form-control" placeholder="Search for a region"
-                    svb-search="/manage/regions/search"
-                    svb-container="#addRegionSearchBody"
-                    svb-target="#regions">
-      
-                  <button type="button" class="btn" svb-search-load
-                    svb-container="#addRegionSearchBody"
-                    svb-target="#regions">
-                    <i class="fa-regular fa-history"></i>
-                  </button>
-                </div>
-      
-                <div class="svb-search-box" id="addRegionSearchBody">
-                  <span class="d-flex align-items-center gap-2 bg-body-tertiary rounded p-3">
-                    <i class="fa-regular fa-magnifying-glass"></i>
-                    No results were found
-                  </span>
-                </div>
-              </div>
+          <div class="col-12 col-md-5 col-lg-6 d-flex align-items-center justify-content-center mb-md-0 mt-md-0 mb-3 mt-3">
+            <div id="preview" class="cover position-sticky">
+              Cover page will appear here
             </div>
           </div>
         </div>
