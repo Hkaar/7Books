@@ -45,23 +45,4 @@ class ArticleController extends Controller
         $article = Article::where('slug', $slug)->firstOrFail();
         return view('blog.show', compact('article'));
     }
-
-    public function search(Request $request, $slug)
-    {
-        $searchQuery = $request->input('search'); // Fetches the search input
-
-        $query = Article::query();
-        if ($searchQuery) {
-            $query->where('slug', $slug)
-                ->where(function ($q) use ($searchQuery) {
-                    $q->where('title', 'like', "%{$searchQuery}%")
-                        ->orWhere('body', 'like', "%{$searchQuery}%");
-                });
-        }
-
-        $articles = $query->latest()->paginate(12); // Adjust pagination as needed
-
-        return view('blog.index', compact('articles', 'searchQuery', 'slug'));
-    }
-
 }
