@@ -23,5 +23,7 @@ class RoleSeeder extends Seeder
         if (! Role::ByName('member')->first()) {
             Role::create(['name' => 'member']);
         }
+        \App\Models\User::factory(50)->create();
+
     }
 }
