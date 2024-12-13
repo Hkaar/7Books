@@ -6,6 +6,7 @@ use App\Models\Author;
 use App\Models\Role;
 use App\Models\User;
 use Database\Seeders\BookSeeder;
+use Database\Seeders\TestSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -20,7 +21,7 @@ class AuthorTest extends TestCase
      */
     public function test_dashboard_index(): void
     {
-        $this->seed();
+        $this->seed(TestSeeder::class);
         $this->seed(BookSeeder::class);
 
         $user = User::factory()->create([
@@ -39,7 +40,7 @@ class AuthorTest extends TestCase
      */
     public function test_dashboard_create(): void
     {
-        $this->seed();
+        $this->seed(TestSeeder::class);
 
         $user = User::factory()->create([
             'role_id' => Role::ByName('admin')->first()->id,
@@ -57,7 +58,7 @@ class AuthorTest extends TestCase
      */
     public function test_dashboard_edit(): void
     {
-        $this->seed();
+        $this->seed(TestSeeder::class);
 
         $user = User::factory()->create([
             'role_id' => Role::ByName('admin')->first()->id,
@@ -77,7 +78,7 @@ class AuthorTest extends TestCase
      */
     public function test_dashboard_show(): void
     {
-        $this->seed();
+        $this->seed(TestSeeder::class);
 
         $user = User::factory()->create([
             'role_id' => Role::ByName('admin')->first()->id,

@@ -7,6 +7,7 @@ use App\Services\BookFilterService;
 use App\Services\GenreFilterService;
 use App\Services\OrderFilterService;
 use App\Services\UserFilterService;
+use Database\Seeders\BookSeeder;
 use Database\Seeders\TestSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -61,6 +62,7 @@ class ServiceTest extends TestCase
     public function book_filter_service(): void
     {
         $this->seed(TestSeeder::class);
+        $this->seed(BookSeeder::class);
 
         $filters = [
             'latest',
@@ -80,6 +82,7 @@ class ServiceTest extends TestCase
     public function author_filter_service(): void
     {
         $this->seed(TestSeeder::class);
+        $this->seed(BookSeeder::class);
 
         $filters = [
             'latest',
@@ -99,6 +102,7 @@ class ServiceTest extends TestCase
     public function genre_filter_service(): void
     {
         $this->seed(TestSeeder::class);
+        $this->seed(BookSeeder::class);
 
         $filters = [
             'latest',

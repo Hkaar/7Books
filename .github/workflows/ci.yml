@@ -138,4 +138,4 @@ jobs:
         run: php artisan key:generate --env=testing
 
       - name: Run tests
-        run: php artisan test
+        run: php artisan test --parallel
