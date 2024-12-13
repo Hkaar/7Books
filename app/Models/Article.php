@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Article extends Model
+class Article extends Model implements HasMedia
 {
-    use HasFactory;
+    use HasFactory, InteractsWithMedia;
 
     /**
      * The table associated with the model.
@@ -58,5 +60,17 @@ class Article extends Model
     public function scopeByUser(Builder $query, int $userId)
     {
         return $query->where('user_id', '=', $userId);
+    }
+    /**
+     * Registers a media collection named 'images' for the model.
+     *
+     * This function is part of the Spatie Media Library integration, allowing
+     * the model to associate and manage uploaded media files. The 'images'
+     * collection is defined here as a single-file collection, meaning only one
+     * media item can be attached to this collection at a time.
+     */
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('images')->singleFile();
     }
 }
