@@ -61,6 +61,14 @@ class Article extends Model implements HasMedia
     {
         return $query->where('user_id', '=', $userId);
     }
+    /**
+     * Registers a media collection named 'images' for the model.
+     *
+     * This function is part of the Spatie Media Library integration, allowing
+     * the model to associate and manage uploaded media files. The 'images'
+     * collection is defined here as a single-file collection, meaning only one
+     * media item can be attached to this collection at a time.
+     */
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('images')->singleFile();

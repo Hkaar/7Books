@@ -40,9 +40,9 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
-    public function show($slug)
+    public function show(string $slug)
     {
         $article = Article::where('slug', $slug)->firstOrFail();
-        return view('blog.show', compact('article'));
+        return view('articles.show', compact('article'));
     }
 }
