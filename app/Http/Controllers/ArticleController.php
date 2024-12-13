@@ -46,7 +46,7 @@ class ArticleController extends Controller
         $article = Article::where('slug', $slug)->firstOrFail();
 
         return view('articles.show', [
-            'article' => $article
+            'article' => $article,
         ]);
     }
 }
