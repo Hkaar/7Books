@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Models\Region;
 use App\Models\Role;
 use App\Models\User;
+use Database\Seeders\TestSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -19,7 +20,7 @@ class RegionTest extends TestCase
      */
     public function dashboard_index(): void
     {
-        $this->seed();
+        $this->seed(TestSeeder::class);
 
         $user = User::factory()->create([
             'role_id' => Role::ByName('admin')->first()->id,
@@ -37,7 +38,7 @@ class RegionTest extends TestCase
      */
     public function dashboard_create(): void
     {
-        $this->seed();
+        $this->seed(TestSeeder::class);
 
         $user = User::factory()->create([
             'role_id' => Role::ByName('admin')->first()->id,
@@ -55,7 +56,7 @@ class RegionTest extends TestCase
      */
     public function dashboard_edit(): void
     {
-        $this->seed();
+        $this->seed(TestSeeder::class);
 
         $user = User::factory()->create([
             'role_id' => Role::ByName('admin')->first()->id,
@@ -75,7 +76,7 @@ class RegionTest extends TestCase
      */
     public function dashboard_show(): void
     {
-        $this->seed();
+        $this->seed(TestSeeder::class);
 
         $user = User::factory()->create([
             'role_id' => Role::ByName('admin')->first()->id,
