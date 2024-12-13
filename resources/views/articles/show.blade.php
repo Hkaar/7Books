@@ -22,12 +22,12 @@
 
         <!-- Article Content -->
         <div class="mb-4">
-            @if($article->getFirstMediaUrl('images'))
+            @if ($article->getFirstMediaUrl('images'))
             <img src="{{ $article->getFirstMediaUrl('images') }}" class="img-fluid mb-4 rounded"
                 alt="{{ $article->title }}">
             @endif
 
-            @foreach($article->articleContents as $content)
+            @foreach ($article->articleContents as $content)
             <p class="mb-3">{{ $content->content }}</p>
             @endforeach
         </div>

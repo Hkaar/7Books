@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\Article;
 use Faker\Factory as Faker;
+use Illuminate\Database\Seeder;
 
 class ArticleSeeder extends Seeder
 {
@@ -22,7 +22,7 @@ class ArticleSeeder extends Seeder
             ]);
 
             $article->addMediaFromUrl('https://via.placeholder.com/600x400')
-                    ->toMediaCollection('images');
+                ->toMediaCollection('images');
         }
     }
 }

@@ -61,6 +61,7 @@ class Article extends Model implements HasMedia
     {
         return $query->where('user_id', '=', $userId);
     }
+
     /**
      * Registers a media collection named 'images' for the model.
      *

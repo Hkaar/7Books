@@ -12,7 +12,6 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
-
     public function index(Request $request)
     {
         $searchQuery = $request->input('search');
@@ -31,9 +30,11 @@ class ArticleController extends Controller
 
         $articles = $query->with('articleContents')->latest()->paginate(12);
 
-        return view('articles.index', compact('articles', 'searchQuery'));
+        return view('articles.index', [
+            'articles' => $articles,
+            'searchQuery' => $searchQuery,
+        ]);
     }
-
 
     /**
      * Display the resource
@@ -43,6 +44,9 @@ class ArticleController extends Controller
     public function show(string $slug)
     {
         $article = Article::where('slug', $slug)->firstOrFail();
-        return view('articles.show', compact('article'));
+
+        return view('articles.show', [
+            'article' => $article,
+        ]);
     }
 }

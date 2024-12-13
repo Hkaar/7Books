@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class AddTimestampsToArticleContentsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::table('article_contents', function (Blueprint $table) {
@@ -18,11 +13,6 @@ class AddTimestampsToArticleContentsTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::table('article_contents', function (Blueprint $table) {
