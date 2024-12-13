@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\ArticleContent;
 use App\Models\Article;
+use App\Models\ArticleContent;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ArticleContentFactory extends Factory

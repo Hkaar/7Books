@@ -22,13 +22,13 @@
         </div>
 
         <div class="row">
-            @if($articles->isEmpty())
+            @if ($articles->isEmpty())
             <div class="col-12">
                 <p class="text-center">No articles found for your search query "<strong>{{ request('search')
                         }}</strong>". Please try again with different keywords.</p>
             </div>
             @else
-            @foreach($articles as $article)
+            @foreach ($articles as $article)
             <div class="col-12 col-md-6 col-lg-4 p-4">
                 <a href="{{ route('blog.show', $article->slug) }}"
                     class="card text-none svb-transition-fast hover-grow active-shrink h-100">
@@ -46,7 +46,7 @@
                             {{ $article->title }}
                         </h5>
 
-                        @foreach($article->articleContents as $content)
+                        @foreach ($article->articleContents as $content)
                         <p class="card-text mb-3">
                             {{ Str::limit($content->content, 100) }}
                         </p>
