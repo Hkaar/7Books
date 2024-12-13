@@ -30,7 +30,10 @@ class ArticleController extends Controller
 
         $articles = $query->with('articleContents')->latest()->paginate(12);
 
-        return view('articles.index', compact('articles', 'searchQuery'));
+        return view('articles.index', [
+            'articles' => $articles,
+            'searchQuery' => $searchQuery,
+        ]);
     }
 
     /**
@@ -42,6 +45,8 @@ class ArticleController extends Controller
     {
         $article = Article::where('slug', $slug)->firstOrFail();
 
-        return view('articles.show', compact('article'));
+        return view('articles.show', [
+            'article' => $article
+        ]);
     }
 }
