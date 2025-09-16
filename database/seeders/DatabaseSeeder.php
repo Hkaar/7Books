@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
             ArticleSeeder::class,
             ContentTypeSeeder::class,
             RegionSeeder::class,
+            AuthorSeeder::class,
+            BookSeeder::class,
         ]);
     }
 }

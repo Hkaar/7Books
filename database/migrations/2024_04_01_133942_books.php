@@ -12,10 +12,11 @@ return new class extends Migration
             $table->id();
             $table->string('isbn');
             $table->string('name');
+            $table->integer('status')->default(0);
             $table->text('desc');
             $table->float('price');
             $table->float('rate');
-            $table->string('img')->nullable();
+            $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });
     }

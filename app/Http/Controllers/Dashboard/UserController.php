@@ -74,19 +74,10 @@ class UserController extends Controller
             'password' => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required|string|min:8',
             'role_id' => 'required|numeric|exists:roles,id',
-            'img' => 'nullable|image|mimes:jpeg,png,jpg|max:10240',
         ]);
 
         $user = new User;
         $user->fill($validated);
-
-        if ($request->hasFile('img')) {
-            $filePath = $this->uploadImage($request->file('img'), [
-                'size' => [200, 200],
-            ]);
-
-            $user->img = $filePath;
-        }
 
         $user->save();
 
@@ -139,23 +130,9 @@ class UserController extends Controller
             'password' => 'nullable|string|min:8|confirmed',
             'password_confirmation' => 'nullable|string|min:8',
             'role_id' => 'required|numeric|exists:roles,id',
-            'img' => 'nullable|image|mimes:jpeg,png,jpg|max:10240',
         ]);
 
-        if ($request->hasFile('img')) {
-            if ($user->img) {
-                Storage::disk('public')->delete($user->img);
-            }
-
-            $filePath = $this->uploadImage($request->file('img'), [
-                'size' => [200, 200],
-            ]);
-
-            $user->img = $filePath;
-        }
-
-        unset($validated['img']);
-
+        
         $this->updateModel($user, $validated, ['password_confirmation']);
         $user->save();
 
@@ -173,10 +150,6 @@ class UserController extends Controller
 
         $user->orders()->delete();
         $user->ratings()->delete();
-
-        if ($user->img) {
-            Storage::disk('public')->delete($user->img);
-        }
 
         $user->delete();
 

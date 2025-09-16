@@ -70,14 +70,6 @@ class AuthorController extends Controller
         $author = new Author;
         $author->fill($validated);
 
-        if ($request->hasFile('img')) {
-            $filePath = $this->uploadImage($request->file('img'), [
-                'size' => [200, 200],
-            ]);
-
-            $author->img = $filePath;
-        }
-
         $author->save();
 
         if ($validated['items']) {

@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Faq;
+use App\Models\Book;
+use App\Models\Genre;
+use App\Models\Author;
 class HomeController extends Controller
 {
     /**
@@ -21,7 +25,37 @@ class HomeController extends Controller
      */
     public function welcome()
     {
-        return view('welcome');
+        $data = [
+            'trendingBooks' => Book::with(['authors', 'media'])
+                ->orderBy('rate', 'desc')
+                ->take(10)
+                ->get(),
+
+            'newReleases' => Book::with(['authors', 'media'])
+                ->orderBy('published_at', 'desc')
+                ->take(10)
+                ->get(),
+            'popularAuthors' => Author::withCount(['books', 'media'])
+                ->orderBy('books_count', 'desc')
+                ->take(8)
+                ->get(),
+
+            'popularGenres' => Genre::withCount('books')
+                ->orderBy('books_count', 'desc')
+                ->take(10)
+                ->get(),
+
+            // Add popular books with cover_image media
+            'popularBooks' => Book::with(['authors', 'media'])
+                ->orderBy('rate', 'desc')
+                ->take(10)
+                ->get(),
+
+            'faqs' => Faq::where('active', true)
+                ->orderBy('order')
+                ->get()
+        ];
+        return view('welcome', $data);
     }
 
     /**

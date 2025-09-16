@@ -2,13 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\MediaLibrary\HasMedia;
+use Illuminate\Support\Facades\Vite;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Author extends Model
+class Author extends Model implements HasMedia
 {
-    use HasFactory;
+    use HasFactory, InteractsWithMedia;
 
     /**
      * The table associated with the model.
@@ -26,7 +29,6 @@ class Author extends Model
         'name',
         'address',
         'phone',
-        'img',
     ];
 
     /**
@@ -48,5 +50,14 @@ class Author extends Model
     public function scopeByName(Builder $query, string $name)
     {
         return $query->where('name', 'like', "%{$name}%");
+    }
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('author_photo')->singleFile();
+    }
+    
+    public function getPhotoAttribute()
+    {
+        return $this->getFirstMediaUrl('author_photo') ?: Vite::asset('resources/images/default-avatar.png');
     }
 }

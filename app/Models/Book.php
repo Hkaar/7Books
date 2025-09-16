@@ -2,13 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Enums\BookStatus;
+use Spatie\MediaLibrary\HasMedia;
+use Illuminate\Support\Facades\Vite;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Book extends Model
+class Book extends Model implements HasMedia
 {
-    use HasFactory;
+    use HasFactory, InteractsWithMedia;
 
     /**
      * The table associated with the model.
@@ -29,7 +33,6 @@ class Book extends Model
         'desc',
         'price',
         'rate',
-        'img',
     ];
 
     /**
@@ -38,6 +41,10 @@ class Book extends Model
      * @var array<int, string>
      */
     protected $with = ['genres', 'authors'];
+
+    protected $casts = [
+        'status' => BookStatus::class,
+    ];
 
     /**
      * Define the relationship with genres
@@ -157,5 +164,13 @@ class Book extends Model
         }
 
         return 0;
+    }
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('cover_image')->singleFile();
+    }
+    public function getPhotoAttribute()
+    {
+        return $this->getFirstMediaUrl('cover_image') ?: Vite::asset('resources/images/default-book-cover.jpg');
     }
 }

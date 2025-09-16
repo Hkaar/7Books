@@ -28,7 +28,6 @@ class AuthorFactory extends Factory
             'name' => $this->faker->name(),
             'address' => $this->faker->address(),
             'phone' => $this->faker->phoneNumber(),
-            'img' => $this->faker->imageUrl(),
         ];
     }
 }

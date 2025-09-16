@@ -1,6 +1,12 @@
 <?php
 
+use App\Http\Controllers\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\Auth\LogoutController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,17 +19,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['namespace' => 'App\Http\Controllers\Auth'], function () {
+Route::group(['namespace' => 'Auth'], function () {
     Route::group(['middleware' => ['auth']], function () {
-        Route::get('logout', 'LogoutController@perform')->name('logout');
+        Route::get('logout', [LogoutController::class, 'perform'])->name('logout');
     });
 
     Route::group(['middleware' => ['guest']], function () {
-        Route::get('register', 'RegisterController@show')->name('register.show');
-        Route::post('register', 'RegisterController@register')->name('register');
+        Route::get('register', [RegisterController::class, 'show'])->name('register.show');
+        Route::post('register', [RegisterController::class, 'register'])->name('register');
 
-        Route::get('login', 'LoginController@show')->name('login.show');
-        Route::post('login', 'LoginController@login')->name('login');
+        Route::get('login', [LoginController::class, 'show'])->name('login.show');
+        Route::post('login', [LoginController::class, 'login'])->name('login');
     });
 });
 
@@ -39,6 +45,7 @@ Route::group(['namespace' => "App\Http\Controllers"], function () {
         Route::get('home', 'HomeController@home')->name('home');
         Route::get('me', 'HomeController@me')->name('users.me');
     });
+    Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
 });
 
 Route::group(['namespace' => "App\Http\Controllers\Dashboard"], function () {

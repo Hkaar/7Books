@@ -55,15 +55,23 @@
           Sign up for the newsletter
         </h5>
 
-        <div class="input-group mb-3 shadow-sm">
-          <input type="text" name="email" id="email" class="form-control px-3 py-2" placeholder="Enter your email here">
-
-          <button type="button" class="btn btn-primary">
+        @if(session('success'))
+        <div class="alert alert-success">
+          {{ session('success') }}
+        </div>
+        @endif
+        <form action="{{ route('newsletter.subscribe') }}" method="POST" class="input-group mb-3 shadow-sm">
+          @csrf
+          <input type="email" name="email" id="email" class="form-control px-3 py-2" placeholder="Enter your email here"
+            required>
+          <button type="submit" class="btn btn-primary">
             Register
           </button>
-        </div>
+        </form>
       </div>
     </div>
+  </div>
+  </div>
   </div>
 
   <div class="bg-primary py-3">

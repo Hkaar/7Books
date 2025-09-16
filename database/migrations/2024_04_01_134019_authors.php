@@ -13,7 +13,6 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->string('address');
             $table->string('phone');
-            $table->string('img')->nullable();
             $table->timestamps();
         });
     }

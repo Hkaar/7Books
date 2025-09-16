@@ -13,15 +13,15 @@ class ArticleSeeder extends Seeder
         $faker = Faker::create();
 
         // Create 10 articles
-        foreach (range(1, 10) as $index) {
+        foreach (range(1, 10) as $_) {
             $article = Article::create([
                 'title' => $faker->sentence,
                 'slug' => $faker->slug,
                 'user_id' => rand(1, 20),  // Assuming users with IDs 1 to 3
                 'public' => 1,
             ]);
-
-            $article->addMediaFromUrl('https://via.placeholder.com/600x400')
+            $article->addMedia(storage_path('app/public/placeholders/post.jpg'))
+                ->preservingOriginal()
                 ->toMediaCollection('images');
         }
     }

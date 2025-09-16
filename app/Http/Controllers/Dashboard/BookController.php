@@ -84,20 +84,10 @@ class BookController extends Controller
             'desc' => 'nullable|string|max:1000',
             'price' => 'required|numeric',
             'rate' => 'required|numeric|max:10',
-            'img' => 'nullable|image|mimes:jpeg,png,jpg|max:10240',
         ]);
 
         $book = new Book;
         $book->fill($validated);
-
-        $file = $request->file('img');
-
-        if ($file) {
-            $filePath = $this->uploadImage($request->file('img'), [
-                'size' => [1000, 1600],
-            ]);
-            $book->img = $filePath;
-        }
 
         $book->save();
 
@@ -205,17 +195,6 @@ class BookController extends Controller
             'rate' => 'nullable|numeric|max:10',
             'img' => 'nullable|image|mimes:jpeg,png,jpg|max:10240',
         ]);
-
-        if ($request->hasFile('img')) {
-            if ($book->img) {
-                Storage::disk('public')->delete($book->img);
-            }
-
-            $filePath = $this->uploadImage($request->file('img'), [
-                'size' => [1000, 1600],
-            ]);
-            $book->img = $filePath;
-        }
 
         $this->updateModel($book, $validated, ['img']);
 
